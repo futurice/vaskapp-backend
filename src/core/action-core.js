@@ -1,22 +1,27 @@
-import moment from 'moment';
+import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
 function createAction(action) {
-  console.log(action)
   const dbRow = {
     'team_id': action.team,
     type: action.type,
     'user_uuid': action.user,
     // Tuple is in longitude, latitude format in Postgis
-    location: action.location.longitude + ',' + action.location.longitude,
-    'updated_at': moment().toISOString()
+    location: action.location.longitude + ',' + action.location.longitude
   };
 
   if (action.payload) {
     dbRow.payload = action.payload;
   }
 
-  return knex('actions').insert(dbRow);
+  return knex('actions').returning('*').insert(dbRow)
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Action row creation failed: ' + dbRow);
+      }
+
+      return rows.length;
+    });
 }
 
 export {
