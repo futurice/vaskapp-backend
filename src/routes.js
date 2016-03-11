@@ -8,7 +8,6 @@ function createRouter() {
   const router = express.Router();
 
   router.get('/events', eventHttp.getEvents);
-  router.get('/leaderboard', leaderboardHttp.getLeaderboard);
   router.post('/actions', actionHttp.postAction);
   router.get('/teams', teamHttp.getTeams);
 
