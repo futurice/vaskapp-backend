@@ -77,6 +77,16 @@ Responses:
 
 * `200 OK`
 
+### `POST /api/users`
+
+> Create a new user
+
+Body is one of [user object](#user-object).
+
+Responses:
+
+* `200 OK`
+
 ## Response objects
 
 ### Event object
