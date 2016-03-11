@@ -2,6 +2,11 @@
   {
     "name": "Akateeminen Herwannan vahvin mies 2016",
     "locationName": "Tietotalon edusta",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T14:00:00.000Z",
+    "description": "Steong man competition",
+    "organizer": "Herwannan hauiskääntö",
+    "teemu": false,
     "location": {
       "latitude": 61.449605,
       "longitude": 23.857158
@@ -10,6 +15,11 @@
   {
     "name": "Akateemisen Beerpongin MM-kisat 2016",
     "locationName": "Bommari",
+    "start": "2016-04-24T12:00:00.000Z",
+    "end": "2016-04-24T18:00:00.000Z",
+    "description": "Käännetään joskus.",
+    "organizer": "Rankat Ankat",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -18,6 +28,11 @@
   {
     "name": "Amebaturnaus",
     "locationName": "Obeliskin vieressä",
+    "start": "2016-04-25T11:00:00.000Z",
+    "end": "2016-04-25T12:00:00.000Z",
+    "description": "Do you always win the beginning at beerpong with rock-paper-scissors-game? Now it's time to show off your mind reading skills, because YKI is arranging the great Amoeba tournament! The game begins at 14:00 next to the obelisk and there will be three preliminary rounds and finally the grand final. Amazing animal themed prizes for the winners!",
+    "organizer": "YKI",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -26,6 +41,11 @@
   {
     "name": "Cantus",
     "locationName": "Bommari",
+    "start": "2016-04-27T16:00:00.000Z",
+    "end": "2016-04-27T19:00:00.000Z",
+    "description": "Do you want to experience something different during your Wappu? No problem. EESTEC is here again with Cantus. Cantus is Belgian/Dutch/German style event where you sing songs drink few beers, and make new friends! During the night you may learn some new songs and even latin! Rasputin and overalls should be the only items you need for this event.",
+    "organizer": "EESTEC",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -34,6 +54,11 @@
   {
     "name": "Colours",
     "locationName": "Viihdemaailma Ilona",
+    "start": "2016-04-19T18:00:00.000Z",
+    "end": "2016-04-19T00:30:00.000Z",
+    "description": "Viime vuodelta kans kiitoos :D",
+    "organizer": "Tampereen teekkarien PerinneSeura",
+    "teemu": false,
     "location": {
       "latitude": 61.497228,
       "longitude": 23.76747
@@ -42,6 +67,11 @@
   {
     "name": "Ei-turkulaiset pihapelit // Lawn Games by ETO",
     "locationName": "Etunurtsi",
+    "start": "2016-04-22T10:00:00.000Z",
+    "end": "2016-04-22T12:00:00.000Z",
+    "description": "Help us combat turku's influence on Finland by playing ETO's turku pétanque and other lawn games!",
+    "organizer": "Ei-turkulainen osakunta",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -50,6 +80,11 @@
   {
     "name": "ESN INTO Wappu Pancake Bonanza",
     "locationName": "TUT Campus Front lawn",
+    "start": "2016-04-28T11:00:00.000Z",
+    "end": "2016-04-27T21:00:00.000Z",
+    "description": "ESN INTO will arrange a pancake eating bonanza. Come to eat pancakes.\r\r\r\r[DISCLAIMER]: The event may or may not include pancakes and a bouncy castle. ESN INTO is not responsible for, and expressly disclaims all liability for, and damages of any kind arising out of eating, tossing, tasting or smelling of pancakes or for any activities that go on in the premises. Pancakes from Country X do not constitute an endorsement by ESN INTO of their taste or appearance.",
+    "organizer": "ESN INTO Pancake team",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -58,6 +93,11 @@
   {
     "name": "ESN INTO Wappu Pancake Bonanza",
     "locationName": "TUT Campus Front lawn",
+    "start": "2016-04-28T11:00:00.000Z",
+    "end": "2016-04-27T21:00:00.000Z",
+    "description": "ESN INTO will arrange a pancake eating bonanza. Come to eat pancakes.\r\r\r\r[DISCLAIMER]: The event may or may not include pancakes and a bouncy castle. ESN INTO is not responsible for, and expressly disclaims all liability for, and damages of any kind arising out of eating, tossing, tasting or smelling of pancakes or for any activities that go on in the premises. Pancakes from Country X do not constitute an endorsement by ESN INTO of their taste or appearance.",
+    "organizer": "ESN INTO Pancake team",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -66,6 +106,11 @@
   {
     "name": "Happy Hour",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Are you tired of playing normal drinking games? Do you dream of something bigger? Your prayers have been finally answered! Presenting Happy Hour by Hiukkanen, a new event in which you can play super-sized versions of common drinking games! Alcohol-free playing is also possible!!\r\rHappy hour - because size matters!\r\r",
+    "organizer": "Hiukkanen",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -74,6 +119,11 @@
   {
     "name": "Junttarit",
     "locationName": "Paikka X",
+    "start": "2016-04-23T12:30:00.000Z",
+    "end": "2016-04-22T21:00:00.000Z",
+    "description": "Junttareilla aka at Hilly-Billy Sitsit you get to break away from the hustle around Wappu and you can be yourself without any judgements in place X. Traditionally there is going to be holy water, pea soup, games and live music. Theme will be announced later.3ns",
+    "organizer": "Automaatiotekniikan kilta",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -82,6 +132,11 @@
   {
     "name": "Kaljamaili",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T13:00:00.000Z",
+    "end": "2016-04-26T14:00:00.000Z",
+    "description": "KeparDI, the orienteering club of TUT organizes the traditional beer mail, which has gained publicity also in Wappuradio in previous years. Beer mile consists of both running and drinking official malt based sports drink. Otherwise we follow the official beer mile rules but the competition will be run in the TUT front yard instead of track. Entries for the competition at front yard. Entry fee 5 euros, includes compulsory competition equipment. More information about beer mile in general: http://www.beermile.com",
+    "organizer": "KeparDi",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -90,6 +145,11 @@
   {
     "name": "Katusähly",
     "locationName": "Selviää myöhemmin, toivottavasti Etunurtsin ympäristössä",
+    "start": "2016-04-21T10:00:00.000Z",
+    "end": "2016-04-21T13:00:00.000Z",
+    "description": "Gather a team of three people and take part in relxing Wappu street floorball tournament! Floorball sticks will be provided by the organizers.",
+    "organizer": "NMKSV, TeLE",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -98,6 +158,11 @@
   {
     "name": "Kellarihumppa",
     "locationName": "Bommari",
+    "start": "2016-04-27T15:00:00.000Z",
+    "end": "2016-04-27T20:00:00.000Z",
+    "description": "YKI and TARAKI throws a traditional party called Kellarihumppa! It’s time to find the ugliest flowerdresses and ties, and come to dance oldschool finnish dance called HUMPPA! There’s a liveband playing, dance teaching and bingo! There might be some surprises behind the stack of wood too.",
+    "organizer": "Yki ja Tarak",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -106,6 +171,11 @@
   {
     "name": "KKK - KuiwakaljaKatastrofi",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T13:00:00.000Z",
+    "description": "KKK, the traditional Wappuevent arrenged by Indecs, comes again. This year the event will be KuiwaKaljaKatastrofi (KuiwaKaljaCatastrophe). The event consists of different disaster related checkpoints with a Wapputwist. Come awaken your inner survivor and compete with your friends to see, who is the real survivor.",
+    "organizer": "Indecs",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -114,6 +184,11 @@
   {
     "name": "KumipelausISO",
     "locationName": "Rosendahlin ranta",
+    "start": "2016-04-25T11:00:00.000Z",
+    "end": "2016-04-25T17:00:00.000Z",
+    "description": "Is it football? Is it baseball? No, this is something even better. This insane team sport is based on bizarre rules randomly picked by referees. The \"ball\" (=ISO) is actually an inner tube of a wheelbarrow. You have to experience it!",
+    "organizer": "Skilta // Adam Zeidan",
+    "teemu": false,
     "location": {
       "latitude": 61.491425,
       "longitude": 23.730017
@@ -122,6 +197,11 @@
   {
     "name": "Kumisitsit",
     "locationName": "Bommari",
+    "start": "2016-04-22T15:00:00.000Z",
+    "end": "2016-04-22T20:00:00.000Z",
+    "description": "Welcome to the most legendary rubbersitsit! So dress accordingly and come to check what is it all about.",
+    "organizer": "MIK, TamArk, Skilta",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -130,6 +210,11 @@
   {
     "name": "Luowa Wapputapahtuma",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T13:00:00.000Z",
+    "description": "Creative wappupainting for wappupeople on the front lawn. This event is a lot like Wappusotku which was an event organized by architecture students. Come and see what you can paint this year!",
+    "organizer": "TamArk",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -138,6 +223,11 @@
   {
     "name": "Megalauluiltama",
     "locationName": "Teekkarisauna",
+    "start": "2016-04-21T12:00:00.000Z",
+    "end": "2016-04-21T17:00:00.000Z",
+    "description": "Teekkari section organizes the Student Union's second singing evening. Take your Rasputin-songbook with you, and come to Teekkarisauna!",
+    "organizer": "Teekkarijaosto",
+    "teemu": false,
     "location": {
       "latitude": 61.452725,
       "longitude": 23.859969
@@ -146,6 +236,11 @@
   {
     "name": "NääsPeksin pitkä impro",
     "locationName": "Festian iso sali",
+    "start": "2016-04-25T15:00:00.000Z",
+    "end": "2016-04-24T21:00:00.000Z",
+    "description": "An improv long form musical play in finnish.",
+    "organizer": "NääsPeksi",
+    "teemu": false,
     "location": {
       "latitude": 61.449526,
       "longitude": 23.861181
@@ -154,6 +249,11 @@
   {
     "name": "PikkuJouluBommarit -sitsit",
     "locationName": "Bommari",
+    "start": "2016-04-22T15:00:00.000Z",
+    "end": "2016-04-21T21:00:00.000Z",
+    "description": "On the first Friday of wappu we are having sitsit in christmassy atmosphere for the memory of Bommarit. Again this year we will have fun vibes and amazing performances. \r\rBuy your ticket fast, we will have limited amount of tickets. Dress code overalls/pre christmas.",
+    "organizer": "PILE",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -162,6 +262,11 @@
   {
     "name": "Pimp My Grill",
     "locationName": "Sähkötalon sisäpiha",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T14:00:00.000Z",
+    "description": "Welcome to the hottest BBQ of Wappu! The guilds of Sähkötalo will organise a magnificent sausagefest for wappupeople. Bring your fine tuned grill and come and enjoy your barbecue delicacies. The coolest grill and the tastiest foods will be awarded by the jury. Let's BBQ!",
+    "organizer": "Hiukkanen ja Skilta",
+    "teemu": false,
     "location": {
       "latitude": 61.450741,
       "longitude": 23.858108
@@ -170,6 +275,11 @@
   {
     "name": "Pre-Colours",
     "locationName": "Festian rappuset",
+    "start": "2016-04-19T11:00:00.000Z",
+    "end": "2016-04-19T14:00:00.000Z",
+    "description": "PERINNESEURA PRESENTS: PRE-COLOURS!\r\r\r\rAn outdoor event right after Tamppi Unveiling to keep the wappu crowd warm for the afternoon. Come and get the pregame going outside our party tent with various games and activities such as megatwister, contests and much more! The best hit music played on the background will provide the people with genuine wappu ambience.\r\r\r\rWant to get past the queue to the party in the evening? PRESALE for the Colours-party tickets! Only for the fastest and the boldest. You can also buy the brand new Colours-overall patch.\r\r\r\rAdvance tickets costs 3 e (limit: 2 tickets/buyer). With the advance ticket you can skip the queue till 23:00. However, Pre-Colours is free for everyone!\r\r\r\rPUZZLEPIECE FOR FUKSIS",
+    "organizer": "PerinneSeura",
+    "teemu": false,
     "location": {
       "latitude": 61.449465,
       "longitude": 23.860307
@@ -178,6 +288,11 @@
   {
     "name": "PölöKaljaViesti",
     "locationName": "Vanha Kirjastotalo",
+    "start": "2016-04-30T10:00:00.000Z",
+    "end": "2016-04-30T11:00:00.000Z",
+    "description": "The traditional PölöBeerRace entertains wappufolks once again after the Wappurieha. Gather a team of four (4) members and come show, which guild has what it takes to compete with the legendary BeerRaceKings of previous years. The idea of the race is to drink beer while running around the church with different ways, without spilling the beer. If competing is not your thing, remember to come and cheer your favourite team to victory.\r\rThere is only room for four teams.\r\rPrice: 10€/team\r\rTeam = 4 people",
+    "organizer": "Indecs",
+    "teemu": false,
     "location": {
       "latitude": 61.49882,
       "longitude": 23.761987
@@ -186,6 +301,11 @@
   {
     "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
     "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "start": "2016-04-19T11:00:00.000Z",
+    "end": "2016-04-18T21:00:00.000Z",
+    "description": "Rakkauden Wappuradio lets you enjoy the sound of Wappu wherever you are and around the clock!",
+    "organizer": "Rakkauden Wappuradio",
+    "teemu": false,
     "location": {
       "latitude": 61.449536,
       "longitude": 23.855717
@@ -194,6 +314,11 @@
   {
     "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
     "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "start": "2016-04-19T11:00:00.000Z",
+    "end": "2016-04-18T21:00:00.000Z",
+    "description": "Rakkauden Wappuradio lets you enjoy the sound of Wappu wherever you are and around the clock!",
+    "organizer": "Rakkauden Wappuradio",
+    "teemu": false,
     "location": {
       "latitude": 61.449536,
       "longitude": 23.855717
@@ -202,6 +327,11 @@
   {
     "name": "Ruokaa, Juomaa, Kello! // Food, Drinks, Clock!",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T12:00:00.000Z",
+    "description": "Food, drinks, clock! The best way to start your Wappu morning is to drink and eat! Come and try to beat the clock and other teekkaris/fuksis in a drinking or a eating contest. \r\r\r\rHere you can also purchase tickets to the most wanted Wappu party - Wapunkaato!",
+    "organizer": "NMKSV",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -210,6 +340,11 @@
   {
     "name": "Sitsikisat",
     "locationName": "Konetalon sisäpiha",
+    "start": "2016-04-27T13:00:00.000Z",
+    "end": "2016-04-27T17:00:00.000Z",
+    "description": "Do you enjoy sitsit and think that you are rather good sitsaaja? The TeekkariWappu’s most awesome sitsit are here and they are made by you! Academic Tableparty Platine organises Sitsi-competition in which different teams compete for the Sitsing Party of the Year – title. In this event you determine your own actions, theme, your (hopefully theme-based) food and your songs. Sitsit are supervised by honourable jury which grades your performance and keeps the merry-making in control.\r\r\r\rParticipation fee is 70 euros per team.\r\rMaximum number of participants per team is 15 persons.\r\r",
+    "organizer": "Platine",
+    "teemu": false,
     "location": {
       "latitude": 61.448688,
       "longitude": 23.859534
@@ -218,6 +353,11 @@
   {
     "name": "Spinnin iltapäiväkertho",
     "locationName": "Spinnin kerhohuone SA014",
+    "start": "2016-04-21T10:00:00.000Z",
+    "end": "2016-04-21T15:00:00.000Z",
+    "description": "Raining and freezing outside? Studying terrifies and starting to miss kindergarden times? Spinni solves your problems!\r\r\r\rClimb stairs down to the basement of Sähkötalo and arrive to the club room of Spinni, SA014 on <päivämäärä> starting at 1 PM. Spinni offers some snacks, coloring books (for adults), games, lot of friends to play with - not to mention awesome music and lights. Additionally you may have a look at the regular life of electronic music club that is celebrating its 20th anniversary this year.\r\r\r\rSpinni <3 you",
+    "organizer": "Spinni",
+    "teemu": false,
     "location": {
       "latitude": 61.450364,
       "longitude": 23.858384
@@ -226,6 +366,11 @@
   {
     "name": "Suuret Wabu Juhlat",
     "locationName": "Todennäköisesti ravintola hullu poro.",
+    "start": "2016-04-24T18:00:00.000Z",
+    "end": "2016-04-24T20:30:00.000Z",
+    "description": "Käännetään.",
+    "organizer": "Rankat Ankat",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -234,6 +379,11 @@
   {
     "name": "Takatalwi",
     "locationName": "Etunurtsi",
+    "start": "2016-04-27T10:00:00.000Z",
+    "end": "2016-04-27T12:30:00.000Z",
+    "description": "Winter is back. Takatalwi is the last rail jam of the season!",
+    "organizer": "TTHP",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -242,6 +392,11 @@
   {
     "name": "TaKoRUn Wappugrilli",
     "locationName": "Etunurtsi",
+    "start": "2016-04-29T09:00:00.000Z",
+    "end": "2016-04-29T15:00:00.000Z",
+    "description": "TaKoRUs Wappugrill at TUT front lawn",
+    "organizer": "Tampereen Korkeakoulujen Reserviupseerit ry",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -250,6 +405,11 @@
   {
     "name": "TALent Hervanta",
     "locationName": "Herwood Stage & Bar",
+    "start": "2016-04-20T15:00:00.000Z",
+    "end": "2016-04-19T22:30:00.000Z",
+    "description": "TALent Hervanta is a band event organized by the student choir Teekkarikuoro. The stage at Herwood will be filled with different and outstanding musical spectacles that you don't want to miss. Come and experience!",
+    "organizer": "Teekkarikuoro",
+    "teemu": false,
     "location": {
       "latitude": 61.453056,
       "longitude": 23.846807
@@ -258,6 +418,11 @@
   {
     "name": "Tampin paljastus",
     "locationName": "Festian Iso Sali",
+    "start": "2016-04-19T10:00:00.000Z",
+    "end": "2016-04-19T11:00:00.000Z",
+    "description": "This years controversially the best Wappumagazine Tamppi is already the 39th Tamppi ever made! The great mystery shrouding this year's magazine is lifted in TAMPIN PALJASTUS in Festia's large auditorium on Tuesday 19.4.2016 at 13:00. This show will blow your mind, at least if you know Finnish. Even if you don't understand, come and enjoy the show and have some goodies called nanna and töffö. The queue starts building up in the morning so don't be late!\r\r\r\rTeemuround: START!\r\r",
+    "organizer": "Wappulehti Tamppi",
+    "teemu": false,
     "location": {
       "latitude": 61.449526,
       "longitude": 23.861181
@@ -266,6 +431,11 @@
   {
     "name": "Tamppi-XQ",
     "locationName": "Tampere -Turku - Tampere",
+    "start": "2016-04-20T06:00:00.000Z",
+    "end": "2016-04-20T17:00:00.000Z",
+    "description": "Intended for Tamppi salesperson. The purpose is to visit Turku and sell Tamppi magazine.",
+    "organizer": "KoRK",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -274,6 +444,11 @@
   {
     "name": "Teekkarikuoro Wappupicnicillä",
     "locationName": "Koskenranta",
+    "start": "2016-04-24T11:00:00.000Z",
+    "end": "2016-04-24T11:30:00.000Z",
+    "description": "The student choir Teekkarikuoro will entertain people at Wappupicnic with a few catchy songs.",
+    "organizer": "Teekkarikuoro",
+    "teemu": false,
     "location": {
       "latitude": 61.499435,
       "longitude": 23.764419
@@ -282,6 +457,11 @@
   {
     "name": "Teekkarin turvaWappu 2016",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T12:00:00.000Z",
+    "description": "Welcome to participate the first Wappu event of SaFir´s history. Come and test your safety level in our Wappu track. In our track will be found out who fuksi or teekkari to be the new world champion of safety shoe throwing.",
+    "organizer": "SaFir",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -290,6 +470,11 @@
   {
     "name": "TiTen Merkkimarkkinat",
     "locationName": "Obeliski",
+    "start": "2016-04-22T10:00:00.000Z",
+    "end": "2016-04-22T13:00:00.000Z",
+    "description": "Come trade and sell overall badges to TiTe's Badge Market. Those who come early will receive table space.",
+    "organizer": "TiTe",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -298,6 +483,11 @@
   {
     "name": "TiTen Tekken Tournament",
     "locationName": "TiTen kiltahuone",
+    "start": "2016-04-27T15:00:00.000Z",
+    "end": "2016-04-27T18:00:00.000Z",
+    "description": "TietoTeekkarikilta organizes the traditional Tekken Tournament, where we will see who is the greatest fighter in Herwood. The tournament is played in TiTe's guild room with a genuine Tekken 3 arcade. There will be prizes for the best!",
+    "organizer": "TiTe",
+    "teemu": false,
     "location": {
       "latitude": 61.449849,
       "longitude": 23.857056
@@ -306,6 +496,11 @@
   {
     "name": "TTSS wabbu Goncerddi 2016",
     "locationName": "TTY Etunurtsi",
+    "start": "2016-04-27T12:00:00.000Z",
+    "end": "2016-04-27T15:00:00.000Z",
+    "description": "Traditional TTSS Wappu concert is coming again. Come and join the funniest gig of the year. Casio is not enough for this festival experience.",
+    "organizer": "TTSS",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -314,6 +509,11 @@
   {
     "name": "Tupsulan ulkoilmakonsertti",
     "locationName": "Tupsulan takapiha",
+    "start": "2016-04-23T09:00:00.000Z",
+    "end": "2016-04-23T15:00:00.000Z",
+    "description": "The legendary outdoor concerts of Tupsula has been around for more than 20 years. In this concert the residents of Tupsula perform a variety of musical and other performances. The best place to see this spectacular event is the backyard of Tupsula. Everybody is welcome to come and have their earpussies ejaculate!",
+    "organizer": "Tupsulan klaani",
+    "teemu": false,
     "location": {
       "latitude": 61.463547,
       "longitude": 23.886894
@@ -322,6 +522,11 @@
   {
     "name": "upermutavaahtopallomeripainiysärikasari-disco",
     "locationName": "Etunurtsi/Cupola",
+    "start": "2016-04-24T09:00:00.000Z",
+    "end": "2016-04-24T01:00:00.000Z",
+    "description": "Kiltaneuvosto2016 entertains wappupeople by arranging different kinds of fun activities. The event start already at daytime, but the main event is an EPIC FOAM PARTY at CUPOLA.",
+    "organizer": "Kiltaneuvosto2016",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -330,6 +535,11 @@
   {
     "name": "Wapina",
     "locationName": "Bommari",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T12:00:00.000Z",
+    "description": "Man@ger's traditional wappuevent is made into a haunted house in Bommari. It is a scary track through which one should go and stay alive. It can be performed in small groups.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -338,6 +548,11 @@
   {
     "name": "Wapina",
     "locationName": "Bommari",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T12:00:00.000Z",
+    "description": "Man@ger's traditional wappuevent is made into a haunted house in Bommari. It is a scary track through which one should go and stay alive. It can be performed in small groups.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -346,6 +561,11 @@
   {
     "name": "Wappu Scawenger Hunt",
     "locationName": "Etunurtsi",
+    "start": "2016-04-28T11:00:00.000Z",
+    "end": "2016-04-28T13:30:00.000Z",
+    "description": "Wappu Scawenger Hunt is a team game in which the contestants need to gather a list of items specified by the judges during one hour. These items are most likely not available in stores, but can be gained with creativity, courage and most importantly with Teekkari spirit! Imagination is the key to victory, since the items will be rated by the judges. The best team will be awarded, and all the contestants are given an overall badge for their participation. Participation fee is 2 euros/contestant. 4 players in the team maximum.",
+    "organizer": "Bioner",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -354,6 +574,11 @@
   {
     "name": "Wappu-Bic",
     "locationName": "Tamppi Areena",
+    "start": "2016-04-25T12:00:00.000Z",
+    "end": "2016-04-25T16:30:00.000Z",
+    "description": "We exercise even during Wappu in Tamppi Areena! This megalomaniac marathon bic leaves nobody cold on Monday. Wappu-Bic starts at 3pm with an old-fashioned P.E. class, and continues with more traditional group exercise classes, spiced up with some Wappu spirit. Classes are at ball gaming hall so that everybody can fit in the classes.",
+    "organizer": "TUrVoKe ry / Unipoli Sport",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -362,6 +587,11 @@
   {
     "name": "WappuDance",
     "locationName": "TTY:n Ryhmäliikuntasali",
+    "start": "2016-04-26T10:30:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Twerking and dancehall for everybody! No previous dance experience needed. The class will start with some technique exercises and end with a little choreography. Here you will have fun for sure!",
+    "organizer": "NääsDance",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -370,6 +600,11 @@
   {
     "name": "Wappukolmiot",
     "locationName": "Koskikeskus / Ravintolamaailma",
+    "start": "2016-04-21T19:00:00.000Z",
+    "end": "2016-04-21T00:30:00.000Z",
+    "description": "Indecs, Staabi and Luuppi organize once again the biggest monthly student party of Tampere featuring Spinni!",
+    "organizer": "Indecs (Staabi ja Luuppi)",
+    "teemu": false,
     "location": {
       "latitude": 61.495499,
       "longitude": 23.765981
@@ -378,6 +613,11 @@
   {
     "name": "Wappuleffa",
     "locationName": "Cinola",
+    "start": "2016-04-26T12:00:00.000Z",
+    "end": "2016-04-26T18:00:00.000Z",
+    "description": "The absolute classic of Wappu mowies - the Blues Brothers - will take ower Cinola once more! In addition to the former, another ground breaking mowie will get its Wappu premiere in the smaller cinema room in the same place. The mowies will begin at 3 and 6 pm, and since queuing is the best way to take your soul into the mowie, be there in time! At the time the mowie begins, you will find yourself from the stage dancing and singing along with the classics before you ewen realize it!\r\r\r\rRemember - wearing according to the theme will grant you the best seats in the hall. Dark suit with sunglasses or the one of a nun will guarantee the party with the brothers of Blues. ",
+    "organizer": "Elram",
+    "teemu": false,
     "location": {
       "latitude": 61.450403,
       "longitude": 23.848563
@@ -386,6 +626,11 @@
   {
     "name": "Wappumössö",
     "locationName": "Tupsulan ulkoilmakonsertti",
+    "start": "2016-04-23T10:00:00.000Z",
+    "end": "2016-04-23T11:00:00.000Z",
+    "description": "Man@ger has traditionally served a food called \"wappumössö\" on vappu. Wappumössö is made by the Hostess and is served to all the members of the guild and also to others. The recipe is secret and only the Hostess knows it. It's always the same. It is meant to be served in the Tupsula open-air concert for an hour or as long as the food lasts.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.463547,
       "longitude": 23.886894
@@ -394,6 +639,11 @@
   {
     "name": "Wappunysse",
     "locationName": "Tampereen kaupunki",
+    "start": "2016-04-18T09:00:00.000Z",
+    "end": "2016-04-18T15:00:00.000Z",
+    "description": "päivitetään kun tämän vuoden speksit saadaan sovittua",
+    "organizer": "Spinni",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -402,6 +652,11 @@
   {
     "name": "Wappuradio Live!",
     "locationName": "Etunurtsi",
+    "start": "2016-04-24T10:00:00.000Z",
+    "end": "2016-04-24T14:00:00.000Z",
+    "description": "Rakkauden Wappuradio fills your Sunday afternoon with live music after 1pm. Come and enjoy the fabulous set of bands and a relaxed festival spirit in the middle of our campus - for free! More information: www.wappuradio.fi",
+    "organizer": "Rakkauden Wappuradio",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -410,6 +665,11 @@
   {
     "name": "Wappuratsastus",
     "locationName": "Etunurtsi",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T11:00:00.000Z",
+    "description": "Horse riding at TUT! We are going to bring two real horses to the front yard area and walk with them near Tietotalo. This is your chance to try horse riding! No sign-up or previous riding experience needed. Welcome! Price: 2 euros.",
+    "organizer": "TeURaS",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -418,6 +678,11 @@
   {
     "name": "WappuTwerk",
     "locationName": "TTY:n ryhmäliikuntasali",
+    "start": "2016-04-26T11:00:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Twerking for everybody! Here's something new and most definitely entertaining. On top of the fun twerking exercises there will be a small dance choreography.",
+    "organizer": "NääsDance",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -426,6 +691,11 @@
   {
     "name": "Wapun kostein SIMAkisa ja SIMAssa! -bileet",
     "locationName": "Etunurtsi / Joku baari",
+    "start": "2016-04-28T09:00:00.000Z",
+    "end": "2016-04-28T20:30:00.000Z",
+    "description": "Wappu's wettest MEAD (=SIMA) competition is here! Make your own mead and bring it to the brown-overalled ladies on Thursday, April 28th to Etunurtsi (TUT campus front lawn). There will also be other wet mead competitions, if you haven't made your own mead and still want to participate in EMÄTEEMU. In addition there is a new game called BraPong!\r\r\r\rDuring the day, you can also buy tickets to the same evening's MEAD party (SIMASSA-bileet)! The MEAD party is held at SOME BAR from XX pm! The winners of the wettest MEAD competition will be announced. Tickets on sale later.",
+    "organizer": "UrOs",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -434,6 +704,11 @@
   {
     "name": "WRC (\"Wappu Racing Cup\")",
     "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
+    "start": "2016-04-21T09:00:00.000Z",
+    "end": "2016-04-21T14:00:00.000Z",
+    "description": "Ready, set, GO!!! Come to test RC-car driving near Kampusareena and Etunurtsi on XXth of April 2016 at XX o'clock. For this non-driving licence remote controlled activity, you don't need anything else than to come to the right place. The event is free of charge for everyone. In addition to normal race, we're holding a jump-contest with our RC-cars, and for the winner there will be prize. So instead of getting bored in your aparment, come to unleash your spiritual Lewis Hamilton! Music and Teemunkierros stamps included.",
+    "organizer": "TEA-club",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -442,6 +717,11 @@
   {
     "name": "Wappuradio Live!",
     "locationName": "Etunurtsi",
+    "start": "2016-04-24T10:00:00.000Z",
+    "end": "2016-04-24T14:00:00.000Z",
+    "description": "Rakkauden Wappuradio fills your Sunday afternoon with live music after 1pm. Come and enjoy the fabulous set of bands and a relaxed festival spirit in the middle of our campus - for free! More information: www.wappuradio.fi",
+    "organizer": "Rakkauden Wappuradio",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -450,6 +730,11 @@
   {
     "name": "Wappukolmiot",
     "locationName": "Koskikeskus / Ravintolamaailma",
+    "start": "2016-04-21T19:00:00.000Z",
+    "end": "2016-04-21T00:30:00.000Z",
+    "description": "Indecs, Staabi and Luuppi organize once again the biggest monthly student party of Tampere featuring Spinni!",
+    "organizer": "Indecs (Staabi ja Luuppi)",
+    "teemu": false,
     "location": {
       "latitude": 61.495499,
       "longitude": 23.765981
@@ -458,6 +743,11 @@
   {
     "name": "TaKoRUn Wappugrilli",
     "locationName": "Etunurtsi",
+    "start": "2016-04-29T09:00:00.000Z",
+    "end": "2016-04-29T15:00:00.000Z",
+    "description": "TaKoRUs Wappugrill at TUT front lawn",
+    "organizer": "Tampereen Korkeakoulujen Reserviupseerit ry",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -466,6 +756,11 @@
   {
     "name": "Akateemisen Beerpongin MM-kisat 2016",
     "locationName": "Bommari",
+    "start": "2016-04-24T12:00:00.000Z",
+    "end": "2016-04-24T18:00:00.000Z",
+    "description": "Käännetään joskus.",
+    "organizer": "Rankat Ankat",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -474,6 +769,11 @@
   {
     "name": "Suuret Wabu Juhlat",
     "locationName": "Todennäköisesti ravintola hullu poro.",
+    "start": "2016-04-24T18:00:00.000Z",
+    "end": "2016-04-24T20:30:00.000Z",
+    "description": "Käännetään.",
+    "organizer": "Rankat Ankat",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -482,6 +782,11 @@
   {
     "name": "PikkuJouluBommarit -sitsit",
     "locationName": "Bommari",
+    "start": "2016-04-22T15:00:00.000Z",
+    "end": "2016-04-21T21:00:00.000Z",
+    "description": "On the first Friday of wappu we are having sitsit in christmassy atmosphere for the memory of Bommarit. Again this year we will have fun vibes and amazing performances. \r\rBuy your ticket fast, we will have limited amount of tickets. Dress code overalls/pre christmas.",
+    "organizer": "PILE",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -490,6 +795,11 @@
   {
     "name": "Tupsulan ulkoilmakonsertti",
     "locationName": "Tupsulan takapiha",
+    "start": "2016-04-23T09:00:00.000Z",
+    "end": "2016-04-23T15:00:00.000Z",
+    "description": "The legendary outdoor concerts of Tupsula has been around for more than 20 years. In this concert the residents of Tupsula perform a variety of musical and other performances. The best place to see this spectacular event is the backyard of Tupsula. Everybody is welcome to come and have their earpussies ejaculate!",
+    "organizer": "Tupsulan klaani",
+    "teemu": false,
     "location": {
       "latitude": 61.463547,
       "longitude": 23.886894
@@ -498,6 +808,11 @@
   {
     "name": "Kaljamaili",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T13:00:00.000Z",
+    "end": "2016-04-26T14:00:00.000Z",
+    "description": "KeparDI, the orienteering club of TUT organizes the traditional beer mail, which has gained publicity also in Wappuradio in previous years. Beer mile consists of both running and drinking official malt based sports drink. Otherwise we follow the official beer mile rules but the competition will be run in the TUT front yard instead of track. Entries for the competition at front yard. Entry fee 5 euros, includes compulsory competition equipment. More information about beer mile in general: http://www.beermile.com",
+    "organizer": "KeparDi",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -506,6 +821,11 @@
   {
     "name": "Takatalwi",
     "locationName": "Etunurtsi",
+    "start": "2016-04-27T10:00:00.000Z",
+    "end": "2016-04-27T12:30:00.000Z",
+    "description": "Winter is back. Takatalwi is the last rail jam of the season!",
+    "organizer": "TTHP",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -514,6 +834,11 @@
   {
     "name": "Wappuratsastus",
     "locationName": "Etunurtsi",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T11:00:00.000Z",
+    "description": "Horse riding at TUT! We are going to bring two real horses to the front yard area and walk with them near Tietotalo. This is your chance to try horse riding! No sign-up or previous riding experience needed. Welcome! Price: 2 euros.",
+    "organizer": "TeURaS",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -522,6 +847,11 @@
   {
     "name": "PölöKaljaViesti",
     "locationName": "Vanha Kirjastotalo",
+    "start": "2016-04-30T10:00:00.000Z",
+    "end": "2016-04-30T11:00:00.000Z",
+    "description": "The traditional PölöBeerRace entertains wappufolks once again after the Wappurieha. Gather a team of four (4) members and come show, which guild has what it takes to compete with the legendary BeerRaceKings of previous years. The idea of the race is to drink beer while running around the church with different ways, without spilling the beer. If competing is not your thing, remember to come and cheer your favourite team to victory.\r\rThere is only room for four teams.\r\rPrice: 10€/team\r\rTeam = 4 people",
+    "organizer": "Indecs",
+    "teemu": false,
     "location": {
       "latitude": 61.49882,
       "longitude": 23.761987
@@ -530,6 +860,11 @@
   {
     "name": "WappuTwerk",
     "locationName": "TTY:n ryhmäliikuntasali",
+    "start": "2016-04-26T11:00:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Twerking for everybody! Here's something new and most definitely entertaining. On top of the fun twerking exercises there will be a small dance choreography.",
+    "organizer": "NääsDance",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -538,6 +873,11 @@
   {
     "name": "Wappu Scawenger Hunt",
     "locationName": "Etunurtsi",
+    "start": "2016-04-28T11:00:00.000Z",
+    "end": "2016-04-28T13:30:00.000Z",
+    "description": "Wappu Scawenger Hunt is a team game in which the contestants need to gather a list of items specified by the judges during one hour. These items are most likely not available in stores, but can be gained with creativity, courage and most importantly with Teekkari spirit! Imagination is the key to victory, since the items will be rated by the judges. The best team will be awarded, and all the contestants are given an overall badge for their participation. Participation fee is 2 euros/contestant. 4 players in the team maximum.",
+    "organizer": "Bioner",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -546,6 +886,11 @@
   {
     "name": "Luowa Wapputapahtuma",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T13:00:00.000Z",
+    "description": "Creative wappupainting for wappupeople on the front lawn. This event is a lot like Wappusotku which was an event organized by architecture students. Come and see what you can paint this year!",
+    "organizer": "TamArk",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -554,6 +899,11 @@
   {
     "name": "Happy Hour",
     "locationName": "Etunurtsi",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Are you tired of playing normal drinking games? Do you dream of something bigger? Your prayers have been finally answered! Presenting Happy Hour by Hiukkanen, a new event in which you can play super-sized versions of common drinking games! Alcohol-free playing is also possible!!\r\rHappy hour - because size matters!\r\r",
+    "organizer": "Hiukkanen",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -562,6 +912,11 @@
   {
     "name": "TALent Hervanta",
     "locationName": "Herwood Stage & Bar",
+    "start": "2016-04-20T15:00:00.000Z",
+    "end": "2016-04-19T22:30:00.000Z",
+    "description": "TALent Hervanta is a band event organized by the student choir Teekkarikuoro. The stage at Herwood will be filled with different and outstanding musical spectacles that you don't want to miss. Come and experience!",
+    "organizer": "Teekkarikuoro",
+    "teemu": false,
     "location": {
       "latitude": 61.453056,
       "longitude": 23.846807
@@ -570,6 +925,11 @@
   {
     "name": "Teekkarikuoro Wappupicnicillä",
     "locationName": "Koskenranta",
+    "start": "2016-04-24T11:00:00.000Z",
+    "end": "2016-04-24T11:30:00.000Z",
+    "description": "The student choir Teekkarikuoro will entertain people at Wappupicnic with a few catchy songs.",
+    "organizer": "Teekkarikuoro",
+    "teemu": false,
     "location": {
       "latitude": 61.499435,
       "longitude": 23.764419
@@ -578,6 +938,11 @@
   {
     "name": "Kumisitsit",
     "locationName": "Bommari",
+    "start": "2016-04-22T15:00:00.000Z",
+    "end": "2016-04-22T20:00:00.000Z",
+    "description": "Welcome to the most legendary rubbersitsit! So dress accordingly and come to check what is it all about.",
+    "organizer": "MIK, TamArk, Skilta",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -586,6 +951,11 @@
   {
     "name": "Tamppi-XQ",
     "locationName": "Tampere -Turku - Tampere",
+    "start": "2016-04-20T06:00:00.000Z",
+    "end": "2016-04-20T17:00:00.000Z",
+    "description": "Intended for Tamppi salesperson. The purpose is to visit Turku and sell Tamppi magazine.",
+    "organizer": "KoRK",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -594,6 +964,11 @@
   {
     "name": "Akateeminen Herwannan vahvin mies 2016",
     "locationName": "Tietotalon edusta",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T14:00:00.000Z",
+    "description": "Steong man competition",
+    "organizer": "Herwannan hauiskääntö",
+    "teemu": false,
     "location": {
       "latitude": 61.449605,
       "longitude": 23.857158
@@ -602,6 +977,11 @@
   {
     "name": "Spinnin iltapäiväkertho",
     "locationName": "Spinnin kerhohuone SA014",
+    "start": "2016-04-21T10:00:00.000Z",
+    "end": "2016-04-21T15:00:00.000Z",
+    "description": "Raining and freezing outside? Studying terrifies and starting to miss kindergarden times? Spinni solves your problems!\r\r\r\rClimb stairs down to the basement of Sähkötalo and arrive to the club room of Spinni, SA014 on <päivämäärä> starting at 1 PM. Spinni offers some snacks, coloring books (for adults), games, lot of friends to play with - not to mention awesome music and lights. Additionally you may have a look at the regular life of electronic music club that is celebrating its 20th anniversary this year.\r\r\r\rSpinni <3 you",
+    "organizer": "Spinni",
+    "teemu": false,
     "location": {
       "latitude": 61.450364,
       "longitude": 23.858384
@@ -610,6 +990,11 @@
   {
     "name": "Wappunysse",
     "locationName": "Tampereen kaupunki",
+    "start": "2016-04-18T09:00:00.000Z",
+    "end": "2016-04-18T15:00:00.000Z",
+    "description": "päivitetään kun tämän vuoden speksit saadaan sovittua",
+    "organizer": "Spinni",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -618,6 +1003,11 @@
   {
     "name": "Sitsikisat",
     "locationName": "Konetalon sisäpiha",
+    "start": "2016-04-27T13:00:00.000Z",
+    "end": "2016-04-27T17:00:00.000Z",
+    "description": "Do you enjoy sitsit and think that you are rather good sitsaaja? The TeekkariWappu’s most awesome sitsit are here and they are made by you! Academic Tableparty Platine organises Sitsi-competition in which different teams compete for the Sitsing Party of the Year – title. In this event you determine your own actions, theme, your (hopefully theme-based) food and your songs. Sitsit are supervised by honourable jury which grades your performance and keeps the merry-making in control.\r\r\r\rParticipation fee is 70 euros per team.\r\rMaximum number of participants per team is 15 persons.\r\r",
+    "organizer": "Platine",
+    "teemu": false,
     "location": {
       "latitude": 61.448688,
       "longitude": 23.859534
@@ -626,6 +1016,11 @@
   {
     "name": "KKK - KuiwakaljaKatastrofi",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T13:00:00.000Z",
+    "description": "KKK, the traditional Wappuevent arrenged by Indecs, comes again. This year the event will be KuiwaKaljaKatastrofi (KuiwaKaljaCatastrophe). The event consists of different disaster related checkpoints with a Wapputwist. Come awaken your inner survivor and compete with your friends to see, who is the real survivor.",
+    "organizer": "Indecs",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -634,6 +1029,11 @@
   {
     "name": "Wapun kostein SIMAkisa ja SIMAssa! -bileet",
     "locationName": "Etunurtsi / Joku baari",
+    "start": "2016-04-28T09:00:00.000Z",
+    "end": "2016-04-28T20:30:00.000Z",
+    "description": "Wappu's wettest MEAD (=SIMA) competition is here! Make your own mead and bring it to the brown-overalled ladies on Thursday, April 28th to Etunurtsi (TUT campus front lawn). There will also be other wet mead competitions, if you haven't made your own mead and still want to participate in EMÄTEEMU. In addition there is a new game called BraPong!\r\r\r\rDuring the day, you can also buy tickets to the same evening's MEAD party (SIMASSA-bileet)! The MEAD party is held at SOME BAR from XX pm! The winners of the wettest MEAD competition will be announced. Tickets on sale later.",
+    "organizer": "UrOs",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -642,6 +1042,11 @@
   {
     "name": "Wappuleffa",
     "locationName": "Cinola",
+    "start": "2016-04-26T12:00:00.000Z",
+    "end": "2016-04-26T18:00:00.000Z",
+    "description": "The absolute classic of Wappu mowies - the Blues Brothers - will take ower Cinola once more! In addition to the former, another ground breaking mowie will get its Wappu premiere in the smaller cinema room in the same place. The mowies will begin at 3 and 6 pm, and since queuing is the best way to take your soul into the mowie, be there in time! At the time the mowie begins, you will find yourself from the stage dancing and singing along with the classics before you ewen realize it!\r\r\r\rRemember - wearing according to the theme will grant you the best seats in the hall. Dark suit with sunglasses or the one of a nun will guarantee the party with the brothers of Blues. ",
+    "organizer": "Elram",
+    "teemu": false,
     "location": {
       "latitude": 61.450403,
       "longitude": 23.848563
@@ -650,6 +1055,11 @@
   {
     "name": "WappuDance",
     "locationName": "TTY:n Ryhmäliikuntasali",
+    "start": "2016-04-26T10:30:00.000Z",
+    "end": "2016-04-26T12:00:00.000Z",
+    "description": "Twerking and dancehall for everybody! No previous dance experience needed. The class will start with some technique exercises and end with a little choreography. Here you will have fun for sure!",
+    "organizer": "NääsDance",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -658,6 +1068,11 @@
   {
     "name": "Wappumössö",
     "locationName": "Tupsulan ulkoilmakonsertti",
+    "start": "2016-04-23T10:00:00.000Z",
+    "end": "2016-04-23T11:00:00.000Z",
+    "description": "Man@ger has traditionally served a food called \"wappumössö\" on vappu. Wappumössö is made by the Hostess and is served to all the members of the guild and also to others. The recipe is secret and only the Hostess knows it. It's always the same. It is meant to be served in the Tupsula open-air concert for an hour or as long as the food lasts.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.463547,
       "longitude": 23.886894
@@ -666,6 +1081,11 @@
   {
     "name": "Wapina",
     "locationName": "Bommari",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T12:00:00.000Z",
+    "description": "Man@ger's traditional wappuevent is made into a haunted house in Bommari. It is a scary track through which one should go and stay alive. It can be performed in small groups.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -674,6 +1094,11 @@
   {
     "name": "Wapina",
     "locationName": "Bommari",
+    "start": "2016-04-27T09:00:00.000Z",
+    "end": "2016-04-27T12:00:00.000Z",
+    "description": "Man@ger's traditional wappuevent is made into a haunted house in Bommari. It is a scary track through which one should go and stay alive. It can be performed in small groups.",
+    "organizer": "Tietojohtajakilta Man@ger",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -682,6 +1107,11 @@
   {
     "name": "TiTen Tekken Tournament",
     "locationName": "TiTen kiltahuone",
+    "start": "2016-04-27T15:00:00.000Z",
+    "end": "2016-04-27T18:00:00.000Z",
+    "description": "TietoTeekkarikilta organizes the traditional Tekken Tournament, where we will see who is the greatest fighter in Herwood. The tournament is played in TiTe's guild room with a genuine Tekken 3 arcade. There will be prizes for the best!",
+    "organizer": "TiTe",
+    "teemu": false,
     "location": {
       "latitude": 61.449849,
       "longitude": 23.857056
@@ -690,6 +1120,11 @@
   {
     "name": "TiTen Merkkimarkkinat",
     "locationName": "Obeliski",
+    "start": "2016-04-22T10:00:00.000Z",
+    "end": "2016-04-22T13:00:00.000Z",
+    "description": "Come trade and sell overall badges to TiTe's Badge Market. Those who come early will receive table space.",
+    "organizer": "TiTe",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -698,6 +1133,11 @@
   {
     "name": "KumipelausISO",
     "locationName": "Rosendahlin ranta",
+    "start": "2016-04-25T11:00:00.000Z",
+    "end": "2016-04-25T17:00:00.000Z",
+    "description": "Is it football? Is it baseball? No, this is something even better. This insane team sport is based on bizarre rules randomly picked by referees. The \"ball\" (=ISO) is actually an inner tube of a wheelbarrow. You have to experience it!",
+    "organizer": "Skilta // Adam Zeidan",
+    "teemu": false,
     "location": {
       "latitude": 61.491425,
       "longitude": 23.730017
@@ -706,6 +1146,11 @@
   {
     "name": "Wappu-Bic",
     "locationName": "Tamppi Areena",
+    "start": "2016-04-25T12:00:00.000Z",
+    "end": "2016-04-25T16:30:00.000Z",
+    "description": "We exercise even during Wappu in Tamppi Areena! This megalomaniac marathon bic leaves nobody cold on Monday. Wappu-Bic starts at 3pm with an old-fashioned P.E. class, and continues with more traditional group exercise classes, spiced up with some Wappu spirit. Classes are at ball gaming hall so that everybody can fit in the classes.",
+    "organizer": "TUrVoKe ry / Unipoli Sport",
+    "teemu": false,
     "location": {
       "latitude": 61.449844,
       "longitude": 23.861896
@@ -714,6 +1159,11 @@
   {
     "name": "Junttarit",
     "locationName": "Paikka X",
+    "start": "2016-04-23T12:30:00.000Z",
+    "end": "2016-04-22T21:00:00.000Z",
+    "description": "Junttareilla aka at Hilly-Billy Sitsit you get to break away from the hustle around Wappu and you can be yourself without any judgements in place X. Traditionally there is going to be holy water, pea soup, games and live music. Theme will be announced later.3ns",
+    "organizer": "Automaatiotekniikan kilta",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -722,6 +1172,11 @@
   {
     "name": "Megalauluiltama",
     "locationName": "Teekkarisauna",
+    "start": "2016-04-21T12:00:00.000Z",
+    "end": "2016-04-21T17:00:00.000Z",
+    "description": "Teekkari section organizes the Student Union's second singing evening. Take your Rasputin-songbook with you, and come to Teekkarisauna!",
+    "organizer": "Teekkarijaosto",
+    "teemu": false,
     "location": {
       "latitude": 61.452725,
       "longitude": 23.859969
@@ -730,6 +1185,11 @@
   {
     "name": "Kellarihumppa",
     "locationName": "Bommari",
+    "start": "2016-04-27T15:00:00.000Z",
+    "end": "2016-04-27T20:00:00.000Z",
+    "description": "YKI and TARAKI throws a traditional party called Kellarihumppa! It’s time to find the ugliest flowerdresses and ties, and come to dance oldschool finnish dance called HUMPPA! There’s a liveband playing, dance teaching and bingo! There might be some surprises behind the stack of wood too.",
+    "organizer": "Yki ja Tarak",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -738,6 +1198,11 @@
   {
     "name": "Amebaturnaus",
     "locationName": "Obeliskin vieressä",
+    "start": "2016-04-25T11:00:00.000Z",
+    "end": "2016-04-25T12:00:00.000Z",
+    "description": "Do you always win the beginning at beerpong with rock-paper-scissors-game? Now it's time to show off your mind reading skills, because YKI is arranging the great Amoeba tournament! The game begins at 14:00 next to the obelisk and there will be three preliminary rounds and finally the grand final. Amazing animal themed prizes for the winners!",
+    "organizer": "YKI",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -746,6 +1211,11 @@
   {
     "name": "Pimp My Grill",
     "locationName": "Sähkötalon sisäpiha",
+    "start": "2016-04-26T09:00:00.000Z",
+    "end": "2016-04-26T14:00:00.000Z",
+    "description": "Welcome to the hottest BBQ of Wappu! The guilds of Sähkötalo will organise a magnificent sausagefest for wappupeople. Bring your fine tuned grill and come and enjoy your barbecue delicacies. The coolest grill and the tastiest foods will be awarded by the jury. Let's BBQ!",
+    "organizer": "Hiukkanen ja Skilta",
+    "teemu": false,
     "location": {
       "latitude": 61.450741,
       "longitude": 23.858108
@@ -754,6 +1224,11 @@
   {
     "name": "Ruokaa, Juomaa, Kello! // Food, Drinks, Clock!",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T12:00:00.000Z",
+    "description": "Food, drinks, clock! The best way to start your Wappu morning is to drink and eat! Come and try to beat the clock and other teekkaris/fuksis in a drinking or a eating contest. \r\r\r\rHere you can also purchase tickets to the most wanted Wappu party - Wapunkaato!",
+    "organizer": "NMKSV",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -762,6 +1237,11 @@
   {
     "name": "Katusähly",
     "locationName": "Selviää myöhemmin, toivottavasti Etunurtsin ympäristössä",
+    "start": "2016-04-21T10:00:00.000Z",
+    "end": "2016-04-21T13:00:00.000Z",
+    "description": "Gather a team of three people and take part in relxing Wappu street floorball tournament! Floorball sticks will be provided by the organizers.",
+    "organizer": "NMKSV, TeLE",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -770,6 +1250,11 @@
   {
     "name": "Cantus",
     "locationName": "Bommari",
+    "start": "2016-04-27T16:00:00.000Z",
+    "end": "2016-04-27T19:00:00.000Z",
+    "description": "Do you want to experience something different during your Wappu? No problem. EESTEC is here again with Cantus. Cantus is Belgian/Dutch/German style event where you sing songs drink few beers, and make new friends! During the night you may learn some new songs and even latin! Rasputin and overalls should be the only items you need for this event.",
+    "organizer": "EESTEC",
+    "teemu": false,
     "location": {
       "latitude": 61.450657,
       "longitude": 23.861831
@@ -778,6 +1263,11 @@
   {
     "name": "Tampin paljastus",
     "locationName": "Festian Iso Sali",
+    "start": "2016-04-19T10:00:00.000Z",
+    "end": "2016-04-19T11:00:00.000Z",
+    "description": "This years controversially the best Wappumagazine Tamppi is already the 39th Tamppi ever made! The great mystery shrouding this year's magazine is lifted in TAMPIN PALJASTUS in Festia's large auditorium on Tuesday 19.4.2016 at 13:00. This show will blow your mind, at least if you know Finnish. Even if you don't understand, come and enjoy the show and have some goodies called nanna and töffö. The queue starts building up in the morning so don't be late!\r\r\r\rTeemuround: START!\r\r",
+    "organizer": "Wappulehti Tamppi",
+    "teemu": false,
     "location": {
       "latitude": 61.449526,
       "longitude": 23.861181
@@ -786,6 +1276,11 @@
   {
     "name": "TTSS wabbu Goncerddi 2016",
     "locationName": "TTY Etunurtsi",
+    "start": "2016-04-27T12:00:00.000Z",
+    "end": "2016-04-27T15:00:00.000Z",
+    "description": "Traditional TTSS Wappu concert is coming again. Come and join the funniest gig of the year. Casio is not enough for this festival experience.",
+    "organizer": "TTSS",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -794,6 +1289,11 @@
   {
     "name": "NääsPeksin pitkä impro",
     "locationName": "Festian iso sali",
+    "start": "2016-04-25T15:00:00.000Z",
+    "end": "2016-04-24T21:00:00.000Z",
+    "description": "An improv long form musical play in finnish.",
+    "organizer": "NääsPeksi",
+    "teemu": false,
     "location": {
       "latitude": 61.449526,
       "longitude": 23.861181
@@ -802,6 +1302,11 @@
   {
     "name": "Teekkarin turvaWappu 2016",
     "locationName": "Etunurtsi",
+    "start": "2016-04-20T09:00:00.000Z",
+    "end": "2016-04-20T12:00:00.000Z",
+    "description": "Welcome to participate the first Wappu event of SaFir´s history. Come and test your safety level in our Wappu track. In our track will be found out who fuksi or teekkari to be the new world champion of safety shoe throwing.",
+    "organizer": "SaFir",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -810,6 +1315,11 @@
   {
     "name": "upermutavaahtopallomeripainiysärikasari-disco",
     "locationName": "Etunurtsi/Cupola",
+    "start": "2016-04-24T09:00:00.000Z",
+    "end": "2016-04-24T01:00:00.000Z",
+    "description": "Kiltaneuvosto2016 entertains wappupeople by arranging different kinds of fun activities. The event start already at daytime, but the main event is an EPIC FOAM PARTY at CUPOLA.",
+    "organizer": "Kiltaneuvosto2016",
+    "teemu": false,
     "location": {
       "latitude": 0,
       "longitude": 0
@@ -818,6 +1328,11 @@
   {
     "name": "Pre-Colours",
     "locationName": "Festian rappuset",
+    "start": "2016-04-19T11:00:00.000Z",
+    "end": "2016-04-19T14:00:00.000Z",
+    "description": "PERINNESEURA PRESENTS: PRE-COLOURS!\r\r\r\rAn outdoor event right after Tamppi Unveiling to keep the wappu crowd warm for the afternoon. Come and get the pregame going outside our party tent with various games and activities such as megatwister, contests and much more! The best hit music played on the background will provide the people with genuine wappu ambience.\r\r\r\rWant to get past the queue to the party in the evening? PRESALE for the Colours-party tickets! Only for the fastest and the boldest. You can also buy the brand new Colours-overall patch.\r\r\r\rAdvance tickets costs 3 e (limit: 2 tickets/buyer). With the advance ticket you can skip the queue till 23:00. However, Pre-Colours is free for everyone!\r\r\r\rPUZZLEPIECE FOR FUKSIS",
+    "organizer": "PerinneSeura",
+    "teemu": false,
     "location": {
       "latitude": 61.449465,
       "longitude": 23.860307
@@ -826,6 +1341,11 @@
   {
     "name": "Ei-turkulaiset pihapelit // Lawn Games by ETO",
     "locationName": "Etunurtsi",
+    "start": "2016-04-22T10:00:00.000Z",
+    "end": "2016-04-22T12:00:00.000Z",
+    "description": "Help us combat turku's influence on Finland by playing ETO's turku pétanque and other lawn games!",
+    "organizer": "Ei-turkulainen osakunta",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -834,6 +1354,11 @@
   {
     "name": "Colours",
     "locationName": "Viihdemaailma Ilona",
+    "start": "2016-04-19T18:00:00.000Z",
+    "end": "2016-04-19T00:30:00.000Z",
+    "description": "Viime vuodelta kans kiitoos :D",
+    "organizer": "Tampereen teekkarien PerinneSeura",
+    "teemu": false,
     "location": {
       "latitude": 61.497228,
       "longitude": 23.76747
@@ -842,6 +1367,11 @@
   {
     "name": "WRC (\"Wappu Racing Cup\")",
     "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
+    "start": "2016-04-21T09:00:00.000Z",
+    "end": "2016-04-21T14:00:00.000Z",
+    "description": "Ready, set, GO!!! Come to test RC-car driving near Kampusareena and Etunurtsi on XXth of April 2016 at XX o'clock. For this non-driving licence remote controlled activity, you don't need anything else than to come to the right place. The event is free of charge for everyone. In addition to normal race, we're holding a jump-contest with our RC-cars, and for the winner there will be prize. So instead of getting bored in your aparment, come to unleash your spiritual Lewis Hamilton! Music and Teemunkierros stamps included.",
+    "organizer": "TEA-club",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597
@@ -850,6 +1380,11 @@
   {
     "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
     "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "start": "2016-04-19T11:00:00.000Z",
+    "end": "2016-04-18T21:00:00.000Z",
+    "description": "Rakkauden Wappuradio lets you enjoy the sound of Wappu wherever you are and around the clock!",
+    "organizer": "Rakkauden Wappuradio",
+    "teemu": false,
     "location": {
       "latitude": 61.449536,
       "longitude": 23.855717
@@ -858,6 +1393,11 @@
   {
     "name": "ESN INTO Wappu Pancake Bonanza",
     "locationName": "TUT Campus Front lawn",
+    "start": "2016-04-28T11:00:00.000Z",
+    "end": "2016-04-27T21:00:00.000Z",
+    "description": "ESN INTO will arrange a pancake eating bonanza. Come to eat pancakes.\r\r\r\r[DISCLAIMER]: The event may or may not include pancakes and a bouncy castle. ESN INTO is not responsible for, and expressly disclaims all liability for, and damages of any kind arising out of eating, tossing, tasting or smelling of pancakes or for any activities that go on in the premises. Pancakes from Country X do not constitute an endorsement by ESN INTO of their taste or appearance.",
+    "organizer": "ESN INTO Pancake team",
+    "teemu": false,
     "location": {
       "latitude": 61.449181,
       "longitude": 23.855597

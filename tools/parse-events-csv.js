@@ -9,6 +9,7 @@ var fs = require('fs');
 var path = require('path');
 var iconv = require('iconv-lite');
 var _ = require('lodash');
+var moment = require('moment-timezone');
 var Fuse = require('fuse.js');
 var csv = require('csv');
 BPromise.promisifyAll(csv);
@@ -19,6 +20,7 @@ if (!process.argv[2]) {
   process.exit(2);
 }
 
+var DATE_FORMAT = 'DD/MM/YY HH:mm';
 var INPUT_CSV_PATH = process.argv[2];
 var fileContentBuf = fs.readFileSync(INPUT_CSV_PATH);
 var fileContent = iconv.decode(fileContentBuf, 'cp1250');
@@ -39,7 +41,13 @@ function main() {
     var events = _.map(rows, row => {
       var event = {
         name: row[0],
-        locationName: row[1]
+        locationName: row[1],
+        start: moment.tz(row[2] + ' ' + row[4], DATE_FORMAT, 'Europe/Helsinki'),
+        // Start date is same as in the end
+        end: moment.tz(row[2] + ' ' + row[5], DATE_FORMAT, 'Europe/Helsinki'),
+        description: row[7],
+        organizer: row[8],
+        teemu: row[9] === 'Kyllä / Yes',
       };
 
       var results = locationsFuse.search(event.locationName);
