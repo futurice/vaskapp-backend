@@ -34,7 +34,7 @@
     "superagent": "^1.8.0"
   },
   "scripts": {
-    "postinstall": "bash ./tools/run-migrations.sh",
+    "postinstall": "bash ./tools/run-migrations-and-seeds.sh",
     "start": "source .env && nodemon --watch ./src -e js --exec \"babel-node --presets es2015 src/index.js\"",
     "ci": "bash ./tools/ci.sh",
     "eslint": "eslint --ext .js ./src",
