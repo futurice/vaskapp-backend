@@ -1,12 +1,11 @@
-import http from 'http';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
-const logger = require('./util/logger')(__filename);
 
 function createApp() {
   const app = express();
@@ -40,6 +39,7 @@ function createApp() {
     next();
   });
 
+  app.use(bodyParser.json());
   app.use(cors());
   app.use(compression({
     // Compress everything over 10 bytes
