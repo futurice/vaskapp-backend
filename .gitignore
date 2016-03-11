@@ -3,6 +3,7 @@
 .tmp
 .DS_Store
 .env
+.vscode
 
 # Logs
 logs
