@@ -25,7 +25,7 @@ var fileContent = iconv.decode(fileContentBuf, 'cp1250');
 
 var filepath = path.join(__dirname, '../data/location-fuzzy-map.json');
 var locations = JSON.parse(fs.readFileSync(filepath, {encoding: 'utf8'}));
-var locationsFuse = new Fuse(locations, {tokenize: true, keys: ['locationName']});
+var locationsFuse = new Fuse(locations, {threshold: 0.4, keys: ['locationName']});
 
 function main() {
   csv.parseAsync(fileContent, {
@@ -52,8 +52,16 @@ function main() {
         latitude: results[0].latitude,
         longitude: results[0].longitude
       };
-      console.error('Match', event.locationName, 'to', results[0].locationName);
-      console.error('->', JSON.stringify(event.location));
+
+      if (event.locationName !== results[0].locationName) {
+        console.error(
+          'Match',
+          event.locationName,
+          '\n   ->',
+          results[0].locationName,
+          JSON.stringify(event.location)
+        );
+      }
 
       return event;
     });
