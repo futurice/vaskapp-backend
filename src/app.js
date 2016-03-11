@@ -1,4 +1,3 @@
-import http from 'http';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -6,7 +5,6 @@ import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
-const logger = require('./util/logger')(__filename);
 
 function createApp() {
   const app = express();
