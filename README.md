@@ -113,7 +113,6 @@ Responses:
     latitude: -1.2345,
     longitude: 56.2322
   },
-  dateTime: "2011-10-05T14:48:00.000Z",
   type: "BEER",
   team: 1,
   user: 'UUID'
@@ -128,7 +127,6 @@ Responses:
     latitude: -1.2345,
     longitude: 56.2322
   },
-  dateTime: "2011-10-05T14:48:00.000Z",
   type: "IMAGE",
   team: 1,
   imageData: 'base64encodedimage',

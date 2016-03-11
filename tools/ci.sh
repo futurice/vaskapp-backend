@@ -10,4 +10,7 @@ echo -e "\n--> Linting code..\n"
 npm run jscs || EXIT_STATUS=$?
 npm run eslint || EXIT_STATUS=$?
 
+echo -e "\n--> Running tests..\n"
+npm run test || EXIT_STATUS=$?
+
 exit $EXIT_STATUS

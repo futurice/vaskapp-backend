@@ -4,7 +4,7 @@ const {knex} = require('../util/database').connect();
 function createAction(action) {
   const dbRow = {
     'team_id': action.team,
-    type: action.type,
+    'action_type_id': knex.raw('(SELECT id from action_types WHERE name = ?)', [action.type]),
     'user_uuid': action.user,
     // Tuple is in longitude, latitude format in Postgis
     location: action.location.longitude + ',' + action.location.longitude
@@ -24,6 +24,30 @@ function createAction(action) {
     });
 }
 
+function getActionType(name) {
+  return knex('action_types')
+    .select('*')
+    .limit(1)
+    .where('name', name)
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        return null;
+      }
+
+      return _actionTypeRowToObject(rows[0]);
+    });
+}
+
+function _actionTypeRowToObject(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    value: row.value,
+    cooldown: row.cooldown
+  };
+}
+
 export {
-  createAction
+  createAction,
+  getActionType
 };

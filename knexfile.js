@@ -46,4 +46,15 @@ if (!envs.hasOwnProperty(process.env.NODE_ENV)) {
   throw new Error('Environment is not set');
 }
 
+function censorPgConnectionString(str) {
+  var regex = /^(postgres):\/\/(.*):(.*)@(.*:[0-9]*\/.*)$/;
+  if (str.match(regex) !== null) {
+    return str.replace(regex, '$1://$2:HIDDEN_PASSWORD@$4');
+  }
+
+  return 'CENSORED CONNECTION STRING';
+}
+
+console.log('DATABASE_URL=' + censorPgConnectionString(databaseConfig.connection));
+
 module.exports = envs;
