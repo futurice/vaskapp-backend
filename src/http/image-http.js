@@ -4,72 +4,86 @@
 'use strict';
 
 import BPromise from 'bluebird';
-import gcs from '../util/gcs';
+import * as gcs from '../util/gcs';
 import * as actionCore from '../core/action-core';
 import {createJsonRoute, throwStatus} from '../util/express';
-import userCore from '../core/user-core';
+import * as userCore from '../core/user-core';
 import {assert} from '../validation';
-import {decodeBase64Image} from '../utils/base64';
+import {decodeBase64Image} from '../util/base64';
 
 const gm = require('gm').subClass({ imageMagick: true });
 
-const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/gif', 'image/png'];
+const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/gif', 'image/png']);
 
 function getAndValidateActionType(type) {
-  return actionCore.getActionType(action.type)
-    .then(type => {
-        if (type === null) {
-          throwStatus(400, `Action type ${ action.type } does not exist`);
+  console.log("Validating type", type);
+  return actionCore.getActionType(type)
+    .then(typeId => {
+      console.log("Got type", typeId);
+        if (typeId === null) {
+          throwStatus(400, `Action type ${ typeId } does not exist`);
         }
 
-        return type;
+        return typeId;
     });
 }
 
-const postImage(function(req, res) {
+function getAndValidateUser(uuid) {
+  console.log("Validating user", uuid);
+  return userCore.findByUuid(uuid)
+    .then(user => {
+      console.log("Got user", user);
+
+      if (user === null) {
+        throwStatus(400, `User with uuid ${ uuid } does not exist`);
+      }
+
+      return user;
+    });
+}
+
+const postImage = function(req, res) {
   const action = assert(req.body, 'action');
+  console.log("req.body:", action);
   const imageBuffer = decodeBase64Image(req.body.imageData);
+  console.log(imageBuffer.mimetype);
 
-  return BPromise.join(
-    getAndValidateActionType(),
-    uploadImage("diidadaapa", imageBuffer),
-    function(type, image) {
-      return actionCore.createAction(Object.assign({},
-        req.body,
-        { "image_url":  }
-      )).then(rowsInserted => undefined);
-    }
-  )
-  actionCore.getActionType(action.type)
+  const result = {};
+  return getAndValidateActionType(action.type)
     .then(type => {
-        if (type === null) {
-          throwStatus(400, `Action type ${ action.type } does not exist`);
-        }
-
-        return type;
+      result.type = type;
+      return getAndValidateUser(action.user);
     })
-  uploadImage("diidadaapa", imageBuffer)
+    .then(user => {
+      result.user = user;
+      const fileName = `${ user.id }-${ Date.now() }`;
+      return uploadImage(fileName, imageBuffer);
+    })
     .then(image => {
       console.log(image);
-      return actionCore.getActionType(action.type)
-        .then(type => {
-        })
-        .then(() => {
-        });
-    })
-});
+      return actionCore.createAction({
+        team: action.team,
+        type: action.type,
+        user: result.user.id,
+        location: action.location,
+        image_url: image.imageName
+      }).then(rowsInserted => undefined);
+    });
+};
 
 function uploadImage(imageName, imageFile) {
+  console.log("Uploading", imageName);
 
   return Promise.resolve()
     .then(() => validateMimeType(imageFile.mimetype))
     .then(() => autoOrient(imageFile.buffer))
-    .then(buffers => gcs.uploadImage(imageName, imageFile.buffer));
+    .then(buffer => gcs.uploadImageBuffer(imageName, buffer));
 };
 
 
 function validateMimeType(mimetype) {
   if (ALLOWED_MIME_TYPES.has(mimetype)) {
+    console.log("Valid mime");
     return Promise.resolve();
   } else {
     throw new Error(`Unsupported file type ${mimetype} uploaded`);
@@ -77,12 +91,19 @@ function validateMimeType(mimetype) {
 }
 
 function autoOrient(imageBuffer) {
+    console.log("AUto orienting", imageBuffer);
+    return imageBuffer;
   return new Promise((resolve, reject) => {
-    gm(imageBuffer)
-      .autoOrient()
-      .toBuffer('JPG', ((error, resultBuffer) => {
-        error ? reject(error) : resolve(resultBuffer);
-      }));
+    try {
+      gm(imageBuffer)
+        .autoOrient()
+        .toBuffer('JPG', ((error, resultBuffer) => {
+          error ? reject(error) : resolve(resultBuffer);
+        }));
+    } catch (err) {
+      console.log("ERROR");
+      reject(err);
+    }
   });
 }
 

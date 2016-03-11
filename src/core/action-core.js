@@ -2,12 +2,14 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
 function createAction(action) {
+    console.log(action);
   const dbRow = {
     'team_id': action.team,
     'action_type_id': knex.raw('(SELECT id from action_types WHERE name = ?)', [action.type]),
-    'user_uuid': action.user,
+    'user_id': action.user,
     // Tuple is in longitude, latitude format in Postgis
-    location: action.location.longitude + ',' + action.location.longitude
+    location: action.location.longitude + ',' + action.location.longitude,
+    'image_url': action.image_url
   };
 
   if (action.payload) {

@@ -33,8 +33,8 @@ function findByUuid(uuid) {
 function _userRowToObject(row) {
   return {
     id: row.id,
-    name: name,
-    uuid: uuid
+    name: row.name,
+    uuid: row.uuid
   };
 }
 
