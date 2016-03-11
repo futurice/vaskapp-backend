@@ -10,7 +10,6 @@ function getTeams() {
   GROUP BY teams.id, teams.name
   ORDER BY score DESC, teams.id`)
   .then(result => {
-      console.log(result.rows);
     return _.map(result.rows, row => deepChangeKeyCase(row, 'camelCase'));
   });
 }
