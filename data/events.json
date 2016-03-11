@@ -1,0 +1,866 @@
+[
+  {
+    "name": "Akateeminen Herwannan vahvin mies 2016",
+    "locationName": "Tietotalon edusta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Akateemisen Beerpongin MM-kisat 2016",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Amebaturnaus",
+    "locationName": "Obeliskin vieressä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Cantus",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Colours",
+    "locationName": "Viihdemaailma Ilona",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Ei-turkulaiset pihapelit // Lawn Games by ETO",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "ESN INTO Wappu Pancake Bonanza",
+    "locationName": "TUT Campus Front lawn",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "ESN INTO Wappu Pancake Bonanza",
+    "locationName": "TUT Campus Front lawn",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Happy Hour",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Junttarit",
+    "locationName": "Paikka X",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kaljamaili",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Katusähly",
+    "locationName": "Selviää myöhemmin, toivottavasti Etunurtsin ympäristössä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kellarihumppa",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "KKK - KuiwakaljaKatastrofi",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "KumipelausISO",
+    "locationName": "Rosendahlin ranta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kumisitsit",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Luowa Wapputapahtuma",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Megalauluiltama",
+    "locationName": "Teekkarisauna",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "NääsPeksin pitkä impro",
+    "locationName": "Festian iso sali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "PikkuJouluBommarit -sitsit",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Pimp My Grill",
+    "locationName": "Sähkötalon sisäpiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Pre-Colours",
+    "locationName": "Festian rappuset",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "PölöKaljaViesti",
+    "locationName": "Vanha Kirjastotalo",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
+    "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
+    "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Ruokaa, Juomaa, Kello! // Food, Drinks, Clock!",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Sitsikisat",
+    "locationName": "Konetalon sisäpiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Spinnin iltapäiväkertho",
+    "locationName": "Spinnin kerhohuone SA014",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Suuret Wabu Juhlat",
+    "locationName": "Todennäköisesti ravintola hullu poro.",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Takatalwi",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TaKoRUn Wappugrilli",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TALent Hervanta",
+    "locationName": "Herwood Stage & Bar",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tampin paljastus",
+    "locationName": "Festian Iso Sali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tamppi-XQ",
+    "locationName": "Tampere -Turku - Tampere",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Teekkarikuoro Wappupicnicillä",
+    "locationName": "Koskenranta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Teekkarin turvaWappu 2016",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TiTen Merkkimarkkinat",
+    "locationName": "Obeliski",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TiTen Tekken Tournament",
+    "locationName": "TiTen kiltahuone",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TTSS wabbu Goncerddi 2016",
+    "locationName": "TTY Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tupsulan ulkoilmakonsertti",
+    "locationName": "Tupsulan takapiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "upermutavaahtopallomeripainiysärikasari-disco",
+    "locationName": "Etunurtsi/Cupola",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapina",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapina",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappu Scawenger Hunt",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappu-Bic",
+    "locationName": "Tamppi Areena",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WappuDance",
+    "locationName": "TTY:n Ryhmäliikuntasali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappukolmiot",
+    "locationName": "Koskikeskus / Ravintolamaailma",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuleffa",
+    "locationName": "Cinola",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappumössö",
+    "locationName": "Tupsulan ulkoilmakonsertti",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappunysse",
+    "locationName": "Tampereen kaupunki",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuradio Live!",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuratsastus",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WappuTwerk",
+    "locationName": "TTY:n ryhmäliikuntasali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapun kostein SIMAkisa ja SIMAssa! -bileet",
+    "locationName": "Etunurtsi / Joku baari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WRC (\"Wappu Racing Cup\")",
+    "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuradio Live!",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappukolmiot",
+    "locationName": "Koskikeskus / Ravintolamaailma",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TaKoRUn Wappugrilli",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Akateemisen Beerpongin MM-kisat 2016",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Suuret Wabu Juhlat",
+    "locationName": "Todennäköisesti ravintola hullu poro.",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "PikkuJouluBommarit -sitsit",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tupsulan ulkoilmakonsertti",
+    "locationName": "Tupsulan takapiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kaljamaili",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Takatalwi",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuratsastus",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "PölöKaljaViesti",
+    "locationName": "Vanha Kirjastotalo",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WappuTwerk",
+    "locationName": "TTY:n ryhmäliikuntasali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappu Scawenger Hunt",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Luowa Wapputapahtuma",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Happy Hour",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TALent Hervanta",
+    "locationName": "Herwood Stage & Bar",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Teekkarikuoro Wappupicnicillä",
+    "locationName": "Koskenranta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kumisitsit",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tamppi-XQ",
+    "locationName": "Tampere -Turku - Tampere",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Akateeminen Herwannan vahvin mies 2016",
+    "locationName": "Tietotalon edusta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Spinnin iltapäiväkertho",
+    "locationName": "Spinnin kerhohuone SA014",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappunysse",
+    "locationName": "Tampereen kaupunki",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Sitsikisat",
+    "locationName": "Konetalon sisäpiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "KKK - KuiwakaljaKatastrofi",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapun kostein SIMAkisa ja SIMAssa! -bileet",
+    "locationName": "Etunurtsi / Joku baari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappuleffa",
+    "locationName": "Cinola",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WappuDance",
+    "locationName": "TTY:n Ryhmäliikuntasali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappumössö",
+    "locationName": "Tupsulan ulkoilmakonsertti",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapina",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wapina",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TiTen Tekken Tournament",
+    "locationName": "TiTen kiltahuone",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TiTen Merkkimarkkinat",
+    "locationName": "Obeliski",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "KumipelausISO",
+    "locationName": "Rosendahlin ranta",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Wappu-Bic",
+    "locationName": "Tamppi Areena",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Junttarit",
+    "locationName": "Paikka X",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Megalauluiltama",
+    "locationName": "Teekkarisauna",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Kellarihumppa",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Amebaturnaus",
+    "locationName": "Obeliskin vieressä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Pimp My Grill",
+    "locationName": "Sähkötalon sisäpiha",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Ruokaa, Juomaa, Kello! // Food, Drinks, Clock!",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Katusähly",
+    "locationName": "Selviää myöhemmin, toivottavasti Etunurtsin ympäristössä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Cantus",
+    "locationName": "Bommari",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Tampin paljastus",
+    "locationName": "Festian Iso Sali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "TTSS wabbu Goncerddi 2016",
+    "locationName": "TTY Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "NääsPeksin pitkä impro",
+    "locationName": "Festian iso sali",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Teekkarin turvaWappu 2016",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "upermutavaahtopallomeripainiysärikasari-disco",
+    "locationName": "Etunurtsi/Cupola",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Pre-Colours",
+    "locationName": "Festian rappuset",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Ei-turkulaiset pihapelit // Lawn Games by ETO",
+    "locationName": "Etunurtsi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Colours",
+    "locationName": "Viihdemaailma Ilona",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "WRC (\"Wappu Racing Cup\")",
+    "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "Rakkauden Wappuradio™ starttaa! / Rakkauden Wappuradio™ starts!",
+    "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  {
+    "name": "ESN INTO Wappu Pancake Bonanza",
+    "locationName": "TUT Campus Front lawn",
+    "location": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  }
+]

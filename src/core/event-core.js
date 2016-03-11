@@ -1,15 +1,20 @@
-import BPromise from 'bluebird';
+import fs from 'fs';
+import path from 'path';
+const logger = require('../util/logger')(__filename);
+
+const DATA_DIR = path.join(__dirname, '../../data');
+const content = fs.readFileSync(path.join(DATA_DIR, 'events.json'), {encoding: 'utf8'});
+let events;
+try {
+  events = JSON.parse(content);
+} catch (e) {
+  logger.error('Error when parsing events.json!');
+  logger.error(content);
+  throw e;
+}
 
 function getEvents() {
-  return BPromise.resolve([
-    {
-      name: 'Wappuinfo',
-      startTime: '2016-03-09T21:24:33Z',
-      endTime: '2016-03-10T00:00:00Z',
-      description: 'Beer',
-      coverImage: 'http://s3/path.jpg'
-    }
-  ]);
+  return events;
 }
 
 export {
