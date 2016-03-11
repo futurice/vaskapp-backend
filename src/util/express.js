@@ -48,7 +48,14 @@ function createRoute(func, responseHandler) {
   };
 }
 
+function throwStatus(status, message) {
+  const err = new Error(message);
+  err.status = status;
+  throw err;
+}
+
 export {
   createRoute,
-  createJsonRoute
+  createJsonRoute,
+  throwStatus
 };

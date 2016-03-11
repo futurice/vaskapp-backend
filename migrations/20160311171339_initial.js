@@ -45,8 +45,8 @@ exports.up = function(knex, Promise) {
         .onUpdate('CASCADE');
 
       table.specificType('location', 'point').notNullable().index('index_location', 'GIST');
-      table.integer('type_id').unsigned().notNullable();
-      table.foreign('type_id')
+      table.integer('action_type_id').unsigned().notNullable();
+      table.foreign('action_type_id')
         .references('id')
         .inTable('action_types')
         .onDelete('RESTRICT')

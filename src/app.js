@@ -14,7 +14,9 @@ function createApp() {
   app.enable('trust proxy');
   app.disable('x-powered-by');
 
-  if (process.env.NODE_ENV === 'development') {
+  const isVerboseTests =
+    process.env.NODE_ENV === 'test' && process.env.VERBOSE_TESTS === 'true';
+  if (process.env.NODE_ENV === 'development' || isVerboseTests) {
     app.use(morgan('dev'));
   }
 
