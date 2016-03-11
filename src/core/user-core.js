@@ -17,6 +17,28 @@ function createUser(user) {
     });
 }
 
+function findByUuid(uuid) {
+  return knex('users')
+    .select('*')
+    .where({ uuid: uuid })
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        return null;
+      }
+
+      return _userRowToObject(rows[0]);
+    });
+}
+
+function _userRowToObject(row) {
+  return {
+    id: row.id,
+    name: name,
+    uuid: uuid
+  };
+}
+
 export {
-  createUser
+  createUser,
+  findByUuid
 };
