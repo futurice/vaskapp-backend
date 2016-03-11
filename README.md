@@ -10,6 +10,10 @@ Get started:
 
 * `bash ./tools/reset-database.sh`
 * `cp .env-sample .env`  
+* `source .env`
+
+  Or use [autoenv](https://github.com/kennethreitz/autoenv).
+
 * `npm install`
 * `knex migrate:latest`
 * `knex seed:run`
@@ -49,16 +53,33 @@ create extension postgis;
 
 > List events
 
-
 Responses:
 
 * `200 OK` List of [event objects](event-object)
 
+
+### `GET /api/teams`
+
+> List all teams
+
+Responses:
+
+* `200 OK` List of [team objects](team-object)
+
+
+### `POST /api/actions`
+
+> Create a new action
+
+Body is one of [action objects](#action-objects).
+
+Responses:
+
+* `200 OK`
+
 ## Response objects
 
 ### Event object
-
-Example object:
 
 ```js
 {
@@ -70,6 +91,53 @@ Example object:
   "coverImage": "http://s3/path.jpg"
 }
 ```
+
+### Team object
+
+```js
+{
+  "id": 1,
+  "name": "Tietoteekkarikilta"
+}
+```
+
+### Action objects
+
+#### Basic action object
+
+`type` is one of `BEER`, `CIDER`.
+
+```js
+{
+  location: {
+    latitude: -1.2345,
+    longitude: 56.2322
+  },
+  dateTime: "2011-10-05T14:48:00.000Z",
+  type: "BEER",
+  team: 1,
+  user: 'UUID'
+}
+```
+
+#### Image action object
+
+```js
+{
+  location: {
+    latitude: -1.2345,
+    longitude: 56.2322
+  },
+  dateTime: "2011-10-05T14:48:00.000Z",
+  type: "IMAGE",
+  team: 1,
+  payload: {
+    url: "http://s3.s3.s3.jpg"
+  },
+  user: 'UUID'
+}
+```
+
 
 ## Error handling
 

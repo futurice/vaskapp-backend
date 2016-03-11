@@ -18,8 +18,7 @@ exports.up = function(knex, Promise) {
 
       table.specificType('location', 'point').notNullable().index('index_location', 'GIST');
       table.string('type').notNullable().index();
-      table.string('team').notNullable().index();
-      table.json('payload').notNullable();
+      table.json('payload');
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
