@@ -60,9 +60,9 @@ function autoOrient(imageBuffer) {
     try {
       gm(imageBuffer)
         .autoOrient()
-        .toBuffer('JPG', ((error, resultBuffer) => {
+        .toBuffer('JPG', (error, resultBuffer) => {
           error ? reject(error) : resolve(resultBuffer);
-        }));
+        });
     } catch (err) {
       console.log("ERROR");
       reject(err);
