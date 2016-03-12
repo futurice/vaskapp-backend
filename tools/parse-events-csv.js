@@ -21,15 +21,18 @@ if (!process.argv[2]) {
 }
 
 var DATE_FORMAT = 'DD/MM/YY HH:mm';
-var INPUT_CSV_PATH = process.argv[2];
-var fileContentBuf = fs.readFileSync(INPUT_CSV_PATH);
-var fileContent = iconv.decode(fileContentBuf, 'cp1250');
-
-var filepath = path.join(__dirname, '../data/location-fuzzy-map.json');
-var locations = JSON.parse(fs.readFileSync(filepath, {encoding: 'utf8'}));
-var locationsFuse = new Fuse(locations, {threshold: 0.4, keys: ['locationName']});
 
 function main() {
+  var INPUT_CSV_PATH = process.argv[2];
+  var fileContentBuf = fs.readFileSync(INPUT_CSV_PATH);
+  var fileContent = iconv.decode(fileContentBuf, 'cp1250');
+
+  var locations = readJsonFile('location-fuzzy-map.json');
+  var locationsFuse = new Fuse(locations, {threshold: 0.4, keys: ['locationName']});
+
+  var coverImages = readJsonFile('cover-image-fuzzy-map.json');
+  var coverImagesFuse = new Fuse(coverImages, {threshold: 0.2, keys: ['eventName']});
+
   csv.parseAsync(fileContent, {
     comment: '#',
     delimiter: ';',
@@ -38,6 +41,12 @@ function main() {
   })
   .then(function(eventsData) {
     var rows = _.filter(_.tail(eventsData), row => !_.isEmpty(row[0]));
+    var rowCount = rows.length;
+    rows = _.uniqBy(rows, row => row[0]);
+
+    var diff = rowCount - rows.length;
+    console.error('Removed', diff, 'duplicate events from the source data');
+
     var events = _.map(rows, row => {
       var startTime = moment.tz(row[2] + ' ' + row[4], DATE_FORMAT, 'Europe/Helsinki');
       // Start date is same as in the end, the end time might go to the next
@@ -64,7 +73,7 @@ function main() {
       var results = locationsFuse.search(event.locationName);
       if (_.isEmpty(results)) {
         console.error('Searched for:', event.locationName);
-        throw new Error('Could not match event name to location: ' + JSON.stringify(event));
+        throw new Error('Could not match event to location: ' + JSON.stringify(event));
       }
 
       event.location = {
@@ -82,12 +91,29 @@ function main() {
         );
       }
 
+      results = coverImagesFuse.search(event.name);
+      if (_.isEmpty(results)) {
+        console.error('Searched for:', event.name);
+        throw new Error('Could not match event name to cover image: ' + JSON.stringify(event));
+      }
+      event.coverImage = 'https://storage.googleapis.com/wappuapp/assets/' +
+        results[0].coverImage;
+
       return event;
     });
 
+    var sortedEvents = _.sortBy(events, event => {
+      return event.startTime.unix();
+    });
+
     console.error('\n\n\n');
-    console.log(JSON.stringify(events, null, 2));
+    console.log(JSON.stringify(sortedEvents, null, 2));
   });
+}
+
+function readJsonFile(dataName) {
+  var filepath = path.join(__dirname, '../data/', dataName);
+  return JSON.parse(fs.readFileSync(filepath, {encoding: 'utf8'}));
 }
 
 main();
