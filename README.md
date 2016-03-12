@@ -95,12 +95,19 @@ Responses:
 
 ```js
 {
-  "id": 1,
-  "name": "Wappuinfo",
-  "startTime": "2016-03-09T21:24:33Z",
-  "endTime": "2016-03-10T00:00:00Z",
-  "description": "Beer",
-  "coverImage": "http://s3/path.jpg"
+  "name": "Akateeminen Herwannan vahvin mies 2016",
+  "locationName": "Tietotalon edusta",
+  "startTime": "2016-04-20T09:00:00.000Z",
+  "endTime": "2016-04-20T14:00:00.000Z",
+  "description": "Steong man competition",
+  "organizer": "Herwannan hauiskääntö",
+  "contactDetails": "Herwannan hauiskääntö / hkaanto@tut.fi",
+  "teemu": false,
+  "location": {
+    "latitude": 61.449605,
+    "longitude": 23.857158
+  },
+  "coverImage": "https://storage.googleapis.com/wappuapp/assets/herwannan-vahvin-mies.jpg"
 }
 ```
 
@@ -110,6 +117,15 @@ Responses:
 {
   "id": 1,
   "name": "Tietoteekkarikilta"
+}
+```
+
+### User object
+
+```js
+{
+  "uuid": "de305d54-75b4-431b-adb2-eb6b9e546014",
+  "name": "Hessu Kypärä"
 }
 ```
 
