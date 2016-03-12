@@ -8,7 +8,8 @@ exports.up = function(knex, Promise) {
   .then(() => {
     return knex.schema.createTable('action_types', function(table) {
       table.bigIncrements('id').primary().index();
-      table.string('name').notNullable().unique();
+      table.string('code').notNullable().unique().index();
+      table.string('name').notNullable();
       table.integer('value').unsigned().notNullable();
       table.integer('cooldown').unsigned().notNullable(); // ms
 

@@ -52,7 +52,7 @@ function createApp() {
   const router = createRouter();
   app.use('/api', router);
 
-  app.use(errorLogger());
+  app.use(errorLogger({  }));
   app.use(errorResponder());
 
   return app;
