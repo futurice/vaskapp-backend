@@ -5,6 +5,7 @@ import * as teamHttp from './http/team-http';
 import * as userHttp from './http/user-http';
 import * as actionTypeHttp from './http/action-type-http';
 import * as feedHttp from './http/feed-http';
+import * as announcementHttp from './http/announcement-http';
 
 function createRouter() {
   const router = express.Router();
@@ -15,6 +16,7 @@ function createRouter() {
   router.post('/users', userHttp.postUser);
   router.get('/action_types', actionTypeHttp.getActionTypes);
   router.get('/feed', feedHttp.getFeed);
+  router.get('/announcements', announcementHttp.getAnnouncements);
 
   return router;
 }

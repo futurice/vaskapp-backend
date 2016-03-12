@@ -7,6 +7,7 @@ import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
 import * as throttleCore from './core/throttle-core';
+import * as fb from './util/fb';
 
 function createApp() {
   const app = express();
@@ -58,6 +59,7 @@ function createApp() {
 
 	// Initialize internal stuff
 	throttleCore.initialize();
+  fb.initialize();
 
   return app;
 }
