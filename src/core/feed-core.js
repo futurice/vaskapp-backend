@@ -51,10 +51,7 @@ function _actionToFeedObject(row) {
     feedObj.text = row.text;
   }
 
-  return {
-
-
-  };
+  return feedObj;
 }
 
 export {
