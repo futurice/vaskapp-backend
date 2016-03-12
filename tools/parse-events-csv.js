@@ -39,15 +39,26 @@ function main() {
   .then(function(eventsData) {
     var rows = _.filter(_.tail(eventsData), row => !_.isEmpty(row[0]));
     var events = _.map(rows, row => {
+      var startTime = moment.tz(row[2] + ' ' + row[4], DATE_FORMAT, 'Europe/Helsinki');
+      // Start date is same as in the end, the end time might go to the next
+      // day too, so we have to take that into account.
+      // e.g. start is 21:00 and end is 01:00
+      var endTime = moment.tz(row[2] + ' ' + row[5], DATE_FORMAT, 'Europe/Helsinki');
+      if (endTime.diff(startTime) < 0) {
+        console.error('endTime', endTime.toISOString(), '<', startTime.toISOString());
+        endTime = endTime.add(1, 'day');
+        console.error('New endTime:', endTime.toISOString());
+      }
+
       var event = {
         name: row[0],
         locationName: row[1],
-        start: moment.tz(row[2] + ' ' + row[4], DATE_FORMAT, 'Europe/Helsinki'),
-        // Start date is same as in the end
-        end: moment.tz(row[2] + ' ' + row[5], DATE_FORMAT, 'Europe/Helsinki'),
+        startTime: startTime,
+        endTime: endTime,
         description: row[7],
         organizer: row[8],
-        teemu: row[9] === 'Kyllä / Yes',
+        contactDetails: row[9],
+        teemu: row[10].indexOf('Yes') > 0,
       };
 
       var results = locationsFuse.search(event.locationName);
