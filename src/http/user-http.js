@@ -10,7 +10,16 @@ let putUser = createJsonRoute(function(req, res) {
 });
 
 let getUser = createJsonRoute(function(req, res) {
-  return userCore.findByUuid(req.params.uuid);
+  return userCore.findByUuid(req.params.uuid)
+  .then(user => {
+    if (user === null) {
+      const err = new Error('User not found: ' + req.params.uuid);
+      err.status = 404;
+      throw err;
+    }
+
+    return user;
+  });
 });
 
 export {

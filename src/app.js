@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -36,7 +37,8 @@ function createApp() {
   }
 
   app.use(function requireContentType(req, res, next) {
-    if (req.headers['content-type'] !== 'application/json') {
+    const isWriteReq = _.includes(['POST', 'PUT', 'PATCH'], req.method);
+    if (isWriteReq && req.headers['content-type'] !== 'application/json') {
       const err = new Error('Content-type: application/json is required');
       err.status = 400;
       return next(err);
