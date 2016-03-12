@@ -37,6 +37,7 @@ function createApp() {
     });
   }
 
+  /*
   app.use(function requireContentType(req, res, next) {
     const isWriteReq = _.includes(['POST', 'PUT', 'PATCH'], req.method);
     if (isWriteReq && req.headers['content-type'] !== 'application/json') {
@@ -47,6 +48,7 @@ function createApp() {
 
     next();
   });
+  */
 
   app.use(bodyParser.json());
   app.use(cors());
