@@ -6,6 +6,7 @@ import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
+import * as throttleCore from './core/throttle-core';
 
 function createApp() {
   const app = express();
@@ -54,6 +55,9 @@ function createApp() {
 
   app.use(errorLogger({  }));
   app.use(errorResponder());
+
+	// Initialize internal stuff
+	throttleCore.initialize();
 
   return app;
 }
