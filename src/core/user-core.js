@@ -53,7 +53,6 @@ function findByUuid(uuid) {
       if (_.isEmpty(rows)) {
         return null;
       }
-      console.log(rows)
 
       return _userRowToObject(rows[0]);
     });

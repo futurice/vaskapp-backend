@@ -1,8 +1,12 @@
 import * as userCore from '../core/user-core';
 import {createJsonRoute} from '../util/express';
+import {assert} from '../validation';
 
 let putUser = createJsonRoute(function(req, res) {
-  return userCore.createOrUpdateUser(req.body).then(rowsInserted => undefined);
+  const user = assert(req.body, 'user');
+
+  return userCore.createOrUpdateUser(user)
+    .then(rowsInserted => undefined);
 });
 
 let getUser = createJsonRoute(function(req, res) {
