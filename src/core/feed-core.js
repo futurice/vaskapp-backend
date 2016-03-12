@@ -6,14 +6,15 @@ import {GCS_CONFIG} from '../util/gcs';
 function getFeed(name) {
   return knex.raw(`SELECT
       actions.location as location,
-      actions.created_at as created_at
+      actions.created_at as created_at,
+      actions.image_path as image_path,
       action_types.code as action_type_code,
       users.name as user_name,
-      teams.name as team_name,
+      teams.name as team_name
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
-         users ON users.id = actions.user_id
-         teams ON teams.id = actions.team_id
+    JOIN users ON users.id = actions.user_id
+    JOIN teams ON teams.id = actions.team_id
     WHERE
       action_types.code = 'IMAGE'
     ORDER BY actions.created_at DESC
@@ -38,11 +39,11 @@ function _actionToFeedObject(row) {
       team: row['team_name']
     },
     location: {
-      latitude: row.location,
-      longitude: row.location
+      latitude: row.location.y,
+      longitude: row.location.x
     },
     createdAt: row['created_at'],
-    url: url.resolve(GCS_CONFIG.baseUrl, row['image_path'])
+    url: GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
   };
 }
 

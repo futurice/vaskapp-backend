@@ -89,11 +89,11 @@ function postImage(req, res) {
     })
     .then(uploadedImage => {
       return actionCore.createAction({
-        'team':      action.team,
-        'type':      action.type,
-        'user':      action.user,
-        'location':  action.location,
-        'image_path': uploadedImage.imageName
+        team:      action.team,
+        type:      action.type,
+        user:      action.user,
+        location:  action.location,
+        imagePath: uploadedImage.imageName
       }).then(rowsInserted => undefined);
     });
 };
