@@ -10,6 +10,7 @@ import * as userCore from '../core/user-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
 import {padLeft} from '../util/string';
+const logger = require('../util/logger')(__filename);
 
 const gm = require('gm').subClass({ imageMagick: true });
 
@@ -39,11 +40,17 @@ function getAndValidateUser(uuid) {
 }
 
 function uploadImage(imageName, imageFile) {
-  console.log("Uploading", imageName);
+  logger.info("Uploading", imageName);
 
   return Promise.resolve()
     .then(() => validateMimeType(imageFile.mimetype))
-    .then(() => autoOrient(imageFile.buffer))
+    .then(() => {
+      if (imageFile.mimetype === 'image/gif') {
+        return imageFile.buffer;
+      } else {
+        return autoOrient(imageFile.buffer);
+      }
+    })
     .then(buffer => gcs.uploadImageBuffer(imageName, buffer));
 };
 
@@ -64,7 +71,8 @@ function autoOrient(imageBuffer) {
           error ? reject(error) : resolve(resultBuffer);
         });
     } catch (err) {
-      console.log("ERROR");
+      logger.error('Error in auto-orient:', err);
+      logger.error(err.stack);
       reject(err);
     }
   });
