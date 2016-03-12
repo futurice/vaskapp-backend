@@ -11,6 +11,10 @@ function createAction(action) {
     'image_path': action.imagePath
   };
 
+  if (action.text) {
+    dbRow.text = action.text;
+  }
+
   return knex('actions').returning('*').insert(dbRow)
     .then(rows => {
       if (_.isEmpty(rows)) {

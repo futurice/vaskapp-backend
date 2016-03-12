@@ -54,6 +54,7 @@ exports.up = function(knex, Promise) {
         .onUpdate('CASCADE');
 
       table.string('image_path');
+      table.string('text', 151);
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());

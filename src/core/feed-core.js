@@ -1,4 +1,3 @@
-import url from 'url';
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
@@ -8,6 +7,7 @@ function getFeed(name) {
       actions.location as location,
       actions.created_at as created_at,
       actions.image_path as image_path,
+      actions.text as text,
       action_types.code as action_type_code,
       users.name as user_name,
       teams.name as team_name
@@ -32,7 +32,7 @@ function getFeed(name) {
 }
 
 function _actionToFeedObject(row) {
-  return {
+  var feedObj = {
     type: row['action_type_code'],
     author: {
       name: row['user_name'],
@@ -42,8 +42,18 @@ function _actionToFeedObject(row) {
       latitude: row.location.y,
       longitude: row.location.x
     },
-    createdAt: row['created_at'],
-    url: GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
+    createdAt: row['created_at']
+  };
+
+  if (feedObj.type === 'IMAGE') {
+    feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
+  } else if (feedObj.type === 'TEXT') {
+    feedObj.text = row.text;
+  }
+
+  return {
+
+
   };
 }
 

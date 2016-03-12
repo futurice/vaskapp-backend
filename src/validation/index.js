@@ -14,6 +14,7 @@ const schemas = {
     user: common.userUuid.required(),
     type: Joi.string().uppercase().required(),
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
+    text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
