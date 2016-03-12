@@ -13,11 +13,7 @@ function createOrUpdateUser(user) {
 }
 
 function createUser(user) {
-  const dbRow = {
-    'uuid': user.uuid,
-    'name': user.name
-  };
-
+  const dbRow = _makeUserDbRow(user);
   return knex('users').returning('id').insert(dbRow)
     .then(rows => {
       if (_.isEmpty(rows)) {
@@ -29,11 +25,7 @@ function createUser(user) {
 }
 
 function updateUser(user) {
-  const dbRow = {
-    'uuid': user.uuid,
-    'name': user.name
-  };
-
+  const dbRow = _makeUserDbRow(user);
   return knex('users').returning('id').update(dbRow)
     .where('uuid', user.uuid)
     .then(rows => {
@@ -47,7 +39,11 @@ function updateUser(user) {
 
 function findByUuid(uuid) {
   return knex('users')
-    .select('*')
+    .select(
+      'users.*',
+      'teams.id as team_id'
+    )
+    .leftJoin('teams', 'teams.id', 'users.team_id')
     .where({ uuid: uuid })
     .then(rows => {
       if (_.isEmpty(rows)) {
@@ -58,11 +54,22 @@ function findByUuid(uuid) {
     });
 }
 
+function _makeUserDbRow(user) {
+  const dbRow = {
+    'uuid': user.uuid,
+    'name': user.name,
+    'team_id': user.team
+  };
+
+  return dbRow;
+}
+
 function _userRowToObject(row) {
   return {
     id: row.id,
     name: row.name,
-    uuid: row.uuid
+    uuid: row.uuid,
+    team: row['team_id']
   };
 }
 

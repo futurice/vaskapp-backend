@@ -22,6 +22,12 @@ exports.up = function(knex, Promise) {
       table.bigIncrements('id').primary().index();
       table.string('uuid').notNullable().unique().index();
       table.string('name').notNullable();
+      table.integer('team_id').unsigned().notNullable().index();
+      table.foreign('team_id')
+        .references('id')
+        .inTable('teams')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE');
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());

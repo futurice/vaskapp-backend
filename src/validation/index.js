@@ -10,7 +10,6 @@ const schemas = {
   common: common,
 
   action: {
-    team: common.team.required(),
     user: common.userUuid.required(),
     type: Joi.string().uppercase().required(),
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
@@ -23,7 +22,8 @@ const schemas = {
 
   user: {
     uuid: common.userUuid.required(),
-    name: Joi.string().min(1, 'utf8').max(30, 'utf8').required()
+    name: Joi.string().min(1, 'utf8').max(30, 'utf8').required(),
+    team: common.team.required()
   }
 };
 
