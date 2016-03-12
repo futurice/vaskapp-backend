@@ -6,7 +6,7 @@ function createAction(action) {
   const dbRow = {
     'team_id': action.team,
     'action_type_id': knex.raw('(SELECT id from action_types WHERE name = ?)', [action.type]),
-    'user_id': action.user,
+    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     // Tuple is in longitude, latitude format in Postgis
     location: action.location.longitude + ',' + action.location.longitude,
     'image_url': action.image_url

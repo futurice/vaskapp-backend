@@ -9,7 +9,7 @@ then
     echo -e '\n -- End of migrations\n'
 
     echo -e '\n -- Running seeds\n'
-    DEBUG=knex knex seed:run
+    VERBOSE_SEEDS=true DEBUG=knex knex seed:run
     echo -e '\n -- End of seeds\n'
 else
     echo 'Skip migrations. NODE_ENV != production'

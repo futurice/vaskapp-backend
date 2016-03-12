@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/futurice/wappuapp-backend.svg?token=yjocXfDrdDpDqbwnbBG7&branch=master)](https://travis-ci.com/futurice/wappuapp-backend)
+
 # Wappuapp backend
 
 Dependencies:

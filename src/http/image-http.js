@@ -91,7 +91,7 @@ function postImage(req, res) {
       return actionCore.createAction({
         team:      action.team,
         type:      action.type,
-        user:      result.user.id,
+        user:      action.user,
         location:  action.location,
         image_url: uploadedImage.imageName
       }).then(rowsInserted => undefined);

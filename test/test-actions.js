@@ -7,7 +7,7 @@ function testActions() {
         .post('/api/actions')
         .send({
           team: 1,
-          user: 'de305d54-75b4-431b-adb2-eb6b9e546014',
+          user: 'hessu',
           type: 'BEER',
           location: {
             latitude: 0,

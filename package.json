@@ -2,7 +2,8 @@
   "name": "wappuapp-backend",
   "version": "1.0.0",
   "engines": {
-    "node": "5.7.x"
+    "node": "5.7.x",
+    "npm": "2.x.x"
   },
   "license": "MIT",
   "dependencies": {
@@ -35,6 +36,7 @@
     "eslint": "2.2.x",
     "jscs": "^2.11.0",
     "mocha": "^2.4.5",
+    "mocha-cli": "^1.0.0",
     "nodemon": "^1.9.1",
     "superagent": "^1.8.0",
     "supertest": "^1.2.0",

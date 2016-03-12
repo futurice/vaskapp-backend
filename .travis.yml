@@ -18,4 +18,4 @@ before_script:
   - npm install
 
 script:
-  - npm run ci
+  - bash ./tools/ci.sh
