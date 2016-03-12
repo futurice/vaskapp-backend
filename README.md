@@ -196,6 +196,7 @@ Responses:
 }
 ```
 
+
 ### Feed objects
 
 #### Image feed object
@@ -207,25 +208,14 @@ Responses:
     longitude: 56.2322
   },
   type: "IMAGE",
+  createdAt: "2016-04-20T09:00:00.000Z",
+  author: {
+    "name": "Nahkasimo",
+    "team": "Sähkökilta"
+  },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }
 ```
-
-#### Image action object
-
-```js
-{
-  location: {
-    latitude: -1.2345,
-    longitude: 56.2322
-  },
-  type: "IMAGE",
-  team: 1,
-  imageData: 'base64encodedimage',
-  user: 'UUID'
-}
-```
-
 
 
 ## Error handling
