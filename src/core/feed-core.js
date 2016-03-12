@@ -16,7 +16,8 @@ function getFeed(name) {
     JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
-      action_types.code = 'IMAGE'
+      action_types.code = 'IMAGE' OR
+      action_types.code = 'TEXT'
     ORDER BY actions.created_at DESC
     LIMIT 100`
   )
