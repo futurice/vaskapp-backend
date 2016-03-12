@@ -89,6 +89,17 @@ Responses:
 
 * `200 OK`
 
+### `GET /api/action_types`
+
+> List action types available
+
+Body is one of [action type object](#action-type-object).
+
+Responses:
+
+* `200 OK`
+
+
 ## Response objects
 
 ### Event object
@@ -126,6 +137,18 @@ Responses:
 {
   "uuid": "de305d54-75b4-431b-adb2-eb6b9e546014",
   "name": "Hessu Kypärä"
+}
+```
+
+### Action type object
+
+```js
+{
+  "id": "3",
+  "code": "CIDER",
+  "name": "Grab a cider",
+  "value": 10,
+  "cooldown": 300000
 }
 ```
 
