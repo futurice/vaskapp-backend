@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
       id: 2,
       code: 'BEER',
 			name: 'Grab a beer',
-      value: 10,
+      value: 5,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
       id: 3,
       code: 'CIDER',
 			name: 'Grab a cider',
-      value: 10,
+      value: 5,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
       id: 4,
       code: 'SODA',
 			name: 'I had soda',
-      value: 10,
+      value: 5,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -40,8 +40,17 @@ exports.seed = function(knex, Promise) {
       id: 5,
       code: 'IMAGE',
 			name: 'Pics or didn\'t happen',
-      value: 10,
+      value: 100,
       cooldown: 1 * 60 * 1000
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'action_types', {
+      id: 6,
+      code: 'TEXT',
+			name: 'Comment',
+      value: 10,
+      cooldown: 1000
     });
   });
 };
