@@ -12,10 +12,6 @@ function createAction(action) {
     'image_url': action.image_url
   };
 
-  if (action.payload) {
-    dbRow.payload = action.payload;
-  }
-
   return knex('actions').returning('*').insert(dbRow)
     .then(rows => {
       if (_.isEmpty(rows)) {
