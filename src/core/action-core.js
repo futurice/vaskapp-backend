@@ -8,7 +8,7 @@ function createAction(action) {
     'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     // Tuple is in longitude, latitude format in Postgis
     location: action.location.longitude + ',' + action.location.longitude,
-    'image_url': action.image_url
+    'image_path': action.imagePath
   };
 
   return knex('actions').returning('*').insert(dbRow)
