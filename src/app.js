@@ -36,7 +36,7 @@ function createApp() {
   }
 
   app.use(function requireContentType(req, res, next) {
-    if (req.headers['content-type']) {
+    if (req.headers['content-type'] !== 'application/json') {
       const err = new Error('Content-type: application/json is required');
       err.status = 400;
       return next(err);
