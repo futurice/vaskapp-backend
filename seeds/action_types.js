@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 5,
-      name: 'PICTURE',
+      name: 'IMAGE',
       value: 10,
       cooldown: 1 * 60 * 1000
     });

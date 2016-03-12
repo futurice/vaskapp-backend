@@ -51,7 +51,8 @@ exports.up = function(knex, Promise) {
         .inTable('action_types')
         .onDelete('RESTRICT')
         .onUpdate('CASCADE');
-      table.json('payload');
+
+      table.string('image_url');
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
