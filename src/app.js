@@ -35,10 +35,13 @@ function createApp() {
     });
   }
 
-  app.use(function defaultContentType(req, res, next) {
-    const defaultType = 'application/json';
-    req.headers['content-type'] = req.headers['content-type'] ||
-      defaultType;
+  app.use(function requireContentType(req, res, next) {
+    if (req.headers['content-type']) {
+      const err = new Error('Content-type: application/json is required');
+      err.status = 400;
+      return next(err);
+    }
+
     next();
   });
 

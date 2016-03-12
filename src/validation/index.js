@@ -3,7 +3,7 @@ var Joi = require('joi');
 
 var common = {
   team: Joi.number().integer().min(0),
-  userUuid: Joi.string().regex(/^[A-Za-z0-9_-]+$/).min(1, 'utf8').max(128, 'utf-8')
+  userUuid: Joi.string().regex(/^[A-Za-z0-9_-]+$/).min(1, 'utf8').max(128, 'utf8')
 };
 
 const schemas = {
@@ -23,7 +23,7 @@ const schemas = {
 
   user: {
     uuid: common.userUuid.required(),
-    name: Joi.string().min(1, 'utf8').max(30, 'utf8')
+    name: Joi.string().min(1, 'utf8').max(30, 'utf8').required()
   }
 };
 
