@@ -2,7 +2,6 @@ var util = require('../src/util/seeds');
 
 exports.seed = function(knex, Promise) {
   return util.insertOrUpdate(knex, 'action_types', {
-    id: 1,
     code: 'BUTTON_PUSH',
 		name: 'Don\'t Press',
     value: 1,
@@ -10,7 +9,6 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
-      id: 2,
       code: 'BEER',
 			name: 'Grab a beer',
       value: 5,
@@ -19,7 +17,6 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
-      id: 3,
       code: 'CIDER',
 			name: 'Grab a cider',
       value: 5,
@@ -28,7 +25,6 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
-      id: 4,
       code: 'SODA',
 			name: 'I had soda',
       value: 5,
@@ -37,7 +33,6 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
-      id: 5,
       code: 'IMAGE',
 			name: 'Pics or didn\'t happen',
       value: 100,
@@ -46,7 +41,6 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
-      id: 6,
       code: 'TEXT',
 			name: 'Comment',
       value: 10,
