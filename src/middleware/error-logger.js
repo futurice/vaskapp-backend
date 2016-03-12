@@ -20,7 +20,7 @@ function createErrorLogger(opts) {
     }
 
     if (opts.logStackTrace(status)) {
-      log(err.stack);
+      log(err, err.stack);
     }
     else {
       log(err.toString());

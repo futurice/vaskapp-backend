@@ -2,7 +2,6 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
 function createAction(action) {
-    console.log(action);
   const dbRow = {
     'team_id': action.team,
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),

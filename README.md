@@ -100,6 +100,17 @@ Responses:
 * `200 OK`
 
 
+### `GET /api/feed`
+
+> Get list of feed
+
+Body is one of [one of feed objects](#feed-objects).
+
+Responses:
+
+* `200 OK`
+
+
 ## Response objects
 
 ### Event object
@@ -182,6 +193,27 @@ Responses:
   team: 1,
   imageData: 'base64encodedimage',
   user: 'UUID'
+}
+```
+
+
+### Feed objects
+
+#### Image feed object
+
+```js
+{
+  location: {
+    latitude: -1.2345,
+    longitude: 56.2322
+  },
+  type: "IMAGE",
+  createdAt: "2016-04-20T09:00:00.000Z",
+  author: {
+    "name": "Nahkasimo",
+    "team": "Sähkökilta"
+  },
+  url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }
 ```
 

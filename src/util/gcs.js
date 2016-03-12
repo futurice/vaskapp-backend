@@ -76,5 +76,6 @@ function uploadImageBuffer(imageName, imageBuffer) {
 };
 
 export {
-uploadImageBuffer
+  uploadImageBuffer,
+  GCS_CONFIG
 };
