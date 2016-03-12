@@ -5,16 +5,12 @@ function createAction(action) {
     console.log(action);
   const dbRow = {
     'team_id': action.team,
-    'action_type_id': knex.raw('(SELECT id from action_types WHERE name = ?)', [action.type]),
+    'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
     'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     // Tuple is in longitude, latitude format in Postgis
     location: action.location.longitude + ',' + action.location.longitude,
     'image_url': action.image_url
   };
-
-  if (action.payload) {
-    dbRow.payload = action.payload;
-  }
 
   return knex('actions').returning('*').insert(dbRow)
     .then(rows => {
@@ -26,11 +22,11 @@ function createAction(action) {
     });
 }
 
-function getActionType(name) {
+function getActionType(code) {
   return knex('action_types')
     .select('*')
     .limit(1)
-    .where('name', name)
+    .where('code', code)
     .then(rows => {
       if (_.isEmpty(rows)) {
         return null;
@@ -43,6 +39,7 @@ function getActionType(name) {
 function _actionTypeRowToObject(row) {
   return {
     id: row.id,
+    code: row.code,
     name: row.name,
     value: row.value,
     cooldown: row.cooldown
