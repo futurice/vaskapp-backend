@@ -12,7 +12,10 @@ function createRouter() {
   router.get('/events', eventHttp.getEvents);
   router.post('/actions', actionHttp.postAction);
   router.get('/teams', teamHttp.getTeams);
-  router.post('/users', userHttp.postUser);
+
+  router.put('/users/:uuid', userHttp.putUser);
+  router.get('/users/:uuid', userHttp.getUser);
+
   router.get('/action_types', actionTypeHttp.getActionTypes);
   router.get('/feed', feedHttp.getFeed);
 

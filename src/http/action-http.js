@@ -22,7 +22,7 @@ let postAction = createJsonRoute(function(req, res) {
         }
     })
     .then(() => {
-        return actionCore.createAction(req.body).then(rowsInserted => undefined);
+        return actionCore.createAction(action).then(rowsInserted => undefined);
     });
   }
 
