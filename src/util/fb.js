@@ -4,34 +4,40 @@ const _ = require('lodash');
 const requireEnvs = require('./require-envs');
 const request = require('request');
 const FB = require('fb');
-const logger = require('../util/logger')(__filename);
+const logger = require('./logger')(__filename);
+const eventCore = require('../core/event-core');
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
 const ACCOUNT_TO_FOLLOW = "retrowappu2015";
 const REFRESH_INTERVAL = 1 * 60 * 1000; // 1 min
 const FB_CFG = {
-  appId: process.env.FB_APP_ID,
+  appId:     process.env.FB_APP_ID,
   appSecret: process.env.FB_APP_SECRET,
-  toFollow: ACCOUNT_TO_FOLLOW,
-  xfbml: true,
-  version: 'v2.5'
+  toFollow:  ACCOUNT_TO_FOLLOW,
+  xfbml:     true,
+  version:   'v2.5'
 };
 FB.options(FB_CFG);
 
 // # State
 const state = {
   accessToken: null,
-  announcements: null
+  announcements: null,
+  eventIds: []
 };
 
 function initialize() {
+  state.eventIds = eventCore.getEvents()
+    .filter(event => !_.isUndefined(event.facebookId))
+    .map(event => event.facebookId);
+
   _getAccessToken()
     .then(() => {
-      setInterval(_fetchAnnouncements, REFRESH_INTERVAL);
+      setInterval(_updateFromFacebook, REFRESH_INTERVAL);
 
       // Execute update immediately
-      _fetchAnnouncements();
+      _updateFromFacebook();
     });
 }
 
@@ -39,9 +45,47 @@ function getAnnouncements() {
   return state.announcements;
 }
 
+function _updateFromFacebook() {
+    logger.debug('Updating FB data');
+
+    FB.setAccessToken(state.accessToken);
+
+    const promises = state.eventIds
+      .map(_fetchAttending)
+      .concat(_fetchAnnouncements());
+
+    Promise.all(promises)
+    .then(function(eventData) {
+        logger.debug('Facebook update performed');
+        _.assign(state, eventData);
+    }, function(error) {
+        logger.error('Event info could not be updated', error);
+    });
+}
+
+function _fetchAttending(eventId) {
+  return new Promise((resolve, reject) => {
+
+    FB.api(`/${ eventId }/?fields=attending_count`,
+      function(response) {
+        if (response && !response.error) {
+          logger.debug("Event attending fetched");
+
+          const numAttending = response.attending_count;
+          eventCore.setAttendingCount(eventId, numAttending);
+
+          resolve(numAttending);
+        } else {
+          logger.error("Failed to fetch event attending:", response);
+          reject(response && response.error);
+        }
+      }
+    );
+  });
+}
+
 function _fetchAnnouncements() {
   return new Promise((resolve, reject) => {
-    FB.setAccessToken(state.accessToken);
 
     FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed`,
       function(response) {
@@ -76,7 +120,7 @@ function _getAccessToken() {
         }
         else {
           state.accessToken = _parseAccessTokenFromBody(body);
-          logger.debug('FB Access Token retrieved');
+          logger.info('FB Access Token retrieved');
           return resolve(_extendTokenDuration(state.accessToken));
         }
       }
@@ -99,7 +143,7 @@ function _extendTokenDuration() {
           return reject(body.error);
         }
         else {
-          logger.debug('FB Access Token extended');
+          logger.info('FB Access Token extended');
           state.accessToken = _parseAccessTokenFromBody(body);
           return resolve(state.accessToken);
         }

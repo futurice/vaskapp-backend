@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 const logger = require('../util/logger')(__filename);
@@ -17,6 +18,16 @@ function getEvents() {
   return events;
 }
 
+function setAttendingCount(facebookEventId, attending_count) {
+  const event = _.find(events, { facebookId: facebookEventId });
+  if (!event) {
+    return;
+  }
+
+  event.attending_count = attending_count;
+}
+
 export {
-  getEvents
+  getEvents,
+  setAttendingCount
 };
