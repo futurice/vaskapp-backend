@@ -18,13 +18,13 @@ function getEvents() {
   return events;
 }
 
-function setAttendingCount(facebookEventId, attending_count) {
+function setAttendingCount(facebookEventId, attendingCount) {
   const event = _.find(events, { facebookId: facebookEventId });
   if (!event) {
     return;
   }
 
-  event.attending_count = attending_count;
+  event.attendingCount = attendingCount;
 }
 
 export {

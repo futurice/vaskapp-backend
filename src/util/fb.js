@@ -71,10 +71,10 @@ function _fetchAttending(eventId) {
         if (response && !response.error) {
           logger.debug("Event attending fetched");
 
-          const numAttending = response.attending_count;
-          eventCore.setAttendingCount(eventId, numAttending);
+          const attendingCount = response.attending_count;
+          eventCore.setAttendingCount(eventId, attendingCount);
 
-          resolve(numAttending);
+          resolve(attendingCount);
         } else {
           logger.error("Failed to fetch event attending:", response);
           reject(response && response.error);
