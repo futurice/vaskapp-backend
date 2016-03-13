@@ -50,7 +50,9 @@ function createApp() {
   });
   */
 
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({
+    limit: '20mb'
+  }));
   app.use(cors());
   app.use(compression({
     // Compress everything over 10 bytes
