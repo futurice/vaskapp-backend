@@ -10,7 +10,7 @@ const eventCore = require('../core/event-core');
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
 const ACCOUNT_TO_FOLLOW = "retrowappu2015";
-const REFRESH_INTERVAL = 1 * 60 * 1000; // 1 min
+const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 min
 const FB_CFG = {
   appId:     process.env.FB_APP_ID,
   appSecret: process.env.FB_APP_SECRET,
@@ -59,7 +59,7 @@ function _updateFromFacebook() {
         logger.debug('Facebook update performed');
         _.assign(state, eventData);
     }, function(error) {
-        logger.error('Event info could not be updated', error);
+        logger.error('Facebook info could not be updated', error);
     });
 }
 
@@ -87,14 +87,14 @@ function _fetchAttending(eventId) {
 function _fetchAnnouncements() {
   return new Promise((resolve, reject) => {
 
-    FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed`,
+    FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,picture`,
       function(response) {
         if (response && !response.error) {
           logger.debug("Announcements fetched");
 
           state.announcements = response.data
             .filter(x => !_.isUndefined(x.message))
-            .map(x => _.pick(x, 'message', 'created_time'));
+            .map(x => _.pick(x, 'message', 'created_time', 'picture'));
 
           resolve(response);
         } else {
