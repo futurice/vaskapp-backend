@@ -4,8 +4,10 @@
 
 Dependencies:
 
-* Node 4.x + npm 2.x
-  * *use NPM 2*.x, the current Babel configuration has issues with NPM 3.x and doesn't work ~~properly~~ at all with it
+* Node 4.x or 5.x + npm 2.x
+  
+ *Use NPM 2*.x, the current Babel configuration has issues with NPM 3.x and doesn't work ~~properly~~ at all with it
+
 * Postgres with PostGis extension
 
   [Postgres.app](http://postgresapp.com/) has a built-in support.
@@ -50,7 +52,7 @@ Production environment: https://wappuapp-backend.herokuapp.com
 
 ## Techstack
 
-* Node.js express app
+* Node.js express app. Architecture explained here https://github.com/kimmobrunfeldt/express-example/
 * Written in ES6
 * Winston for logging
 * Postgres
