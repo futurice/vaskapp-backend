@@ -79,15 +79,25 @@ Responses:
 
 * `200 OK`
 
-### `POST /api/users`
+### `PUT /api/users/:uuid`
 
-> Create a new user
+> Create or update a user
 
 Body is one of [user object](#user-object).
 
 Responses:
 
 * `200 OK`
+
+### `GET /api/users/:uuid`
+
+> Get user details
+
+Responses:
+
+* `200 OK` Body is one of [user object](#user-object).
+* `404 Not Found` User not found
+
 
 ### `GET /api/action_types`
 
