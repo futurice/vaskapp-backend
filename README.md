@@ -4,7 +4,8 @@
 
 Dependencies:
 
-* Node + npm
+* Node 4.x + npm 2.x
+  * *use NPM 2*.x, the current Babel configuration has issues with NPM 3.x and doesn't work ~~properly~~ at all with it
 * Postgres with PostGis extension
 
   [Postgres.app](http://postgresapp.com/) has a built-in support.
