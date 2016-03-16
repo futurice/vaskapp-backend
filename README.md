@@ -5,21 +5,42 @@
 Dependencies:
 
 * Node + npm
-* Postgres
+* Postgres with PostGis extension
+
+  [Postgres.app](http://postgresapp.com/) has a built-in support.
+
+  **Note: The command below has been done already for wappuapp-backend app. It is
+  only useful if you create a new Heroku app.**
+
+  You can add Postgis support to Heroku Postgres with:
+  ```
+  heroku pg:psql -a wappuapp-backend
+  create extension postgis;
+  ```
+
 * Heroku toolbelt
 
 Get started:
 
 * `bash ./tools/reset-database.sh`
+
+  If this doesn't work, you can manually run SQL commands from ./tools/init-database.sql
+  in Postgres console.
+
 * `cp .env-sample .env`  
-* `source .env`
+* Fill in the blanks in `.env` file
+
+  Ask details from Kimmo Brunfeldt or Tomi Turtiainen.
+
+* `source .env` or `bash .env`
 
   Or use [autoenv](https://github.com/kennethreitz/autoenv).
 
 * `npm install`
-* `knex migrate:latest`
-* `knex seed:run`
-* `npm start`
+* `npm install -g knex`
+* `knex migrate:latest` Run migrations to local database
+* `knex seed:run` Create seed data to local database
+* `npm start` Start express server locally
 * Server runs at http://localhost:9000
 
 Start using [API endpoints](#api-endpoints).
