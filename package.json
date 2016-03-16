@@ -8,7 +8,8 @@
   "license": "MIT",
   "author": "Futurice Tammerforce <tammerforce@futurice.com> (http://tammerforce.com/)",
   "contributors": [
-    "Tomi Turtiainen <tomi.turtiainen@gmail.com> (http://github.com/tomi)"
+    "Tomi Turtiainen <tomi.turtiainen@gmail.com> (http://github.com/tomi)",
+    "Kimmo Brunfeldt <kimmobrunfeldt@gmail.com> (http://github.com/kimmobrunfeldt)"
   ],
   "dependencies": {
     "babel": "^6.5.2",
