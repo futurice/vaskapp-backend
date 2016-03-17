@@ -5,7 +5,8 @@ const logger = require('../util/logger')(__filename);
 
 function getFeed(opts) {
   opts = _.merge({
-    limit: 20
+    limit: 20,
+
   }, opts);
 
   let sqlString = `SELECT
@@ -70,12 +71,15 @@ function _actionToFeedObject(row) {
       name: row['user_name'],
       team: row['team_name']
     },
-    location: {
-      latitude: row.location.y,
-      longitude: row.location.x
-    },
     createdAt: row['created_at']
   };
+
+  if (row.location) {
+    feedObj.location = {
+      latitude: row.location.y,
+      longitude: row.location.x
+    };
+  }
 
   if (feedObj.type === 'IMAGE') {
     feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
