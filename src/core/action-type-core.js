@@ -19,7 +19,6 @@ function _actionTypeRowToObject(row) {
   };
 }
 
-
 export {
   getActionTypes
 };

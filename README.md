@@ -73,6 +73,42 @@ heroku pg:psql -a wappuapp-backend
 create extension postgis;
 ```
 
+## Common tasks
+
+### Release
+
+Migrations and seeds are automatically run in Heroku when you deploy via git push.
+Migrations are run if knex detects new files in migrations directory.
+Seeds must be replayable, they must be upsert operations so they can be run
+on each push.
+
+1. Commit changes
+2. Check that tests pass, remember to test migrations locally before push
+3. Take manual backup of postgres
+
+    `heroku pg:backups capture --app k-file-storage-prod`
+
+4. Push changes to production environment:
+
+    ```bash
+    git checkout master
+    git pull
+    git push prod
+    ```
+
+    **For testing environments:**
+
+    You can also release a certain local branch. For example releasing from node
+    branch to **dev**: `git push dev my-local-branch:master`.
+
+5. Check that the environment responds and logs(Papertrail) look ok.
+
+  Quick test endpoints:
+  * https://wappuapp-backend.herokuapp.com/api/events
+  * https://wappuapp-backend.herokuapp.com/api/feed
+  * https://wappuapp-backend.herokuapp.com/api/action_types
+
+
 ## API Endpoints
 
 ### `GET /api/events`
