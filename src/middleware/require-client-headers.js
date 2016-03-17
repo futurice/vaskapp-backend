@@ -8,7 +8,9 @@ function createRequireClientHeaders(opts) {
     }
 
     req.client = {
-      uuid: req.headers['x-user-uuid']
+      // If header is not set, set it to "anonymous". It is better then null
+      // because NULL value of uuid in database means system user.
+      uuid: req.headers['x-user-uuid'] || 'anonymous'
     };
 
     next();
