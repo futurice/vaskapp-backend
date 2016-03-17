@@ -18,7 +18,7 @@ const schemas = {
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
-    }).required()
+    })
   },
 
   user: {
