@@ -218,5 +218,81 @@
   {
     "eventName": "Sitsikisat",
     "coverImage": "sitsikisat.jpg"
+  },
+  {
+    "eventName": "Munakisat / The Egg Games",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "MKrabbesitsit",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Supermutavaahtopallomeripainiysärikasari-disco",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Jäynäkisan fuksisarjan jäynien palautus",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Wappuimpro",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Härweleiden oltava valmiina",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Wappuriehan julistus",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Suomen Neidon lakitus",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Teekkarikaste",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Wappufest",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Fuksikulkue",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "WappuWerryttely/Wappu Warm-up",
+    "coverImage": "wappu-intro.jpg"
+  },
+  {
+    "eventName": "Wappu Carnival Xchange",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "SIMAssa! -bileet",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "Sing-along -jatkot",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "Chilipalabileet",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "Aamusillis",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "Wapunkaato",
+    "coverImage": "wappu-bar.jpg"
+  },
+  {
+    "eventName": "Etukellunta",
+    "coverImage": "wappu-intro.jpg"
   }
 ]
