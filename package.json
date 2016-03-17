@@ -58,8 +58,8 @@
   "scripts": {
     "postinstall": "bash ./tools/run-migrations-and-seeds.sh",
     "debug": "babel-node-debug --debug-brk src/index.js",
-    "start": "./.env && nodemon --watch ./src -e js --exec \"babel-node --presets es2015 src/index.js\"",
-    "test": "./.env-test && mocha --compilers js:babel-core/register",
+    "start": "source .env && nodemon --watch ./src -e js --exec \"babel-node --presets es2015 src/index.js\"",
+    "test": "source .env-test && mocha --compilers js:babel-core/register",
     "ci": "bash ./tools/ci.sh",
     "eslint": "eslint --ext .js ./src",
     "jscs": "jscs ./src"

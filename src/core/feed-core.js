@@ -1,12 +1,12 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
+import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
 
 function getFeed(opts) {
   opts = _.merge({
-    limit: 20,
-
+    limit: 20
   }, opts);
 
   let sqlString = `SELECT
@@ -44,18 +44,20 @@ function getFeed(opts) {
       return [];
     }
 
-    return _.map(rows, _actionToFeedObject);
+    return _.map(rows, row => _actionToFeedObject(row, opts.client));
   });
 }
 
-function deleteFeedItem(id, clientUuid) {
+function deleteFeedItem(id, opts) {
+  opts = opts || {};
+
   return knex('actions').delete().where({
     'id': id,
-    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [clientUuid])
+    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [opts.client.uuid])
   })
   .then(deletedCount => {
     if (deletedCount > 1) {
-      logger.error('Deleted feed item', id, 'client uuid:', clientUuid);
+      logger.error('Deleted feed item', id, 'client uuid:', opts.client.uuid);
       throw new Error('Unexpected amount of deletes happened: ' + deletedCount)
     }
 
@@ -63,13 +65,18 @@ function deleteFeedItem(id, clientUuid) {
   });
 }
 
-function _actionToFeedObject(row) {
+function _actionToFeedObject(row, client) {
+  if (!client) {
+    throw new Error('Client information not passed as a parameter');
+  }
+
   var feedObj = {
     id: row['id'],
     type: row['action_type_code'],
     author: {
       name: row['user_name'],
-      team: row['team_name']
+      team: row['team_name'],
+      type: _resolveAuthorType(row, client)
     },
     createdAt: row['created_at']
   };
@@ -88,6 +95,18 @@ function _actionToFeedObject(row) {
   }
 
   return feedObj;
+}
+
+function _resolveAuthorType(row, client) {
+  const rowUserUuid = row['user_uuid'];
+
+  if (rowUserUuid === null) {
+    return CONST.AUTHOR_TYPES.SYSTEM;
+  } else if (rowUserUuid === client.uuid) {
+    return CONST.AUTHOR_TYPES.ME;
+  }
+
+  return CONST.AUTHOR_TYPES.OTHER_USER;
 }
 
 export {

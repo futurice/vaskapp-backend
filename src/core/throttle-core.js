@@ -1,3 +1,7 @@
+// WARNING: This throttle core is creating an local instance state which
+// is not shared between servers. In practice this is acceptable for this use
+// case.
+
 'use strict';
 
 import * as actionTypeCore from './action-type-core';
@@ -38,6 +42,10 @@ function _hasCooldownPassed(cooldownTime, lastExecuted) {
  * given action type.
  */
 function canDoAction(uuid, actionType) {
+	if (process.env.DISABLE_THROTTLE === 'true') {
+		return true;
+	}
+
 	const cacheItem = cache[uuid];
 	if (!cacheItem) {
 		return true;
