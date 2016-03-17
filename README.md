@@ -23,7 +23,7 @@ Dependencies:
 
 * Heroku toolbelt
 
-Get started:
+## Get started
 
 * `bash ./tools/reset-database.sh`
 
@@ -186,9 +186,28 @@ Responses:
 
 Body is one of [one of feed objects](#feed-objects).
 
+Query parameters:
+
+* `beforeId` Return items before this id, can be used for "infinite scroll" in client.
+* `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
+
+Examples:
+
+* Get 30 newest feed items: `GET /api/feed?limit=30`
+* Load 20 more feed items: `GET /api/feed?beforeId=123&limit=20`
+
+    Assuming the id of oldest/last feed item client currently has is `123`.
+
 Responses:
 
 * `200 OK`
+
+
+### `DELETE /api/feed/:id`
+
+> Delete item from feed
+
+`:id` Is the id of an item in the feed.
 
 
 ## Response objects
@@ -284,6 +303,7 @@ Responses:
 
 ```js
 {
+  id: 1,
   location: {
     latitude: -1.2345,
     longitude: 56.2322
@@ -291,8 +311,10 @@ Responses:
   type: "IMAGE",
   createdAt: "2016-04-20T09:00:00.000Z",
   author: {
-    "name": "Nahkasimo",
-    "team": "Sähkökilta"
+    name: "Nahkasimo",
+    team: "Sähkökilta",
+    // Can be 'ME', 'USER', 'SYSTEM'
+    type: "ME"
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }

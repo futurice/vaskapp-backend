@@ -4,8 +4,12 @@ import {GCS_CONFIG} from '../util/gcs';
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
-function getFeed(name) {
-  return knex.raw(`SELECT
+function getFeed(opts) {
+  opts = _.merge({
+    limit: 20
+  }, opts);
+
+  let sqlString = `SELECT
       actions.id as id,
       actions.location as location,
       actions.created_at as created_at,
@@ -13,17 +17,26 @@ function getFeed(name) {
       actions.text as text,
       action_types.code as action_type_code,
       users.name as user_name,
+      users.uuid as user_uuid,
       teams.name as team_name
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
     JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
-      action_types.code = 'IMAGE' OR
-      action_types.code = 'TEXT'
-    ORDER BY actions.created_at DESC
-    LIMIT 100`
-  )
+      (action_types.code = 'IMAGE' OR
+      action_types.code = 'TEXT')`;
+  let params = [];
+
+  if (opts.beforeId) {
+    sqlString += ` AND actions.id < ? `
+    params.push(opts.beforeId);
+  }
+
+  sqlString += `ORDER BY actions.id DESC LIMIT ?`;
+  params.push(opts.limit);
+
+  return knex.raw(sqlString, params)
   .then(result => {
     const rows = result.rows;
 

@@ -24,6 +24,11 @@ const schemas = {
     uuid: common.userUuid.required(),
     name: Joi.string().min(1, 'utf8').max(30, 'utf8').required(),
     team: common.team.required()
+  },
+
+  feedParams: {
+    beforeId: Joi.number().integer().min(0).optional(),
+    limit: Joi.number().integer().min(1).max(100).optional()
   }
 };
 
