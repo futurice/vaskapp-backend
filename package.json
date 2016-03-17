@@ -42,6 +42,7 @@
     "babel-node-debug": "^2.0.0",
     "chai": "^3.5.0",
     "csv": "^0.4.6",
+    "david": "^7.0.1",
     "eslint": "2.2.x",
     "fuse": "^0.4.0",
     "fuse.js": "^2.2.0",
@@ -57,8 +58,8 @@
   "scripts": {
     "postinstall": "bash ./tools/run-migrations-and-seeds.sh",
     "debug": "babel-node-debug --debug-brk src/index.js",
-    "start": "source .env && nodemon --watch ./src -e js --exec \"babel-node --presets es2015 src/index.js\"",
-    "test": "source .env-test && mocha --compilers js:babel-core/register",
+    "start": "./.env && nodemon --watch ./src -e js --exec \"babel-node --presets es2015 src/index.js\"",
+    "test": "./.env-test && mocha --compilers js:babel-core/register",
     "ci": "bash ./tools/ci.sh",
     "eslint": "eslint --ext .js ./src",
     "jscs": "jscs ./src"

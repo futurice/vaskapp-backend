@@ -5,7 +5,7 @@
 Dependencies:
 
 * Node 4.x or 5.x + npm 2.x
-  
+
  *Use NPM 2*.x, the current Babel configuration has issues with NPM 3.x and doesn't work ~~properly~~ at all with it
 
 * Postgres with PostGis extension
@@ -30,8 +30,8 @@ Get started:
   If this doesn't work, you can manually run SQL commands from ./tools/init-database.sql
   in Postgres console.
 
-* `cp .env-sample .env`  
-* Fill in the blanks in `.env` file
+* `cp .env-sample .env && cp .env-test-sample .env-test`  
+* Fill in the blanks in `.env` and `.env-test` files
 
   Ask details from Kimmo Brunfeldt or Tomi Turtiainen.
 
