@@ -18,7 +18,10 @@ function createRouter() {
   router.get('/users/:uuid', userHttp.getUser);
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
+
   router.get('/feed', feedHttp.getFeed);
+  router.delete('/feed/:id', feedHttp.deleteFeedItem);
+
   router.get('/announcements', announcementHttp.getAnnouncements);
 
   return router;

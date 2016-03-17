@@ -313,7 +313,7 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    // Can be 'ME', 'USER', 'SYSTEM'
+    // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
