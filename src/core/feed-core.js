@@ -1,6 +1,7 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
+const logger = require('../util/logger')(__filename);
 
 function getFeed(opts) {
   opts = _.merge({
@@ -46,6 +47,21 @@ function getFeed(opts) {
   });
 }
 
+function deleteFeedItem(id, clientUuid) {
+  return knex('actions').delete().where({
+    'id': id,
+    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [clientUuid])
+  })
+  .then(deletedCount => {
+    if (deletedCount > 1) {
+      logger.error('Deleted feed item', id, 'client uuid:', clientUuid);
+      throw new Error('Unexpected amount of deletes happened: ' + deletedCount)
+    }
+
+    return deletedCount;
+  });
+}
+
 function _actionToFeedObject(row) {
   var feedObj = {
     id: row['id'],
@@ -71,5 +87,6 @@ function _actionToFeedObject(row) {
 }
 
 export {
-  getFeed
+  getFeed,
+  deleteFeedItem
 };

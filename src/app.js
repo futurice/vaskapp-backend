@@ -6,6 +6,7 @@ import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
+import enforceClientHeaders from './middleware/enforce-client-headers';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 
@@ -36,18 +37,7 @@ function createApp() {
     });
   }
 
-  /*
-  app.use(function requireContentType(req, res, next) {
-    const isWriteReq = _.includes(['POST', 'PUT', 'PATCH'], req.method);
-    if (isWriteReq && req.headers['content-type'] !== 'application/json') {
-      const err = new Error('Content-type: application/json is required');
-      err.status = 400;
-      return next(err);
-    }
-
-    next();
-  });
-  */
+  app.use(enforceClientHeaders());
 
   app.use(bodyParser.json({
     limit: '20mb'
@@ -65,8 +55,8 @@ function createApp() {
   app.use(errorLogger({  }));
   app.use(errorResponder());
 
-	// Initialize internal stuff
-	throttleCore.initialize();
+  // Initialize internal stuff
+  throttleCore.initialize();
   fb.initialize();
 
   return app;
