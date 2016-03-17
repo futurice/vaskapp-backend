@@ -169,7 +169,8 @@ Responses:
 ```js
 {
   "id": 1,
-  "name": "Tietoteekkarikilta"
+  "name": "Tietoteekkarikilta",
+  "image_path": "foo.com/path_to_image.jpg"
 }
 ```
 
