@@ -78,10 +78,12 @@ exports.up = function(knex, Promise) {
         .onDelete('RESTRICT')
         .onUpdate('CASCADE');
 
-      table.specificType('location', 'point').notNullable().index('feed_items_index_location', 'GIST');
+      table.specificType('location', 'point').index('feed_items_index_location', 'GIST');
 
       table.string('image_path');
-      table.string('text', 151);
+      table.string('text', 151)
+      // TODO: Should have IN constraint ('TEXT', 'IMAGE', 'CHECK_IN')
+      table.string('type', 10);
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
