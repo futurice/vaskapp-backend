@@ -25,6 +25,11 @@
     "longitude": 23.855597
   },
   {
+    "locationName": "Kampusareena / Etunurtsi",
+    "latitude": 61.449181,
+    "longitude": 23.855597
+  },
+  {
     "locationName": "Etunurtsi / Joku baari",
     "latitude": 0,
     "longitude": 0
@@ -100,9 +105,9 @@
     "longitude": 23.858384
   },
   {
-    "locationName": "Todennäköisesti ravintola hullu poro.",
-    "latitude": 0,
-    "longitude": 0
+    "locationName": "Hullu Poro",
+    "latitude": 61.4954627,
+    "longitude": 23.7640071
   },
   {
     "locationName": "Herwood Stage & Bar",
@@ -163,5 +168,50 @@
     "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
     "latitude": 61.449181,
     "longitude": 23.855597
+  },
+  {
+    "locationName": "Peyton Place",
+    "latitude": 61.4455305,
+    "longitude": 23.8419656
+  },
+  {
+    "locationName": "Union",
+    "latitude": 61.4961882,
+    "longitude": 23.7590199
+  },
+  {
+    "locationName": "Aussie Bar",
+    "latitude": 61.4974951,
+    "longitude": 23.7528606
+  },
+  {
+    "locationName": "Laikun lava",
+    "latitude": 61.4992126,
+    "longitude": 23.7608164
+  },
+  {
+    "locationName": "Ravintola Kaijakka",
+    "latitude": 61.49436,
+    "longitude": 23.7575272
+  },
+  {
+    "locationName": "Hämeensilta",
+    "latitude": 61.498001,
+    "longitude": 23.7613402
+  },
+  {
+    "locationName": "Tillikka",
+    "latitude": 61.4980989,
+    "longitude": 23.7607296
+  },
+  {
+    "locationName": "Sorin aukio",
+    "latitude": 61.4960358,
+    "longitude": 23.7670731
+  },
+  {
+    "locationName": "Tammerkoski -1m",
+    "latitude": 61.4999966,
+    "longitude": 23.762265
   }
 ]
