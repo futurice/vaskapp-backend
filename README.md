@@ -111,6 +111,16 @@ on each push.
 
 ## API Endpoints
 
+**READ THIS:**
+
+* Always use `content-type: application/json` header when doing POST, PUT, PATCH requests
+* All data is transferred in JSON format
+
+  Even images are transferred as base64 strings in JSON. Why?
+  - Why not?
+
+* Be prepared that some of these endpoints are not documented correctly
+
 ### `GET /api/events`
 
 > List events
