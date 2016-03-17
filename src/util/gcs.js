@@ -2,6 +2,8 @@
 
 import streamifier from 'streamifier';
 import * as base64 from './base64';
+const logger = require('./logger')(__filename);
+
 const requireEnvs = require('./require-envs');
 requireEnvs([
   'GCS_PRIVATE_KEY',
@@ -50,7 +52,7 @@ const bucket = gcs.bucket(process.env.GCS_BUCKET_NAME);
 //
 // uploadImage
 function uploadImageBuffer(imageName, imageBuffer) {
-  console.log("Uploading");
+  logger.info("Uploading image to Google Cloud Storage..");
   return new Promise(function(resolve, reject) {
     const file = bucket.file(imageName);
 
