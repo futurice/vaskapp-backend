@@ -6,7 +6,6 @@ function testActions() {
       return request
         .post('/api/actions')
         .send({
-          team: 1,
           user: 'hessu',
           type: 'BEER',
           location: {

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as feedCore from '../core/feed-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
@@ -8,13 +9,16 @@ const getFeed = createJsonRoute(function(req, res) {
     limit: req.query.limit
   }, 'feedParams');
 
-  return feedCore.getFeed(feedParams);
+  const coreParams = _.merge(feedParams, {
+    client: req.client
+  });
+  return feedCore.getFeed(coreParams);
 });
 
 const deleteFeedItem = createJsonRoute(function(req, res) {
   const id = assert(req.params.id, 'common.primaryKeyId');
 
-  return feedCore.deleteFeedItem(id, req.client.uuid)
+  return feedCore.deleteFeedItem(id, req.client)
   .then(deletedCount => {
     if (deletedCount === 0) {
       // NOTE: deletedCount === 0, might also mean "forbidden" because the uuid

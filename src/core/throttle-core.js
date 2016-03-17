@@ -1,3 +1,7 @@
+// WARNING: This throttle core is creating an local instance state which
+// is not shared between servers. In practice this is acceptable for this use
+// case.
+
 'use strict';
 
 import * as actionTypeCore from './action-type-core';
