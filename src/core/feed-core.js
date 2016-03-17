@@ -2,6 +2,8 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
 
+const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
+
 function getFeed(name) {
   return knex.raw(`SELECT
       actions.id as id,
@@ -33,6 +35,34 @@ function getFeed(name) {
   });
 }
 
+function createFeedItem(feedItem, trx) {
+  if (!FEED_ITEM_TYPES.has(feedItem.type)) {
+    throw new Error('Invalid feed item type ' + feedItem.type);
+  }
+
+  const dbRow = {
+    'location':   feedItem.location.longitude + ',' + feedItem.location.latitude,
+    'image_path': feedItem.imagePath,
+    'text':       feedItem.text,
+    'type':       feedItem.type
+  };
+
+  if (feedItem.user) {
+    dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
+  }
+
+  trx = trx || knex;
+
+  return trx.returning('id').insert(dbRow).into('feed_items')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Feed item row creation failed: ' + dbRow);
+      }
+
+      return rows.length;
+    });
+}
+
 function _actionToFeedObject(row) {
   var feedObj = {
     id: row['id'],
@@ -58,5 +88,6 @@ function _actionToFeedObject(row) {
 }
 
 export {
-  getFeed
+  getFeed,
+  createFeedItem
 };
