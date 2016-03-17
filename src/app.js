@@ -6,7 +6,8 @@ import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
-import enforceClientHeaders from './middleware/enforce-client-headers';
+import requireClientHeaders from './middleware/require-client-headers';
+import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 
@@ -37,7 +38,12 @@ function createApp() {
     });
   }
 
-  app.use(enforceClientHeaders());
+  if (process.env.DISABLE_AUTH !== 'true') {
+    // Do not require tokens in development or test env
+    app.use(requireApiToken());
+  }
+
+  app.use(requireClientHeaders());
 
   app.use(bodyParser.json({
     limit: '20mb'
