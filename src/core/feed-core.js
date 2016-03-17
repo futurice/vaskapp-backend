@@ -4,6 +4,7 @@ import {GCS_CONFIG} from '../util/gcs';
 
 function getFeed(name) {
   return knex.raw(`SELECT
+      actions.id as id,
       actions.location as location,
       actions.created_at as created_at,
       actions.image_path as image_path,
@@ -34,6 +35,7 @@ function getFeed(name) {
 
 function _actionToFeedObject(row) {
   var feedObj = {
+    id: row['id'],
     type: row['action_type_code'],
     author: {
       name: row['user_name'],
