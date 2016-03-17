@@ -42,6 +42,10 @@ function _hasCooldownPassed(cooldownTime, lastExecuted) {
  * given action type.
  */
 function canDoAction(uuid, actionType) {
+	if (process.env.DISABLE_THROTTLE === 'true') {
+		return true;
+	}
+
 	const cacheItem = cache[uuid];
 	if (!cacheItem) {
 		return true;
