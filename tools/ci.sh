@@ -22,6 +22,6 @@ npm run jscs || EXIT_STATUS=$?
 npm run eslint || EXIT_STATUS=$?
 
 echo -e "\n--> Running tests..\n"
-npm test || EXIT_STATUS=$?
+mocha --compilers js:babel-core/register || EXIT_STATUS=$?
 
 exit $EXIT_STATUS
