@@ -35,9 +35,24 @@ function getLogFunc(status) {
 }
 
 function logRequestDetails(log, req, status) {
-  log('Request headers:', req.headers);
-  log('Request parameters:', req.params);
-  log('Request body:', req.body);
+  log('Request headers:', deepSupressLongStrings(req.headers));
+  log('Request parameters:', deepSupressLongStrings(req.params));
+  log('Request body:', deepSupressLongStrings(req.body));
+}
+
+function deepSupressLongStrings(obj) {
+  let newObj = {};
+  _.each(obj, (val, key) => {
+    if (_.isString(val) && val.length > 100) {
+      newObj[key] = val.slice(0, 100) + '... [CONTENT SLICED]';
+    } else if (_.isPlainObject(val)) {
+      return deepSupressLongStrings(val);
+    } else {
+      newObj[key] = val;
+    }
+  });
+
+  return newObj;
 }
 
 module.exports = createErrorLogger;
