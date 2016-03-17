@@ -6,13 +6,14 @@ function createAction(action) {
     'team_id': knex.raw('(SELECT team_id from users WHERE uuid = ?)', [action.user]),
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
     'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
-    // Tuple is in longitude, latitude format in Postgis
-    location: action.location.longitude + ',' + action.location.longitude,
-    'image_path': action.imagePath
+    'image_path': action.imagePath,
+    'text': action.text
   };
 
-  if (action.text) {
-    dbRow.text = action.text;
+  const location = action.location;
+  if (location) {
+    // Tuple is in longitude, latitude format in Postgis
+    dbRow.location = location.longitude + ',' + location.longitude;
   }
 
   return knex('actions').returning('*').insert(dbRow)
