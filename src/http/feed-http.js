@@ -18,7 +18,7 @@ const getFeed = createJsonRoute(function(req, res) {
 const deleteFeedItem = createJsonRoute(function(req, res) {
   const id = assert(req.params.id, 'common.primaryKeyId');
 
-  return feedCore.deleteFeedItem(id, req.client)
+  return feedCore.deleteFeedItem(id, {client: req.client})
   .then(deletedCount => {
     if (deletedCount === 0) {
       // NOTE: deletedCount === 0, might also mean "forbidden" because the uuid
