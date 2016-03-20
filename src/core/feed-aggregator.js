@@ -84,14 +84,19 @@ function handleAction(action, trx) {
 }
 
 function feedItemParam(action, text) {
-  return {
-    location: {
-      latitude: action.location.x,
-      longitude: action.location.y
-    },
+  const item = {
     text: text,
     type: 'TEXT'
+  };
+
+  if (action.location) {
+    item.location = {
+      latitude: action.location.x,
+      longitude: action.location.y
+    };
   }
+
+  return item;
 }
 
 function integerDivide(num, denominator) {

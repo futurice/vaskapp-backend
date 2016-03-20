@@ -52,11 +52,16 @@ function createFeedItem(feedItem, trx) {
   }
 
   const dbRow = {
-    'location':   feedItem.location.longitude + ',' + feedItem.location.latitude,
     'image_path': feedItem.imagePath,
     'text':       feedItem.text,
     'type':       feedItem.type
   };
+
+  const location = feedItem.location;
+  if (location) {
+    // Tuple is in longitude, latitude format in Postgis
+    dbRow.location = location.longitude + ',' + location.longitude;
+  }
 
   if (feedItem.user) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
