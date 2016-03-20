@@ -40,8 +40,8 @@ function buildStats(rows) {
 
     const newStats = {
       name: name,
-      beersAggregated: 0,
-      newBeers: 0,
+      drinksAggregated: 0,
+      newDrinks: 0,
       newActions: []
     };
 
@@ -57,11 +57,11 @@ function buildStats(rows) {
     const user = getStats(userStats, row.user_id, row.user_name);
 
     if (row.aggregated) {
-      team.beersAggregated++;
-      user.beersAggregated++;
+      team.drinksAggregated++;
+      user.drinksAggregated++;
     } else {
-      team.newBeers++;
-      user.newBeers++;
+      team.newDrinks++;
+      user.newDrinks++;
 
       team.newActions.push(row);
       user.newActions.push(row);
@@ -133,26 +133,26 @@ function createFeedItemForTeam(feedItem, teamId, newActions) {
   });
 }
 
-function createBeerAggregates(stats) {
+function createDrinkAggregates(stats) {
   const feedItemsToCreate = [];
 
   _.forEach(stats.userStats, (userStats, userId) => {
-    if (userStats.beersAggregated === userStats.newBeers) {
+    if (userStats.drinksAggregated === userStats.newDrinks) {
       return;
     }
 
     const username = userStats.name;
-    const beersBefore = userStats.beersAggregated;
-    const beersAfter  = beersBefore + userStats.newBeers;
+    const drinksBefore = userStats.drinksAggregated;
+    const drinksAfter  = drinksBefore + userStats.newDrinks;
     let feedItem;
 
-    if (beersBefore === 0) {
+    if (drinksBefore === 0) {
       const text = `${ username } starts wappu! Congratulations on the first mead!`;
       feedItem = feedItemParam(userStats.newActions[0], text);
     }
-    else if (integerDivide(beersBefore, 100) !== integerDivide(beersAfter, 100)) {
-      const text = `Such wow. ${ username } has had already ${ integerDivide(beersAfter, 100) * 100 } meads.`;
-      const idx = 100 - beersBefore % 100;
+    else if (integerDivide(drinksBefore, 100) !== integerDivide(drinksAfter, 100)) {
+      const text = `Such wow. ${ username } has had already ${ integerDivide(drinksAfter, 100) * 100 } meads.`;
+      const idx = 100 - drinksBefore % 100;
       feedItem = feedItemParam(userStats.newActions[idx - 1], text);
     }
 
@@ -164,22 +164,22 @@ function createBeerAggregates(stats) {
   });
 
   _.forEach(stats.teamStats, (teamStats, teamId) => {
-    if (teamStats.beersAggregated === teamStats.newBeers) {
+    if (teamStats.drinksAggregated === teamStats.newDrinks) {
       return;
     }
 
     const name = teamStats.name;
-    const beersBefore = teamStats.beersAggregated;
-    const beersAfter  = beersBefore + teamStats.newBeers;
+    const drinksBefore = teamStats.drinksAggregated;
+    const drinksAfter  = drinksBefore + teamStats.newDrinks;
     let feedItem;
 
-    if (beersBefore === 0) {
+    if (drinksBefore === 0) {
       const text = `${ name } starts wappu! Congratulations on the first mead!`;
       feedItem = feedItemParam(teamStats.newActions[0], text);
     }
-    else if (integerDivide(beersBefore, 100) !== integerDivide(beersAfter, 100)) {
-      const text = `Such wow. ${ name } has had already ${ integerDivide(beersAfter, 100) * 100 } meads.`;
-      const idx = 100 - beersBefore % 100;
+    else if (integerDivide(drinksBefore, 100) !== integerDivide(drinksAfter, 100)) {
+      const text = `Such wow. ${ name } has had already ${ integerDivide(drinksAfter, 100) * 100 } meads.`;
+      const idx = 100 - drinksBefore % 100;
       feedItem = feedItemParam(teamStats.newActions[idx - 1], text);
     }
 
@@ -197,7 +197,7 @@ function aggregate() {
   // TODO: It's suboptimal to query all actions on every poll.
   // Should use caching here.
   queryStats()
-    .then(createBeerAggregates);
+    .then(createDrinkAggregates);
 }
 
 let isRunning = false;
