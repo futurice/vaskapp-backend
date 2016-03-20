@@ -61,6 +61,8 @@ exports.up = function(knex, Promise) {
 
       table.string('image_path');
       table.string('text', 151);
+      // Has action been aggregated to feed
+      table.boolean('aggregated').notNullable().defaultTo(false);
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
