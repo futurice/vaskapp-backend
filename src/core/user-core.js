@@ -40,10 +40,8 @@ function updateUser(user) {
 function findByUuid(uuid) {
   return knex('users')
     .select(
-      'users.*',
-      'teams.id as team_id'
+      'users.*'
     )
-    .leftJoin('teams', 'teams.id', 'users.team_id')
     .where({ uuid: uuid })
     .then(rows => {
       if (_.isEmpty(rows)) {
@@ -69,7 +67,7 @@ function _userRowToObject(row) {
     id: row.id,
     name: row.name,
     uuid: row.uuid,
-    team: row['team_id']
+    team: row.team_id
   };
 }
 
