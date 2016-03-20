@@ -10,22 +10,18 @@ function getFeed(opts) {
   }, opts);
 
   let sqlString = `SELECT
-      actions.id as id,
-      actions.location as location,
-      actions.created_at as created_at,
-      actions.image_path as image_path,
-      actions.text as text,
-      action_types.code as action_type_code,
-      users.name as user_name,
+      feed_items.id as id,
+      feed_items.location as location,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name
-    FROM actions
-    JOIN action_types ON action_types.id = actions.action_type_id
-    JOIN users ON users.id = actions.user_id
-    JOIN teams ON teams.id = actions.team_id
-    WHERE
-      (action_types.code = 'IMAGE' OR
-      action_types.code = 'TEXT')`;
+    FROM feed_items
+    LEFT JOIN users ON users.id = feed_items.user_id
+    LEFT JOIN teams ON teams.id = users.team_id`;
   let params = [];
 
   if (opts.beforeId) {
@@ -33,7 +29,7 @@ function getFeed(opts) {
     params.push(opts.beforeId);
   }
 
-  sqlString += `ORDER BY actions.id DESC LIMIT ?`;
+  sqlString += ` ORDER BY feed_items.id DESC LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
