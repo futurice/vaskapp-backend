@@ -304,6 +304,7 @@ Responses:
 ```js
 {
   id: 1,
+  // location is optional so it might be not provided
   location: {
     latitude: -1.2345,
     longitude: 56.2322
@@ -313,13 +314,34 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    // Can be 'ME', 'USER', 'SYSTEM'
+    // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }
 ```
 
+#### Text feed object
+
+```js
+{
+  id: 1,
+  // location is optional so it might be not provided
+  location: {
+    latitude: -1.2345,
+    longitude: 56.2322
+  },
+  type: "TEXT",
+  createdAt: "2016-04-20T09:00:00.000Z",
+  author: {
+    name: "Nahkasimo",
+    team: "Sähkökilta",
+    // Can be 'ME', 'OTHER_USER', 'SYSTEM'
+    type: "ME"
+  },
+  text: "Joujou"
+}
+```
 
 ## Error handling
 

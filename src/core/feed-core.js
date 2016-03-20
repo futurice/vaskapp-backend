@@ -1,6 +1,8 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
+import CONST from '../constants';
+const logger = require('../util/logger')(__filename);
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
@@ -40,7 +42,7 @@ function getFeed(opts) {
       return [];
     }
 
-    return _.map(rows, _actionToFeedObject);
+    return _.map(rows, row => _actionToFeedObject(row, opts.client));
   });
 }
 
@@ -72,20 +74,45 @@ function createFeedItem(feedItem, trx) {
     });
 }
 
-function _actionToFeedObject(row) {
+function deleteFeedItem(id, opts) {
+  opts = opts || {};
+
+  return knex('feed_items').delete().where({
+    'id': id,
+    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [opts.client.uuid])
+  })
+  .then(deletedCount => {
+    if (deletedCount > 1) {
+      logger.error('Deleted feed item', id, 'client uuid:', opts.client.uuid);
+      throw new Error('Unexpected amount of deletes happened: ' + deletedCount)
+    }
+
+    return deletedCount;
+  });
+}
+
+function _actionToFeedObject(row, client) {
+  if (!client) {
+    throw new Error('Client information not passed as a parameter');
+  }
+
   var feedObj = {
     id: row['id'],
     type: row['action_type_code'],
     author: {
       name: row['user_name'],
-      team: row['team_name']
-    },
-    location: {
-      latitude: row.location.y,
-      longitude: row.location.x
+      team: row['team_name'],
+      type: _resolveAuthorType(row, client)
     },
     createdAt: row['created_at']
   };
+
+  if (row.location) {
+    feedObj.location = {
+      latitude: row.location.y,
+      longitude: row.location.x
+    };
+  }
 
   if (feedObj.type === 'IMAGE') {
     feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
@@ -96,7 +123,20 @@ function _actionToFeedObject(row) {
   return feedObj;
 }
 
+function _resolveAuthorType(row, client) {
+  const rowUserUuid = row['user_uuid'];
+
+  if (rowUserUuid === null) {
+    return CONST.AUTHOR_TYPES.SYSTEM;
+  } else if (rowUserUuid === client.uuid) {
+    return CONST.AUTHOR_TYPES.ME;
+  }
+
+  return CONST.AUTHOR_TYPES.OTHER_USER;
+}
+
 export {
   getFeed,
-  createFeedItem
+  createFeedItem,
+  deleteFeedItem
 };

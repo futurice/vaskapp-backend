@@ -6,6 +6,8 @@ import compression from 'compression';
 import createRouter from './routes';
 import errorResponder from './middleware/error-responder';
 import errorLogger from './middleware/error-logger';
+import requireClientHeaders from './middleware/require-client-headers';
+import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 import * as feedAggregator from './core/feed-aggregator';
@@ -37,18 +39,12 @@ function createApp() {
     });
   }
 
-  /*
-  app.use(function requireContentType(req, res, next) {
-    const isWriteReq = _.includes(['POST', 'PUT', 'PATCH'], req.method);
-    if (isWriteReq && req.headers['content-type'] !== 'application/json') {
-      const err = new Error('Content-type: application/json is required');
-      err.status = 400;
-      return next(err);
-    }
+  if (process.env.DISABLE_AUTH !== 'true') {
+    // Do not require tokens in development or test env
+    app.use(requireApiToken());
+  }
 
-    next();
-  });
-  */
+  app.use(requireClientHeaders());
 
   app.use(bodyParser.json({
     limit: '20mb'
@@ -66,8 +62,8 @@ function createApp() {
   app.use(errorLogger({  }));
   app.use(errorResponder());
 
-	// Initialize internal stuff
-	throttleCore.initialize();
+  // Initialize internal stuff
+  throttleCore.initialize();
   fb.initialize();
   feedAggregator.start();
 
