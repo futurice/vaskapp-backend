@@ -5,12 +5,12 @@ function padLeft(toPad, size) {
     let s = toPad + "";
 
     while (s.length < size) {
-			s = "0" + s;
-		}
+      s = "0" + s;
+    }
 
     return s;
 }
 
 export {
-	padLeft
+  padLeft
 };

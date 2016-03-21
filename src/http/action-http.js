@@ -7,13 +7,13 @@ import * as throttleCore from '../core/throttle-core';
 let postAction = createJsonRoute(function(req, res) {
   const action = assert(req.body, 'action');
 
-	if (!throttleCore.canDoAction(action.user, action.type)) {
-		throwStatus(429, `Too many actions of type ${ action.type }`);
-	}
+  if (!throttleCore.canDoAction(action.user, action.type)) {
+    throwStatus(429, `Too many actions of type ${ action.type }`);
+  }
 
-	let handleAction;
+  let handleAction;
   if (action.type === 'IMAGE') {
-		handleAction = imageHttp.postImage(req, res);
+    handleAction = imageHttp.postImage(req, res);
   } else {
     handleAction = actionCore.getActionType(action.type)
     .then(type => {
@@ -26,8 +26,8 @@ let postAction = createJsonRoute(function(req, res) {
     });
   }
 
-	return handleAction
-		.then(() => throttleCore.executeAction(action.user, action.type));
+  return handleAction
+    .then(() => throttleCore.executeAction(action.user, action.type));
 });
 
 export {

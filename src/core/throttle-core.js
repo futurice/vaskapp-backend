@@ -20,21 +20,21 @@ let actionTypeCache;
  * Initializes throttle core, by loading cache
  */
 function initialize() {
-	return actionTypeCore.getActionTypes()
-		.then(types => {
-			actionTypeCache = {};
+  return actionTypeCore.getActionTypes()
+    .then(types => {
+      actionTypeCache = {};
 
-			types.forEach(type => {
-				actionTypeCache[type.code] = type.cooldown;
-			});
-		});
+      types.forEach(type => {
+        actionTypeCache[type.code] = type.cooldown;
+      });
+    });
 }
 
 function _hasCooldownPassed(cooldownTime, lastExecuted) {
-	const timeNow = Date.now();
-	const executeAllowed = lastExecuted + cooldownTime;
+  const timeNow = Date.now();
+  const executeAllowed = lastExecuted + cooldownTime;
 
-	return timeNow >= executeAllowed;
+  return timeNow >= executeAllowed;
 }
 
 /**
@@ -42,44 +42,44 @@ function _hasCooldownPassed(cooldownTime, lastExecuted) {
  * given action type.
  */
 function canDoAction(uuid, actionType) {
-	if (process.env.DISABLE_THROTTLE === 'true') {
-		return true;
-	}
+  if (process.env.DISABLE_THROTTLE === 'true') {
+    return true;
+  }
 
-	const cacheItem = cache[uuid];
-	if (!cacheItem) {
-		return true;
-	}
+  const cacheItem = cache[uuid];
+  if (!cacheItem) {
+    return true;
+  }
 
-	const lastExecuted = cacheItem[actionType];
-	if (!lastExecuted) {
-		return true;
-	}
+  const lastExecuted = cacheItem[actionType];
+  if (!lastExecuted) {
+    return true;
+  }
 
-	const cooldownTime = actionTypeCache[actionType];
-	if (!cooldownTime) {
-		return false;
-	}
+  const cooldownTime = actionTypeCache[actionType];
+  if (!cooldownTime) {
+    return false;
+  }
 
-	return _hasCooldownPassed(cooldownTime, lastExecuted);
+  return _hasCooldownPassed(cooldownTime, lastExecuted);
 }
 
 /**
  * Marks given user's given action as executed as this moment.
  */
 function executeAction(uuid, actiontype) {
-	let cacheItem = cache[uuid];
-	if (!cacheItem) {
-		cacheItem = {};
-		cache[uuid] = cacheItem;
-	}
+  let cacheItem = cache[uuid];
+  if (!cacheItem) {
+    cacheItem = {};
+    cache[uuid] = cacheItem;
+  }
 
-	const timeNow = Date.now();
-	cacheItem[actiontype] = timeNow;
+  const timeNow = Date.now();
+  cacheItem[actiontype] = timeNow;
 }
 
 export {
-	initialize,
-	canDoAction,
-	executeAction
+  initialize,
+  canDoAction,
+  executeAction
 };
