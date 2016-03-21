@@ -180,6 +180,17 @@ Responses:
 * `200 OK`
 
 
+### `GET /api/markers`
+
+> List map markers
+
+Body is list of [marker objects](#marker-object).
+
+Responses:
+
+* `200 OK`
+
+
 ### `GET /api/feed`
 
 > Get list of feed
@@ -260,6 +271,24 @@ Responses:
   "name": "Grab a cider",
   "value": 10,
   "cooldown": 300000
+}
+```
+
+### Marker object
+
+```js
+{
+  location: {
+    latitude: -1.2345,
+    longitude: 56.2322
+  },
+
+  // One of STORE, ALKO, TOILET, TAXI, BAR, RESTAURANT
+  type: "STORE",
+  title: "K-Supermarket Herkkuduo",
+
+  // Optional url
+  url: "http://www.k-supermarket.fi/"
 }
 ```
 

@@ -6,6 +6,7 @@ import * as userHttp from './http/user-http';
 import * as actionTypeHttp from './http/action-type-http';
 import * as feedHttp from './http/feed-http';
 import * as announcementHttp from './http/announcement-http';
+import * as markerHttp from './http/marker-http';
 
 function createRouter() {
   const router = express.Router();
@@ -23,6 +24,8 @@ function createRouter() {
   router.delete('/feed/:id', feedHttp.deleteFeedItem);
 
   router.get('/announcements', announcementHttp.getAnnouncements);
+
+  router.get('/markers', markerHttp.getMarkers);
 
   return router;
 }
