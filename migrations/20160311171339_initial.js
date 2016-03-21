@@ -99,12 +99,12 @@ exports.down = function(knex, Promise) {
     return knex.schema.dropTable('action_types');
   })
   .then(() => {
+    return knex.schema.dropTable('feed_items');
+  })
+  .then(() => {
     return knex.schema.dropTable('users');
   })
   .then(() => {
     return knex.schema.dropTable('teams');
-  })
-  .then(() => {
-    return knex.schema.dropTable('feed');
   });
 };
