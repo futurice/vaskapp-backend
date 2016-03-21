@@ -4,28 +4,26 @@ import {GCS_CONFIG} from '../util/gcs';
 import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
 
+const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
+
 function getFeed(opts) {
   opts = _.merge({
     limit: 20
   }, opts);
 
   let sqlString = `SELECT
-      actions.id as id,
-      actions.location as location,
-      actions.created_at as created_at,
-      actions.image_path as image_path,
-      actions.text as text,
-      action_types.code as action_type_code,
-      users.name as user_name,
+      feed_items.id as id,
+      feed_items.location as location,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name
-    FROM actions
-    JOIN action_types ON action_types.id = actions.action_type_id
-    JOIN users ON users.id = actions.user_id
-    JOIN teams ON teams.id = actions.team_id
-    WHERE
-      (action_types.code = 'IMAGE' OR
-      action_types.code = 'TEXT')`;
+    FROM feed_items
+    LEFT JOIN users ON users.id = feed_items.user_id
+    LEFT JOIN teams ON teams.id = users.team_id`;
   let params = [];
 
   if (opts.beforeId) {
@@ -33,7 +31,7 @@ function getFeed(opts) {
     params.push(opts.beforeId);
   }
 
-  sqlString += `ORDER BY actions.id DESC LIMIT ?`;
+  sqlString += ` ORDER BY feed_items.id DESC LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
@@ -48,10 +46,43 @@ function getFeed(opts) {
   });
 }
 
+function createFeedItem(feedItem, trx) {
+  if (!FEED_ITEM_TYPES.has(feedItem.type)) {
+    throw new Error('Invalid feed item type ' + feedItem.type);
+  }
+
+  const dbRow = {
+    'image_path': feedItem.imagePath,
+    'text':       feedItem.text,
+    'type':       feedItem.type
+  };
+
+  const location = feedItem.location;
+  if (location) {
+    // Tuple is in longitude, latitude format in Postgis
+    dbRow.location = location.longitude + ',' + location.latitude;
+  }
+
+  if (feedItem.user) {
+    dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
+  }
+
+  trx = trx || knex;
+
+  return trx.returning('id').insert(dbRow).into('feed_items')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Feed item row creation failed: ' + dbRow);
+      }
+
+      return rows.length;
+    });
+}
+
 function deleteFeedItem(id, opts) {
   opts = opts || {};
 
-  return knex('actions').delete().where({
+  return knex('feed_items').delete().where({
     'id': id,
     'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [opts.client.uuid])
   })
@@ -111,5 +142,6 @@ function _resolveAuthorType(row, client) {
 
 export {
   getFeed,
+  createFeedItem,
   deleteFeedItem
 };

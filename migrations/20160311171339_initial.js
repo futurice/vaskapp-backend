@@ -37,7 +37,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('actions', function(table) {
       table.bigIncrements('id').primary().index();
 
-      table.integer('user_id').unsigned().notNullable().index();
+      table.integer('user_id').unsigned().index();
       table.foreign('user_id')
         .references('id')
         .inTable('users')
@@ -51,7 +51,7 @@ exports.up = function(knex, Promise) {
         .onDelete('RESTRICT')
         .onUpdate('CASCADE');
 
-      table.specificType('location', 'point').index('index_location', 'GIST');
+      table.specificType('location', 'point').index('actions_index_location', 'GIST');
       table.integer('action_type_id').unsigned().notNullable();
       table.foreign('action_type_id')
         .references('id')
@@ -61,6 +61,31 @@ exports.up = function(knex, Promise) {
 
       table.string('image_path');
       table.string('text', 151);
+      // Has action been aggregated to feed
+      table.boolean('aggregated').notNullable().defaultTo(false);
+
+      table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
+      table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
+    });
+  })
+  .then(() => {
+    return knex.schema.createTable('feed_items', function(table) {
+      table.bigIncrements('id').primary().index();
+
+      // Null for 'system' user
+      table.integer('user_id').unsigned().index();
+      table.foreign('user_id')
+        .references('id')
+        .inTable('users')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE');
+
+      table.specificType('location', 'point').index('feed_items_index_location', 'GIST');
+
+      table.string('image_path');
+      table.string('text', 151)
+      // TODO: Should have IN constraint ('TEXT', 'IMAGE', 'CHECK_IN')
+      table.string('type', 10);
 
       table.timestamp('created_at').index().notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
@@ -78,5 +103,8 @@ exports.down = function(knex, Promise) {
   })
   .then(() => {
     return knex.schema.dropTable('teams');
+  })
+  .then(() => {
+    return knex.schema.dropTable('feed');
   });
 };

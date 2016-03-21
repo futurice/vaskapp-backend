@@ -81,16 +81,16 @@ function autoOrient(imageBuffer) {
 function postImage(req, res) {
   const action = assert(req.body, 'action');
   const image = decodeBase64Image(req.body.imageData);
-  const result = {};
+  const inputData = {};
 
   return getAndValidateActionType(action.type)
     .then(type => {
-      result.type = type;
+      inputData.type = type;
 
       return getAndValidateUser(action.user);
     })
     .then(user => {
-      result.user = user;
+      inputData.user = user;
 
       const fileName = `${ TARGET_FOLDER }/${ padLeft(user.id, 5) }-${ Date.now() }`;
       return uploadImage(fileName, image);

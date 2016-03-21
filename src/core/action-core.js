@@ -1,25 +1,45 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
+import * as feedAggregator from './feed-aggregator';
 
 function createAction(action) {
-  const dbRow = {
-    'team_id': knex.raw('(SELECT team_id from users WHERE uuid = ?)', [action.user]),
+  const actionRow = {
+    'team_id':        knex.raw('(SELECT team_id from users WHERE uuid = ?)', [action.user]),
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
-    'user_id': knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
-    'image_path': action.imagePath,
-    'text': action.text
+    'user_id':        knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
+    'image_path':     action.imagePath,
+    'text':           action.text
   };
 
   const location = action.location;
   if (location) {
     // Tuple is in longitude, latitude format in Postgis
-    dbRow.location = location.longitude + ',' + location.longitude;
+    actionRow.location = location.longitude + ',' + location.latitude;
   }
 
-  return knex('actions').returning('*').insert(dbRow)
+  return knex.transaction(function(trx) {
+    return trx('actions').returning('*').insert(actionRow)
+      .then(rows => {
+        if (_.isEmpty(rows)) {
+          throw new Error('Action row creation failed: ' + actionRow);
+        }
+
+        action.id = rows[0].id;
+        return feedAggregator.handleAction(action, trx);
+      });
+  });
+}
+
+function markAsAggregated(actionId, trx) {
+  trx = trx || knex;
+
+  return trx('actions')
+    .where('id', actionId)
+    .update('aggregated', true)
+    .returning('id')
     .then(rows => {
       if (_.isEmpty(rows)) {
-        throw new Error('Action row creation failed: ' + dbRow);
+        throw new Error('Marking action as aggregated failed: ' + actionId);
       }
 
       return rows.length;
@@ -52,5 +72,6 @@ function _actionTypeRowToObject(row) {
 
 export {
   createAction,
-  getActionType
+  getActionType,
+  markAsAggregated
 };
