@@ -4,6 +4,7 @@ const {knex} = require('../util/database').connect();
 function getMarkers() {
   return knex('markers')
     .select('*')
+    .orderBy('id', 'asc')
     .then(rows => {
       if (_.isEmpty(rows)) {
         return [];
