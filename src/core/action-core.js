@@ -14,7 +14,7 @@ function createAction(action) {
   const location = action.location;
   if (location) {
     // Tuple is in longitude, latitude format in Postgis
-    actionRow.location = location.longitude + ',' + location.longitude;
+    actionRow.location = location.longitude + ',' + location.latitude;
   }
 
   return knex.transaction(function(trx) {

@@ -60,7 +60,7 @@ function createFeedItem(feedItem, trx) {
   const location = feedItem.location;
   if (location) {
     // Tuple is in longitude, latitude format in Postgis
-    dbRow.location = location.longitude + ',' + location.longitude;
+    dbRow.location = location.longitude + ',' + location.latitude;
   }
 
   if (feedItem.user) {

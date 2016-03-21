@@ -3,7 +3,7 @@ import {expect} from 'chai';
 const request = require('./util/request')();
 
 function testActions() {
-  describe('/api/actions', function () {
+  describe('/api/actions', function() {
     it('create beer action', () => {
       return request
         .post('/api/actions')

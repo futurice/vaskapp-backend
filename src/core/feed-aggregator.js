@@ -91,8 +91,8 @@ function feedItemParam(action, text) {
 
   if (action.location) {
     item.location = {
-      latitude: action.location.x,
-      longitude: action.location.y
+      longitude: action.location.x,
+      latitude: action.location.y
     };
   }
 
@@ -147,11 +147,11 @@ function createDrinkAggregates(stats) {
     let feedItem;
 
     if (drinksBefore === 0) {
-      const text = `${ username } starts wappu! Congratulations on the first mead!`;
+      const text = `${ username } starts wappu! Congratulations on the first sima!`;
       feedItem = feedItemParam(userStats.newActions[0], text);
     }
     else if (integerDivide(drinksBefore, 100) !== integerDivide(drinksAfter, 100)) {
-      const text = `Such wow. ${ username } has had already ${ integerDivide(drinksAfter, 100) * 100 } meads.`;
+      const text = `Such wow. ${ username } has had already ${ integerDivide(drinksAfter, 100) * 100 } simas.`;
       const idx = 100 - drinksBefore % 100;
       feedItem = feedItemParam(userStats.newActions[idx - 1], text);
     }
@@ -174,11 +174,11 @@ function createDrinkAggregates(stats) {
     let feedItem;
 
     if (drinksBefore === 0) {
-      const text = `${ name } starts wappu! Congratulations on the first mead!`;
+      const text = `${ name } starts wappu! Congratulations on the first sima!`;
       feedItem = feedItemParam(teamStats.newActions[0], text);
     }
     else if (integerDivide(drinksBefore, 100) !== integerDivide(drinksAfter, 100)) {
-      const text = `Such wow. ${ name } has had already ${ integerDivide(drinksAfter, 100) * 100 } meads.`;
+      const text = `Such wow. ${ name } has had already ${ integerDivide(drinksAfter, 100) * 100 } simas.`;
       const idx = 100 - drinksBefore % 100;
       feedItem = feedItemParam(teamStats.newActions[idx - 1], text);
     }
@@ -209,17 +209,17 @@ function start() {
 
   isRunning = true;
 
-  function aggregateInterval() {
+  function aggregatePoll() {
     try {
       aggregate();
     } catch (error) {
       logger.error(error);
     }
 
-    setInterval(aggregateInterval, 60 * 1000);
+    setTimeout(aggregatePoll, 60 * 1000);
   }
 
-  aggregateInterval();
+  aggregatePoll();
 }
 
 export {
