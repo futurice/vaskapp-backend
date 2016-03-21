@@ -1,0 +1,343 @@
+[
+  {
+    "type": "STORE",
+    "title": "S-Market",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Supermarket Herkkuduo",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Lidl",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Sale",
+    "location": {
+      "latitude": "61.446742",
+      "longitude": "23.854839"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Market Teekkarinkatu",
+    "location": {
+      "latitude": "61.445711",
+      "longitude": "23.843403"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Siwa Hervanta",
+    "location": {
+      "latitude": "61.451205",
+      "longitude": "23.847563"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-market Herkkupuoti",
+    "location": {
+      "latitude": "61.453708",
+      "longitude": "23.842060"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Siwa Ylioppilaankatu",
+    "location": {
+      "latitude": "61.446720",
+      "longitude": "23.832153"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Market Hervanta",
+    "location": {
+      "latitude": "61.441746",
+      "longitude": "23.851433"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Hesburger",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Haitari",
+    "location": {
+      "latitude": "61.451578",
+      "longitude": "23.847831"
+    },
+    "url": "https://pizza-online.fi/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Speakeasy",
+    "location": {
+      "latitude": "61.451578",
+      "longitude": "23.847831"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Subway",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Castello",
+    "location": {
+      "latitude": "61.452045",
+      "longitude": "23.848451"
+    },
+    "url": "https://pizza-online.fi/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Kotipizza & ROLLS",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Pizza Kebab Heval",
+    "location": {
+      "latitude": "61.441746",
+      "longitude": "23.851433"
+    }
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Pizza Service",
+    "location": {
+      "latitude": "61.451999",
+      "longitude": "23.848159"
+    },
+    "url": "https://pizza-online.fi/"
+  },
+  {
+    "type": "STORE",
+    "title": "Lidl",
+    "location": {
+      "latitude": "61.496458",
+      "longitude": "23.757350"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Sokos (S-Market)",
+    "location": {
+      "latitude": "61.497417",
+      "longitude": "23.757768"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Supermarket Kuninkaankulma",
+    "location": {
+      "latitude": "61.500302",
+      "longitude": "23.756013"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Market Tuomiokirkonkatu",
+    "location": {
+      "latitude": "61.497223",
+      "longitude": "23.770644"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Stockmann Herkku",
+    "location": {
+      "latitude": "61.498575",
+      "longitude": "23.770349"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "R-kioski",
+    "location": {
+      "latitude": "61.497774",
+      "longitude": "23.762518"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Tokmanni Tampere",
+    "location": {
+      "latitude": "61.499117",
+      "longitude": "23.759306"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Lidl",
+    "location": {
+      "latitude": "61.500209",
+      "longitude": "23.771529"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "S-market Pendoliino",
+    "location": {
+      "latitude": "61.498145",
+      "longitude": "23.775858"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "Sale Puutarhakatu",
+    "location": {
+      "latitude": "61.498958",
+      "longitude": "23.752621"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "ABC Kaleva 24/7",
+    "location": {
+      "latitude": "61.502108",
+      "longitude": "23.801321"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "ABC Viinikka 24/7",
+    "location": {
+      "latitude": "61.485743",
+      "longitude": "23.777439"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Market Hatanpää 24/7",
+    "location": {
+      "latitude": "61.492046",
+      "longitude": "23.771427"
+    }
+  },
+  {
+    "type": "STORE",
+    "title": "K-Market Satamakatu",
+    "location": {
+      "latitude": "61.494972",
+      "longitude": "23.755091"
+    }
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Hervanta DUO",
+    "location": {
+      "latitude": "61.450978",
+      "longitude": "23.851275"
+    },
+    "url": "http://www.alko.fi/haku/tuotteet/?q=jaloviina&tags="
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Anttila",
+    "location": {
+      "latitude": "61.499208",
+      "longitude": "23.756050"
+    },
+    "url": "http://www.alko.fi/tuotteet/319027/"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Kaleva Prisma",
+    "location": {
+      "latitude": "61.492125",
+      "longitude": "23.819630"
+    },
+    "url": "http://www.alko.fi/tuotteet/117697/"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Koivistonkylä Prisma",
+    "location": {
+      "latitude": "61.467579",
+      "longitude": "23.775010"
+    },
+    "url": "http://www.alko.fi/tuotteet/107076/"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Lielahti Citymarket",
+    "location": {
+      "latitude": "61.515584",
+      "longitude": "23.667874"
+    },
+    "url": "http://www.alko.fi/tuotteet/000132/"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Linnainmaa Prisma",
+    "location": {
+      "latitude": "61.495356",
+      "longitude": "23.881171"
+    },
+    "url": "http://www.alko.fi/haku/tuotteet/?q=alkoholittomat*&tags="
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Sokos",
+    "location": {
+      "latitude": "61.497417",
+      "longitude": "23.757768"
+    },
+    "url": "http://www.alko.fi/haku/tuotteet/?q=kuohuviini"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Stocmann",
+    "location": {
+      "latitude": "61.498575",
+      "longitude": "23.770349"
+    },
+    "url": "http://www.alko.fi/haku/tuotteet/?q=shamppanja&tags="
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Tammela",
+    "location": {
+      "latitude": "61.503209",
+      "longitude": "23.778363"
+    },
+    "url": "www.alko.fi/tuotteet/133287/"
+  },
+  {
+    "type": "ALKO",
+    "title": "Tampere Turtola Citymarket",
+    "location": {
+      "latitude": "61.475938",
+      "longitude": "23.837854"
+    },
+    "url": "http://www.alko.fi/tuotteet/003114/"
+  }
+]
