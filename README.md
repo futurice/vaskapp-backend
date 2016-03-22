@@ -30,7 +30,7 @@ Dependencies:
   If this doesn't work, you can manually run SQL commands from ./tools/init-database.sql
   in Postgres console.
 
-* `cp .env-sample .env && cp .env-test-sample .env-test`  
+* `cp .env-sample .env && cp .env-test-sample .env-test`
 * Fill in the blanks in `.env` and `.env-test` files
 
   Ask details from Kimmo Brunfeldt or Tomi Turtiainen.
@@ -296,7 +296,7 @@ Responses:
 
 #### Basic action object
 
-`type` is one of `BEER`, `CIDER`.
+`type` is one of `SIMA` or `LECTURE`.
 
 ```js
 {
@@ -304,7 +304,7 @@ Responses:
     latitude: -1.2345,
     longitude: 56.2322
   },
-  type: "BEER",
+  type: "SIMA",
   team: 1,
   user: 'UUID'
 }
