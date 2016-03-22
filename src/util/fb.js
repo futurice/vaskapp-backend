@@ -46,7 +46,7 @@ function getAnnouncements() {
 }
 
 function _updateFromFacebook() {
-    logger.debug('Updating FB data');
+    logger.info('Updating FB data');
 
     FB.setAccessToken(state.accessToken);
 
@@ -56,7 +56,7 @@ function _updateFromFacebook() {
 
     Promise.all(promises)
     .then(function(eventData) {
-        logger.debug('Facebook update performed');
+        logger.info('Facebook update performed');
         _.assign(state, eventData);
     }, function(error) {
         logger.error('Facebook info could not be updated', error);
@@ -69,7 +69,7 @@ function _fetchAttending(eventId) {
     FB.api(`/${ eventId }/?fields=attending_count`,
       function(response) {
         if (response && !response.error) {
-          logger.debug("Event attending fetched");
+          logger.info("Event attending fetched");
 
           const attendingCount = response.attending_count;
           eventCore.setAttendingCount(eventId, attendingCount);
@@ -90,7 +90,7 @@ function _fetchAnnouncements() {
     FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,picture`,
       function(response) {
         if (response && !response.error) {
-          logger.debug("Announcements fetched");
+          logger.info("Announcements fetched");
 
           state.announcements = response.data
             .filter(x => !_.isUndefined(x.message))
