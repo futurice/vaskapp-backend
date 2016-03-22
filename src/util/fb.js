@@ -9,7 +9,7 @@ const eventCore = require('../core/event-core');
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
-const ACCOUNT_TO_FOLLOW = "retrowappu2015";
+const ACCOUNT_TO_FOLLOW = process.env.FB_PAGE_ID || "retrowappu2015";
 const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 min
 const FB_CFG = {
   appId:     process.env.FB_APP_ID,
