@@ -18,7 +18,7 @@ function queryStats() {
     JOIN action_types ON action_types.id = actions.action_type_id
     JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
-    WHERE action_types.code = 'BEER'
+    WHERE action_types.code = 'SIMA'
     ORDER BY id`;
 
   return knex.raw(sqlString)

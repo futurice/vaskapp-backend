@@ -11,17 +11,8 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 2,
-      code: 'BEER',
-      name: 'Grab a beer',
-      value: 5,
-      cooldown: 5 * 60 * 1000
-    });
-  })
-  .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
-      id: 3,
-      code: 'CIDER',
-      name: 'Grab a cider',
+      code: 'SIMA',
+      name: 'Grab a sima',
       value: 5,
       cooldown: 5 * 60 * 1000
     });
@@ -29,10 +20,10 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 4,
-      code: 'SODA',
-      name: 'I had soda',
-      value: 5,
-      cooldown: 5 * 60 * 1000
+      code: 'LECTURE',
+      name: 'At a lecture',
+      value: 200,
+      cooldown: 45 * 60 * 1000
     });
   })
   .then(() => {

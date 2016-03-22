@@ -4,13 +4,13 @@ const request = require('./util/request')();
 
 function testActions() {
   describe('/api/actions', function() {
-    it('create beer action', () => {
+    it('create sima action', () => {
       return request
         .post('/api/actions')
         .set('x-user-uuid', 'hessu')
         .send({
           user: 'hessu',
-          type: 'BEER',
+          type: 'SIMA',
           location: {
             latitude: 0,
             longitude: 0
