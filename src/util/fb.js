@@ -86,15 +86,20 @@ function _fetchAttending(eventId) {
 
 function _fetchAnnouncements() {
   return new Promise((resolve, reject) => {
-
-    FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,picture`,
+    FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,full_picture`,
       function(response) {
         if (response && !response.error) {
           logger.info("Announcements fetched");
 
           state.announcements = response.data
             .filter(x => !_.isUndefined(x.message))
-            .map(x => _.pick(x, 'message', 'created_time', 'picture'));
+            .map(x => {
+              return {
+                message: x.message,
+                created_time: x.created_time,
+                picture: x.full_picture
+              };
+            });
 
           resolve(response);
         } else {
