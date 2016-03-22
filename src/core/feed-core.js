@@ -27,7 +27,7 @@ function getFeed(opts) {
   let params = [];
 
   if (opts.beforeId) {
-    sqlString += ` AND actions.id < ? `
+    sqlString += ` AND feed_items.id < ? `
     params.push(opts.beforeId);
   }
 
