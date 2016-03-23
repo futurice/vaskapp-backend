@@ -24,6 +24,7 @@ function _markerRowToObject(row) {
     },
     type: row.type,
     title: row.title,
+    subtitle: row.subtitle
   };
 
   if (row.url) {
