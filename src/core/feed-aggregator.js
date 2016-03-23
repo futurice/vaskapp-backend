@@ -21,6 +21,10 @@ function passesPoint(begin, end, point) {
   return integerDivide(begin, point) !== integerDivide(end, point)
 }
 
+function integerDivide(num, denominator) {
+  return Math.floor(num / denominator);
+}
+
 function Stats(name) {
   const newActions = [];
   let scoreBefore  = 0;
@@ -204,15 +208,6 @@ function buildStats(rows) {
   };
 }
 
-function handleAction(action, trx) {
-  if (action.type === 'IMAGE' || action.type === 'TEXT') {
-    // Don't mark it as aggregated so that score can be counted
-    return createFeedItem(action, trx);
-  }
-
-  return Promise.resolve();
-}
-
 function feedItemParam(action, text) {
   const item = {
     text: text,
@@ -227,10 +222,6 @@ function feedItemParam(action, text) {
   }
 
   return item;
-}
-
-function integerDivide(num, denominator) {
-  return Math.floor(num / denominator);
 }
 
 function createDrinkAggregates(allStats) {
@@ -364,6 +355,15 @@ function start() {
   }
 
   aggregatePoll();
+}
+
+function handleAction(action, trx) {
+  if (action.type === 'IMAGE' || action.type === 'TEXT') {
+    // Don't mark it as aggregated so that score can be counted
+    return createFeedItem(action, trx);
+  }
+
+  return Promise.resolve();
 }
 
 export {
