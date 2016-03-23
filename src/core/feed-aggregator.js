@@ -17,8 +17,8 @@ function roundTo(n, target) {
   return integerDivide(n, target) * target;
 }
 
-function passesPoint(start, end, point) {
-  return integerDivide(start, point) !== integerDivide(end, point)
+function passesPoint(begin, end, point) {
+  return integerDivide(begin, point) !== integerDivide(end, point)
 }
 
 function Stats(name) {
