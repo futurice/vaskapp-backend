@@ -36,11 +36,12 @@ function main() {
         location: {
           latitude: row[2].split(',')[0].trim(),
           longitude: row[2].split(',')[1].trim(),
-        }
+        },
+        subtitle: row[3]
       };
 
-      if (row[3]) {
-        marker.url = row[3];
+      if (row[4]) {
+        marker.url = row[4];
       }
 
       return marker;

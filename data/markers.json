@@ -5,7 +5,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -13,7 +14,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -21,7 +23,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -29,7 +32,8 @@
     "location": {
       "latitude": "61.446742",
       "longitude": "23.854839"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -37,7 +41,8 @@
     "location": {
       "latitude": "61.445711",
       "longitude": "23.843403"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -45,7 +50,8 @@
     "location": {
       "latitude": "61.451205",
       "longitude": "23.847563"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -53,7 +59,8 @@
     "location": {
       "latitude": "61.453708",
       "longitude": "23.842060"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -61,7 +68,8 @@
     "location": {
       "latitude": "61.446720",
       "longitude": "23.832153"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -69,7 +77,8 @@
     "location": {
       "latitude": "61.441746",
       "longitude": "23.851433"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "RESTAURANT",
@@ -77,7 +86,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Fast food"
   },
   {
     "type": "RESTAURANT",
@@ -86,7 +96,8 @@
       "latitude": "61.451578",
       "longitude": "23.847831"
     },
-    "url": "https://pizza-online.fi/"
+    "subtitle": "Pizza & Kebab",
+    "url": "http://www.ravintolahaitari.fi/"
   },
   {
     "type": "RESTAURANT",
@@ -94,7 +105,8 @@
     "location": {
       "latitude": "61.451578",
       "longitude": "23.847831"
-    }
+    },
+    "subtitle": "Wings"
   },
   {
     "type": "RESTAURANT",
@@ -102,7 +114,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Fast food"
   },
   {
     "type": "RESTAURANT",
@@ -111,6 +124,7 @@
       "latitude": "61.452045",
       "longitude": "23.848451"
     },
+    "subtitle": "Pizza & Kebab",
     "url": "https://pizza-online.fi/"
   },
   {
@@ -119,7 +133,8 @@
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
-    }
+    },
+    "subtitle": "Pizza"
   },
   {
     "type": "RESTAURANT",
@@ -127,7 +142,8 @@
     "location": {
       "latitude": "61.441746",
       "longitude": "23.851433"
-    }
+    },
+    "subtitle": "Pizza & Kebab"
   },
   {
     "type": "RESTAURANT",
@@ -136,6 +152,7 @@
       "latitude": "61.451999",
       "longitude": "23.848159"
     },
+    "subtitle": "Pizza & Kebab",
     "url": "https://pizza-online.fi/"
   },
   {
@@ -144,7 +161,8 @@
     "location": {
       "latitude": "61.496458",
       "longitude": "23.757350"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -152,7 +170,8 @@
     "location": {
       "latitude": "61.497417",
       "longitude": "23.757768"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -160,7 +179,8 @@
     "location": {
       "latitude": "61.500302",
       "longitude": "23.756013"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -168,7 +188,8 @@
     "location": {
       "latitude": "61.497223",
       "longitude": "23.770644"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -176,7 +197,8 @@
     "location": {
       "latitude": "61.498575",
       "longitude": "23.770349"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -184,15 +206,8 @@
     "location": {
       "latitude": "61.497774",
       "longitude": "23.762518"
-    }
-  },
-  {
-    "type": "STORE",
-    "title": "Tokmanni Tampere",
-    "location": {
-      "latitude": "61.499117",
-      "longitude": "23.759306"
-    }
+    },
+    "subtitle": "Kiosk"
   },
   {
     "type": "STORE",
@@ -200,7 +215,8 @@
     "location": {
       "latitude": "61.500209",
       "longitude": "23.771529"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -208,7 +224,8 @@
     "location": {
       "latitude": "61.498145",
       "longitude": "23.775858"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -216,7 +233,8 @@
     "location": {
       "latitude": "61.498958",
       "longitude": "23.752621"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -224,7 +242,8 @@
     "location": {
       "latitude": "61.502108",
       "longitude": "23.801321"
-    }
+    },
+    "subtitle": "Convenience store"
   },
   {
     "type": "STORE",
@@ -232,7 +251,8 @@
     "location": {
       "latitude": "61.485743",
       "longitude": "23.777439"
-    }
+    },
+    "subtitle": "Convenience store"
   },
   {
     "type": "STORE",
@@ -240,7 +260,8 @@
     "location": {
       "latitude": "61.492046",
       "longitude": "23.771427"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "STORE",
@@ -248,7 +269,8 @@
     "location": {
       "latitude": "61.494972",
       "longitude": "23.755091"
-    }
+    },
+    "subtitle": "Grocery store"
   },
   {
     "type": "ALKO",
@@ -257,7 +279,8 @@
       "latitude": "61.450978",
       "longitude": "23.851275"
     },
-    "url": "http://www.alko.fi/haku/tuotteet/?q=jaloviina&tags="
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2470/"
   },
   {
     "type": "ALKO",
@@ -266,7 +289,8 @@
       "latitude": "61.499208",
       "longitude": "23.756050"
     },
-    "url": "http://www.alko.fi/tuotteet/319027/"
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2461/"
   },
   {
     "type": "ALKO",
@@ -275,7 +299,8 @@
       "latitude": "61.492125",
       "longitude": "23.819630"
     },
-    "url": "http://www.alko.fi/tuotteet/117697/"
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2463"
   },
   {
     "type": "ALKO",
@@ -284,25 +309,8 @@
       "latitude": "61.467579",
       "longitude": "23.775010"
     },
-    "url": "http://www.alko.fi/tuotteet/107076/"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Lielahti Citymarket",
-    "location": {
-      "latitude": "61.515584",
-      "longitude": "23.667874"
-    },
-    "url": "http://www.alko.fi/tuotteet/000132/"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Linnainmaa Prisma",
-    "location": {
-      "latitude": "61.495356",
-      "longitude": "23.881171"
-    },
-    "url": "http://www.alko.fi/haku/tuotteet/?q=alkoholittomat*&tags="
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2466"
   },
   {
     "type": "ALKO",
@@ -311,7 +319,8 @@
       "latitude": "61.497417",
       "longitude": "23.757768"
     },
-    "url": "http://www.alko.fi/haku/tuotteet/?q=kuohuviini"
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2464"
   },
   {
     "type": "ALKO",
@@ -320,7 +329,8 @@
       "latitude": "61.498575",
       "longitude": "23.770349"
     },
-    "url": "http://www.alko.fi/haku/tuotteet/?q=shamppanja&tags="
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2462"
   },
   {
     "type": "ALKO",
@@ -329,7 +339,8 @@
       "latitude": "61.503209",
       "longitude": "23.778363"
     },
-    "url": "www.alko.fi/tuotteet/133287/"
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2465"
   },
   {
     "type": "ALKO",
@@ -338,6 +349,7 @@
       "latitude": "61.475938",
       "longitude": "23.837854"
     },
-    "url": "http://www.alko.fi/tuotteet/003114/"
+    "subtitle": "Alko",
+    "url": "http://www.alko.fi/en/shops-services/2472"
   }
 ]

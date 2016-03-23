@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary().index();
     table.string('type').notNullable();
     table.string('title').notNullable();
+    table.string('subtitle').notNullable();
     table.specificType('location', 'point').notNullable().index('markers_location_index', 'GIST');
     table.string('url');
   });
