@@ -2,8 +2,8 @@ import _ from 'lodash';
 const BPromise = require("bluebird");
 const logger = require('../util/logger')(__filename);
 const {knex} = require('../util/database').connect();
-import {createFeedItem} from './feed-core';
-import {markAsAggregated} from './action-core';
+import {createFeedItem} from '../core/feed-core';
+import {markAsAggregated} from '../core/action-core';
 
 const SIMA_REPORT_INTERVAL = 100;
 const SCORE_REPORT_INTERVAL = 1000;
@@ -23,6 +23,37 @@ function passesPoint(begin, end, point) {
 
 function integerDivide(num, denominator) {
   return Math.floor(num / denominator);
+}
+
+function arrayRandom(array) {
+  const randomizedIndex = Math.round(Math.random() * (array.length - 1));
+  return array[randomizedIndex];
+}
+
+function generateTeamScoreMessage(team, points) {
+  const teamPraises = [
+    "Jeden tag so schnell! <team> is now at <points> points!",
+    "Look at <team>! They just crossed <points> points!",
+    "Those fine folks at <team> just can't stop. <points> points already!",
+    "<team> might have some issues with breathalyzer tests, considering their <points> points"
+  ];
+
+  const praise = arrayRandom(teamPraises);
+  return praise.replace("<team>", team).replace("<points>", points);
+}
+
+function generateUserScoreMessage(name, points) {
+  const userPraises = [
+    "Jeden tag so schnell! <name> is now at <points> points!",
+    "<name> must be really thirsty! She's at <points> points.",
+    "That <name> just keeps on scoring. <points> already!",
+    "Keep <name> away from the bar. He’s at <points> points already.",
+    "<name> must have received a shipment from Estonia. She’s chugging at <points> points already",
+    "<name> has gone full Sokka irti with <points> points",
+  ];
+
+  const praise = arrayRandom(userPraises);
+  return praise.replace("<name>", name).replace("<points>", points);
 }
 
 function Stats(name) {
@@ -272,11 +303,11 @@ function createScoreAggregates(allStats) {
   const feedItems = [];
   const actionIds = [];
 
-  const createScoreFeedItems = function(stats) {
+  const createScoreFeedItems = function(stats, msgGenerator) {
     _.forEach(stats, itemStats => {
       const scoreBefore = itemStats.scoreBefore;
       const scoreAfter  = itemStats.scoreAfter;
-      const username    = itemStats.name;
+      const name        = itemStats.name;
 
       if (scoreBefore === scoreAfter) {
         return;
@@ -286,7 +317,7 @@ function createScoreAggregates(allStats) {
 
       if (passesPoint(scoreBefore, scoreAfter, SCORE_REPORT_INTERVAL)) {
         const points = roundTo(scoreAfter, SCORE_REPORT_INTERVAL);
-        const text = `Oh my. ${ username } has already gathered ${ points } points.`;
+        const text = msgGenerator(name, points);
         // Let's cheat a little and assume last action was the one
         feedItem = feedItemParam(itemStats.getLastAction(), text);
       }
@@ -298,8 +329,8 @@ function createScoreAggregates(allStats) {
     });
   }
 
-  createScoreFeedItems(allStats.userStats);
-  createScoreFeedItems(allStats.teamStats);
+  createScoreFeedItems(allStats.userStats, generateUserScoreMessage);
+  createScoreFeedItems(allStats.teamStats, generateTeamScoreMessage);
 
   return {
     feedItems,
@@ -357,16 +388,6 @@ function start() {
   aggregatePoll();
 }
 
-function handleAction(action, trx) {
-  if (action.type === 'IMAGE' || action.type === 'TEXT') {
-    // Don't mark it as aggregated so that score can be counted
-    return createFeedItem(action, trx);
-  }
-
-  return Promise.resolve();
-}
-
 export {
-  start,
-  handleAction
+  start
 };
