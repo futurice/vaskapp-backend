@@ -6,7 +6,6 @@ import * as throttleCore from '../core/throttle-core';
 
 let postAction = createJsonRoute(function(req, res) {
   const action = assert(req.body, 'action');
-  action.ip = req.ip;
 
   if (!throttleCore.canDoAction(action.user, action.type)) {
     throwStatus(429, `Too many actions of type ${ action.type }`);
@@ -16,6 +15,8 @@ let postAction = createJsonRoute(function(req, res) {
   if (action.type === 'IMAGE') {
     handleAction = imageHttp.postImage(req, res, action);
   } else {
+    action.ip = req.ip;
+
     handleAction = actionCore.getActionType(action.type)
     .then(type => {
         if (type === null) {
