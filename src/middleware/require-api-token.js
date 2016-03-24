@@ -1,15 +1,19 @@
+const _ = require('lodash');
 const requireEnvs = require('../util/require-envs');
 requireEnvs(['API_TOKEN']);
 
+var validTokens = process.env.API_TOKEN.split(',');
+
 function createRequireApiToken(opts) {
   return function requireApiToken(req, res, next) {
-    if (req.headers['x-token'] === process.env.API_TOKEN) {
-      return next();
+    var userToken = req.headers['x-token'];
+    if (!_.includes(validTokens, userToken)) {
+      var err = new Error('Invalid API token in x-token header.');
+      err.status = 401;
+      return next(err);
     }
 
-    const err = new Error('Incorrect x-token header');
-    err.status = 401;
-    return next(err);
+    next();
   };
 }
 
