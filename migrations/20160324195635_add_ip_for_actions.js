@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.table('actions', function(table) {
-    table.string('ip', 15);
+    table.string('ip', 30);
   });
 };
 
