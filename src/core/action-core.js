@@ -8,7 +8,8 @@ function createAction(action) {
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
     'user_id':        knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     'image_path':     action.imagePath,
-    'text':           action.text
+    'text':           action.text,
+    'ip':             action.ip
   };
 
   const location = action.location;
