@@ -63,6 +63,7 @@ function createFeedItem(feedItem, trx) {
     dbRow.location = location.longitude + ',' + location.latitude;
   }
 
+  // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
   if (feedItem.user) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
   }

@@ -14,17 +14,17 @@ const logger = require('../util/logger')(__filename);
 
 const gm = require('gm').subClass({ imageMagick: true });
 
-const TARGET_FOLDER = "user_content";
+const TARGET_FOLDER = 'user_content';
 const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/gif', 'image/png']);
 
 function getAndValidateActionType(typeName) {
   return actionCore.getActionType(typeName)
     .then(type => {
-        if (type === null) {
-          throwStatus(400, `Action type ${ typeName } does not exist`);
-        }
+      if (type === null) {
+        throwStatus(400, `Action type ${ typeName } does not exist`);
+      }
 
-        return type;
+      return type;
     });
 }
 
@@ -40,7 +40,7 @@ function getAndValidateUser(uuid) {
 }
 
 function uploadImage(imageName, imageFile) {
-  logger.info("Uploading", imageName);
+  logger.info('Uploading', imageName);
 
   return Promise.resolve()
     .then(() => validateMimeType(imageFile.mimetype))

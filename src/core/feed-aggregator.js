@@ -1,5 +1,6 @@
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 import _ from 'lodash';
-const BPromise = require("bluebird");
+const BPromise = require('bluebird');
 const logger = require('../util/logger')(__filename);
 const {knex} = require('../util/database').connect();
 import {createFeedItem} from './feed-core';
@@ -267,7 +268,6 @@ function createDrinkAggregates(allStats) {
   };
 }
 
-
 function createScoreAggregates(allStats) {
   const feedItems = [];
   const actionIds = [];
@@ -339,7 +339,7 @@ let isRunning = false;
 
 function start() {
   if (isRunning) {
-    throw new Error("Already running");
+    throw new Error('Already running');
   }
 
   isRunning = true;

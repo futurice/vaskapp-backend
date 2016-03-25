@@ -26,21 +26,21 @@ const GCS_CONFIG = {
   bucketName: process.env.GCS_BUCKET_NAME,
   baseUrl: 'https://storage.googleapis.com',
 
-  "type": process.env.GCS_TYPE,
-  "projectId": process.env.GCS_PROJECT_ID,
-  "project_id": process.env.GCS_PROJECT_ID,
-  "private_key_id": process.env.GCS_PRIVATE_KEY_ID,
-  "private_key": process.env.GCS_PRIVATE_KEY,
-  "client_email": process.env.GCS_CLIENT_EMAIL,
-  "client_id": process.env.GCS_CLIENT_ID,
-  "auth_uri": process.env.GCS_AUTH_URI,
-  "token_uri": process.env.GCS_TOKEN_URI,
-  "auth_provider_x509_cert_url": process.env.GCS_AUTH_PROVIDER_X509_CERT_URL,
-  "client_x509_cert_url": process.env.GCS_CLIENT_X509_CERT_URL,
+  'type': process.env.GCS_TYPE,
+  'projectId': process.env.GCS_PROJECT_ID,
+  'project_id': process.env.GCS_PROJECT_ID,
+  'private_key_id': process.env.GCS_PRIVATE_KEY_ID,
+  'private_key': process.env.GCS_PRIVATE_KEY,
+  'client_email': process.env.GCS_CLIENT_EMAIL,
+  'client_id': process.env.GCS_CLIENT_ID,
+  'auth_uri': process.env.GCS_AUTH_URI,
+  'token_uri': process.env.GCS_TOKEN_URI,
+  'auth_provider_x509_cert_url': process.env.GCS_AUTH_PROVIDER_X509_CERT_URL,
+  'client_x509_cert_url': process.env.GCS_CLIENT_X509_CERT_URL,
 
   credentials: {
-    "private_key": PRIVATE_KEY,
-    "client_email": process.env.GCS_CLIENT_EMAIL
+    'private_key': PRIVATE_KEY,
+    'client_email': process.env.GCS_CLIENT_EMAIL
   }
 };
 const gcloud = require('gcloud')(GCS_CONFIG);
@@ -52,7 +52,7 @@ const bucket = gcs.bucket(process.env.GCS_BUCKET_NAME);
 //
 // uploadImage
 function uploadImageBuffer(imageName, imageBuffer) {
-  logger.info("Uploading image to Google Cloud Storage..");
+  logger.info('Uploading image to Google Cloud Storage..');
   return new Promise(function(resolve, reject) {
     const file = bucket.file(imageName);
 

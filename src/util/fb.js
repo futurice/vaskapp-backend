@@ -1,3 +1,4 @@
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 'use strict';
 
 const _ = require('lodash');
@@ -9,7 +10,7 @@ const eventCore = require('../core/event-core');
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
-const ACCOUNT_TO_FOLLOW = process.env.FB_PAGE_ID || "retrowappu2015";
+const ACCOUNT_TO_FOLLOW = process.env.FB_PAGE_ID || 'retrowappu2015';
 const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 min
 const FB_CFG = {
   appId:     process.env.FB_APP_ID,
@@ -46,20 +47,20 @@ function getAnnouncements() {
 }
 
 function _updateFromFacebook() {
-    logger.info('Updating FB data');
+  logger.info('Updating FB data');
 
-    FB.setAccessToken(state.accessToken);
+  FB.setAccessToken(state.accessToken);
 
-    const promises = state.eventIds
-      .map(_fetchAttending)
-      .concat(_fetchAnnouncements());
+  const promises = state.eventIds
+    .map(_fetchAttending)
+    .concat(_fetchAnnouncements());
 
-    Promise.all(promises)
+  Promise.all(promises)
     .then(function(eventData) {
-        logger.info('Facebook update performed');
-        _.assign(state, eventData);
+      logger.info('Facebook update performed');
+      _.assign(state, eventData);
     }, function(error) {
-        logger.error('Facebook info could not be updated', error);
+      logger.error('Facebook info could not be updated', error);
     });
 }
 
@@ -69,14 +70,14 @@ function _fetchAttending(eventId) {
     FB.api(`/${ eventId }/?fields=attending_count`,
       function(response) {
         if (response && !response.error) {
-          logger.info("Event attending fetched");
+          logger.info('Event attending fetched');
 
           const attendingCount = response.attending_count;
           eventCore.setAttendingCount(eventId, attendingCount);
 
           resolve(attendingCount);
         } else {
-          logger.error("Failed to fetch event attending:", response);
+          logger.error('Failed to fetch event attending:', response);
           reject(response && response.error);
         }
       }
@@ -89,7 +90,7 @@ function _fetchAnnouncements() {
     FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,full_picture`,
       function(response) {
         if (response && !response.error) {
-          logger.info("Announcements fetched");
+          logger.info('Announcements fetched');
 
           state.announcements = response.data
             .filter(x => !_.isUndefined(x.message))
@@ -103,7 +104,7 @@ function _fetchAnnouncements() {
 
           resolve(response);
         } else {
-          logger.error("Failed to fetch announcements:", response);
+          logger.error('Failed to fetch announcements:', response);
           reject(response && response.error);
         }
       }

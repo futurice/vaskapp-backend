@@ -19,12 +19,12 @@ let postAction = createJsonRoute(function(req, res) {
 
     handleAction = actionCore.getActionType(action.type)
     .then(type => {
-        if (type === null) {
-            throwStatus(400, 'Action type ' + action.type + ' does not exist');
-        }
+      if (type === null) {
+        throwStatus(400, 'Action type ' + action.type + ' does not exist');
+      }
     })
     .then(() => {
-        return actionCore.createAction(action).then(rowsInserted => undefined);
+      return actionCore.createAction(action).then(rowsInserted => undefined);
     });
   }
 

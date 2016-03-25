@@ -62,6 +62,7 @@ function _makeUserDbRow(user) {
   return dbRow;
 }
 
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 function _userRowToObject(row) {
   return {
     id: row.id,
