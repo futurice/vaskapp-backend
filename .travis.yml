@@ -18,6 +18,7 @@ before_install:
 
 before_script:
   - psql -a -f ./tools/init-database.sql -U postgres
+  - bash ./tools/knex-down-up.sh
   - npm install
 
 script:
