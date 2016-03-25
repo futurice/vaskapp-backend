@@ -6,7 +6,7 @@ const {knex} = require('../util/database').connect();
 import {createFeedItem} from '../core/feed-core';
 import {markAsAggregated} from '../core/action-core';
 
-const SIMA_REPORT_INTERVAL = 100;
+const SIMA_REPORT_INTERVAL = 50;
 const SCORE_REPORT_INTERVAL = 1000;
 const POLL_INTERVAL = 60 * 1000; // 1 min
 
