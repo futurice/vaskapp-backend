@@ -11,10 +11,14 @@ before_script:
   - psql -U postgres -c "create extension postgis"
 
 before_install:
-   - npm install -g npm@'2.x.x'
+  - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-fi
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql start 9.4
+  - npm install -g npm@'2.x.x'
 
 before_script:
   - psql -a -f ./tools/init-database.sql -U postgres
+  - bash ./tools/knex-down-up.sh
   - npm install
 
 script:
