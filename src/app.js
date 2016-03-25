@@ -10,7 +10,7 @@ import requireClientHeaders from './middleware/require-client-headers';
 import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
-import * as feedAggregator from './core/feed-aggregator';
+import * as feedAggregator from './worker/feed-aggregator';
 
 function createApp() {
   const app = express();

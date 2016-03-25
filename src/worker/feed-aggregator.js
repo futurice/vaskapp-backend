@@ -3,10 +3,17 @@ import _ from 'lodash';
 const BPromise = require('bluebird');
 const logger = require('../util/logger')(__filename);
 const {knex} = require('../util/database').connect();
-import {createFeedItem} from './feed-core';
-import {markAsAggregated} from './action-core';
+import {createFeedItem} from '../core/feed-core';
+import {markAsAggregated} from '../core/action-core';
+import {
+  generateFirstSimaMessage,
+  generateTeamSimaMessage,
+  generateUserSimaMessage,
+  generateTeamScoreMessage,
+  generateUserScoreMessage
+} from './message-generator';
 
-const SIMA_REPORT_INTERVAL = 100;
+const SIMA_REPORT_INTERVAL = 50;
 const SCORE_REPORT_INTERVAL = 1000;
 const POLL_INTERVAL = 60 * 1000; // 1 min
 
@@ -229,11 +236,11 @@ function createDrinkAggregates(allStats) {
   const feedItems = [];
   const actionIds = [];
 
-  const createDrinkFeedItems = function(stats) {
+  const createDrinkFeedItems = function(stats, msgGenerator) {
     _.forEach(stats, itemStats => {
       const drinksBefore = itemStats.drinksBefore;
       const drinksAfter  = itemStats.drinksAfter;
-      const username     = itemStats.name;
+      const name         = itemStats.name;
 
       if (drinksBefore === drinksAfter) {
         return;
@@ -242,12 +249,12 @@ function createDrinkAggregates(allStats) {
       let feedItem;
 
       if (drinksBefore === 0) {
-        const text = `${ username } starts wappu! Congratulations on the first sima!`;
+        const text = generateFirstSimaMessage(name);
         feedItem = feedItemParam(itemStats.getFirstAction(), text);
       }
       else if (passesPoint(drinksBefore, drinksAfter, SIMA_REPORT_INTERVAL)) {
         const drinks = roundTo(drinksAfter, SIMA_REPORT_INTERVAL);
-        const text = `Such wow. ${ username } has had already ${ drinks } simas.`;
+        const text = msgGenerator(name, drinks);
         // Let's cheat a little and assume last sima was the one
         feedItem = feedItemParam(itemStats.getLastAction(), text);
       }
@@ -259,8 +266,8 @@ function createDrinkAggregates(allStats) {
     });
   };
 
-  createDrinkFeedItems(allStats.teamStats);
-  createDrinkFeedItems(allStats.userStats);
+  createDrinkFeedItems(allStats.teamStats, generateTeamSimaMessage);
+  createDrinkFeedItems(allStats.userStats, generateUserSimaMessage);
 
   return {
     feedItems,
@@ -272,11 +279,11 @@ function createScoreAggregates(allStats) {
   const feedItems = [];
   const actionIds = [];
 
-  const createScoreFeedItems = function(stats) {
+  const createScoreFeedItems = function(stats, msgGenerator) {
     _.forEach(stats, itemStats => {
       const scoreBefore = itemStats.scoreBefore;
       const scoreAfter  = itemStats.scoreAfter;
-      const username    = itemStats.name;
+      const name        = itemStats.name;
 
       if (scoreBefore === scoreAfter) {
         return;
@@ -286,7 +293,7 @@ function createScoreAggregates(allStats) {
 
       if (passesPoint(scoreBefore, scoreAfter, SCORE_REPORT_INTERVAL)) {
         const points = roundTo(scoreAfter, SCORE_REPORT_INTERVAL);
-        const text = `Oh my. ${ username } has already gathered ${ points } points.`;
+        const text = msgGenerator(name, points);
         // Let's cheat a little and assume last action was the one
         feedItem = feedItemParam(itemStats.getLastAction(), text);
       }
@@ -298,8 +305,8 @@ function createScoreAggregates(allStats) {
     });
   }
 
-  createScoreFeedItems(allStats.userStats);
-  createScoreFeedItems(allStats.teamStats);
+  createScoreFeedItems(allStats.userStats, generateUserScoreMessage);
+  createScoreFeedItems(allStats.teamStats, generateTeamScoreMessage);
 
   return {
     feedItems,
@@ -357,16 +364,6 @@ function start() {
   aggregatePoll();
 }
 
-function handleAction(action, trx) {
-  if (action.type === 'IMAGE' || action.type === 'TEXT') {
-    // Don't mark it as aggregated so that score can be counted
-    return createFeedItem(action, trx);
-  }
-
-  return Promise.resolve();
-}
-
 export {
-  start,
-  handleAction
+  start
 };

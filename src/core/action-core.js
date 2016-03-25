@@ -1,6 +1,6 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
-import * as feedAggregator from './feed-aggregator';
+import {createFeedItem} from './feed-core';
 
 function createAction(action) {
   const actionRow = {
@@ -26,7 +26,11 @@ function createAction(action) {
         }
 
         action.id = rows[0].id;
-        return feedAggregator.handleAction(action, trx);
+        if (action.type === 'IMAGE' || action.type === 'TEXT') {
+          return createFeedItem(action, trx);
+        }
+
+        return Promise.resolve();
       });
   });
 }
