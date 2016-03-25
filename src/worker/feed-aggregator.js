@@ -31,12 +31,49 @@ function arrayRandom(array) {
   return array[randomizedIndex];
 }
 
+function generateFirstSimaMessage(name) {
+  const praises = [
+    "<name> is on it. First sima down!",
+    "<name> just started wappu with first sima.",
+    "<name> starts wappu! Congratulations on the first sima!"
+  ];
+
+  const praise = arrayRandom(praises);
+  return praise.replace("<name>", name);
+}
+
+function generateTeamSimaMessage(team, simas) {
+  const teamPraises = [
+    "<team> might have some issues with breathalyzer tests, considering their <simas> simas.",
+    "<team> must be really thirsty! They've had <simas> simas.",
+    "Keep <team> away from the bar. They're at <simas> simas already.",
+    "<team> must have received a shipment from Estonia. They're chugging at <simas> simas already.",
+    "<team> has gone full Sokka irti with <simas> simas.",
+  ];
+
+  const praise = arrayRandom(teamPraises);
+  return praise.replace("<team>", team).replace("<simas>", simas);
+}
+
+function generateUserSimaMessage(name, simas) {
+  const userPraises = [
+    "Enjoy that <simas>th sima, <name>!",
+    "<name> might have some issues with breathalyzer tests, considering her <simas> simas.",
+    "<name> must be really thirsty! She's had <simas> simas.",
+    "Keep <name> away from the bar. He’s at <simas> simas already.",
+    "<name> must have received a shipment from Estonia. She’s chugging at <simas> simas already",
+    "<name> has gone full Sokka irti with <simas> simas",
+  ];
+
+  const praise = arrayRandom(userPraises);
+  return praise.replace("<name>", name).replace("<simas>", simas);
+}
+
 function generateTeamScoreMessage(team, points) {
   const teamPraises = [
     "Jeden tag so schnell! <team> is now at <points> points!",
     "Look at <team>! They just crossed <points> points!",
-    "Those fine folks at <team> just can't stop. <points> points already!",
-    "<team> might have some issues with breathalyzer tests, considering their <points> points"
+    "Those fine folks at <team> just can't stop. <points> points already!"
   ];
 
   const praise = arrayRandom(teamPraises);
@@ -46,11 +83,8 @@ function generateTeamScoreMessage(team, points) {
 function generateUserScoreMessage(name, points) {
   const userPraises = [
     "Jeden tag so schnell! <name> is now at <points> points!",
-    "<name> must be really thirsty! She's at <points> points.",
     "That <name> just keeps on scoring. <points> already!",
-    "Keep <name> away from the bar. He’s at <points> points already.",
-    "<name> must have received a shipment from Estonia. She’s chugging at <points> points already",
-    "<name> has gone full Sokka irti with <points> points",
+    "This fine person <name> just can't stop. <points> points already!"
   ];
 
   const praise = arrayRandom(userPraises);
@@ -260,11 +294,11 @@ function createDrinkAggregates(allStats) {
   const feedItems = [];
   const actionIds = [];
 
-  const createDrinkFeedItems = function(stats) {
+  const createDrinkFeedItems = function(stats, msgGenerator) {
     _.forEach(stats, itemStats => {
       const drinksBefore = itemStats.drinksBefore;
       const drinksAfter  = itemStats.drinksAfter;
-      const username     = itemStats.name;
+      const name         = itemStats.name;
 
       if (drinksBefore === drinksAfter) {
         return;
@@ -273,12 +307,12 @@ function createDrinkAggregates(allStats) {
       let feedItem;
 
       if (drinksBefore === 0) {
-        const text = `${ username } starts wappu! Congratulations on the first sima!`;
+        const text = generateFirstSimaMessage(name);
         feedItem = feedItemParam(itemStats.getFirstAction(), text);
       }
       else if (passesPoint(drinksBefore, drinksAfter, SIMA_REPORT_INTERVAL)) {
         const drinks = roundTo(drinksAfter, SIMA_REPORT_INTERVAL);
-        const text = `Such wow. ${ username } has had already ${ drinks } simas.`;
+        const text = msgGenerator(name, drinks);
         // Let's cheat a little and assume last sima was the one
         feedItem = feedItemParam(itemStats.getLastAction(), text);
       }
@@ -290,8 +324,8 @@ function createDrinkAggregates(allStats) {
     });
   };
 
-  createDrinkFeedItems(allStats.teamStats);
-  createDrinkFeedItems(allStats.userStats);
+  createDrinkFeedItems(allStats.teamStats, generateTeamSimaMessage);
+  createDrinkFeedItems(allStats.userStats, generateUserSimaMessage);
 
   return {
     feedItems,
