@@ -48,7 +48,10 @@ Dependencies:
 
 Start using [API endpoints](#api-endpoints).
 
-Production environment: https://wappuapp-backend.herokuapp.com
+Environments:
+
+* `qa` https://wappuapp-backend-qa.herokuapp.com
+* `prod` https://wappuapp-backend.herokuapp.com
 
 ## Techstack
 
@@ -57,7 +60,7 @@ Production environment: https://wappuapp-backend.herokuapp.com
 * Winston for logging
 * Postgres
 
-## Heroku env
+## Heroku/Cloud env
 
 ```bash
 #!/bin/bash
@@ -73,6 +76,8 @@ heroku pg:psql -a wappuapp-backend
 create extension postgis;
 ```
 
+Google Cloud Storage is used for storing images.
+
 ## Common tasks
 
 ### Release
@@ -86,7 +91,7 @@ on each push.
 2. Check that tests pass, remember to test migrations locally before push
 3. Take manual backup of postgres
 
-    `heroku pg:backups capture --app k-file-storage-prod`
+    `heroku pg:backups capture --app wappuapp-backend`
 
 4. Push changes to production environment:
 
@@ -120,6 +125,7 @@ on each push.
   - Why not?
 
 * Be prepared that some of these endpoints are not documented correctly
+* Token authentication is required. Token is sent in `x-token` header.
 
 ### `GET /api/events`
 
