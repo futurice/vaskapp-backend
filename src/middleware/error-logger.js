@@ -4,10 +4,10 @@ const logger = require('../util/logger')(__filename);
 function createErrorLogger(opts) {
   opts = _.merge({
     logRequest: status => {
-      return status >= 400 && status !== 404;
+      return status >= 400 && status !== 404 && status !== 503;
     },
     logStackTrace: status => {
-      return status >= 500;
+      return status >= 500 && status !== 503;
     }
   }, opts);
 

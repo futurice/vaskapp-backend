@@ -39,6 +39,15 @@ function createApp() {
     });
   }
 
+  if (process.env.SHUTDOWN_SERVICE === 'true') {
+    app.use(function shutdownError(req, res, next) {
+      const err = new Error('Service has been shutdown');
+      err.status = 503;
+      err.userMessage = err.message;
+      next(err);
+    });
+  }
+
   if (process.env.DISABLE_AUTH !== 'true') {
     // Do not require tokens in development or test env
     app.use(requireApiToken());
