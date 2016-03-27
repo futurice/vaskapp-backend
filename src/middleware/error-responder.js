@@ -29,6 +29,10 @@ function createErrorResponder(opts) {
       body.message = err.userMessage;
     }
 
+    if (err.userHeader) {
+      body.header = err.userHeader;
+    }
+
     res.status(status);
     res.send(body);
   };

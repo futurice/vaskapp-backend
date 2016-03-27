@@ -39,11 +39,13 @@ function createApp() {
     });
   }
 
-  if (process.env.SHUTDOWN_SERVICE === 'true') {
-    app.use(function shutdownError(req, res, next) {
-      const err = new Error('Service has been shutdown');
+  if (process.env.ALERT_ERROR) {
+    const alertError = JSON.parse(process.env.ALERT_ERROR);
+    app.use(function(req, res, next) {
+      const err = new Error(alertError.message);
       err.status = 503;
-      err.userMessage = err.message;
+      err.userMessage = alertError.message;
+      err.userHeader = alertError.header;
       next(err);
     });
   }
