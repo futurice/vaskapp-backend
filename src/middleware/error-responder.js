@@ -23,10 +23,14 @@ function createErrorResponder(opts) {
       message = httpMessage;
     }
 
+    let body = {error: message};
+    if (err.userMessage) {
+      body.showUser = true;
+      body.message = err.userMessage;
+    }
+
     res.status(status);
-    res.send({
-      error: message
-    });
+    res.send(body);
   };
 }
 
