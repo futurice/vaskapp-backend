@@ -387,3 +387,8 @@ When HTTP status code is 400 or higher, response is in format:
   "error": "Internal Server Error"
 }
 ```
+
+=======
+
+## Acknowledgements
+This project is a grateful recipient of the [Futurice Open Source sponsorship program](http://futurice.com/blog/sponsoring-free-time-open-source-activities). ♥
