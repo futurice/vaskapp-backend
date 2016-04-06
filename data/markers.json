@@ -11,16 +11,6 @@
   },
   {
     "type": "STORE",
-    "title": "Lidl",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
-  },
-  {
-    "type": "STORE",
     "title": "Sale",
     "location": {
       "latitude": "61.446742",
@@ -81,16 +71,6 @@
   },
   {
     "type": "RESTAURANT",
-    "title": "Subway",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Fast food",
-    "url": "http://www.subway.fi/fi/ravintolat/tampere/tampere-duo"
-  },
-  {
-    "type": "RESTAURANT",
     "title": "Castello",
     "location": {
       "latitude": "61.452045",
@@ -98,16 +78,6 @@
     },
     "subtitle": "Pizza & Kebab",
     "url": "https://pizza-online.fi/ravintolat/tampere/castello"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Kotipizza & ROLLS",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Pizza",
-    "url": "http://www.kotipizza.fi/fi/ravintolat?gclid=CLihifTX78sCFUO3Gwodx0IFLw"
   },
   {
     "type": "RESTAURANT",
@@ -241,16 +211,6 @@
   },
   {
     "type": "ALKO",
-    "title": "Tampere Hervanta DUO",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2470/"
-  },
-  {
-    "type": "ALKO",
     "title": "Tampere Anttila",
     "location": {
       "latitude": "61.499208",
@@ -318,5 +278,23 @@
     },
     "subtitle": "Alko",
     "url": "http://www.alko.fi/en/shops-services/2472"
+  },
+  {
+    "type": "TOILET",
+    "title": "Public toilet Africa",
+    "location": {
+      "latitude": "0.0",
+      "longitude": "0.0"
+    },
+    "subtitle": "Toilet"
+  },
+  {
+    "type": "TAXI",
+    "title": "Taxi Africa",
+    "location": {
+      "latitude": "1.0",
+      "longitude": "1.0"
+    },
+    "subtitle": "Taxi pole"
   }
 ]
