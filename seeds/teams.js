@@ -58,7 +58,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 9,
-      name: 'Materiaali-insinöörikilta',
+      name: 'MIK',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/mik.png'
     });
   })
@@ -82,5 +82,27 @@ exports.seed = function(knex, Promise) {
       name: 'YKI',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/yki.png'
     });
-  });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 13,
+      name: 'TeLe',
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/tele.png'
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 14,
+      name: 'ESN',
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/esn.png'
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 15,
+      name: 'Wapputiimi',
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/wapputiimi.png'
+    });
+  })
+  ;
 };
