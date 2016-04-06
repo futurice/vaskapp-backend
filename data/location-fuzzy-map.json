@@ -11,8 +11,8 @@
   },
   {
     "locationName": "Obeliskin vieressä",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.449291,
+    "longitude": 23.856392
   },
   {
     "locationName": "Viihdemaailma Ilona",
@@ -31,13 +31,13 @@
   },
   {
     "locationName": "Etunurtsi / Joku baari",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.449291,
+    "longitude": 23.856392
   },
   {
     "locationName": "Etunurtsi/Cupola",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.449291,
+    "longitude": 23.856392
   },
   {
     "locationName": "TTY Etunurtsi",
@@ -51,13 +51,13 @@
   },
   {
     "locationName": "Paikka X",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.449291,
+    "longitude": 23.856392
   },
   {
     "locationName": "Selviää myöhemmin, toivottavasti Etunurtsin ympäristössä",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.449291,
+    "longitude": 23.856392
   },
   {
     "locationName": "Rosendahlin ranta",
@@ -90,7 +90,7 @@
     "longitude": 23.761987
   },
   {
-    "locationName": "101,6 MHz tai osoitteessa www.wappuradio.fi / 101,6 MHz or at www.wappuradio.fi",
+    "locationName": "101,6 MHz or at www.wappuradio.fi",
     "latitude": 61.449536,
     "longitude": 23.855717
   },
@@ -116,8 +116,8 @@
   },
   {
     "locationName": "Tampere -Turku - Tampere",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.450985,
+    "longitude": 23.863776
   },
   {
     "locationName": "Koskenranta",
@@ -161,8 +161,8 @@
   },
   {
     "locationName": "Tampereen kaupunki",
-    "latitude": 0,
-    "longitude": 0
+    "latitude": 61.497990,
+    "longitude": 23.763680
   },
   {
     "locationName": "Etunurtsin ja Kampusareenan läheisyydessä",
