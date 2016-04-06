@@ -1,21 +1,13 @@
 [
   {
     "type": "STORE",
-    "title": "S-Market",
+    "title": "DUO",
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
     },
-    "subtitle": "Grocery store"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Supermarket Herkkuduo",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Grocery store"
+    "subtitle": "Shopping mall",
+    "url": "http://www.k-supermarket.fi/kaupat/herkkuduo/"
   },
   {
     "type": "STORE",
@@ -24,7 +16,8 @@
       "latitude": "61.450978",
       "longitude": "23.851275"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
   },
   {
     "type": "STORE",
@@ -33,7 +26,8 @@
       "latitude": "61.446742",
       "longitude": "23.854839"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "https://www.s-kanava.fi/sv/toimipaikka/sale-hervanta-tampere/697951341"
   },
   {
     "type": "STORE",
@@ -42,7 +36,8 @@
       "latitude": "61.445711",
       "longitude": "23.843403"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.k-market.fi/kaupat/teekkarinkatu/"
   },
   {
     "type": "STORE",
@@ -51,7 +46,8 @@
       "latitude": "61.451205",
       "longitude": "23.847563"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.siwa.fi/fi/kaupat-ja-aukioloajat/?id=1506"
   },
   {
     "type": "STORE",
@@ -60,7 +56,8 @@
       "latitude": "61.453708",
       "longitude": "23.842060"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.k-market.fi/kaupat/herkkupuoti/"
   },
   {
     "type": "STORE",
@@ -69,25 +66,8 @@
       "latitude": "61.446720",
       "longitude": "23.832153"
     },
-    "subtitle": "Grocery store"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market Hervanta",
-    "location": {
-      "latitude": "61.441746",
-      "longitude": "23.851433"
-    },
-    "subtitle": "Grocery store"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Hesburger",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Fast food"
+    "subtitle": "Grocery store",
+    "url": "http://www.siwa.fi/fi/kaupat-ja-aukioloajat/?id=1295"
   },
   {
     "type": "RESTAURANT",
@@ -101,21 +81,13 @@
   },
   {
     "type": "RESTAURANT",
-    "title": "Speakeasy",
-    "location": {
-      "latitude": "61.451578",
-      "longitude": "23.847831"
-    },
-    "subtitle": "Wings"
-  },
-  {
-    "type": "RESTAURANT",
     "title": "Subway",
     "location": {
       "latitude": "61.450978",
       "longitude": "23.851275"
     },
-    "subtitle": "Fast food"
+    "subtitle": "Fast food",
+    "url": "http://www.subway.fi/fi/ravintolat/tampere/tampere-duo"
   },
   {
     "type": "RESTAURANT",
@@ -125,7 +97,7 @@
       "longitude": "23.848451"
     },
     "subtitle": "Pizza & Kebab",
-    "url": "https://pizza-online.fi/"
+    "url": "https://pizza-online.fi/ravintolat/tampere/castello"
   },
   {
     "type": "RESTAURANT",
@@ -134,16 +106,18 @@
       "latitude": "61.450978",
       "longitude": "23.851275"
     },
-    "subtitle": "Pizza"
+    "subtitle": "Pizza",
+    "url": "http://www.kotipizza.fi/fi/ravintolat?gclid=CLihifTX78sCFUO3Gwodx0IFLw"
   },
   {
     "type": "RESTAURANT",
     "title": "Pizza Kebab Heval",
     "location": {
-      "latitude": "61.441746",
-      "longitude": "23.851433"
+      "latitude": "61.441518",
+      "longitude": "23.851935"
     },
-    "subtitle": "Pizza & Kebab"
+    "subtitle": "Pizza & Kebab",
+    "url": "http://www.heval.fi/"
   },
   {
     "type": "RESTAURANT",
@@ -153,7 +127,7 @@
       "longitude": "23.848159"
     },
     "subtitle": "Pizza & Kebab",
-    "url": "https://pizza-online.fi/"
+    "url": "https://pizza-online.fi/ravintolat/tampere/pizzaservice-hervanta"
   },
   {
     "type": "STORE",
@@ -162,16 +136,8 @@
       "latitude": "61.496458",
       "longitude": "23.757350"
     },
-    "subtitle": "Grocery store"
-  },
-  {
-    "type": "STORE",
-    "title": "Sokos (S-Market)",
-    "location": {
-      "latitude": "61.497417",
-      "longitude": "23.757768"
-    },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
   },
   {
     "type": "STORE",
@@ -180,7 +146,8 @@
       "latitude": "61.500302",
       "longitude": "23.756013"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.k-supermarket.fi/kaupat/kuninkaankulma/"
   },
   {
     "type": "STORE",
@@ -189,16 +156,8 @@
       "latitude": "61.497223",
       "longitude": "23.770644"
     },
-    "subtitle": "Grocery store"
-  },
-  {
-    "type": "STORE",
-    "title": "Stockmann Herkku",
-    "location": {
-      "latitude": "61.498575",
-      "longitude": "23.770349"
-    },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.k-market.fi/kaupat/tuomiokirkonkatu/"
   },
   {
     "type": "STORE",
@@ -207,7 +166,8 @@
       "latitude": "61.497774",
       "longitude": "23.762518"
     },
-    "subtitle": "Kiosk"
+    "subtitle": "Kiosk",
+    "url": "https://www.r-kioski.fi/kioskit/tampere-keskusta-keskustori-1/"
   },
   {
     "type": "STORE",
@@ -216,7 +176,8 @@
       "latitude": "61.500209",
       "longitude": "23.771529"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
   },
   {
     "type": "STORE",
@@ -225,7 +186,8 @@
       "latitude": "61.498145",
       "longitude": "23.775858"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "https://www.foodie.fi/store/5dd559183e837faf7f07cac1b98d5433"
   },
   {
     "type": "STORE",
@@ -234,7 +196,8 @@
       "latitude": "61.498958",
       "longitude": "23.752621"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "https://www.foodie.fi/store/75fda8a5e960f0f0161bd83ba573e194"
   },
   {
     "type": "STORE",
@@ -243,7 +206,8 @@
       "latitude": "61.502108",
       "longitude": "23.801321"
     },
-    "subtitle": "Convenience store"
+    "subtitle": "Convenience store",
+    "url": "https://www.abcasemat.fi/asemat/abc-tampere-kaleva"
   },
   {
     "type": "STORE",
@@ -252,7 +216,8 @@
       "latitude": "61.485743",
       "longitude": "23.777439"
     },
-    "subtitle": "Convenience store"
+    "subtitle": "Convenience store",
+    "url": "https://www.abcasemat.fi/asemat/abc-tampere-viinikka"
   },
   {
     "type": "STORE",
@@ -261,7 +226,8 @@
       "latitude": "61.492046",
       "longitude": "23.771427"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://liikenneasema.k-market.fi/kaupat/tampere-hatanpaa/"
   },
   {
     "type": "STORE",
@@ -270,7 +236,8 @@
       "latitude": "61.494972",
       "longitude": "23.755091"
     },
-    "subtitle": "Grocery store"
+    "subtitle": "Grocery store",
+    "url": "http://www.k-market.fi/kaupat/satamakatu/"
   },
   {
     "type": "ALKO",
