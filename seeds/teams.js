@@ -58,7 +58,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 9,
-      name: 'Materiaali-insinöörikilta',
+      name: 'MIK',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/mik.png'
     });
   })
