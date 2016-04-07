@@ -86,7 +86,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 13,
-      name: 'TeLe',
+      name: 'TeLE',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/tele.png'
     });
   })
