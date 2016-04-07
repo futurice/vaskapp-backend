@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-const bannedUsers = process.env.BANNED_USERS.split(',');
+const bannedUsers = (process.env.BANNED_USERS || "").split(',');
 
 function isUserBanned(userUuid) {
   return _.includes(bannedUsers, userUuid);
