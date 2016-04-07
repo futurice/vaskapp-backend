@@ -93,7 +93,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 14,
-      name: 'ESN',
+      name: 'ESN INTO',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/esn.png'
     });
   })
