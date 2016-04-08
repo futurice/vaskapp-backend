@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
       code: 'TEXT',
       name: 'Comment',
       value: 10,
-      cooldown: 1000
+      cooldown: 10 * 1000
     });
   });
 };
