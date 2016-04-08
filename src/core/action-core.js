@@ -17,6 +17,10 @@ function createAction(action) {
     // Tuple is in longitude, latitude format in Postgis
     actionRow.location = location.longitude + ',' + location.latitude;
   }
+  if (action.isBanned) {
+    actionRow.is_banned = action.isBanned;
+    actionRow.aggregated = true;
+  }
 
   return knex.transaction(function(trx) {
     return trx('actions').returning('*').insert(actionRow)

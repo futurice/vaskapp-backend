@@ -68,7 +68,8 @@ function _userRowToObject(row) {
     id: row.id,
     name: row.name,
     uuid: row.uuid,
-    team: row.team_id
+    team: row.team_id,
+    isBanned: row.is_banned
   };
 }
 

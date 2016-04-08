@@ -110,7 +110,7 @@ function queryNewActions(stats) {
     JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
-      actions.aggregated = false
+      NOT actions.aggregated AND NOT actions.is_banned
     ORDER BY id
   `;
 
@@ -161,7 +161,7 @@ function queryStats() {
     JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
-      actions.aggregated = true
+      actions.aggregated AND NOT actions.is_banned
     GROUP BY
       action_types.code,
       users.id, users.name,

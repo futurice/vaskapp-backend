@@ -1,7 +1,6 @@
 import * as actionCore from '../core/action-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
-import * as banCore from '../core/ban-core';
 import * as imageHttp from './image-http';
 import * as throttleCore from '../core/throttle-core';
 
@@ -10,8 +9,8 @@ let postAction = createJsonRoute(function(req, res) {
 
   if (!throttleCore.canDoAction(action.user, action.type)) {
     throwStatus(429, `Too many actions of type ${ action.type }`);
-  } else if (banCore.isUserBanned(action.user)) {
-    banCore.throwBannedError();
+  } else if (!req.client.id) {
+    throwStatus(403);
   }
 
   let handleAction;
@@ -19,6 +18,7 @@ let postAction = createJsonRoute(function(req, res) {
     handleAction = imageHttp.postImage(req, res, action);
   } else {
     action.ip = req.ip;
+    action.isBanned = req.client.isBanned;
 
     handleAction = actionCore.getActionType(action.type)
     .then(type => {

@@ -1,11 +1,3 @@
-const _ = require('lodash');
-
-const bannedUsers = (process.env.BANNED_USERS || "").split(',');
-
-function isUserBanned(userUuid) {
-  return _.includes(bannedUsers, userUuid);
-}
-
 function throwBannedError() {
   var newErr = new Error('User banned');
 
@@ -18,6 +10,5 @@ function throwBannedError() {
 }
 
 export {
-  isUserBanned,
   throwBannedError
 };
