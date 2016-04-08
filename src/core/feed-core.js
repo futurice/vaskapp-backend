@@ -25,12 +25,20 @@ function getFeed(opts) {
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id`;
   let params = [];
+  let whereClauses = [];
+
+  if (!opts.client.isBanned) {
+    whereClauses.push('NOT feed_items.is_banned');
+  }
 
   if (opts.beforeId) {
-    sqlString += ` WHERE feed_items.id < ? `
+    whereClauses.push('feed_items.id < ?');
     params.push(opts.beforeId);
   }
 
+  if (whereClauses.length > 0) {
+    sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
+  }
   sqlString += ` ORDER BY feed_items.id DESC LIMIT ?`;
   params.push(opts.limit);
 
@@ -61,6 +69,9 @@ function createFeedItem(feedItem, trx) {
   if (location) {
     // Tuple is in longitude, latitude format in Postgis
     dbRow.location = location.longitude + ',' + location.latitude;
+  }
+  if (feedItem.isBanned) {
+    dbRow.is_banned = feedItem.isBanned;
   }
 
   // jscs:disable requireCamelCaseOrUpperCaseIdentifiers

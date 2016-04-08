@@ -80,7 +80,7 @@ function autoOrient(imageBuffer) {
 
 function postImage(req, res) {
   const action = assert(req.body, 'action');
-  action.ip = req.ip;
+
   const image = decodeBase64Image(req.body.imageData);
   const inputData = {};
 
@@ -99,6 +99,7 @@ function postImage(req, res) {
     .then(uploadedImage => {
       return actionCore.createAction({
         ip:        req.ip,
+        isBanned:  req.client.isBanned,
         team:      action.team,
         type:      action.type,
         user:      action.user,
