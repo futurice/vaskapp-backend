@@ -7,7 +7,7 @@ function getTeams() {
   SELECT teams.id, teams.name, teams.image_path,
     SUM(COALESCE(action_types.value, 0)) AS score
   FROM teams
-  LEFT JOIN actions ON teams.id = actions.team_id
+  LEFT JOIN actions ON teams.id = actions.team_id AND NOT actions.is_banned
   LEFT JOIN action_types ON actions.action_type_id = action_types.id
   GROUP BY teams.id, teams.name
   ORDER BY score DESC, teams.id`)
