@@ -148,6 +148,12 @@ could be transferred to the xlsx file already.
 * Delete existing map markers from remote Postgres
 * Push new code to production, knex seeds will update the markers to database
 
+### Shadow ban user
+
+```sql
+UPDATE users SET is_banned = true WHERE uuid='D47DA01C-51BB-4F96-90B6-D64B77225EB7';
+```
+
 ## API Endpoints
 
 **READ THIS:**
