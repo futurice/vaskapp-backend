@@ -20,7 +20,7 @@ if (!process.argv[2]) {
   process.exit(2);
 }
 
-var DATE_FORMAT = 'MM/DD/YYYY HH:mm';
+var DATE_FORMAT = 'DD/MM/YY HH:mm';
 
 function main() {
   var INPUT_CSV_PATH = process.argv[2];
@@ -117,7 +117,13 @@ function parseCsvFile(filepath) {
   var fileContent;
   var extension = path.extname(filepath)
 
-  if (extension === '.csv') {
+  // You must replace the extension with .google-csv if you want the parser
+  // to use spreadsheet CSV configuration. NOTE:
+  // Doing this will MESS UP the date parsing, google uses this date format in columns:
+  // MM/DD/YYYY
+  // Left here for reference but
+  // DON'T USE THIS WITHOUT FURTHER THOUGHT
+  if (extension === '.google-csv') {
     fileContent = fs.readFileSync(filepath, {encoding: 'utf8'});
 
     return csv.parseAsync(fileContent, {
@@ -126,7 +132,7 @@ function parseCsvFile(filepath) {
       'auto_parse': false,
       trim: true
     });
-  } else if (extension === '.xlsx') {
+  } else if (extension === '.csv') {
     var fileContentBuf = fs.readFileSync(filepath);
     var fileContent = iconv.decode(fileContentBuf, 'cp1250');
 

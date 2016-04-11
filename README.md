@@ -114,6 +114,40 @@ on each push.
   * https://wappuapp-backend.herokuapp.com/api/action_types
 
 
+### Update events
+
+**NOTE:** Some data is added to the original Excel file via fuzzy match mappings.
+This was done because initially we did not want to modify the original Excel file itself
+to prevent csv export and character encoding problems. This is not true anymore
+but some of the data is still added via fuzzy match mappings. These
+could be transferred to the xlsx file already.
+
+* Download newest .xlsx file containing events (in Drive)
+* Open it in Excel
+* Save as -> Windows Comma Separated. **Note:** use this specifically, not the general csv.
+* If it asks: press "Save active Sheet" and "Continue"
+* Run parse script:
+
+  ```bash
+  node tools/parse-events-csv.js ~/Downloads/wapputapahtumat.csv > data/events.json
+  ```
+
+* Make sure events.json looks fine
+* Push newest code to remote, the events are directly read from JSON file
+
+### Update markers
+
+* Download the map markers spreadsheet as CSV
+* Run parse script:
+
+  ```bash
+  node tools/parse-markers-csv.js ~/Downloads/markers.csv > data/markers.json
+  ```
+
+* Make sure markers.json looks fine
+* Delete existing map markers from remote Postgres
+* Push new code to production, knex seeds will update the markers to database
+
 ## API Endpoints
 
 **READ THIS:**
