@@ -20,12 +20,10 @@ if (!process.argv[2]) {
   process.exit(2);
 }
 
-var DATE_FORMAT = 'DD/MM/YY HH:mm';
+var DATE_FORMAT = 'MM/DD/YYYY HH:mm';
 
 function main() {
   var INPUT_CSV_PATH = process.argv[2];
-  var fileContentBuf = fs.readFileSync(INPUT_CSV_PATH);
-  var fileContent = iconv.decode(fileContentBuf, 'cp1250');
 
   var locations = readJsonFile('location-fuzzy-map.json');
   var locationsFuse = new Fuse(locations, {threshold: 0.4, keys: ['locationName']});
@@ -33,22 +31,22 @@ function main() {
   var coverImages = readJsonFile('cover-image-fuzzy-map.json');
   var coverImagesFuse = new Fuse(coverImages, {threshold: 0.2, keys: ['eventName']});
 
-  csv.parseAsync(fileContent, {
-    comment: '#',
-    delimiter: ';',
-    'auto_parse': false,
-    trim: true
-  })
+  parseCsvFile(INPUT_CSV_PATH)
   .then(function(eventsData) {
-    var rows = _.filter(_.tail(eventsData), row => !_.isEmpty(row[0]));
-    var rowCount = rows.length;
-    rows = _.uniqBy(rows, row => row[0]);
+    var originalRows = _.filter(_.tail(eventsData), row => !_.isEmpty(row[0]));
+    var rowCount = originalRows.length;
+    var rows = _.uniqBy(originalRows, row => row[0]);
 
     var diff = rowCount - rows.length;
     console.error('Removed', diff, 'duplicate events from the source data');
 
     var events = _.map(rows, row => {
       var startTime = moment.tz(row[2] + ' ' + row[4], DATE_FORMAT, 'Europe/Helsinki');
+      if (!startTime.isValid()) {
+        console.error('Expecting date format:', DATE_FORMAT);
+        throw new Error('Invalid date: ' + row[2] + ' ' + row[4]);
+      }
+
       // Start date is same as in the end, the end time might go to the next
       // day too, so we have to take that into account.
       // e.g. start is 21:00 and end is 01:00
@@ -69,6 +67,10 @@ function main() {
         contactDetails: row[9],
         teemu: row[10].indexOf('Yes') > 0,
       };
+
+      if (!_.isEmpty(row[13])) {
+        event.facebookId = row[13];
+      }
 
       var results = locationsFuse.search(event.locationName);
       if (_.isEmpty(results)) {
@@ -109,6 +111,34 @@ function main() {
     console.error('\n\n\n');
     console.log(JSON.stringify(sortedEvents, null, 2));
   });
+}
+
+function parseCsvFile(filepath) {
+  var fileContent;
+  var extension = path.extname(filepath)
+
+  if (extension === '.csv') {
+    fileContent = fs.readFileSync(filepath, {encoding: 'utf8'});
+
+    return csv.parseAsync(fileContent, {
+      comment: '#',
+      delimiter: ',',
+      'auto_parse': false,
+      trim: true
+    });
+  } else if (extension === '.xlsx') {
+    var fileContentBuf = fs.readFileSync(filepath);
+    var fileContent = iconv.decode(fileContentBuf, 'cp1250');
+
+    return csv.parseAsync(fileContent, {
+      comment: '#',
+      delimiter: ';',
+      'auto_parse': false,
+      trim: true
+    });
+  }
+
+  throw new Error('Invalid file extension: ' + extension);
 }
 
 function readJsonFile(dataName) {
