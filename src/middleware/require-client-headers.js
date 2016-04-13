@@ -25,7 +25,6 @@ function createRequireClientHeaders(opts) {
           };
         }
 
-        console.log(req.client);
         next();
       });
   };
