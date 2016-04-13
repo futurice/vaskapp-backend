@@ -6,12 +6,9 @@ const logger = require('../util/logger')(__filename);
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
-function getFeed(opts) {
-  opts = _.merge({
-    limit: 20
-  }, opts);
-
-  let sqlString = `SELECT
+function getStickySqlString() {
+  return `
+    (SELECT
       feed_items.id as id,
       feed_items.location as location,
       feed_items.created_at as created_at,
@@ -20,26 +17,55 @@ function getFeed(opts) {
       feed_items.type as action_type_code,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
-      teams.name as team_name
+      teams.name as team_name,
+      feed_items.is_sticky
+    FROM feed_items
+    LEFT JOIN users ON users.id = feed_items.user_id
+    LEFT JOIN teams ON teams.id = users.team_id
+    WHERE feed_items.is_sticky
+    ORDER BY feed_items.id DESC
+    LIMIT 1)`;
+}
+
+function getFeed(opts) {
+  opts = _.merge({
+    limit: 20
+  }, opts);
+
+  let sqlString = `
+    (SELECT
+      feed_items.id as id,
+      feed_items.location as location,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      COALESCE(users.name, 'SYSTEM') as user_name,
+      users.uuid as user_uuid,
+      teams.name as team_name,
+      feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id`;
+
   let params = [];
-  let whereClauses = [];
+  let whereClauses = ['NOT feed_items.is_sticky'];
+
+  if (!opts.beforeId) {
+    sqlString = getStickySqlString() + " UNION ALL " + sqlString;
+  } else {
+    whereClauses.push('feed_items.id < ?');
+    params.push(opts.beforeId);
+  }
 
   if (!opts.client.isBanned) {
     whereClauses.push('NOT feed_items.is_banned');
   }
 
-  if (opts.beforeId) {
-    whereClauses.push('feed_items.id < ?');
-    params.push(opts.beforeId);
-  }
-
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += ` ORDER BY feed_items.id DESC LIMIT ?`;
+  sqlString += `) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
