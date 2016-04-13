@@ -32,7 +32,7 @@ exports.seed = function(knex, Promise) {
       code: 'IMAGE',
       name: 'Pics or didn\'t happen',
       value: 100,
-      cooldown: 1 * 60 * 1000
+      cooldown: 5 * 60 * 1000
     });
   })
   .then(() => {
