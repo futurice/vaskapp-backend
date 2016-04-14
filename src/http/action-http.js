@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as actionCore from '../core/action-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
@@ -6,6 +7,9 @@ import * as throttleCore from '../core/throttle-core';
 
 let postAction = createJsonRoute(function(req, res) {
   const action = assert(req.body, 'action');
+  if (_.isString(action.text) && action.text.trim().length === 0) {
+    throwStatus(400, 'Text cannot be empty.');
+  }
 
   if (!throttleCore.canDoAction(action.user, action.type)) {
     throwStatus(429, `Too many actions of type ${ action.type }`);
