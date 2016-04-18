@@ -14,7 +14,7 @@ import {
 } from './message-generator';
 
 const SIMA_REPORT_INTERVAL = 50;
-const SCORE_REPORT_INTERVAL = 1000;
+const SCORE_REPORT_INTERVAL = 5000;
 const POLL_INTERVAL = 60 * 1000; // 1 min
 
 function toInt(n) {
