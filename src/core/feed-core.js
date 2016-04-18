@@ -24,7 +24,7 @@ function getStickySqlString() {
     LEFT JOIN teams ON teams.id = users.team_id
     WHERE feed_items.is_sticky
     ORDER BY feed_items.id DESC
-    LIMIT 1)`;
+    LIMIT 2)`;
 }
 
 function getFeed(opts) {
