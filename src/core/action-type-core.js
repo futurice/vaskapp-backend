@@ -4,6 +4,7 @@ import _ from 'lodash';
 function getActionTypes() {
   return knex('action_types')
     .select('*')
+    .where('is_user_action', true)
     .then(rows => {
       return _.map(rows, _actionTypeRowToObject);
     });
