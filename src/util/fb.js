@@ -120,7 +120,11 @@ function _getAccessToken() {
       '&grant_type=client_credentials',
 
       function(error, response, body) {
-        if (body.error) {
+        if (!body) {
+          logger.error('No body in response');
+          return reject(body.error);
+        }
+        else if (body.error) {
           console.error('Error occured on Facebook Access Token fetch', body.error);
           return reject(body.error);
         }
@@ -144,7 +148,11 @@ function _extendTokenDuration() {
       '&fb_exchange_token=' + state.accessToken +
       '&redirect_uri=https://wappuapp-heroku.com', // unused but required
       function(error, response, body) {
-        if (body.error) {
+        if (!body) {
+          logger.error('No body in response');
+          return reject(body.error);
+        }
+        else if (body.error) {
           logger.error('Error occured on Facebook Access Token extension', body.error);
           return reject(body.error);
         }
