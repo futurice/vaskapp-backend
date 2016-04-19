@@ -107,7 +107,7 @@ function queryNewActions(stats) {
       teams.name as team_name
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
-    JOIN users ON users.id = actions.user_id
+    LEFT JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
       NOT actions.aggregated AND NOT actions.is_banned
@@ -121,7 +121,7 @@ function queryNewActions(stats) {
         location: row.location,
         type:     row.type,
         score:    toInt(row.score),
-        userId:   toInt(row.user_id),
+        userId:   row.user_id === null ? null : toInt(row.user_id),
         userName: row.user_name,
         teamId:   toInt(row.team_id),
         teamName: row.team_name
@@ -139,8 +139,8 @@ function readNewActions(stats, rows) {
     const team = getStats(teamStats, row.teamId, row.teamName);
     const user = getStats(userStats, row.userId, row.userName);
 
-    team.addNewAction(row);
-    user.addNewAction(row);
+    if (team) team.addNewAction(row);
+    if (user) user.addNewAction(row);
   });
 
   return stats
@@ -158,7 +158,7 @@ function queryStats() {
       teams.name        AS team_name
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
-    JOIN users ON users.id = actions.user_id
+    LEFT JOIN users ON users.id = actions.user_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
       actions.aggregated AND NOT actions.is_banned
@@ -174,7 +174,7 @@ function queryStats() {
         score:    toInt(row.score),
         count:    toInt(row.count),
         type:     row.type,
-        userId:   toInt(row.user_id),
+        userId:   row.user_id === null ? null : toInt(row.user_id),
         userName: row.user_name,
         teamId:   toInt(row.team_id),
         teamName: row.team_name
@@ -187,6 +187,10 @@ function queryStats() {
 }
 
 function getStats(stats, key, name) {
+  if (_.isNull(key)) {
+    return null;
+  }
+
   const existing = stats[key];
   if (existing) {
     return existing;
@@ -206,8 +210,8 @@ function buildStats(rows) {
     const team = getStats(teamStats, row.teamId, row.teamName);
     const user = getStats(userStats, row.userId, row.userName);
 
-    team.addOldActionStats(row.type, row.count, row.score);
-    user.addOldActionStats(row.type, row.count, row.score);
+    if (team) team.addOldActionStats(row.type, row.count, row.score);
+    if (user) user.addOldActionStats(row.type, row.count, row.score);
   });
 
   return {
