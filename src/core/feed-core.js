@@ -158,11 +158,13 @@ function _actionToFeedObject(row, client) {
   }
 
   if (feedObj.type === 'IMAGE') {
-    if (process.env.DISABLE_IMGIX === 'true') {
-      feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path'];
+    const imagePath = row['image_path'];
+
+    if (process.env.DISABLE_IMGIX === 'true' || _.endsWith(imagePath, 'gif')) {
+      feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + imagePath;
     } else {
       feedObj.url =
-        'https://' + GCS_CONFIG.bucketName + '.imgix.net/' + row['image_path'] +
+        'https://' + GCS_CONFIG.bucketName + '.imgix.net/' + imagePath +
         process.env.IMGIX_QUERY;
     }
   } else if (feedObj.type === 'TEXT') {
