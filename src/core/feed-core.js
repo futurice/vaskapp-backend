@@ -163,7 +163,7 @@ function _actionToFeedObject(row, client) {
     } else {
       feedObj.url =
         'https://' + GCS_CONFIG.bucketName + '.imgix.net/' + row['image_path'] +
-        '?fit=fill&bg=000000&w=800&h=800';
+        process.env.IMGIX_QUERY;
     }
   } else if (feedObj.type === 'TEXT') {
     feedObj.text = row.text;
