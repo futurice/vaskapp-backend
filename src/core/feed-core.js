@@ -158,7 +158,13 @@ function _actionToFeedObject(row, client) {
   }
 
   if (feedObj.type === 'IMAGE') {
-    feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path']
+    if (process.env.DISABLE_IMGIX === 'true') {
+      feedObj.url = GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + row['image_path'];
+    } else {
+      feedObj.url =
+        'https://' + GCS_CONFIG.bucketName + '.imgix.net/' + row['image_path'] +
+        '?fit=fill&bg=000000&w=800&h=800';
+    }
   } else if (feedObj.type === 'TEXT') {
     feedObj.text = row.text;
   }
