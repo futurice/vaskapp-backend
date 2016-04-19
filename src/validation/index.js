@@ -30,6 +30,11 @@ const schemas = {
   feedParams: {
     beforeId: Joi.number().integer().min(0).optional(),
     limit: Joi.number().integer().min(1).max(100).optional()
+  },
+
+  vote: {
+    value: Joi.number().integer().valid(-1, 1),
+    feedItemId: Joi.number().integer().required(),
   }
 };
 

@@ -6,6 +6,7 @@ import * as userHttp from './http/user-http';
 import * as actionTypeHttp from './http/action-type-http';
 import * as feedHttp from './http/feed-http';
 import * as announcementHttp from './http/announcement-http';
+import * as voteHttp from './http/vote-http';
 import * as markerHttp from './http/marker-http';
 
 function createRouter() {
@@ -26,6 +27,8 @@ function createRouter() {
   router.get('/announcements', announcementHttp.getAnnouncements);
 
   router.get('/markers', markerHttp.getMarkers);
+
+  router.put('/vote', voteHttp.putVote);
 
   return router;
 }
