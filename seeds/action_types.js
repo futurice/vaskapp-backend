@@ -53,5 +53,15 @@ exports.seed = function(knex, Promise) {
       cooldown: 1000 * 60 * 1000,
       is_user_action: false
     });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'action_types', {
+      id: 8,
+      code: 'IMAGE_REWARD2',
+      name: 'Reward 2',
+      value: 300000,
+      cooldown: 1000 * 60 * 1000,
+      is_user_action: false
+    });
   });
 };
