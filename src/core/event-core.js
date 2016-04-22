@@ -1,3 +1,4 @@
+import moment from 'moment';
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
@@ -15,7 +16,9 @@ try {
 }
 
 function getEvents() {
-  return events;
+  return _.filter(events, event => {
+    return moment(event.endTime).diff(moment(), 'hours') > -5;
+  });
 }
 
 function setAttendingCount(facebookEventId, attendingCount) {
