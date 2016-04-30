@@ -20,7 +20,7 @@ function main() {
 }
 
 function shouldAnnounce() {
-  if (moment().tz('Europe/Helsinki').format('YYYY-MM-DD') !== '2016-04-30') {
+  if (moment().tz('Europe/Helsinki').format('YYYY-MM-DD') !== '2016-05-01') {
     logger.info('Not yet the correct date.');
     return BPromise.resolve(false);
   }
