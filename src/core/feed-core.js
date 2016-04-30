@@ -100,6 +100,10 @@ function createFeedItem(feedItem, trx) {
     dbRow.is_banned = feedItem.isBanned;
   }
 
+  if (feedItem.isSticky) {
+    dbRow.is_sticky = feedItem.isSticky;
+  }
+
   // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
   if (feedItem.user) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);

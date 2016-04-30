@@ -47,7 +47,8 @@ function announceWinner() {
       type: 'IMAGE',
       text: null,
       image: 'assets/winner.jpg',
-      user: null
+      user: null,
+      isSticky: true
     });
   })
   .then(res => {
@@ -55,7 +56,8 @@ function announceWinner() {
       type: 'TEXT',
       text: `HUGE congratulations to ${winner.name}! They got amazing amount of points, incredible! Vyötäinen will be awarded to them ~14 in TeekkariKaste, be there!`,
       image: null,
-      user: null
+      user: null,
+      isSticky: true
     });
   });
 }
