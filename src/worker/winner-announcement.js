@@ -46,7 +46,7 @@ function announceWinner() {
     return createFeedItem({
       type: 'IMAGE',
       text: null,
-      image: 'assets/winner.jpg',
+      imagePath: 'assets/winner.jpg',
       user: null,
       isSticky: true
     });
@@ -55,7 +55,6 @@ function announceWinner() {
     return createFeedItem({
       type: 'TEXT',
       text: `HUGE congratulations to ${winner.name}! They got amazing amount of points, incredible! Vyötäinen will be awarded to them ~14 in TeekkariKaste, be there!`,
-      image: null,
       user: null,
       isSticky: true
     });
