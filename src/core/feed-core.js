@@ -18,11 +18,14 @@ function getStickySqlString() {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
+      COALESCE(SUM(votes.value), 0) as votes,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
+    LEFT OUTER JOIN votes ON votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
+    GROUP BY feed_items.id, users.name, users.uuid, teams.name
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }
@@ -43,10 +46,12 @@ function getFeed(opts) {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
+      COALESCE(SUM(votes.value), 0) as votes,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
-    LEFT JOIN teams ON teams.id = users.team_id`;
+    LEFT JOIN teams ON teams.id = users.team_id
+    LEFT OUTER JOIN votes ON votes.feed_item_id = feed_items.id`;
 
   let params = [];
   let whereClauses = ['NOT feed_items.is_sticky'];
@@ -65,7 +70,7 @@ function getFeed(opts) {
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += `) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
+  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name ) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
@@ -146,6 +151,7 @@ function _actionToFeedObject(row, client) {
   var feedObj = {
     id: row['id'],
     type: row['action_type_code'],
+    votes: row['votes'],
     author: {
       name: row['user_name'],
       team: row['team_name'],
