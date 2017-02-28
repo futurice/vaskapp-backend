@@ -5,6 +5,7 @@ import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
+const FEED_SORT_TYPES = new Set(CONST.FEED_SORT_TYPES_ARRAY);
 
 function getStickySqlString() {
   return `
@@ -70,6 +71,7 @@ function getFeed(opts) {
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
+
   sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name ) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
   params.push(opts.limit);
 
