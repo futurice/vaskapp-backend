@@ -5,7 +5,6 @@ import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
-const FEED_SORT_TYPES = new Set(CONST.FEED_SORT_TYPES_ARRAY);
 
 function getStickySqlString() {
   return `
@@ -20,6 +19,7 @@ function getStickySqlString() {
       users.uuid as user_uuid,
       teams.name as team_name,
       COALESCE(SUM(votes.value), 0) as votes,
+      feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
@@ -48,6 +48,7 @@ function getFeed(opts) {
       users.uuid as user_uuid,
       teams.name as team_name,
       COALESCE(SUM(votes.value), 0) as votes,
+      feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
@@ -72,7 +73,9 @@ function getFeed(opts) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
 
-  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name ) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
+  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name ) `;
+  sqlString += _getSortingSql(opts.sort);
+  sqlString += ` LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
@@ -154,6 +157,7 @@ function _actionToFeedObject(row, client) {
     id: row['id'],
     type: row['action_type_code'],
     votes: row['votes'],
+    hot_score: row['hot_score'],
     author: {
       name: row['user_name'],
       team: row['team_name'],
@@ -184,6 +188,21 @@ function _actionToFeedObject(row, client) {
   }
 
   return feedObj;
+}
+
+function _getSortingSql(sort) {
+  const {
+    NEW,
+    HOT,
+  } = CONST.FEED_SORT_TYPES;
+
+  if (sort === NEW) {
+    return 'ORDER BY is_sticky DESC, id DESC'
+  } else if (sort === HOT) {
+    return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC'
+  } else {
+    return '';
+  }
 }
 
 function _resolveAuthorType(row, client) {
