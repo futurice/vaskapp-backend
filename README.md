@@ -247,6 +247,7 @@ Query parameters:
 
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
+* `sort` In which order the result should be returned. One of: 'new', 'hot'. Optional. Defaults to 'new'.
 
 Examples:
 
