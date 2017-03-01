@@ -11,11 +11,14 @@ let putVote = createJsonRoute(function(req, res) {
   }
 
   return voteCore.createOrUpdateVote({
-      value: vote.value,
-      user_id: req.client.id,
-      feed_item_id: vote.feedItemId
+      vote: {
+        value: vote.value,
+        user_id: req.client.id,
+        feed_item_id: vote.feedItemId,
+      },
+      client: req.client,
     })
-    .then(rowsInserted => undefined);
+    .then(rowsInserted => rowsInserted);
 });
 
 export {
