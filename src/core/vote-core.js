@@ -69,7 +69,11 @@ function createOrUpdateVote(opts) {
           .transacting(trx)
       )
       .then(result => actionToFeedObject(result.rows[0], opts.client))
-      .catch(err => undefined);
+      .catch(err => {
+        let error = new Error('No such feed item id: ' + vote.feed_item_id);
+        error.status = 404;
+        throw error;
+      });
   });
 }
 

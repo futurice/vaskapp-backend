@@ -18,7 +18,10 @@ let putVote = createJsonRoute(function(req, res) {
       },
       client: req.client,
     })
-    .then(rowsInserted => rowsInserted);
+    .then(rowsInserted => rowsInserted)
+    .catch( err => {
+      throwStatus(err.status, err.message);
+    });
 });
 
 export {
