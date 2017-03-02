@@ -14,26 +14,30 @@ function createOrUpdateVote(opts) {
   const selectVotesSql = `
     SELECT
       feed_items.id as id,
-      COALESCE(SUM(votes.value), 0) as votes,
+      votes(feed_items) as votes,
       EXTRACT (EPOCH FROM feed_items.created_at) as age
     FROM feed_items
-    LEFT OUTER JOIN votes ON votes.feed_item_id = feed_items.id
     WHERE feed_items.id = ?
     GROUP BY feed_items.id
   `;
-  let vote = opts.vote;
 
+  const updateFeedItemSql = `
+    UPDATE
+      feed_items
+    SET
+      hot_score = ?
+    WHERE
+      id = ?
+    RETURNING
+      *,
+      votes(feed_items)
+  `;
+
+  let vote = opts.vote;
   const updateVoteParams = [vote.value, vote.user_id, vote.feed_item_id,
     vote.value, vote.user_id, vote.feed_item_id];
 
   return knex.transaction(function(trx) {
-    let tmp = knex('feed_items')
-      .where('id', '=', vote.feed_item_id)
-      .returning(['*'])
-      .update({ hot_score: hotScore(0, 0) })
-      .transacting(trx).toString();
-    console.log(tmp);
-
     return knex.raw(updateVoteSql, updateVoteParams)
       .transacting(trx)
       .then(result => {
@@ -41,23 +45,23 @@ function createOrUpdateVote(opts) {
           .transacting(trx);
       })
       .then(result => {
-        return knex('feed_items')
-          .update({
-            hot_score: hotScore(
+        return knex.raw(updateFeedItemSql, [
+            hotScore(
               result.rows[0]['votes'],
               result.rows[0]['age']
-            )
-          })
-          .where('id', '=', vote.feed_item_id)
-          .returning(['*'])
+            ),
+            vote.feed_item_id,
+          ])
           .transacting(trx);
       })
-      // TODO
-      // Sanitize the result and add vote count to the returned object
-      .then(result => result)
-      // TODO
-      // 404
-      .catch(err => undefined);
+      .then(result =>{
+        console.log(result);
+        return result;
+      })
+      .catch(err => {
+        console.log(err);
+        return undefined
+      });
   });
 }
 

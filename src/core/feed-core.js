@@ -18,13 +18,12 @@ function getStickySqlString() {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
-      COALESCE(SUM(votes.value), 0) as votes,
+      votes(feed_items) as votes,
       feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT OUTER JOIN votes ON votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
     GROUP BY feed_items.id, users.name, users.uuid, teams.name
     ORDER BY feed_items.id DESC
@@ -47,13 +46,12 @@ function getFeed(opts) {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
-      COALESCE(SUM(votes.value), 0) as votes,
+      votes(feed_items) as votes,
       feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
-    LEFT JOIN teams ON teams.id = users.team_id
-    LEFT OUTER JOIN votes ON votes.feed_item_id = feed_items.id`;
+    LEFT JOIN teams ON teams.id = users.team_id`;
 
   let params = [];
   let whereClauses = ['NOT feed_items.is_sticky'];
@@ -73,7 +71,7 @@ function getFeed(opts) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
 
-  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name ) `;
+  sqlString += ` ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
