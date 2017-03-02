@@ -84,7 +84,7 @@ function getFeed(opts) {
       return [];
     }
 
-    return _.map(rows, row => _actionToFeedObject(row, opts.client));
+    return _.map(rows, row => actionToFeedObject(row, opts.client));
   });
 }
 
@@ -146,7 +146,7 @@ function deleteFeedItem(id, opts) {
   });
 }
 
-function _actionToFeedObject(row, client) {
+function actionToFeedObject(row, client) {
   if (!client) {
     throw new Error('Client information not passed as a parameter');
   }
@@ -155,7 +155,7 @@ function _actionToFeedObject(row, client) {
     id: row['id'],
     type: row['action_type_code'],
     votes: row['votes'],
-    hot_score: row['hot_score'],
+    hotScore: row['hot_score'],
     author: {
       name: row['user_name'],
       team: row['team_name'],
@@ -218,5 +218,6 @@ function _resolveAuthorType(row, client) {
 export {
   getFeed,
   createFeedItem,
-  deleteFeedItem
+  deleteFeedItem,
+  actionToFeedObject,
 };

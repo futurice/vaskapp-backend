@@ -1,6 +1,7 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {hotScore} from '../sort';
+import {actionToFeedObject} from './feed-core';
 
 function createOrUpdateVote(opts) {
 
@@ -26,11 +27,24 @@ function createOrUpdateVote(opts) {
       feed_items
     SET
       hot_score = ?
+    FROM feed_items as feed_item
+    LEFT JOIN users ON users.id = feed_item.user_id
+    LEFT JOIN teams ON teams.id = users.team_id
     WHERE
-      id = ?
+      feed_items.id = ? AND feed_items.id = feed_item.id
     RETURNING
-      *,
-      votes(feed_items)
+      feed_items.id as id,
+      feed_items.location as location,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      COALESCE(users.name, 'SYSTEM') as user_name,
+      users.uuid as user_uuid,
+      teams.name as team_name,
+      votes(feed_items) as votes,
+      feed_items.hot_score as hot_score,
+      feed_items.is_sticky
   `;
 
   let vote = opts.vote;
@@ -44,24 +58,18 @@ function createOrUpdateVote(opts) {
         return knex.raw(selectVotesSql, [vote.feed_item_id])
           .transacting(trx);
       })
-      .then(result => {
-        return knex.raw(updateFeedItemSql, [
+      .then(result =>
+        knex.raw(updateFeedItemSql, [
             hotScore(
               result.rows[0]['votes'],
               result.rows[0]['age']
             ),
             vote.feed_item_id,
           ])
-          .transacting(trx);
-      })
-      .then(result =>{
-        console.log(result);
-        return result;
-      })
-      .catch(err => {
-        console.log(err);
-        return undefined
-      });
+          .transacting(trx)
+      )
+      .then(result => actionToFeedObject(result.rows[0], opts.client))
+      .catch(err => undefined);
   });
 }
 
