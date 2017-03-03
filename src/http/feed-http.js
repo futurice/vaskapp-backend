@@ -3,10 +3,12 @@ import * as feedCore from '../core/feed-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
 
+
 const getFeed = createJsonRoute(function(req, res) {
   const feedParams = assert({
     beforeId: req.query.beforeId,
-    limit: req.query.limit
+    limit: req.query.limit,
+    sort: req.query.sort,
   }, 'feedParams');
 
   const coreParams = _.merge(feedParams, {

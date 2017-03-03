@@ -195,6 +195,18 @@ Responses:
 
 * `200 OK`
 
+
+### `PUT /api/vote`
+
+> Vote on an feed item
+
+Body is one of [vote object](#vote-object)
+
+Responses:
+* `200 OK`
+* `404 Not found` Feed item not found
+
+
 ### `PUT /api/users/:uuid`
 
 > Create or update a user
@@ -247,6 +259,7 @@ Query parameters:
 
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
+* `sort` String. Default: 'new'. In which order the result should be returned. One of: 'new', 'hot'.
 
 Examples:
 
@@ -338,6 +351,16 @@ Responses:
 }
 ```
 
+### Vote object
+
+```js
+{
+  // one of 1, -1
+  "value": 1,
+  "feedItemId": 12
+}
+```
+
 ### Action objects
 
 #### Basic action object
@@ -386,6 +409,8 @@ Responses:
   },
   type: "IMAGE",
   createdAt: "2016-04-20T09:00:00.000Z",
+  votes: 10,
+  hotScore: 178,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
@@ -408,6 +433,8 @@ Responses:
   },
   type: "TEXT",
   createdAt: "2016-04-20T09:00:00.000Z",
+  votes: 10,
+  hotScore: 178,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",

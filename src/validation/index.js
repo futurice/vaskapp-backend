@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var Joi = require('joi');
+import CONST from '../constants';
 
 var common = {
   team: Joi.number().integer().min(0),
@@ -29,7 +30,16 @@ const schemas = {
 
   feedParams: {
     beforeId: Joi.number().integer().min(0).optional(),
-    limit: Joi.number().integer().min(1).max(100).optional()
+    limit: Joi.number().integer().min(1).max(100).optional(),
+    sort: Joi.string()
+      .valid(CONST.FEED_SORT_TYPES_ARRAY)
+      .default(CONST.FEED_SORT_TYPES.NEW)
+      .optional(),
+  },
+
+  vote: {
+    value: Joi.number().integer().valid(-1, 1),
+    feedItemId: Joi.number().integer().required(),
   }
 };
 

@@ -18,11 +18,14 @@ function getStickySqlString() {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
+      vote_score(feed_items) as votes,
+      feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     WHERE feed_items.is_sticky
+    GROUP BY feed_items.id, users.name, users.uuid, teams.name
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }
@@ -43,6 +46,8 @@ function getFeed(opts) {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
+      vote_score(feed_items) as votes,
+      feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
@@ -65,7 +70,10 @@ function getFeed(opts) {
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += `) ORDER BY is_sticky DESC, id DESC LIMIT ?`;
+
+  sqlString += ` ) `;
+  sqlString += _getSortingSql(opts.sort);
+  sqlString += ` LIMIT ?`;
   params.push(opts.limit);
 
   return knex.raw(sqlString, params)
@@ -146,6 +154,8 @@ function _actionToFeedObject(row, client) {
   var feedObj = {
     id: row['id'],
     type: row['action_type_code'],
+    votes: row['votes'],
+    hotScore: row['hot_score'],
     author: {
       name: row['user_name'],
       team: row['team_name'],
@@ -178,6 +188,21 @@ function _actionToFeedObject(row, client) {
   return feedObj;
 }
 
+function _getSortingSql(sort) {
+  const {
+    NEW,
+    HOT,
+  } = CONST.FEED_SORT_TYPES;
+
+  if (sort === NEW) {
+    return 'ORDER BY is_sticky DESC, id DESC'
+  } else if (sort === HOT) {
+    return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC'
+  } else {
+    return '';
+  }
+}
+
 function _resolveAuthorType(row, client) {
   const rowUserUuid = row['user_uuid'];
 
@@ -193,5 +218,5 @@ function _resolveAuthorType(row, client) {
 export {
   getFeed,
   createFeedItem,
-  deleteFeedItem
+  deleteFeedItem,
 };
