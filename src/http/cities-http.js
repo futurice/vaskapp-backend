@@ -5,6 +5,7 @@ import {assert} from '../validation';
 const getCities = createJsonRoute(function(req, res) {
   const citiesParams = assert({
     cityId: req.query.id,
+    cityName: req.query.name,
   }, 'citiesParams');
 
   return citiesCore.getCities(citiesParams)

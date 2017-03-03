@@ -41,6 +41,10 @@ const schemas = {
     value: Joi.number().integer().valid(-1, 1),
     feedItemId: Joi.number().integer().required(),
   }
+  citiesParams: {
+    cityId: Joi.number().integer().min(0).optional(),
+    cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
+  },
 };
 
 const conversions = {};
