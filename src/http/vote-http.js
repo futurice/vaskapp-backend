@@ -4,7 +4,6 @@ import {assert} from '../validation';
 
 let putVote = createJsonRoute(function(req, res) {
   const vote = assert(req.body, 'vote');
-  console.log(vote);
 
   if (!req.client.id) {
     throwStatus(403);
@@ -18,7 +17,7 @@ let putVote = createJsonRoute(function(req, res) {
       },
       client: req.client,
     })
-    .then(rowsInserted => rowsInserted)
+    .then(() => undefined)
     .catch( err => {
       throwStatus(err.status, err.message);
     });

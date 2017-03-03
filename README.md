@@ -203,7 +203,7 @@ Responses:
 Body is one of [vote object](#vote-object)
 
 Responses:
-* `200 OK` Body is one of [one of feed objects](#feed-objects).
+* `200 OK`
 * `404 Not found` Feed item not found
 
 
@@ -409,6 +409,8 @@ Responses:
   },
   type: "IMAGE",
   createdAt: "2016-04-20T09:00:00.000Z",
+  votes: 10,
+  hotScore: 178,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
@@ -431,6 +433,8 @@ Responses:
   },
   type: "TEXT",
   createdAt: "2016-04-20T09:00:00.000Z",
+  votes: 10,
+  hotScore: 178,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",

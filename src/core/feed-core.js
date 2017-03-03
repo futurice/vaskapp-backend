@@ -18,7 +18,7 @@ function getStickySqlString() {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
-      votes(feed_items) as votes,
+      vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
@@ -46,7 +46,7 @@ function getFeed(opts) {
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
-      votes(feed_items) as votes,
+      vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
       feed_items.is_sticky
     FROM feed_items
@@ -84,7 +84,7 @@ function getFeed(opts) {
       return [];
     }
 
-    return _.map(rows, row => actionToFeedObject(row, opts.client));
+    return _.map(rows, row => _actionToFeedObject(row, opts.client));
   });
 }
 
@@ -146,7 +146,7 @@ function deleteFeedItem(id, opts) {
   });
 }
 
-function actionToFeedObject(row, client) {
+function _actionToFeedObject(row, client) {
   if (!client) {
     throw new Error('Client information not passed as a parameter');
   }
@@ -219,5 +219,4 @@ export {
   getFeed,
   createFeedItem,
   deleteFeedItem,
-  actionToFeedObject,
 };

@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.raw(`
-      CREATE FUNCTION votes(feed_items)
+      CREATE FUNCTION vote_score(feed_items)
       RETURNS int8 AS
       $func$
         SELECT COALESCE(SUM(votes.value), 0)
@@ -13,6 +13,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.raw(`
-      DROP FUNCTION votes(feed_items)
+      DROP FUNCTION vote_score(feed_items)
     `);
 };

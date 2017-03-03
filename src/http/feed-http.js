@@ -2,13 +2,13 @@ import _ from 'lodash';
 import * as feedCore from '../core/feed-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
-import CONST from '../constants';
+
 
 const getFeed = createJsonRoute(function(req, res) {
   const feedParams = assert({
     beforeId: req.query.beforeId,
     limit: req.query.limit,
-    sort: req.query.sort || CONST.FEED_SORT_TYPES.NEW,
+    sort: req.query.sort,
   }, 'feedParams');
 
   const coreParams = _.merge(feedParams, {
