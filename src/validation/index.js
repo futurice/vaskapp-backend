@@ -35,6 +35,8 @@ const schemas = {
       .valid(CONST.FEED_SORT_TYPES_ARRAY)
       .default(CONST.FEED_SORT_TYPES.NEW)
       .optional(),
+    cityId: Joi.number().integer().min(0).optional(),
+    cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
   },
 
   vote: {

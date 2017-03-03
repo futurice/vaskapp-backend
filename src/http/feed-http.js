@@ -8,6 +8,8 @@ const getFeed = createJsonRoute(function(req, res) {
   const feedParams = assert({
     beforeId: req.query.beforeId,
     limit: req.query.limit,
+    cityId: req.query.cityId,
+    cityName: req.query.cityName,
     sort: req.query.sort,
   }, 'feedParams');
 

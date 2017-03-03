@@ -20,10 +20,13 @@ function getStickySqlString() {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      cities.id as city_id,
+      cities.name as city_name,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
+    LEFT JOIN cities ON cities.id = teams.city
     WHERE feed_items.is_sticky
     GROUP BY feed_items.id, users.name, users.uuid, teams.name
     ORDER BY feed_items.id DESC
@@ -48,10 +51,14 @@ function getFeed(opts) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      cities.id as city_id,
+      cities.name as city_name,
       feed_items.is_sticky
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
-    LEFT JOIN teams ON teams.id = users.team_id`;
+    LEFT JOIN teams ON teams.id = users.team_id
+    LEFT JOIN cities ON cities.id = teams.city
+    `;
 
   let params = [];
   let whereClauses = ['NOT feed_items.is_sticky'];
@@ -67,11 +74,20 @@ function getFeed(opts) {
     whereClauses.push('NOT feed_items.is_banned');
   }
 
+  if (opts.cityId) {
+    whereClauses.push(`cities.id = ?`);
+    params.push(opts.cityId);
+  }
+
+  if (opts.cityName) {
+    whereClauses.push(`cities.name = ?`);
+    params.push(opts.cityName);
+  }
+
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-
-  sqlString += ` ) `;
+  sqlString += ` GROUP BY cities.id, feed_items.id, users.name, users.uuid, teams.name ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -159,6 +175,8 @@ function _actionToFeedObject(row, client) {
     author: {
       name: row['user_name'],
       team: row['team_name'],
+      city: row['city_name'],
+      cityId: row['city_id'],
       type: _resolveAuthorType(row, client)
     },
     createdAt: row['created_at']
