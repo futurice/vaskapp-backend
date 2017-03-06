@@ -16,6 +16,13 @@ const putFeeling = createJsonRoute(function(req, res) {
     .catch(err => undefined);
 });
 
+const getFeeling = createJsonRoute(function(req, res) {
+  return wappuFeeling.getFeeling()
+    .then(result => result)
+    .catch(err => undefined);
+});
+
 export {
   putFeeling,
+  getFeeling,
 };

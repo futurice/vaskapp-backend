@@ -35,6 +35,7 @@ function createRouter() {
   router.put('/vote', voteHttp.putVote);
 
   router.put('/feeling', wappuFeeling.putFeeling);
+  if (process.env.NODE_ENV === 'development') router.get('/feeling', wappuFeeling.getFeeling);
 
   return router;
 }

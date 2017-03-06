@@ -20,7 +20,7 @@ function createOrUpdateFeeling(opts) {
     opts.rating, opts.description, opts.client.id,
     opts.client.id, opts.rating, opts.description
   ];
-  console.log(knex.raw(upsertFeelingSql, params).toString());
+
   return knex.transaction(trx =>
     trx.raw(upsertFeelingSql, params)
     .then(result => undefined)
@@ -28,6 +28,19 @@ function createOrUpdateFeeling(opts) {
   );
 }
 
+
+function getFeeling(opts) {
+  const getFeelingSql = `
+    SELECT * FROM wappu_feeling
+  `;
+
+  return knex.transaction(trx =>
+    trx.raw(getFeelingSql)
+    .then(result => result.rows)
+    .catch(err => undefined)
+  );
+}
 export {
   createOrUpdateFeeling,
+  getFeeling,
 };
