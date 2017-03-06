@@ -28,7 +28,7 @@ function getStickySqlString() {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN cities ON cities.id = teams.city
     WHERE feed_items.is_sticky
-    GROUP BY feed_items.id, users.name, users.uuid, teams.name
+    GROUP BY feed_items.id, users.name, users.uuid, teams.name, cities.id
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }

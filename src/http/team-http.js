@@ -1,8 +1,18 @@
+import _ from 'lodash';
 import * as teamCore from '../core/team-core';
 import {createJsonRoute} from '../util/express';
+import {assert} from '../validation';
 
 let getTeams = createJsonRoute(function(req, res) {
-  return teamCore.getTeams(req.client);
+  const teamParams = assert({
+    cityId: req.query.cityId,
+    cityName: req.query.cityName,
+  }, 'feedParams');
+
+  const coreParams = _.merge(teamParams, {
+    client: req.client
+  });
+  return teamCore.getTeams(coreParams);
 });
 
 export {
