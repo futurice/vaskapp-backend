@@ -11,11 +11,11 @@ exports.up = function(knex, Promise) {
 
     table.decimal('rating',[6], [4]).notNullable();
     table.string('description');
-    table.date('created_at_coarse').index().notNullable().defaultTo(knex.fn.now());
+    table.date('created_at_coarse').index().notNullable().defaultTo(knex.raw(`CURRENT_DATE`));
     table.timestamp('created_at_fine').index().notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').index().notNullable().defaultTo(knex.fn.now());
   })
-  .raw('');
+  .raw('ALTER TABLE wappu_feeling ADD CONSTRAINT wappu_feeling_date_uniq UNIQUE (user_id, created_at_coarse)');
 };
 
 exports.down = function(knex, Promise) {
