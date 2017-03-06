@@ -187,7 +187,7 @@ Query parameters:
 
 Responses:
 
-* `200 OK` List of [team objects](team-object)
+* `200 OK` List of [team objects](#team-object)
 
 
 ### `POST /api/actions`

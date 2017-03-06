@@ -9,7 +9,7 @@ var common = {
 };
 
 // URL parameter definition for endpoints that can
-// filter results based on city.
+// filter results by city.
 const cityParams = {
   cityId: Joi.number().integer().min(0).optional(),
   cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
