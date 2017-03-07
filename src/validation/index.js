@@ -50,9 +50,16 @@ const schemas = {
     feedItemId: Joi.number().integer().required(),
   },
 
-  feeling: {
+  upsertFeeling: {
     rating: Joi.number().precision(4).min(0).max(10).required(),
     description: Joi.string().min(1, 'utf8').max(140, 'utf8').optional().allow([null]).default(null),
+  },
+
+  getFeeling: {
+    teamId: common.primaryKeyId.optional(),
+    teamName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
+    cityId: common.primaryKeyId.optional(),
+    cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
   },
 
   eventsParams: cityParams,
