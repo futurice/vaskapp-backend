@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('cities')
   .then(() => knex.schema.table('teams', (table) => {
-      table.dropColumn('city');
+      table.dropColumn('city_id');
     })
   );
 };
