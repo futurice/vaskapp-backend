@@ -9,8 +9,10 @@ const getCities = createJsonRoute(function(req, res) {
   }, 'citiesParams');
 
   return citiesCore.getCities(citiesParams)
-    .then(result => result.rows)
-    .catch(err => undefined);
+    .then(result => result)
+    .catch(err => {
+      throw err
+    });
 });
 
 

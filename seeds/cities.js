@@ -4,18 +4,18 @@ var util = require('../src/util/seeds');
 exports.seed = function(knex, Promise) {
   return util.insertOrUpdate(knex, 'cities', {
     id: 1,
-    name: 'other',
+    name: 'Other',
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'cities', {
       id: 2,
-      name: 'helsinki',
+      name: 'Helsinki',
     })
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'cities', {
       id: 3,
-      name: 'tampere',
+      name: 'Tampere',
     })
   });
 }

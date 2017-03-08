@@ -1,4 +1,6 @@
 const {knex} = require('../util/database').connect();
+import {deepChangeKeyCase} from '../util';
+import _ from 'lodash';
 
 const getCities = (opts) => {
   let sqlString = `
@@ -25,9 +27,15 @@ const getCities = (opts) => {
   }
 
   return knex.raw(sqlString, params)
-    .then(result => result)
-    .catch(err => undefined);
-}
+    .then(results => _.map(results.rows, row =>
+      deepChangeKeyCase(row, 'camelCase')
+    ))
+    .catch(err => {
+      err.message = 'Error reading database';
+      err.status = 500;
+      throw err
+    });
+};
 
 export {
   getCities,

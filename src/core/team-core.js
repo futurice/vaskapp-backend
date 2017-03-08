@@ -13,7 +13,7 @@ function getTeams(opts) {
     FROM teams
     LEFT JOIN actions ON teams.id = actions.team_id ${isBanned ? '' : 'AND NOT actions.is_banned'}
     LEFT JOIN action_types ON actions.action_type_id = action_types.id
-    LEFT JOIN cities ON cities.id = teams.city
+    JOIN cities ON cities.id = teams.city_id
   `;
 
   let params = [];

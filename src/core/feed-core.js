@@ -26,9 +26,15 @@ function getStickySqlString() {
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city
+    LEFT JOIN cities ON cities.id = teams.city_id
     WHERE feed_items.is_sticky
-    GROUP BY feed_items.id, users.name, users.uuid, teams.name, cities.id
+    GROUP BY
+      feed_items.id,
+      users.name,
+      users.uuid,
+      teams.name,
+      cities.id,
+      cities.name
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }
@@ -57,7 +63,7 @@ function getFeed(opts) {
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city
+    LEFT JOIN cities ON cities.id = teams.city_id
     `;
 
   let params = [];
