@@ -8,6 +8,13 @@ var common = {
   primaryKeyId: Joi.number().integer().min(0)
 };
 
+// URL parameter definition for endpoints that can
+// filter results by city.
+const cityParams = {
+  cityId: Joi.number().integer().min(0).optional(),
+  cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
+}
+
 const schemas = {
   common: common,
 
@@ -28,19 +35,22 @@ const schemas = {
     team: common.team.required()
   },
 
-  feedParams: {
+  feedParams: _.merge(cityParams, {
     beforeId: Joi.number().integer().min(0).optional(),
     limit: Joi.number().integer().min(1).max(100).optional(),
     sort: Joi.string()
       .valid(CONST.FEED_SORT_TYPES_ARRAY)
       .default(CONST.FEED_SORT_TYPES.NEW)
       .optional(),
-  },
+  }),
 
   vote: {
     value: Joi.number().integer().valid(-1, 1),
     feedItemId: Joi.number().integer().required(),
-  }
+  },
+
+  citiesParams: cityParams,
+  teamsParams: cityParams,
 };
 
 const conversions = {};

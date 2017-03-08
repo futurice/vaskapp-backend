@@ -180,9 +180,14 @@ Responses:
 
 > List all teams
 
+Query parameters:
+
+* `cityId` Integer. If specified, returns only teams based in the city with given id.
+* `cityName` String. If specified, returns only teams based in the city with given name.
+
 Responses:
 
-* `200 OK` List of [team objects](team-object)
+* `200 OK` List of [team objects](#team-object)
 
 
 ### `POST /api/actions`
@@ -249,6 +254,22 @@ Responses:
 * `200 OK`
 
 
+### `GET /api/cities`
+
+> List participating cities
+
+Body is list of [city objects](#city-object).
+
+Query parameters:
+
+* `id` Integer. If specified, returns only cities with the given ID.
+* `name` String. If specified, returns only cities with the given name.
+
+Responses:
+
+* `200 OK`
+
+
 ### `GET /api/feed`
 
 > Get list of feed
@@ -260,6 +281,8 @@ Query parameters:
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
 * `sort` String. Default: 'new'. In which order the result should be returned. One of: 'new', 'hot'.
+* `cityName` String. If specified, returns only posts by users belonging to guilds based in the city with given name.
+* `cityId` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
 
 Examples:
 
@@ -308,7 +331,10 @@ Responses:
 {
   "id": 1,
   "name": "Tietoteekkarikilta",
-  "image_path": "foo.com/path_to_image.jpg"
+  "image_path": "foo.com/path_to_image.jpg",
+  "score": "10",
+  "cityId": 3,
+  "cityName": "tampere"
 }
 ```
 
@@ -358,6 +384,15 @@ Responses:
   // one of 1, -1
   "value": 1,
   "feedItemId": 12
+}
+```
+
+### City object
+
+```js
+{
+  "id": 2,
+  "name": "helsinki"
 }
 ```
 
@@ -414,6 +449,8 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
+    city: "tampere",
+    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
@@ -440,6 +477,8 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
+    city: "tampere",
+    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
