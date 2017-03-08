@@ -471,6 +471,8 @@ Responses:
   type: "TEXT",
   createdAt: "2016-04-20T09:00:00.000Z",
   votes: 10,
+  // If and how the user has voted. One of [-1, 0, 1].
+  userVote: 0,
   hotScore: 178,
   author: {
     name: "Nahkasimo",

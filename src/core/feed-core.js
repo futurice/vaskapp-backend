@@ -22,11 +22,13 @@ function getStickySqlString() {
       feed_items.hot_score as hot_score,
       cities.id as city_id,
       cities.name as city_name,
-      feed_items.is_sticky
+      feed_items.is_sticky,
+      COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN cities ON cities.id = teams.city_id
+    LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
     GROUP BY
       feed_items.id,
@@ -34,7 +36,8 @@ function getStickySqlString() {
       users.uuid,
       teams.name,
       cities.id,
-      cities.name
+      cities.name,
+      votes.value
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }
@@ -59,14 +62,16 @@ function getFeed(opts) {
       feed_items.hot_score as hot_score,
       cities.id as city_id,
       cities.name as city_name,
-      feed_items.is_sticky
+      feed_items.is_sticky,
+      COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN cities ON cities.id = teams.city_id
+    LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     `;
 
-  let params = [];
+  let params = [opts.client.id, opts.client.id];
   let whereClauses = ['NOT feed_items.is_sticky'];
 
   if (!opts.beforeId) {
@@ -93,7 +98,7 @@ function getFeed(opts) {
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += ` GROUP BY cities.id, feed_items.id, users.name, users.uuid, teams.name ) `;
+  sqlString += ` GROUP BY cities.id, feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -177,6 +182,7 @@ function _actionToFeedObject(row, client) {
     id: row['id'],
     type: row['action_type_code'],
     votes: row['votes'],
+    userVote: row['user_vote'],
     hotScore: row['hot_score'],
     author: {
       name: row['user_name'],
