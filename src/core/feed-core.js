@@ -20,12 +20,13 @@ function getStickySqlString() {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      feed_items.is_sticky
+      feed_items.is_sticky,
+      COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
+    LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
-    GROUP BY feed_items.id, users.name, users.uuid, teams.name
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
 }
@@ -48,12 +49,15 @@ function getFeed(opts) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      feed_items.is_sticky
+      feed_items.is_sticky,
+      COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
-    LEFT JOIN teams ON teams.id = users.team_id`;
+    LEFT JOIN teams ON teams.id = users.team_id
+    LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
+    `;
 
-  let params = [];
+  let params = [opts.client.id, opts.client.id];
   let whereClauses = ['NOT feed_items.is_sticky'];
 
   if (!opts.beforeId) {
@@ -155,6 +159,7 @@ function _actionToFeedObject(row, client) {
     id: row['id'],
     type: row['action_type_code'],
     votes: row['votes'],
+    userVote: row['user_vote'],
     hotScore: row['hot_score'],
     author: {
       name: row['user_name'],
