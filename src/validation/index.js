@@ -44,6 +44,11 @@ const schemas = {
       .optional(),
   }),
 
+  vote: {
+    value: Joi.number().integer().valid(-1, 1),
+    feedItemId: Joi.number().integer().required(),
+  },
+
   citiesParams: cityParams,
   teamsParams: cityParams,
 };
