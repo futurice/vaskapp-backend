@@ -60,13 +60,13 @@ function getMood(opts) {
 }
 
 function _getSelectSql(opts) {
-  let publicSql = `
+  const publicSql = `
     DATE_TRUNC('day', wappu_mood.created_at_fine) AS date,
     ROUND(AVG(wappu_mood.rating)::numeric, 4) AS avg_rating,
     COUNT(wappu_mood.rating) AS votes_cast
   `;
 
-  let personalSql = `
+  const personalSql = `
     DATE_TRUNC('day', created_at_fine) AS date,
     wappu_mood.rating,
     wappu_mood.description
@@ -79,7 +79,6 @@ function _getSelectSql(opts) {
 function _getWhereSql(opts) {
   // Personal is the strictest, hence no other filter is required;
   if (opts.personal) {
-    if (!opts.client) throw new Error('No client information passed');
     return knex.raw(
       ` WHERE wappu_mood.user_id = ? `,
       [opts.client.id]
@@ -90,15 +89,19 @@ function _getWhereSql(opts) {
   let params = [];
 
   if (opts.cityId) {
-    // TODO Pending PR
-    // filters.push(``);
-    // params.push();
+    filters.push(`teams.city_id = ?`);
+    params.push(opts.cityId);
   }
 
   if (opts.cityName) {
-    // TODO Pending PR
-    // filters.push(``);
-    // params.push();
+    filters.push(`
+      teams.city_id IN (
+        SELECT cities.id
+        FROM cities
+        WHERE cities.name = ?
+      )
+    `);
+    params.push(opts.cityName);
   }
 
   if (opts.teamId) {
