@@ -5,7 +5,7 @@ import {assert} from '../validation';
 
 
 const putMood = createJsonRoute(function(req, res) {
-  let moodParams = assert(req.body, 'upsertMood');
+  let moodParams = assert(req.body, 'upsertMoodParams');
   let coreParams = _.merge(moodParams, {
     client: req.client
   });
@@ -16,7 +16,7 @@ const putMood = createJsonRoute(function(req, res) {
 });
 
 const getMood = createJsonRoute(function(req, res) {
-  let moodParams = assert(req.query, 'getMood');
+  let moodParams = assert(req.query, 'getMoodParams');
   let coreParams = _.merge(moodParams, {
     client: req.client
   });
