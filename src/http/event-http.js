@@ -3,7 +3,7 @@ import {createJsonRoute} from '../util/express';
 import {assert} from '../validation';
 
 let getEvents = createJsonRoute(function(req, res) {
-  return eventCore.getEvents(assert(req.query, 'eventsParams'));
+  return eventCore.getEventsByCity(assert(req.query, 'eventsParams'));
 });
 
 export {

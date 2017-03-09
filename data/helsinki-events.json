@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Hesa",
+    "locationName": "Spinnin kerhohuone SA014",
+    "startTime": "2017-04-21T10:00:00.000Z",
+    "endTime": "2017-04-21T15:00:00.000Z",
+    "description": "Raining and freezing outside? Studying terrifies and starting to miss kindergarden times? Spinni solves your problems!\r\r\r\rClimb stairs down to the basement of Sähkötalo and arrive to the club room of Spinni, SA014 on <päivämäärä> starting at 1 PM. Spinni offers some snacks, coloring books (for adults), games, lot of friends to play with - not to mention awesome music and lights. Additionally you may have a look at the regular life of electronic music club that is celebrating its 20th anniversary this year.\r\r\r\rSpinni <3 you",
+    "organizer": "Spinni",
+    "contactDetails": "spinni-hallitus@listmail.tut.fi; Valtteri Taimela, valtteri.taimela@student.tut.fi",
+    "teemu": false,
+    "location": {
+      "latitude": 61.450364,
+      "longitude": 23.858384
+    },
+    "coverImage": "https://storage.googleapis.com/wappuapp/assets/spinni.jpg"
+  },
+  {
+    "name": "Hesa",
+    "locationName": "Teekkarisauna",
+    "startTime": "2017-04-21T12:00:00.000Z",
+    "endTime": "2017-04-21T17:00:00.000Z",
+    "description": "Teekkari section organizes the Student Union's second singing evening. Take your Rasputin-songbook with you, and come to Teekkarisauna!",
+    "organizer": "Teekkarijaosto",
+    "contactDetails": "annukka.saatela@student.tut.fi",
+    "teemu": true,
+    "location": {
+      "latitude": 61.452725,
+      "longitude": 23.859969
+    },
+    "coverImage": "https://storage.googleapis.com/wappuapp/assets/megalaulu.jpg"
+  }
+]

@@ -29,17 +29,18 @@ const state = {
 };
 
 function initialize() {
-  state.eventIds = eventCore.getEvents()
-    .filter(event => !_.isUndefined(event.facebookId))
-    .map(event => event.facebookId);
+  eventCore.getEvents().then(events => {
+    state.eventIds = events
+      .filter(event => !_.isUndefined(event.facebookId))
+      .map(event => event.facebookId);
 
-  _getAccessToken()
-    .then(() => {
-      setInterval(_updateFromFacebook, REFRESH_INTERVAL);
-
-      // Execute update immediately
-      _updateFromFacebook();
-    });
+    _getAccessToken()
+      .then(() => {
+        setInterval(_updateFromFacebook, REFRESH_INTERVAL);
+          // Execute update immediately
+          _updateFromFacebook();
+      });
+  })
 }
 
 function getAnnouncements() {
