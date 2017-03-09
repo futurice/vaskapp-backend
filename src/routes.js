@@ -9,7 +9,7 @@ import * as announcementHttp from './http/announcement-http';
 import * as voteHttp from './http/vote-http';
 import * as markerHttp from './http/marker-http';
 import * as citiesHttp from './http/cities-http';
-import * as wappuFeeling from './http/wappu-feeling-http';
+import * as wappuMood from './http/wappu-mood-http';
 
 function createRouter() {
   const router = express.Router();
@@ -34,8 +34,8 @@ function createRouter() {
 
   router.put('/vote', voteHttp.putVote);
 
-  router.put('/feeling', wappuFeeling.putFeeling);
-  router.get('/feeling', wappuFeeling.getFeeling);
+  router.put('/mood', wappuMood.putMood);
+  router.get('/mood', wappuMood.getMood);
 
   return router;
 }

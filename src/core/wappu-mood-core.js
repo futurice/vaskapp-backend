@@ -1,11 +1,11 @@
 const {knex} = require('../util/database').connect();
 
 
-function createOrUpdateFeeling(opts) {
-  const upsertFeelingSql = `
+function createOrUpdateMood(opts) {
+  const upsertMoodSql = `
     WITH upsert AS
       (UPDATE
-        wappu_feeling
+        wappu_mood
       SET
         rating = ?,
         description = ?,
@@ -15,7 +15,7 @@ function createOrUpdateFeeling(opts) {
       RETURNING
         *
       )
-      INSERT INTO wappu_feeling (user_id, rating, description)
+      INSERT INTO wappu_mood (user_id, rating, description)
       SELECT ?, ?, ? WHERE NOT EXISTS (SELECT * FROM upsert)
   `;
 
@@ -25,43 +25,43 @@ function createOrUpdateFeeling(opts) {
   ];
 
   return knex.transaction(trx =>
-    trx.raw(upsertFeelingSql, params)
+    trx.raw(upsertMoodSql, params)
     .then(result => undefined)
     .catch(err => undefined)
   );
 }
 
-function getFeeling(opts) {
-  const getFeelingSql = `
+function getMood(opts) {
+  const getMoodSql = `
     SELECT
       ${ _getSelectSql(opts) }
-    FROM wappu_feeling
-    LEFT JOIN teams ON teams.id = wappu_feeling.user_id
+    FROM wappu_mood
+    LEFT JOIN teams ON teams.id = wappu_mood.user_id
     ${ _getWhereSql(opts) }
     GROUP BY
-      wappu_feeling.created_at_fine,
-      wappu_feeling.description,
-      wappu_feeling.rating
+      wappu_mood.created_at_fine,
+      wappu_mood.description,
+      wappu_mood.rating
   `;
 
   return knex.transaction(trx =>
-    trx.raw(getFeelingSql)
+    trx.raw(getMoodSql)
     .then(result => result.rows)
-    .catch(err => undefined)
+    .catch(err => {console.log(err); return undefined})
   );
 }
 
 function _getSelectSql(opts) {
   let publicSql = `
-    DATE_TRUNC('day', wappu_feeling.created_at_fine) AS date,
-    ROUND(AVG(wappu_feeling.rating)::numeric, 4) AS avg_rating,
-    COUNT(wappu_feeling.rating) AS votes_cast
+    DATE_TRUNC('day', wappu_mood.created_at_fine) AS date,
+    ROUND(AVG(wappu_mood.rating)::numeric, 4) AS avg_rating,
+    COUNT(wappu_mood.rating) AS votes_cast
   `;
 
   let personalSql = `
     DATE_TRUNC('day', created_at_fine) AS date,
-    wappu_feeling.rating,
-    wappu_feeling.description
+    wappu_mood.rating,
+    wappu_mood.description
   `;
 
   return opts.personal ? personalSql : publicSql;
@@ -73,7 +73,7 @@ function _getWhereSql(opts) {
   if (opts.personal) {
     if (!opts.client) throw new Error('No client information passed');
     return knex.raw(
-      ` WHERE wappu_feeling.user_id = ? `,
+      ` WHERE wappu_mood.user_id = ? `,
       [opts.client.id]
     ).toString();
   }
@@ -109,6 +109,6 @@ function _getWhereSql(opts) {
 }
 
 export {
-  createOrUpdateFeeling,
-  getFeeling,
+  createOrUpdateMood,
+  getMood,
 };

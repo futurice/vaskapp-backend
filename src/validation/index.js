@@ -50,12 +50,12 @@ const schemas = {
     feedItemId: Joi.number().integer().required(),
   },
 
-  upsertFeeling: {
+  upsertMood: {
     rating: Joi.number().precision(4).min(0).max(10).required(),
     description: Joi.string().min(1, 'utf8').max(140, 'utf8').optional().allow([null]).default(null),
   },
 
-  getFeeling: {
+  getMood: {
     teamId: common.primaryKeyId.optional(),
     teamName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
     cityId: common.primaryKeyId.optional(),
