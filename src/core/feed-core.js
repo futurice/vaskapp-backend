@@ -71,11 +71,12 @@ function getFeed(opts) {
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     `;
 
-  let params = [opts.client.id, opts.client.id];
+  let params = [opts.client.id];
   let whereClauses = ['NOT feed_items.is_sticky'];
 
   if (!opts.beforeId) {
     sqlString = getStickySqlString() + " UNION ALL " + sqlString;
+    params.push(opts.client.id);
   } else {
     whereClauses.push('feed_items.id < ?');
     params.push(opts.beforeId);
