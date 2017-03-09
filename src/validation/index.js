@@ -49,6 +49,11 @@ const schemas = {
     feedItemId: Joi.number().integer().required(),
   },
 
+  eventsParams: Joi.object().keys({
+    cityId: common.primaryKeyId,
+    cityName: Joi.string()
+  }).or('cityId', 'cityName'),
+
   citiesParams: cityParams,
   teamsParams: cityParams,
 };

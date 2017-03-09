@@ -15,7 +15,7 @@ try {
   throw e;
 }
 
-function getEvents() {
+function getEvents(params) {
   return _.filter(events, event => {
     return moment(event.endTime).diff(moment(), 'hours') > -5;
   });
