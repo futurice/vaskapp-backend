@@ -15,11 +15,11 @@ function createOrUpdateMood(opts) {
       RETURNING
         *
       )
-      INSERT INTO wappu_mood (user_id, rating, description)
-      SELECT ?, ?, ? WHERE NOT EXISTS (SELECT * FROM upsert)
+    INSERT INTO wappu_mood (user_id, rating, description)
+    SELECT ?, ?, ? WHERE NOT EXISTS (SELECT * FROM upsert)
   `;
 
-  const params = [
+  let params = [
     opts.rating, opts.description, opts.client.id,
     opts.client.id, opts.rating, opts.description
   ];
@@ -27,7 +27,11 @@ function createOrUpdateMood(opts) {
   return knex.transaction(trx =>
     trx.raw(upsertMoodSql, params)
     .then(result => undefined)
-    .catch(err => undefined)
+    .catch(err => {
+      err.message = 'Error updating database';
+      err.status = 500;
+      throw err;
+    })
   );
 }
 
@@ -47,7 +51,11 @@ function getMood(opts) {
   return knex.transaction(trx =>
     trx.raw(getMoodSql)
     .then(result => result.rows)
-    .catch(err => {console.log(err); return undefined})
+    .catch(err => {
+      err.message = 'Error reading database';
+      err.status = 500;
+      throw err;
+    })
   );
 }
 
