@@ -7,34 +7,36 @@ const {knex} = require('../util/database').connect();
 
 const DATA_DIR = path.join(__dirname, '../../data');
 
-let events;
+let eventsByCity;
 
 const setUp = knex('cities')
   .select('id')
   .select('name')
   .then(cities => cities.filter(city => _fileExists(city.name)))
   .then(cities => {
-    events = cities.map(city => {
+    eventsByCity = cities.map(city => {
       return {
         cityName: city.name,
         cityId: city.id,
-        events: _readEvents(city)
+        events: _readEvents(city),
       };
     })
   });
 
 function getEventsByCity(params) {
-  return _.filter(_eventsForCity(params).events, event => {
+  return _.filter(_eventsForCity(params), event => {
     return moment(event.endTime).diff(moment(), 'hours') > -5;
   });
 }
 
 function getEvents() {
-  return setUp.then(() =>_.flatten(events.map(city => city.events)));
+  return setUp.then(() =>
+    _.flatten(eventsByCity.map(eventCity => eventCity.events))
+  );
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
-  const event = _.find(events, { facebookId: facebookEventId });
+  const event = _.find(eventsByCity, { facebookId: facebookEventId });
   if (!event) {
     return;
   }
@@ -69,11 +71,12 @@ function _readEvents(city) {
 
 function _eventsForCity(params) {
   if (params.cityId) {
-    return _.find(events, { cityId: params.cityId });
+    // TODO parseInt since (for some reason) Joi returns the validated param as string
+    return _.get(_.find(eventsByCity, { cityId: parseInt(params.cityId) }), 'events', []);
   } else if (params.cityName) {
-    return _.find(events, { cityName: params.cityName });
+    return _.get(_.find(eventsByCity, { cityName: params.cityName }), 'events', []);
   } else {
-    return [];
+    return _.flatten(eventsByCity.map(eventCity => eventCity.events));
   }
 }
 
