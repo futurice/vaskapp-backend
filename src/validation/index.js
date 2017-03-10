@@ -11,7 +11,7 @@ var common = {
 // URL parameter definition for endpoints that can
 // filter results by city.
 const cityParams = {
-  cityId: Joi.number().integer().min(0).optional(),
+  cityId: common.primaryKeyId.optional(),
   cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
 }
 
@@ -49,11 +49,7 @@ const schemas = {
     feedItemId: Joi.number().integer().required(),
   },
 
-  eventsParams: Joi.object().keys({
-    cityId: common.primaryKeyId,
-    cityName: Joi.string()
-  }).or('cityId', 'cityName'),
-
+  eventsParams: cityParams,
   citiesParams: cityParams,
   teamsParams: cityParams,
 };
