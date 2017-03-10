@@ -14,6 +14,8 @@ exports.up = function(knex, Promise) {
     table.string('cover_image', 200);
     table.boolean('show').defaultTo(true);
     table.integer('city_id').unsigned().index();
+    table.string('fb_event_id', 50).index();
+    table.integer('attending_count').defaultTo(0);
     table.foreign('city_id')
       .references('id')
       .inTable('cities')

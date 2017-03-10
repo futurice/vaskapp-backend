@@ -26,6 +26,7 @@ exports.seed = function(knex, Promise) {
             teemu: event.teemu,
             location: event.location.longitude + ',' + event.location.latitude,
             cover_image: event.coverImage,
+            fb_event_id: event.facebookId,
           });
         });
       });
