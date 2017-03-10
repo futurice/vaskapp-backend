@@ -70,7 +70,7 @@ exports.seed = function(knex, Promise) {
       code: 'CHECK_IN_EVENT',
       name: 'Check in',
       value: 50,
-      cooldown: 0,
+      cooldown: 1, // 0 evals unintentionally to false in throttle-core
     });
   });
 };

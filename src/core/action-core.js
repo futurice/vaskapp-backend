@@ -9,7 +9,8 @@ function createAction(action) {
     'user_id':        knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     'image_path':     action.imagePath,
     'text':           action.text,
-    'ip':             action.ip
+    'ip':             action.ip,
+    'event_id':       action.eventId,
   };
 
   const location = action.location;
