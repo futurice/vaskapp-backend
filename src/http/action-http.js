@@ -30,8 +30,10 @@ let postAction = createJsonRoute(function(req, res) {
         throwStatus(400, 'Action type ' + action.type + ' does not exist');
       }
     })
-    .then(() => {
-      return actionCore.createAction(action).then(rowsInserted => undefined);
+    .then(() => actionCore.createAction(action))
+    .then(() => undefined)
+    .catch(err =>  {
+      throwStatus(err.status, err.message);
     });
   }
 
