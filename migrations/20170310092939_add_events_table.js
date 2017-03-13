@@ -16,6 +16,7 @@ exports.up = function(knex, Promise) {
     table.integer('city_id').unsigned().index();
     table.string('fb_event_id', 50).index();
     table.integer('attending_count').defaultTo(0);
+    table.integer('radius').defaultTo(250);
     table.foreign('city_id')
       .references('id')
       .inTable('cities')
