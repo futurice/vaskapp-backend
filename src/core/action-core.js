@@ -34,6 +34,8 @@ function createAction(action) {
         if (action.type === 'IMAGE' || action.type === 'TEXT') {
           createFeedItem(action, trx);
         }
+
+        return Promise.resolve();
     })
   })
   .then(() => undefined)
