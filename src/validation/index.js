@@ -27,7 +27,7 @@ const schemas = {
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
-    })
+    }).when('type', {is: 'CHECK_IN_EVENT', then: Joi.required()}),
   },
 
   user: {

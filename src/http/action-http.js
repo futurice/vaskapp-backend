@@ -3,6 +3,7 @@ import * as actionCore from '../core/action-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
 import * as imageHttp from './image-http';
+import * as eventHttp from './event-http';
 import * as throttleCore from '../core/throttle-core';
 
 let postAction = createJsonRoute(function(req, res) {
@@ -28,6 +29,10 @@ let postAction = createJsonRoute(function(req, res) {
     .then(type => {
       if (type === null) {
         throwStatus(400, 'Action type ' + action.type + ' does not exist');
+      } else if (type.code === 'CHECK_IN_EVENT') {
+        return eventHttp.isValidCheckIn(action);
+      } else {
+        return Promise.resolve();
       }
     })
     .then(() => actionCore.createAction(action))
