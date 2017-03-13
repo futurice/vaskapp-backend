@@ -31,9 +31,7 @@ const state = {
 
 function initialize() {
   knex('events').select('*').whereNotNull('fb_event_id').then(events => {
-    state.eventIds = events
-      .filter(event => !_.isUndefined(event.facebookId))
-      .map(event => event.facebookId);
+    state.eventIds = events.map(event => event.facebookId);
 
     _getAccessToken()
       .then(() => {
