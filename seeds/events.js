@@ -1,8 +1,8 @@
 const BPromise = require('bluebird');
-var util = require('../src/util/seeds');
+const util = require('../src/util/seeds');
 const fs = require('fs');
 const path = require('path');
-
+const logger = require('../src/util/logger');
 const DATA_DIR = path.join(__dirname, '../data');
 
 exports.seed = function(knex, Promise) {
@@ -50,7 +50,8 @@ function _parseJSON(jsonString, cityName) {
   try {
     json = JSON.parse(jsonString);
   } catch (e) {
-    // TODO error logging
+    logger.error(`Error when parsing ${cityName}-event.json!`);
+    logger.error(jsonString);
     throw e;
   }
 
