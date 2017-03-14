@@ -1,10 +1,17 @@
 const {knex} = require('../util/database').connect();
+import {deepChangeKeyCase} from '../util';
+import _ from 'lodash';
 
 
 function getStations(opts) {
-  throw new Error('Not implemented yet');
+  return knex('radios').select('*')
+    .then(rows =>
+      _.map(rows, row =>
+        deepChangeKeyCase(row, 'camelCase')
+      )
+    );
 }
 
 export {
-  getStations
+  getStations,
 };
