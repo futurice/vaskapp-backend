@@ -445,7 +445,7 @@ Responses:
   type: "IMAGE",
   createdAt: "2016-04-20T09:00:00.000Z",
   votes: 10,
-  hotScore: 178,
+  hotScore: 178.0032,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
@@ -473,7 +473,7 @@ Responses:
   votes: 10,
   // If and how the user has voted. One of [-1, 0, 1].
   userVote: 0,
-  hotScore: 178,
+  hotScore: 178.0021,
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
