@@ -1,5 +1,5 @@
 const {knex} = require('../util/database').connect();
-import {hotScore} from '../hot-score';
+import {hotScore} from './hot-score';
 
 function createOrUpdateVote(opts) {
 
