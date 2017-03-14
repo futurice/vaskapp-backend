@@ -1,3 +1,5 @@
+const requireEnvs = require('./util/require-envs');
+requireEnvs(['FEED_ZERO_TIME', 'FEED_INFLATION_INTERVAL']);
 
 const BASE_LOG = Math.log(process.env.FEED_BASE_LOG);
 
