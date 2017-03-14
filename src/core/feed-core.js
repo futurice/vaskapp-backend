@@ -220,17 +220,13 @@ function _actionToFeedObject(row, client) {
 }
 
 function _getSortingSql(sort) {
-  const {
-    NEW,
-    HOT,
-  } = CONST.FEED_SORT_TYPES;
+  const { HOT } = CONST.FEED_SORT_TYPES;
 
-  if (sort === NEW) {
-    return 'ORDER BY is_sticky DESC, id DESC'
-  } else if (sort === HOT) {
-    return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC'
+  if (sort === HOT) {
+    return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC';
   } else {
-    return '';
+    // Defaults to 'NEW'
+    return 'ORDER BY is_sticky DESC, id DESC';
   }
 }
 
