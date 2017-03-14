@@ -30,14 +30,18 @@ const state = {
 };
 
 function initialize() {
-  knex('events').select('*').whereNotNull('fb_event_id').then(events => {
-    state.eventIds = events.map(event => event.facebookId);
+  knex('events')
+    .select('fb_event_id AS facebookId')
+    .whereNotNull('fb_event_id')
+    .then(events => {
+      console.log(events);
+      state.eventIds = events.map(event => event.facebookId);
 
-    _getAccessToken()
-      .then(() => {
-        setInterval(_updateFromFacebook, REFRESH_INTERVAL);
-          // Execute update immediately
-          _updateFromFacebook();
+      _getAccessToken()
+        .then(() => {
+          setInterval(_updateFromFacebook, REFRESH_INTERVAL);
+            // Execute update immediately
+            _updateFromFacebook();
       });
   })
 }
