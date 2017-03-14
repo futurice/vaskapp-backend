@@ -1,6 +1,6 @@
-import path from 'path';
-import winston from 'winston';
-import _ from 'lodash';
+const path = require('path');
+const winston = require('winston');
+const _ = require('lodash');
 
 const COLORIZE = process.env.NODE_ENV === 'development';
 

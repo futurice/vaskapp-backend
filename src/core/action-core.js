@@ -9,7 +9,8 @@ function createAction(action) {
     'user_id':        knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
     'image_path':     action.imagePath,
     'text':           action.text,
-    'ip':             action.ip
+    'ip':             action.ip,
+    'event_id':       action.eventId,
   };
 
   const location = action.location;
@@ -31,11 +32,19 @@ function createAction(action) {
 
         action.id = rows[0].id;
         if (action.type === 'IMAGE' || action.type === 'TEXT') {
-          return createFeedItem(action, trx);
+          createFeedItem(action, trx);
         }
 
         return Promise.resolve();
-      });
+    })
+  })
+  .then(() => undefined)
+  .catch(err => {
+    if (err.constraint === 'only_one_check_in_per_event') {
+      err.status = 403;
+      err.message = 'Duplicate check in attempted';
+    }
+    throw err;
   });
 }
 

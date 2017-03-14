@@ -63,5 +63,14 @@ exports.seed = function(knex, Promise) {
       cooldown: 1000 * 60 * 1000,
       is_user_action: false
     });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'action_types', {
+      id: 9,
+      code: 'CHECK_IN_EVENT',
+      name: 'Check in',
+      value: 50,
+      cooldown: 1, // 0 evals unintentionally to false in throttle-core
+    });
   });
 };

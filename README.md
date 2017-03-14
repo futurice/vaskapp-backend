@@ -199,6 +199,8 @@ Body is one of [action objects](#action-objects).
 Responses:
 
 * `200 OK`
+* `404` On CHECK_IN_EVENT; no such event id
+* `403` On CHECK_IN_EVENT; off time, off site or duplicate check in attempt.
 
 
 ### `PUT /api/vote`
@@ -313,7 +315,7 @@ Responses:
   "locationName": "Tietotalon edusta",
   "startTime": "2016-04-20T09:00:00.000Z",
   "endTime": "2016-04-20T14:00:00.000Z",
-  "description": "Steong man competition",
+  "description": "Strong man competition",
   "organizer": "Herwannan hauiskääntö",
   "contactDetails": "Herwannan hauiskääntö / hkaanto@tut.fi",
   "teemu": false,
@@ -400,17 +402,20 @@ Responses:
 
 #### Basic action object
 
-`type` is one of `SIMA` or `LECTURE`.
+`type` is one of `SIMA`, `CHECK_IN_EVENT` or `LECTURE`.
 
 ```js
 {
+  // required when event type 'CHECK_IN_EVENT'
   location: {
     latitude: -1.2345,
     longitude: 56.2322
   },
   type: "SIMA",
   team: 1,
-  user: 'UUID'
+  user: 'UUID',
+  // required when event type 'CHECK_IN_EVENT'
+  eventId: 'Tampere_0'
 }
 ```
 

@@ -11,7 +11,7 @@ var common = {
 // URL parameter definition for endpoints that can
 // filter results by city.
 const cityParams = {
-  cityId: Joi.number().integer().min(0).optional(),
+  cityId: common.primaryKeyId.optional(),
   cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
 }
 
@@ -23,10 +23,11 @@ const schemas = {
     type: Joi.string().uppercase().required(),
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
     text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
+    eventId: common.primaryKeyId.when('type', { is: 'CHECK_IN_EVENT', then: Joi.required()}),
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
-    })
+    }).when('type', {is: 'CHECK_IN_EVENT', then: Joi.required()}),
   },
 
   user: {
@@ -49,6 +50,7 @@ const schemas = {
     feedItemId: Joi.number().integer().required(),
   },
 
+  eventsParams: cityParams,
   citiesParams: cityParams,
   teamsParams: cityParams,
 };

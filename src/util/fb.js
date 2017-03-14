@@ -7,6 +7,7 @@ const request = require('request');
 const FB = require('fb');
 const logger = require('./logger')(__filename);
 const eventCore = require('../core/event-core');
+const {knex} = require('./database').connect();
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
@@ -29,17 +30,19 @@ const state = {
 };
 
 function initialize() {
-  state.eventIds = eventCore.getEvents()
-    .filter(event => !_.isUndefined(event.facebookId))
-    .map(event => event.facebookId);
+  knex('events')
+    .select('fb_event_id AS facebookId')
+    .whereNotNull('fb_event_id')
+    .then(events => {
+      state.eventIds = events.map(event => event.facebookId);
 
-  _getAccessToken()
-    .then(() => {
-      setInterval(_updateFromFacebook, REFRESH_INTERVAL);
-
-      // Execute update immediately
-      _updateFromFacebook();
-    });
+      _getAccessToken()
+        .then(() => {
+          setInterval(_updateFromFacebook, REFRESH_INTERVAL);
+          // Execute update immediately
+          _updateFromFacebook();
+      });
+  })
 }
 
 function getAnnouncements() {

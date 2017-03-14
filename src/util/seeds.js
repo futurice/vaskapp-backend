@@ -1,14 +1,14 @@
 var VERBOSE = process.env.VERBOSE_SEEDS === 'true';
 
 // Inserts or updates a row to table
-function insertOrUpdate(knex, table, row) {
-  return knex(table).select().where('id', row.id)
+function insertOrUpdate(knex, table, row, column = 'id') {
+  return knex(table).select().where(column, row[column])
     .then(rows => {
       if (rows.length > 0) {
-        maybeLog('Update row id', row.id, 'in', table);
-        return knex(table).where('id', row.id).update(row);
+        maybeLog('Update row', column, row[column], 'in', table);
+        return knex(table).where(column, row[column]).update(row);
       } else {
-        maybeLog('Insert row with id', row.id, 'to', table);
+        maybeLog('Insert row', column, row[column], 'in', table);
         return knex(table).insert(row);
       }
     });
