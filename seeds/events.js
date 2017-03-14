@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
       return BPromise.map(cities, city => {
         return BPromise.map(_readEvents(city), (event, index) => {
           return util.insertOrUpdate(knex, 'events', {
-            id: `${ city.name }_${ index }`,
+            code: `${ city.name }_${ index }`,
             city_id: city.id,
             name: event.name,
             location_name: event.locationName,
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
             location: event.location.longitude + ',' + event.location.latitude,
             cover_image: event.coverImage,
             fb_event_id: event.facebookId,
-          });
+          }, 'code');
         });
       });
     });

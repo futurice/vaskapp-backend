@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.table('actions', function(table) {
-    table.string('event_id').index();
+    table.integer('event_id').index();
     table.foreign('event_id')
       .references('id')
       .inTable('events')

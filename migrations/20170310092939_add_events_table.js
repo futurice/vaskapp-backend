@@ -1,7 +1,11 @@
+const requireEnvs = require('../src/util/require-envs');
+
+requireEnvs(['EVENT_RADIUS']);
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('events', table => {
-    table.string('id').primary().index();
+    table.increments('id').primary().index();
+    table.string('code').notNullable().unique().index();
     table.string('name', 100);
     table.string('location_name', 100);
     table.timestamp('start_time');

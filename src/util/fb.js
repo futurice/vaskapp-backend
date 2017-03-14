@@ -34,7 +34,6 @@ function initialize() {
     .select('fb_event_id AS facebookId')
     .whereNotNull('fb_event_id')
     .then(events => {
-      console.log(events);
       state.eventIds = events.map(event => event.facebookId);
 
       _getAccessToken()

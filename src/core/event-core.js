@@ -43,7 +43,7 @@ function _getWhereClause(filters) {
 // DOES NOT check if user has already checked in, thus the result
 // is not a guarantee of a successfull check in.
 function isValidCheckIn(action) {
-  return knex('events').select(['*']).where('id', '=', action.eventId)
+  return knex('events').select('*').where('id', '=', action.eventId)
     .then(events => {
       if (events.length === 0) {
         let err = new Error(`No such event id: ${ action.eventId }`);
@@ -86,8 +86,8 @@ function _eventOnGoing(event) {
 }
 
 function _userInVicinity(actionLocation, eventLocation, eventRadius) {
-  let earthRadius = 6372.8;
-  let distanceToEvent = equirectangularDistance(
+  const earthRadius = 6372.8;
+  const distanceToEvent = equirectangularDistance(
       actionLocation,
       eventLocation,
       earthRadius
