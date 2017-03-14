@@ -9,6 +9,7 @@ import * as announcementHttp from './http/announcement-http';
 import * as voteHttp from './http/vote-http';
 import * as markerHttp from './http/marker-http';
 import * as citiesHttp from './http/cities-http';
+import * as radioHttp from './http/radio-http';
 
 function createRouter() {
   const router = express.Router();
@@ -32,6 +33,8 @@ function createRouter() {
   router.get('/cities', citiesHttp.getCities)
 
   router.put('/vote', voteHttp.putVote);
+
+  router.get('/radio', radioHttp.getStations);
 
   return router;
 }
