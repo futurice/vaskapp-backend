@@ -10,9 +10,11 @@ function getEvents(opts) {
     .select('*')
     .where(_getWhereClause(opts))
     .orderBy('start_time', 'asc')
-    .then(results => _.map(results, row =>
-      deepChangeKeyCase(row, 'camelCase')
-    ));
+    .then(results =>
+      _.map(results, row =>
+        deepChangeKeyCase(row, 'camelCase')
+      )
+    );
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
@@ -29,7 +31,9 @@ function _getWhereClause(filters) {
   }
 
   if (filters.cityName) {
-    whereClauses.city_id = knex('cities').select('id').where('name', '=', filters.cityName);
+    whereClauses.city_id = knex('cities')
+      .select('id')
+      .where('name', '=', filters.cityName);
   }
 
   return whereClauses;

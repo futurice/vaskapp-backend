@@ -40,8 +40,8 @@ function initialize() {
       _getAccessToken()
         .then(() => {
           setInterval(_updateFromFacebook, REFRESH_INTERVAL);
-            // Execute update immediately
-            _updateFromFacebook();
+          // Execute update immediately
+          _updateFromFacebook();
       });
   })
 }

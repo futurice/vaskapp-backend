@@ -2,6 +2,7 @@
 // Calculates an approxmiation of the distance between two coordinates.
 // Degree of inaccuracy grows as distances grow.
 // Result is in 'km'
+// https://en.wikipedia.org/wiki/Equirectangular_projection
 function equirectangularDistance(pointA, pointB, radius) {
   var x = (toRad(pointB.longitude) - toRad(pointA.longitude)) *
           Math.cos((toRad(pointA.latitude) + toRad(pointB.latitude)) / 2);
