@@ -77,14 +77,6 @@ function _getSelectSql(opts) {
 }
 
 function _getWhereSql(opts) {
-  // Personal is the strictest, hence no other filter is required;
-  if (opts.personal) {
-    return knex.raw(
-      ` WHERE wappu_mood.user_id = ? `,
-      [opts.client.id]
-    ).toString();
-  }
-
   let filters = [];
   let params = [];
 
