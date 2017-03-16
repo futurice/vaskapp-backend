@@ -1,7 +1,5 @@
-import _ from 'lodash';
 import * as wappuMood from '../core/wappu-mood-core';
 import {createJsonRoute, throwStatus} from '../util/express';
-import {assert} from '../validation';
 
 
 const putMood = createJsonRoute(function(req, res) {

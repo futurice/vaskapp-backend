@@ -53,7 +53,7 @@ function getMood(client) {
         LEFT JOIN users ON users.id = wappu_mood.user_id
         LEFT JOIN teams ON teams.id = users.team_id
       WHERE
-        teams.city_id = 3
+        teams.city_id = (SELECT city_id FROM teams WHERE id = ?)
       GROUP BY
         wappu_mood.created_at_coarse
     ) city_score LEFT JOIN LATERAL (
@@ -63,20 +63,20 @@ function getMood(client) {
         wappu_mood
         LEFT JOIN users ON users.id = wappu_mood.user_id
       WHERE
-        users.team_id = 1 AND coarse = wappu_mood.created_at_coarse
+        users.team_id = ? AND coarse = wappu_mood.created_at_coarse
     ) team_score ON true LEFT JOIN LATERAL (
       SELECT
         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
       FROM
         wappu_mood
       WHERE
-        wappu_mood.user_id = 1 AND coarse = wappu_mood.created_at_coarse
+        wappu_mood.user_id = ? AND coarse = wappu_mood.created_at_coarse
     ) personal_score ON true
     ORDER BY date ASC;
   `;
 
   return knex.transaction(trx =>
-    trx.raw(getMoodSql)
+    trx.raw(getMoodSql, [client.team, client.team, client.id])
       .then(result => _rowsToMoodObjects(result.rows))
       .catch(err => {
         err.message = 'Error reading database';
@@ -84,10 +84,6 @@ function getMood(client) {
         throw err;
       })
   );
-}
-
-function _getParams(clientId) {
-  // TODO
 }
 
 function _rowsToMoodObjects(rows) {
