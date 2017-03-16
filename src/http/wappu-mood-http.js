@@ -4,7 +4,7 @@ import {createJsonRoute, throwStatus} from '../util/express';
 
 const putMood = createJsonRoute(function(req, res) {
 
-  if (req.query.personal && !req.client.id) {
+  if (!req.client.id) {
     throwStatus(403, `Only registered user may save moods`);
   }
 
@@ -17,7 +17,7 @@ const putMood = createJsonRoute(function(req, res) {
 
 const getMood = createJsonRoute(function(req, res) {
 
-  if (req.query.personal && !req.client.id) {
+  if (!req.client.id) {
     throwStatus(403, `Only registered user may have personal mood log`);
   }
 

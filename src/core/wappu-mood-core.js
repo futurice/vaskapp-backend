@@ -52,7 +52,9 @@ function getMood(client) {
         LEFT JOIN users ON users.id = wappu_mood.user_id
         LEFT JOIN teams ON teams.id = users.team_id
       WHERE
-        teams.city_id = (SELECT city_id FROM teams WHERE id = ?)
+        teams.city_id = (SELECT city_id FROM teams WHERE id = ?) AND
+        '${process.env.MOOD_START_DATE}'::DATE < created_at_coarse AND
+        created_at_coarse <= '${process.env.MOOD_END_DATE}'::DATE
       GROUP BY
         wappu_mood.created_at_coarse
     ) city_score LEFT JOIN LATERAL (
