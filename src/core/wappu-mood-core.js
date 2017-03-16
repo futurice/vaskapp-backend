@@ -36,7 +36,6 @@ function createOrUpdateMood(opts) {
 }
 
 function getMood(client) {
-  // TODO Why is the timeszone offset +4 GMT?
   const getMoodSql = `
     SELECT
       date,
@@ -45,7 +44,7 @@ function getMood(client) {
       rating_personal
     FROM (
       SELECT
-        wappu_mood.created_at_coarse AT TIME ZONE 'GMT-4' AS date,
+        wappu_mood.created_at_coarse AS date,
         wappu_mood.created_at_coarse AS coarse,
         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
       FROM
@@ -78,6 +77,7 @@ function getMood(client) {
   return knex.transaction(trx =>
     trx.raw(getMoodSql, [client.team, client.team, client.id])
       .then(result => _rowsToMoodObjects(result.rows))
+      //.then( TODO populate empty dates with null values)
       .catch(err => {
         err.message = 'Error reading database';
         err.status = 500;
