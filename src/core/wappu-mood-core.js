@@ -35,7 +35,7 @@ function createOrUpdateMood(opts) {
   );
 }
 
-function getMood(opts) {
+function getMood(client) {
   // TODO Why is the timeszone offset +4 GMT?
   const getMoodSql = `
     SELECT
@@ -56,7 +56,7 @@ function getMood(opts) {
         teams.city_id = 3
       GROUP BY
         wappu_mood.created_at_coarse
-    ) e1 LEFT JOIN LATERAL (
+    ) city_score LEFT JOIN LATERAL (
       SELECT
         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
       FROM
@@ -64,14 +64,15 @@ function getMood(opts) {
         LEFT JOIN users ON users.id = wappu_mood.user_id
       WHERE
         users.team_id = 1 AND coarse = wappu_mood.created_at_coarse
-    ) e2 ON true LEFT JOIN LATERAL (
+    ) team_score ON true LEFT JOIN LATERAL (
       SELECT
         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
       FROM
         wappu_mood
       WHERE
         wappu_mood.user_id = 1 AND coarse = wappu_mood.created_at_coarse
-    ) e3 ON true;
+    ) personal_score ON true
+    ORDER BY date ASC;
   `;
 
   return knex.transaction(trx =>
@@ -85,7 +86,7 @@ function getMood(opts) {
   );
 }
 
-function _getParams(opts) {
+function _getParams(clientId) {
   // TODO
 }
 
