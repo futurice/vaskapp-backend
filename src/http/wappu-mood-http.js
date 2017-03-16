@@ -1,14 +1,18 @@
 import * as wappuMood from '../core/wappu-mood-core';
 import {createJsonRoute, throwStatus} from '../util/express';
+import {assert} from '../validation';
+import _ from 'lodash';
 
 
 const putMood = createJsonRoute(function(req, res) {
+  if (!req.client.id) throwStatus(403, `Only registered user may save moods`);
 
-  if (!req.client.id) {
-    throwStatus(403, `Only registered user may save moods`);
-  }
+  let moodParams = assert(req.body, 'upsertMoodParams');
+  let coreParams = _.merge(moodParams, {
+    client: req.client,
+  });
 
-  return wappuMood.createOrUpdateMood(req.client)
+  return wappuMood.createOrUpdateMood(coreParams)
     .then(result => undefined)
     .catch(err => {
       throw err
@@ -16,10 +20,7 @@ const putMood = createJsonRoute(function(req, res) {
 });
 
 const getMood = createJsonRoute(function(req, res) {
-
-  if (!req.client.id) {
-    throwStatus(403, `Only registered user may have personal mood log`);
-  }
+  if (!req.client.id) throwStatus(403, `Client id required`);
 
   return wappuMood.getMood(req.client)
     .then(result => result)
