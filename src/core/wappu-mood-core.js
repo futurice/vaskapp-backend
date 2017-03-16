@@ -36,16 +36,42 @@ function createOrUpdateMood(opts) {
 }
 
 function getMood(opts) {
+  // TODO Why is the timeszone offset +4 GMT?
   const getMoodSql = `
     SELECT
-      ${ _getSelectSql(opts) }
-    FROM wappu_mood
-    LEFT JOIN teams ON teams.id = wappu_mood.user_id
-    ${ _getWhereSql(opts) }
-    GROUP BY
-      wappu_mood.created_at_fine,
-      wappu_mood.description,
-      wappu_mood.rating
+      date,
+      rating_city,
+      rating_team,
+      rating_personal
+    FROM (
+      SELECT
+        wappu_mood.created_at_coarse AT TIME ZONE 'GMT-4' AS date,
+        wappu_mood.created_at_coarse AS coarse,
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
+      FROM
+        wappu_mood
+        LEFT JOIN users ON users.id = wappu_mood.user_id
+        LEFT JOIN teams ON teams.id = users.team_id
+      WHERE
+        teams.city_id = 3
+      GROUP BY
+        wappu_mood.created_at_coarse
+    ) e1 LEFT JOIN LATERAL (
+      SELECT
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
+      FROM
+        wappu_mood
+        LEFT JOIN users ON users.id = wappu_mood.user_id
+      WHERE
+        users.team_id = 1 AND coarse = wappu_mood.created_at_coarse
+    ) e2 ON true LEFT JOIN LATERAL (
+      SELECT
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
+      FROM
+        wappu_mood
+      WHERE
+        wappu_mood.user_id = 1 AND coarse = wappu_mood.created_at_coarse
+    ) e3 ON true;
   `;
 
   return knex.transaction(trx =>
@@ -59,56 +85,8 @@ function getMood(opts) {
   );
 }
 
-function _getSelectSql(opts) {
-  const publicSql = `
-    DATE_TRUNC('day', wappu_mood.created_at_fine) AS date,
-    ROUND(AVG(wappu_mood.rating)::numeric, 4) AS avg_rating,
-    COUNT(wappu_mood.rating) AS votes_cast
-  `;
-
-  const personalSql = `
-    DATE_TRUNC('day', created_at_fine) AS date,
-    wappu_mood.rating,
-    wappu_mood.description
-  `;
-
-  return opts.personal ? personalSql : publicSql;
-
-}
-
-function _getWhereSql(opts) {
-  let filters = [];
-  let params = [];
-
-  if (opts.cityId) {
-    filters.push(`teams.city_id = ?`);
-    params.push(opts.cityId);
-  }
-
-  if (opts.cityName) {
-    filters.push(`
-      teams.city_id IN (
-        SELECT cities.id
-        FROM cities
-        WHERE cities.name = ?
-      )
-    `);
-    params.push(opts.cityName);
-  }
-
-  if (opts.teamId) {
-    filters.push(`teams.id = ?`);
-    params.push(opts.teamId);
-  }
-
-  if (params.teamName) {
-    filters.push(`teams.name = ?`);
-    params.push(opts.teamName);
-  }
-
-  let sqlString = filters.length > 0 ? ` WHERE ${ filters.join(' AND ')} ` : ''
-
-  return knex.raw(sqlString, params).toString();
+function _getParams(opts) {
+  // TODO
 }
 
 function _rowsToMoodObjects(rows) {
