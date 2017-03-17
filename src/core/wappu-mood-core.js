@@ -1,5 +1,8 @@
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
+import * as feedCore from './feed-core';
+import _ from 'lodash';
+
 
 function createOrUpdateMood(opts) {
   const upsertMoodSql = `
@@ -13,10 +16,21 @@ function createOrUpdateMood(opts) {
       WHERE
         user_id = ? AND created_at_coarse = CURRENT_DATE
       RETURNING
-        *
-      )
-    INSERT INTO wappu_mood (user_id, rating, description)
-    SELECT ?, ?, ? WHERE NOT EXISTS (SELECT * FROM upsert)
+        *,
+        false AS is_new
+    ), inserted AS (
+        INSERT INTO
+          wappu_mood(user_id, rating, description)
+        SELECT ?, ?, ? WHERE NOT EXISTS( SELECT * FROM upsert )
+        RETURNING
+          *,
+          true AS is_new
+    )
+    SELECT *
+    FROM upsert
+    UNION ALL
+    SELECT *
+    FROM inserted;
   `;
 
   let params = [
@@ -26,7 +40,11 @@ function createOrUpdateMood(opts) {
 
   return knex.transaction(trx =>
     trx.raw(upsertMoodSql, params)
-      .then(result => undefined)
+      .then(result => {
+        const mood = result.rows[0];
+        if (mood.is_new) feedCore.createFeedItem(_.merge(mood, _feedTemplate(mood, opts.client)));
+        return undefined;
+      })
       .catch(err => {
         err.message = 'Error updating database';
         err.status = 500;
@@ -34,7 +52,6 @@ function createOrUpdateMood(opts) {
       })
   );
 }
-
 
 function getMood(client) {
   const getMoodSql = `
@@ -92,6 +109,14 @@ function getMood(client) {
 
 function _rowsToMoodObjects(rows) {
   return rows.map(row => deepChangeKeyCase(row, 'camelCase'));
+}
+
+function _feedTemplate(row, client) {
+  return {
+    user:  client.uuid,
+    type: 'TEXT',
+    text: `${ client.name }'s wappu fiba is ${ row.rating } - ${ row.description }`,
+  }
 }
 
 export {

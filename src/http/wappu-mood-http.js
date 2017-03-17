@@ -13,7 +13,7 @@ const putMood = createJsonRoute(function(req, res) {
   });
 
   return wappuMood.createOrUpdateMood(coreParams)
-    .then(result => undefined)
+    .then(() => undefined)
     .catch(err => {
       throw err
     });
