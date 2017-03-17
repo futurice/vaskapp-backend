@@ -433,7 +433,7 @@ Responses:
 
 ```js
 {
-  // Dacimal. Range [0, 10]. Decimals after 4th mark are stripped.
+  // Dacimal. Range [0, 10]. Rounded to 4th decimal mark.
   "rating": 10,
   // Optional
   "description": "Its friday!"
