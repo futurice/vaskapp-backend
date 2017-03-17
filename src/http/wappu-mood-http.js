@@ -20,8 +20,6 @@ const putMood = createJsonRoute(function(req, res) {
 });
 
 const getMood = createJsonRoute(function(req, res) {
-  if (!req.client.id) throwStatus(403, `Client id required`);
-
   return wappuMood.getMood(req.client)
     .then(result => result)
     .catch(err => {
