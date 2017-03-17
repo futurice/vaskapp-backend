@@ -1,7 +1,6 @@
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
 import * as feedCore from './feed-core';
-import _ from 'lodash';
 
 
 function createOrUpdateMood(opts) {
@@ -42,7 +41,7 @@ function createOrUpdateMood(opts) {
     trx.raw(upsertMoodSql, params)
       .then(result => {
         const mood = result.rows[0];
-        if (mood.is_new) feedCore.createFeedItem(_.merge(mood, _feedTemplate(mood, opts.client)));
+        if (mood.is_new) feedCore.createFeedItem(_feedTemplate(mood, opts.client));
         return undefined;
       })
       .catch(err => {
