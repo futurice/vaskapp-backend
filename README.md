@@ -308,6 +308,14 @@ Responses:
 
 > Get list of day by day mood
 
+Query parameters:
+
+* `cityId` Integer. If specified, returned ratingCity is for the given city.
+* `cityName` String. If specified, returned ratingCity is for the given city.
+
+If omitted, header client info is used to determine city instead.
+
+
 Body is a list of [mood objects](#mood-objects).
 
 
