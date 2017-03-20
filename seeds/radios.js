@@ -14,10 +14,14 @@ exports.seed = function(knex, Promise) {
     id: 1,
     name: 'Rakkauden Wappuradio',
     city_id: cities['Tampere'],
+    stream: null,   // TODO
+    website: null,  // TODO
   }))
   .then(() => util.insertOrUpdate(knex, 'radios', {
     id: 2,
     name: 'Radiodiodi',
     city_id: cities['Helsinki'],
+    stream: null,   // TODO
+    website: null,  // TODO
   }));
 }
