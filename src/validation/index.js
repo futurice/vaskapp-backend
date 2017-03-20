@@ -55,7 +55,10 @@ const schemas = {
     description: Joi.string().min(1, 'utf8').max(140, 'utf8').optional().allow([null]).default(null),
   },
 
-  getMoodParams: cityParams,
+  getMoodParams: _.merge(cityParams, {
+    teamId: common.primaryKeyId,
+    teamName: common.team,
+  }),
   eventsParams: cityParams,
   citiesParams: cityParams,
   teamsParams: cityParams,

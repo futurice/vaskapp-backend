@@ -109,17 +109,29 @@ function getMood(opts) {
 }
 
 function _getParams(opts) {
-  let cityId;
+  const cityId = _getCityId(opts);
+  const teamId = _getTeamId(opts);
+  return [cityId, teamId, opts.client.id];
+}
 
+function _getCityId(opts) {
   if (opts.cityId) {
-    cityId = opts.cityId;
+    return opts.cityId;
   } else if (opts.cityName) {
-    cityId = knex.raw('(SELECT id FROM cities WHERE name = ?)', [opts.cityName]);
+    return knex.raw('(SELECT id FROM cities WHERE name = ?)', [opts.cityName]);
   } else {
-    cityId = knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [opts.client.team]);
+    return knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [opts.client.team]);
   }
+}
 
-  return [cityId, opts.client.team, opts.client.id];
+function _getTeamId(opts) {
+  if (opts.teamId) {
+    return opts.teamId;
+  } else if (opts.teamName) {
+    return knex.raw('(SELECT id FROM teams WHERE name = ?)', [opts.teamName]);
+  } else {
+    return opts.client.team;
+  }
 }
 
 function _rowsToMoodObjects(rows) {
