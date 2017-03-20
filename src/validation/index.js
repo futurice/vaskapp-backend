@@ -55,6 +55,7 @@ const schemas = {
     description: Joi.string().min(1, 'utf8').max(140, 'utf8').optional().allow([null]).default(null),
   },
 
+  getMoodParams: cityParams,
   eventsParams: cityParams,
   citiesParams: cityParams,
   teamsParams: cityParams,

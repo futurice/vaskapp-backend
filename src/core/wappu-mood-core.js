@@ -54,7 +54,7 @@ function createOrUpdateMood(opts) {
   );
 }
 
-function getMood(client) {
+function getMood(opts) {
   const getMoodSql = `
     SELECT
       date,
@@ -76,7 +76,7 @@ function getMood(client) {
          LEFT JOIN users ON users.id = wappu_mood.user_id
          LEFT JOIN teams ON teams.id = users.team_id
        WHERE
-         teams.city_id = (SELECT city_id FROM teams WHERE id = ?) AND
+         teams.city_id = ? AND
          wappu_mood.created_at_coarse = date
     ) city_score ON true LEFT JOIN LATERAL (
        SELECT
@@ -98,7 +98,7 @@ function getMood(client) {
   `;
 
   return knex.transaction(trx =>
-    trx.raw(getMoodSql, [client.team, client.team, client.id])
+    trx.raw(getMoodSql, _getParams(opts))
       .then(result => _rowsToMoodObjects(result.rows))
       .catch(err => {
         err.message = 'Error reading database';
@@ -106,6 +106,20 @@ function getMood(client) {
         throw err;
       })
   );
+}
+
+function _getParams(opts) {
+  let cityId;
+
+  if (opts.cityId) {
+    cityId = opts.cityId;
+  } else if (opts.cityName) {
+    cityId = knex.raw('(SELECT id FROM cities WHERE name = ?)', [opts.cityName]);
+  } else {
+    cityId = knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [opts.client.team]);
+  }
+
+  return [cityId, opts.client.team, opts.client.id];
 }
 
 function _rowsToMoodObjects(rows) {

@@ -20,7 +20,12 @@ const putMood = createJsonRoute(function(req, res) {
 });
 
 const getMood = createJsonRoute(function(req, res) {
-  return wappuMood.getMood(req.client)
+  let moodParams = assert(req.query, 'getMoodParams');
+  let coreParams = _.merge(moodParams, {
+    client: req.client,
+  });
+
+  return wappuMood.getMood(coreParams)
     .then(result => result)
     .catch(err => {
       throw err
