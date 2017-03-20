@@ -55,42 +55,42 @@ function createOrUpdateMood(opts) {
 function getMood(client) {
   const getMoodSql = `
     SELECT
-      date
-      , rating_city
-      , rating_team
-      , rating_personal
+      date,
+      rating_city,
+      rating_team,
+      rating_personal
     FROM (
       SELECT date::DATE
       FROM   generate_series(
-        '${process.env.MOOD_START_DATE}'::DATE
-        , '${process.env.MOOD_END_DATE}'::DATE
-        , interval '1 day'
+        '${process.env.MOOD_START_DATE}'::DATE,
+        '${process.env.MOOD_END_DATE}'::DATE,
+        interval '1 day'
       ) date
     ) dates LEFT JOIN LATERAL (
-     SELECT
-       ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
-     FROM
-       wappu_mood
-       LEFT JOIN users ON users.id = wappu_mood.user_id
-       LEFT JOIN teams ON teams.id = users.team_id
-     WHERE
-       teams.city_id = (SELECT city_id FROM teams WHERE id = ?) AND
-       wappu_mood.created_at_coarse = date
+       SELECT
+         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
+       FROM
+         wappu_mood
+         LEFT JOIN users ON users.id = wappu_mood.user_id
+         LEFT JOIN teams ON teams.id = users.team_id
+       WHERE
+         teams.city_id = (SELECT city_id FROM teams WHERE id = ?) AND
+         wappu_mood.created_at_coarse = date
     ) city_score ON true LEFT JOIN LATERAL (
-     SELECT
-       ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
-     FROM
-       wappu_mood
-       LEFT JOIN users ON users.id = wappu_mood.user_id
-     WHERE
-       users.team_id = ? AND date = wappu_mood.created_at_coarse
+       SELECT
+         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
+       FROM
+         wappu_mood
+         LEFT JOIN users ON users.id = wappu_mood.user_id
+       WHERE
+         users.team_id = ? AND date = wappu_mood.created_at_coarse
     ) team_score ON true LEFT JOIN LATERAL (
-     SELECT
-       ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
-     FROM
-       wappu_mood
-     WHERE
-       wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse
+       SELECT
+         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
+       FROM
+         wappu_mood
+       WHERE
+         wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse
     ) personal_score ON true
     ORDER BY date ASC;
   `;
