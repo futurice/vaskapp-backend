@@ -68,25 +68,25 @@ function getMood(opts) {
         '${process.env.MOOD_END_DATE}'::DATE,
         interval '1 day'
       ) date
-    ) dates LEFT JOIN LATERAL (
+    ) dates JOIN LATERAL (
        SELECT
          ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
        FROM
          wappu_mood
-         LEFT JOIN users ON users.id = wappu_mood.user_id
-         LEFT JOIN teams ON teams.id = users.team_id
+         JOIN users ON users.id = wappu_mood.user_id
+         JOIN teams ON teams.id = users.team_id
        WHERE
          teams.city_id = ? AND
          wappu_mood.created_at_coarse = date
-    ) city_score ON true LEFT JOIN LATERAL (
+    ) city_score ON true JOIN LATERAL (
        SELECT
          ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
        FROM
          wappu_mood
-         LEFT JOIN users ON users.id = wappu_mood.user_id
+         JOIN users ON users.id = wappu_mood.user_id
        WHERE
          users.team_id = ? AND date = wappu_mood.created_at_coarse
-    ) team_score ON true LEFT JOIN LATERAL (
+    ) team_score ON true JOIN LATERAL (
        SELECT
          ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
        FROM
