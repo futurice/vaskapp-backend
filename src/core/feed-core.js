@@ -109,7 +109,7 @@ function createFeedItem(feedItem, trx) {
   if (!FEED_ITEM_TYPES.has(feedItem.type)) {
     throw new Error('Invalid feed item type ' + feedItem.type);
   }
-  console.log(feedItem);
+
   const dbRow = {
     'image_path': feedItem.imagePath,
     'text':       feedItem.text,
@@ -135,8 +135,6 @@ function createFeedItem(feedItem, trx) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
     dbRow.city_id = dbRow.city_id || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]);
   }
-
-  console.log(feedItem);
 
   trx = trx || knex;
 
