@@ -1,7 +1,7 @@
 var util = require('../src/util/seeds');
 
 exports.seed = function(knex, Promise) {
-  return util.insertOrUpdate(knex, 'action_types', {
+  return util.removeIfExists(knex, 'action_types', {
     id: 1,
     code: 'BUTTON_PUSH',
     name: 'Don\'t Press',
@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
+    return util.removeIfExists(knex, 'action_types', {
       id: 4,
       code: 'LECTURE',
       name: 'At a lecture',
