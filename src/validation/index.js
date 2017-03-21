@@ -8,13 +8,6 @@ var common = {
   primaryKeyId: Joi.number().integer().min(0)
 };
 
-// URL parameter definition for endpoints that can
-// filter results by city.
-const cityParams = {
-  cityId: common.primaryKeyId.optional(),
-  cityName: Joi.string().min(1, 'utf8').max(50, 'utf8').optional(),
-}
-
 const schemas = {
   common: common,
 
@@ -24,6 +17,7 @@ const schemas = {
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
     text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
     eventId: common.primaryKeyId.when('type', { is: 'CHECK_IN_EVENT', then: Joi.required()}),
+    city: common.primaryKeyId,
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
@@ -36,14 +30,15 @@ const schemas = {
     team: common.team.required()
   },
 
-  feedParams: _.merge(cityParams, {
+  feedParams: {
+    city: common.primaryKeyId,
     beforeId: Joi.number().integer().min(0).optional(),
     limit: Joi.number().integer().min(1).max(100).optional(),
     sort: Joi.string()
       .valid(CONST.FEED_SORT_TYPES_ARRAY)
       .default(CONST.FEED_SORT_TYPES.NEW)
       .optional(),
-  }),
+  },
 
   vote: {
     value: Joi.number().integer().valid(-1, 1),
@@ -64,12 +59,21 @@ const schemas = {
     city: common.primaryKeyId,
   },
 
-  eventsParams: cityParams,
-  citiesParams: cityParams,
-  teamsParams: cityParams,
   radioParams: _.merge(cityParams, {
     radioId: common.primaryKeyId,
   }),
+
+  eventsParams: {
+    city: common.primaryKeyId,
+  },
+
+  citiesParams: {
+    city: common.primaryKeyId,
+  },
+
+  teamsParams: {
+    city: common.primaryKeyId,
+  },
 };
 
 const conversions = {};

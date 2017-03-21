@@ -15,6 +15,7 @@ function getStickySqlString() {
       feed_items.image_path as image_path,
       feed_items.text as text,
       feed_items.type as action_type_code,
+      feed_items.city_id as city_id,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
@@ -25,7 +26,6 @@ function getStickySqlString() {
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
     GROUP BY
@@ -33,8 +33,6 @@ function getStickySqlString() {
       users.name,
       users.uuid,
       teams.name,
-      cities.id,
-      cities.name,
       votes.value
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
@@ -53,6 +51,7 @@ function getFeed(opts) {
       feed_items.image_path as image_path,
       feed_items.text as text,
       feed_items.type as action_type_code,
+      feed_items.city_id as city_id,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
@@ -63,7 +62,6 @@ function getFeed(opts) {
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     `;
 
@@ -82,20 +80,15 @@ function getFeed(opts) {
     whereClauses.push('NOT feed_items.is_banned');
   }
 
-  if (opts.cityId) {
-    whereClauses.push(`cities.id = ?`);
-    params.push(opts.cityId);
-  }
-
-  if (opts.cityName) {
-    whereClauses.push(`cities.name = ?`);
-    params.push(opts.cityName);
+  if (opts.city) {
+    whereClauses.push(`feed_items.city_id = ?`);
+    params.push(opts.city);
   }
 
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += ` GROUP BY cities.id, feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
+  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -116,11 +109,12 @@ function createFeedItem(feedItem, trx) {
   if (!FEED_ITEM_TYPES.has(feedItem.type)) {
     throw new Error('Invalid feed item type ' + feedItem.type);
   }
-
+  console.log(feedItem);
   const dbRow = {
     'image_path': feedItem.imagePath,
     'text':       feedItem.text,
-    'type':       feedItem.type
+    'type':       feedItem.type,
+    'city_id':    feedItem.city,
   };
 
   const location = feedItem.location;
@@ -139,11 +133,14 @@ function createFeedItem(feedItem, trx) {
   // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
   if (feedItem.user) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
+    dbRow.city_id = dbRow.city_id || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]);
   }
+
+  console.log(feedItem);
 
   trx = trx || knex;
 
-  return trx.returning('id').insert(dbRow).into('feed_items')
+  return trx.returning('*').insert(dbRow).into('feed_items')
     .then(rows => {
       if (_.isEmpty(rows)) {
         throw new Error('Feed item row creation failed: ' + dbRow);
@@ -181,11 +178,10 @@ function _actionToFeedObject(row, client) {
     votes: row['votes'],
     userVote: row['user_vote'],
     hotScore: row['hot_score'],
+    cityId: row['city_id'],
     author: {
       name: row['user_name'],
       team: row['team_name'],
-      city: row['city_name'],
-      cityId: row['city_id'],
       type: _resolveAuthorType(row, client)
     },
     createdAt: row['created_at']

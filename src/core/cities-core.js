@@ -12,14 +12,9 @@ const getCities = (opts) => {
   let params = [];
   let whereClauses = [];
 
-  if (opts.cityId) {
+  if (opts.city) {
     whereClauses.push(`id = ?`);
-    params.push(opts.cityId);
-  }
-
-  if (opts.cityName) {
-    whereClauses.push(`name = ?`);
-    params.push(opts.cityName);
+    params.push(opts.city);
   }
 
   if (whereClauses.length > 0) {

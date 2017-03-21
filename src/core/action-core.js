@@ -31,6 +31,7 @@ function createAction(action) {
         }
 
         action.id = rows[0].id;
+
         if (action.type === 'IMAGE' || action.type === 'TEXT') {
           createFeedItem(action, trx);
         }

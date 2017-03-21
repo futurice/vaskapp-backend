@@ -26,14 +26,8 @@ function setAttendingCount(facebookEventId, attendingCount) {
 function _getWhereClause(filters) {
   let whereClauses = {};
 
-  if (filters.cityId) {
-    whereClauses.city_id = filters.cityId;
-  }
-
-  if (filters.cityName) {
-    whereClauses.city_id = knex('cities')
-      .select('id')
-      .where('name', '=', filters.cityName);
+  if (filters.city) {
+    whereClauses.city_id = filters.city;
   }
 
   return whereClauses;

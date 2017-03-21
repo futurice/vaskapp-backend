@@ -182,8 +182,7 @@ Responses:
 
 Query parameters:
 
-* `cityId` Integer. If specified, returns only teams based in the city with given id.
-* `cityName` String. If specified, returns only teams based in the city with given name.
+* `city` Integer. If specified, returns only teams based in the city with given id.
 
 Responses:
 
@@ -284,8 +283,7 @@ Query parameters:
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
 * `sort` String. Default: 'new'. In which order the result should be returned. One of: 'new', 'hot'.
-* `cityName` String. If specified, returns only posts by users belonging to guilds based in the city with given name.
-* `cityId` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
+* `city` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
 
 Examples:
 
@@ -374,8 +372,7 @@ Responses:
   "name": "Tietoteekkarikilta",
   "image_path": "foo.com/path_to_image.jpg",
   "score": "10",
-  "cityId": 3,
-  "cityName": "tampere"
+  "city": 3
 }
 ```
 
