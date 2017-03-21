@@ -15,8 +15,13 @@ function getStations(opts) {
 function _getWhereClause(filters) {
   let whereClauses = {};
 
-  if (filters.cityId) whereClauses.city_id = filters.cityId;
-  if (filters.radioId) whereClauses.id = filters.radioId;
+  if (filters.cityId) {
+    whereClauses.city_id = filters.cityId;
+  }
+
+  if (filters.radioId) {
+    whereClauses.id = filters.radioId;
+  }
 
   if (filters.cityName) {
     whereClauses.city_id = knex('cities')
