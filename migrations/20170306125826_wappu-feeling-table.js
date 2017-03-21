@@ -9,8 +9,8 @@ exports.up = function(knex, Promise) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE');
 
-    table.decimal('rating',[6], [4]).notNullable();
-    table.string('description');
+    table.decimal('rating', [6], [4]).notNullable();
+    table.string('description', 131);
     table.date('created_at_coarse')
       .index()
       .notNullable()

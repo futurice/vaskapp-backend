@@ -310,13 +310,8 @@ Responses:
 
 Query parameters:
 
-* `cityId` Integer. If specified, returned ratingCity is for the given city.
-* `cityName` String. If specified, returned ratingCity is for the given city.
-* `teamId` Integer. If specified, returned ratingTeam is for the given team.
-* `teamName` String. If specified, returned ratingTeam is for the given team.
-
-If omitted, header client info is used to determine city and team instead.
-
+* `city` Integer. If specified, returned ratingCity is for the given city.
+* `team` Integer. If specified, returned ratingTeam is for the given team.
 
 Body is a list of [mood objects](#mood-objects).
 

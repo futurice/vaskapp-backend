@@ -43,24 +43,57 @@ function createOrUpdateMood(opts) {
     trx.raw(upsertMoodSql, params)
       .then(result => {
         const mood = result.rows[0];
-        if (mood.is_new) feedCore.createFeedItem(_feedTemplate(mood, opts.client));
+
+        if (mood.is_new) {
+          feedCore.createFeedItem(_feedTemplate(mood, opts));
+        }
+
         return undefined;
-      })
-      .catch(err => {
-        err.message = 'Error updating database';
-        err.status = 500;
-        throw err;
-      })
-  );
+      }));
 }
 
 function getMood(opts) {
-  const getMoodSql = `
+  let params = [];
+  let sqlFragments = [];
+  let select = [];
+
+  if (!opts.city && !opts.team) {
+    params = [
+      _getCityMoodParams(opts),
+      _getTeamMoodParams(opts),
+      _getPersonalMoodParams(opts),
+    ];
+
+    sqlFragments = [
+      _getCityMoodSql(),
+      _getTeamMoodSql(),
+      _getPersonalMoodSql(),
+    ];
+
+    select = [
+      'rating_city',
+      'rating_team',
+      'rating_personal',
+    ];
+
+  } else {
+    if (opts.city) {
+      params.push(_getCityMoodParams(opts));
+      sqlFragments.push(_getCityMoodSql());
+      select.push('rating_city');
+    }
+
+    if (opts.team) {
+      params.push(_getTeamMoodParams(opts));
+      sqlFragments.push(_getTeamMoodSql());
+      select.push('rating_team');
+    }
+  }
+
+  const sql = `
     SELECT
       date,
-      rating_city,
-      rating_team,
-      rating_personal
+      ${ select.join(', ') }
     FROM (
       SELECT date::DATE
       FROM   generate_series(
@@ -68,81 +101,94 @@ function getMood(opts) {
         '${process.env.MOOD_END_DATE}'::DATE,
         interval '1 day'
       ) date
-    ) dates JOIN LATERAL (
-       SELECT
-         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
-       FROM
-         wappu_mood
-         JOIN users ON users.id = wappu_mood.user_id
-         JOIN teams ON teams.id = users.team_id
-       WHERE
-         teams.city_id = ? AND
-         wappu_mood.created_at_coarse = date
-    ) city_score ON true JOIN LATERAL (
-       SELECT
-         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
-       FROM
-         wappu_mood
-         JOIN users ON users.id = wappu_mood.user_id
-       WHERE
-         users.team_id = ? AND date = wappu_mood.created_at_coarse
-    ) team_score ON true JOIN LATERAL (
-       SELECT
-         ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
-       FROM
-         wappu_mood
-       WHERE
-         wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse
-    ) personal_score ON true
+    ) dates
+    ${ sqlFragments.join(' ') }
     ORDER BY date ASC;
   `;
 
   return knex.transaction(trx =>
-    trx.raw(getMoodSql, _getParams(opts))
-      .then(result => _rowsToMoodObjects(result.rows))
-      .catch(err => {
-        err.message = 'Error reading database';
-        err.status = 500;
-        throw err;
-      })
-  );
-}
-
-function _getParams(opts) {
-  const cityId = _getCityId(opts);
-  const teamId = _getTeamId(opts);
-  return [cityId, teamId, opts.client.id];
+    trx.raw(sql, params)
+      .then(result => _rowsToMoodObjects(result.rows)));
 }
 
 function _getCityId(opts) {
-  if (opts.cityId) {
-    return opts.cityId;
-  } else if (opts.cityName) {
-    return knex.raw('(SELECT id FROM cities WHERE name = ?)', [opts.cityName]);
+  if (opts.city) {
+    return opts.city;
   } else {
     return knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [opts.client.team]);
   }
 }
 
 function _getTeamId(opts) {
-  if (opts.teamId) {
-    return opts.teamId;
-  } else if (opts.teamName) {
-    return knex.raw('(SELECT id FROM teams WHERE name = ?)', [opts.teamName]);
+  if (opts.team) {
+    return opts.team;
   } else {
     return opts.client.team;
   }
+}
+
+function _getCityMoodSql() {
+  return `
+    JOIN LATERAL (
+      SELECT
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_city
+      FROM
+        wappu_mood
+      JOIN users ON users.id = wappu_mood.user_id
+      JOIN teams ON teams.id = users.team_id
+      WHERE teams.city_id = ? AND wappu_mood.created_at_coarse = date
+    ) city_score ON true
+  `;
+}
+
+function _getCityMoodParams(opts) {
+  return _getCityId(opts);
+}
+
+function _getTeamMoodSql() {
+  return `
+    JOIN LATERAL (
+      SELECT
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_team
+      FROM
+        wappu_mood
+      JOIN users ON users.id = wappu_mood.user_id
+      WHERE users.team_id = ? AND date = wappu_mood.created_at_coarse
+    ) team_score ON true
+  `;
+}
+
+function _getTeamMoodParams(opts) {
+  return _getTeamId(opts);
+}
+
+function _getPersonalMoodSql() {
+  return `
+    JOIN LATERAL (
+      SELECT
+        ROUND(AVG(wappu_mood.rating)::numeric, 4) AS rating_personal
+      FROM
+        wappu_mood
+      WHERE
+        wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse
+    ) personal_score ON true
+  `;
+}
+
+function _getPersonalMoodParams(opts) {
+  return opts.client.id;
 }
 
 function _rowsToMoodObjects(rows) {
   return rows.map(row => deepChangeKeyCase(row, 'camelCase'));
 }
 
-function _feedTemplate(row, client) {
+function _feedTemplate(row, opts) {
   return {
-    user:  client.uuid,
+    location: opts.location,
+    user:  opts.client.uuid,
     type: 'TEXT',
-    text: `${ client.name }'s wappu fiba is ${ row.rating } - ${ row.description }`,
+    text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ row.description }`,
   }
 }
 

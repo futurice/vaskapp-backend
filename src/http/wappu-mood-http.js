@@ -5,7 +5,9 @@ import _ from 'lodash';
 
 
 const putMood = createJsonRoute(function(req, res) {
-  if (!req.client.id) throwStatus(403, `Only registered user may save moods`);
+  if (!req.client.id) {
+    throwStatus(403, `Only registered user may save moods`);
+  }
 
   let moodParams = assert(req.body, 'upsertMoodParams');
   let coreParams = _.merge(moodParams, {
@@ -13,10 +15,7 @@ const putMood = createJsonRoute(function(req, res) {
   });
 
   return wappuMood.createOrUpdateMood(coreParams)
-    .then(() => undefined)
-    .catch(err => {
-      throw err
-    });
+    .then(() => undefined);
 });
 
 const getMood = createJsonRoute(function(req, res) {
@@ -25,11 +24,7 @@ const getMood = createJsonRoute(function(req, res) {
     client: req.client,
   });
 
-  return wappuMood.getMood(coreParams)
-    .then(result => result)
-    .catch(err => {
-      throw err
-    });
+  return wappuMood.getMood(coreParams);
 });
 
 export {
