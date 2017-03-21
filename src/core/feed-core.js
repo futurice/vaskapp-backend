@@ -20,8 +20,6 @@ function getStickySqlString() {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      cities.id as city_id,
-      cities.name as city_name,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -60,8 +58,6 @@ function getFeed(opts) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      cities.id as city_id,
-      cities.name as city_name,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items

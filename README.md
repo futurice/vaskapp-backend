@@ -530,8 +530,6 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    city: "tampere",
-    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
@@ -558,8 +556,6 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    city: "tampere",
-    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
