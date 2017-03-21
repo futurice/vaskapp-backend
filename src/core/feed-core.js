@@ -15,7 +15,6 @@ function getStickySqlString() {
       feed_items.image_path as image_path,
       feed_items.text as text,
       feed_items.type as action_type_code,
-      feed_items.city_id as city_id,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
@@ -51,7 +50,6 @@ function getFeed(opts) {
       feed_items.image_path as image_path,
       feed_items.text as text,
       feed_items.type as action_type_code,
-      feed_items.city_id as city_id,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
       teams.name as team_name,
@@ -176,7 +174,6 @@ function _actionToFeedObject(row, client) {
     votes: row['votes'],
     userVote: row['user_vote'],
     hotScore: row['hot_score'],
-    cityId: row['city_id'],
     author: {
       name: row['user_name'],
       team: row['team_name'],

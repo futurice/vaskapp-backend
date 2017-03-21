@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 1,
-      city_id: cities['Other'],
+      city_id: cities['Tampere'],
       name: 'TiTe',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/tite.png',
     });
@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 2,
-      city_id: cities['Helsinki'],
+      city_id: cities['Tampere'],
       name: 'Skilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/skilta.png'
     });
