@@ -488,7 +488,7 @@ Responses:
   team: 1,
   user: 'UUID',
   // required when event type 'CHECK_IN_EVENT'
-  eventId: 'Tampere_0'
+  eventId: 1
 }
 ```
 
