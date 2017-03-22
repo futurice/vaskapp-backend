@@ -1,7 +1,7 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
-import {equirectangularDistance} from '../util/geometry';
+import {getDistance} from '../util/geometry';
 import moment from 'moment-timezone';
 
 
@@ -96,11 +96,9 @@ function _eventOnGoing(event) {
 }
 
 function _userInVicinity(actionLocation, eventLocation, eventRadius) {
-  const earthRadius = 6372.8;
-  const distanceToEvent = equirectangularDistance(
+  const distanceToEvent = getDistance(
       actionLocation,
       eventLocation,
-      earthRadius
     );
   return distanceToEvent <= eventRadius;
 }
