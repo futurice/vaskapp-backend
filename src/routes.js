@@ -37,6 +37,7 @@ function createRouter() {
   router.put('/vote', voteHttp.putVote);
 
   router.get('/radio', radioHttp.getStations);
+  router.get('/radio/:id', radioHttp.getStation);
 
   router.put('/mood', wappuMood.putMood);
   router.get('/mood', wappuMood.getMood);

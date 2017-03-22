@@ -4,14 +4,28 @@ import {assert} from '../validation';
 
 const getStations = createJsonRoute(function(req, res) {
   const params = assert({
-    radioId: req.query.radioId,
-    cityId: req.query.cityId,
-    cityName: req.query.cityName,
+    city: req.query.city,
   }, 'radioParams');
 
   return radioCore.getStations(params);
 });
 
+const getStation = createJsonRoute(function(req, res) {
+  const params = assert({
+    id: req.params.id,
+  }, 'radioParams');
+
+  return radioCore.getStations(params)
+    .then(results => {
+      if (results.length > 1) {
+        throw new Error('Unexpected number of rows');
+      }
+
+      return results[0];
+    });
+});
+
 export {
   getStations,
+  getStation,
 };

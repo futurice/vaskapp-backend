@@ -334,13 +334,20 @@ Responses:
 
 Query parameters:
 
-* `cityName` String. If specified, returns only stations active in the given city.
-* `cityId` Integer. If specified, returns only stations active in the given city.
+* `city` String. If specified, returns only stations active in the given city.
 
 Responses:
 
 * `200 OK` Body is list of [radio objects](#radio-object).
 
+
+### `GET /api/radio/:id`
+
+> Get one of radio stations.
+
+Responses:
+
+* `200 OK` Body is one of [radio objects](#radio-object).
 
 ## Response objects
 

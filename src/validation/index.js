@@ -59,9 +59,10 @@ const schemas = {
     city: common.primaryKeyId,
   },
 
-  radioParams: _.merge(cityParams, {
-    radioId: common.primaryKeyId,
-  }),
+  radioParams: {
+    city: common.primaryKeyId,
+    id: common.primaryKeyId,
+  },
 
   eventsParams: {
     city: common.primaryKeyId,
