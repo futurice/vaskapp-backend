@@ -129,5 +129,149 @@ exports.seed = function(knex, Promise) {
       name: 'Wapputiimi',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/wapputiimi.png'
     });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 16,
+      city_id: cities['Helsinki'],
+      name: 'AK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 17,
+      city_id: cities['Helsinki'],
+      name: 'Athene',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 18,
+      city_id: cities['Helsinki'],
+      name: 'AS',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 19,
+      city_id: cities['Helsinki'],
+      name: 'FK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 20,
+      city_id: cities['Helsinki'],
+      name: 'Inkubio',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 21,
+      city_id: cities['Helsinki'],
+      name: 'KK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 22,
+      city_id: cities['Helsinki'],
+      name: 'KIK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 23,
+      city_id: cities['Helsinki'],
+      name: 'KY',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 24,
+      city_id: cities['Helsinki'],
+      name: 'MK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 25,
+      city_id: cities['Helsinki'],
+      name: 'PJK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 26,
+      city_id: cities['Helsinki'],
+      name: 'Prodeko',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 27,
+      city_id: cities['Helsinki'],
+      name: 'PT',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 28,
+      city_id: cities['Helsinki'],
+      name: 'IK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 29,
+      city_id: cities['Helsinki'],
+      name: 'SIK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 30,
+      city_id: cities['Helsinki'],
+      name: 'TF',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 31,
+      city_id: cities['Helsinki'],
+      name: 'TiK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 32,
+      city_id: cities['Helsinki'],
+      name: 'VK',
+      image_path: null, // TODO
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 33,
+      city_id: cities['Helsinki'],
+      name: 'TOKYO',
+      image_path: null, // TODO
+    });
   });
 };
