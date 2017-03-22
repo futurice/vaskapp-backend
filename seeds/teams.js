@@ -2,20 +2,13 @@ var util = require('../src/util/seeds');
 
 
 exports.seed = function(knex, Promise) {
+  const cities = {};
 
-  const sqlString = `
-    SELECT *
-    FROM cities
-  `;
-
-  var cities = {};
-
-  return knex.raw(sqlString)
-  .then((result) => {
-    result.rows.forEach(city => {
+  return knex('cities').select('*')
+  .then(rows => {
+    rows.forEach(city => {
       cities[city.name] = city.id;
     });
-    return null;
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
@@ -136,6 +129,5 @@ exports.seed = function(knex, Promise) {
       name: 'Wapputiimi',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/wapputiimi.png'
     });
-  })
-  ;
+  });
 };

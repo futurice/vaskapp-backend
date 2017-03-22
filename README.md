@@ -224,6 +224,7 @@ Responses:
 
 * `200 OK`
 
+
 ### `GET /api/users/:uuid`
 
 > Get user details
@@ -304,6 +305,7 @@ Responses:
 
 `:id` Is the id of an item in the feed.
 
+
 ### `GET /api/mood`
 
 > Get list of day by day mood
@@ -326,6 +328,20 @@ Responses:
 
 * `200 OK`
 * `403 Forbidden` If uuid has not been included in header.
+
+
+### `GET /api/radio`
+
+> Get list of radio stations.
+
+Query parameters:
+
+* `cityName` String. If specified, returns only stations active in the given city.
+* `cityId` Integer. If specified, returns only stations active in the given city.
+
+Responses:
+
+* `200 OK` Body is list of [radio objects](#radio-object).
 
 
 ## Response objects
@@ -421,6 +437,18 @@ Responses:
 }
 ```
 
+### Radio object
+
+```js
+{
+  "id": 2,
+  "name": "Radiodiodi",
+  "stream": null,
+  "website": null,
+  "cityId": 2
+}
+```
+
 ### Mood objects
 
 #### GET mood object
@@ -442,6 +470,7 @@ Responses:
   "rating": 10,
   // Optional
   "description": "Its friday!"
+
 }
 ```
 

@@ -67,6 +67,9 @@ const schemas = {
   eventsParams: cityParams,
   citiesParams: cityParams,
   teamsParams: cityParams,
+  radioParams: _.merge(cityParams, {
+    radioId: common.primaryKeyId,
+  }),
 };
 
 const conversions = {};
