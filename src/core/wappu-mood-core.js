@@ -1,3 +1,4 @@
+import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
 import * as feedCore from './feed-core';
@@ -44,7 +45,7 @@ function createOrUpdateMood(opts) {
       .then(result => {
         const mood = result.rows[0];
 
-        if (mood.is_new) {
+        if (mood.is_new && _hasDescription(mood)) {
           feedCore.createFeedItem(_feedTemplate(mood, opts));
         }
 
@@ -188,8 +189,12 @@ function _feedTemplate(row, opts) {
     location: opts.location,
     user:  opts.client.uuid,
     type: 'TEXT',
-    text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ row.description }`,
+    text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ _.trim(row.description) }`,
   }
+}
+
+function _hasDescription(row) {
+  return row.description && _.trim(row.description).length > 0;
 }
 
 export {
