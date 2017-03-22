@@ -276,7 +276,7 @@ Responses:
 
 > Get list of feed
 
-Body is one of [one of feed objects](#feed-objects).
+Body is one of [feed objects](#feed-objects).
 
 Query parameters:
 
@@ -303,6 +303,29 @@ Responses:
 > Delete item from feed
 
 `:id` Is the id of an item in the feed.
+
+### `GET /api/mood`
+
+> Get list of day by day mood
+
+Query parameters:
+
+* `city` Integer. If specified, returned ratingCity is for the given city.
+* `team` Integer. If specified, returned ratingTeam is for the given team.
+
+Body is a list of [mood objects](#mood-objects).
+
+
+### `PUT /api/mood`
+
+> Create or update mood
+
+Body is one of [mood objects](#mood-objects).
+
+Responses:
+
+* `200 OK`
+* `403 Forbidden` If uuid has not been included in header.
 
 
 ## Response objects
@@ -395,6 +418,30 @@ Responses:
 {
   "id": 2,
   "name": "helsinki"
+}
+```
+
+### Mood objects
+
+#### GET mood object
+
+```js
+{
+  "date": "2016-04-15T22:00:00.000Z",
+  "ratingCity": "3.3333",     // May be null
+  "ratingTeam": "5.0000",     // May be null
+  "ratingPersonal": "10.0000" // May be null
+}
+```
+
+#### PUT mood object
+
+```js
+{
+  // Dacimal. Range [0, 10]. Rounded to 4th decimal mark.
+  "rating": 10,
+  // Optional
+  "description": "Its friday!"
 }
 ```
 
