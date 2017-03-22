@@ -142,6 +142,14 @@ function createFeedItem(feedItem, trx) {
       }
 
       return rows.length;
+    })
+    .catch(err => {
+      if (err.constraint === 'feed_items_city_id_foreign') {
+        err.status = 404;
+        err.message = `No such city id: ${ dbRow.city_id }`;
+      }
+
+      throw err;
     });
 }
 
