@@ -66,6 +66,7 @@ const schemas = {
 
   eventsParams: {
     city: common.primaryKeyId,
+    id: common.primaryKeyId,
   },
 
   citiesParams: {
