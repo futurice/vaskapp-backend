@@ -112,7 +112,7 @@ function createFeedItem(feedItem, trx) {
     'image_path': feedItem.imagePath,
     'text':       feedItem.text,
     'type':       feedItem.type,
-    'city_id':    feedItem.city,
+    'city_id':    feedItem.city || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
   };
 
   const location = feedItem.location;
@@ -131,7 +131,6 @@ function createFeedItem(feedItem, trx) {
   // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
   if (feedItem.user) {
     dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
-    dbRow.city_id = dbRow.city_id || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]);
   }
 
   trx = trx || knex;
