@@ -7,7 +7,23 @@ import moment from 'moment-timezone';
 
 function getEvents(opts) {
   return knex('events')
-    .select('*')
+    .select([
+      'id',
+      'name',
+      'location_name',
+      'start_time',
+      'end_time',
+      'description',
+      'organizer',
+      'contact_details',
+      'teemu',
+      'location',
+      'cover_image',
+      'city_id AS city',
+      'fb_event_id',
+      'attending_count',
+      'radius',
+    ])
     .where(_getWhereClause(opts))
     .orderBy('start_time', 'asc')
     .then(results =>

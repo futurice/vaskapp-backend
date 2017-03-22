@@ -173,7 +173,7 @@ UPDATE users SET is_banned = true WHERE uuid='D47DA01C-51BB-4F96-90B6-D64B77225E
 
 Responses:
 
-* `200 OK` List of [event objects](event-object)
+* `200 OK` List of [event objects](#event-object).
 
 
 ### `GET /api/teams`
@@ -186,7 +186,7 @@ Query parameters:
 
 Responses:
 
-* `200 OK` List of [team objects](#team-object)
+* `200 OK` List of [team objects](#team-object).
 
 
 ### `POST /api/actions`
@@ -206,7 +206,7 @@ Responses:
 
 > Vote on an feed item
 
-Body is one of [vote object](#vote-object)
+Body is one of [vote object](#vote-object).
 
 Responses:
 * `200 OK`
@@ -355,19 +355,24 @@ Responses:
 
 ```js
 {
-  "name": "Akateeminen Herwannan vahvin mies 2016",
-  "locationName": "Tietotalon edusta",
-  "startTime": "2016-04-20T09:00:00.000Z",
-  "endTime": "2016-04-20T14:00:00.000Z",
-  "description": "Strong man competition",
-  "organizer": "Herwannan hauiskääntö",
-  "contactDetails": "Herwannan hauiskääntö / hkaanto@tut.fi",
+  "id": 19,
+  "name": "Akateemisen Beerpongin MM-kisat 2017",
+  "locationName": "Bommari",
+  "startTime": "2017-04-24T12:00:00.000Z",
+  "endTime": "2017-04-24T18:00:00.000Z",
+  "description": "The massive championship of academic beerpong is held for the 4th time in bommari. Join the tournament and come battle for ultimate glory. Price for the tournament is 15 euros for one team, which includes overallbadges and drinks.",
+  "organizer": "Rankat Ankat",
+  "contactDetails": "hallitus@rankat.net",
   "teemu": false,
   "location": {
-    "latitude": 61.449605,
-    "longitude": 23.857158
+    "x": 23.861831,
+    "y": 61.450657
   },
-  "coverImage": "https://storage.googleapis.com/wappuapp/assets/herwannan-vahvin-mies.jpg"
+  "coverImage": "https://storage.googleapis.com/wappuapp/assets/beerpong-mm-kisa.jpg",
+  "city": 3,
+  "fbEventId": null,
+  "attendingCount": 0,
+  "radius": 0.4
 }
 ```
 
