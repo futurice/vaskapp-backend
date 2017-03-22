@@ -34,23 +34,24 @@ exports.seed = function(knex, Promise) {
 };
 
 function _readEvents(city) {
-  return _parseJSON(_readFile(city.name), city.name);
+  return _parseJSON(_readFile(city.name.toLowerCase()), city.name);
 }
 
 function _fileExists(cityName) {
-  return fs.existsSync(path.join(DATA_DIR, `${cityName}-events.json`));
+  return fs.existsSync(path.join(DATA_DIR, `${cityName.toLowerCase()}-events.json`));
 }
 
 function _readFile(cityName) {
-  return fs.readFileSync(path.join(DATA_DIR, `${cityName}-events.json`), {encoding: 'utf8'})
+  return fs.readFileSync(path.join(DATA_DIR, `${cityName.toLowerCase()}-events.json`), {encoding: 'utf8'})
 }
 
 function _parseJSON(jsonString, cityName) {
+  "use strict";
   let json;
   try {
     json = JSON.parse(jsonString);
   } catch (e) {
-    logger.error(`Error when parsing ${cityName}-event.json!`);
+    logger.error(`Error when parsing ${cityName.toLowerCase()}-event.json!`);
     logger.error(jsonString);
     throw e;
   }
