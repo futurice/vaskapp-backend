@@ -8,7 +8,7 @@ import * as throttleCore from '../core/throttle-core';
 
 let postAction = createJsonRoute(function(req, res) {
   const action = assert(_.merge(req.body, {
-    city: req.query.city,
+    city: req.query.cityId,
   }), 'action');
 
   if (_.isString(action.text) && action.text.trim().length === 0) {
@@ -38,11 +38,7 @@ let postAction = createJsonRoute(function(req, res) {
         return Promise.resolve();
       }
     })
-    .then(() => actionCore.createAction(_.merge(action, {client: req.client})))
-    .then(() => undefined)
-    .catch(err =>  {
-      throwStatus(err.status, err.message);
-    });
+    .then(() => actionCore.createAction(_.merge(action, {client: req.client})));
   }
 
   return handleAction

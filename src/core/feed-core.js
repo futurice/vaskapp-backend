@@ -135,7 +135,7 @@ function createFeedItem(feedItem, trx) {
 
   trx = trx || knex;
 
-  return trx.returning('*').insert(dbRow).into('feed_items')
+  return trx.returning('id').insert(dbRow).into('feed_items')
     .then(rows => {
       if (_.isEmpty(rows)) {
         throw new Error('Feed item row creation failed: ' + dbRow);

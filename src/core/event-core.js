@@ -1,6 +1,5 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
-import {deepChangeKeyCase} from '../util';
 import {getDistance} from '../util/geometry';
 import moment from 'moment-timezone';
 
@@ -40,6 +39,10 @@ function _getWhereClause(filters) {
 
   if (filters.city) {
     whereClauses.city_id = filters.city;
+  }
+
+  if (filters.id) {
+    whereClauses.id = filters.id;
   }
 
   return whereClauses;

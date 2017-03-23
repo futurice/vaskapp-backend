@@ -195,7 +195,7 @@ Responses:
 
 Query parameters:
 
-* `city` Integer. If specified, generated feed item show in this city's feed. Does nothing when checking into event.
+* `cityId` Integer. If specified, generated feed item show in this city's feed. Does nothing when checking into event.
 
 Body is one of [action objects](#action-objects).
 
@@ -287,7 +287,7 @@ Query parameters:
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
 * `sort` String. Default: 'new'. In which order the result should be returned. One of: 'new', 'hot'.
-* `city` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
+* `cityId` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
 
 Examples:
 
@@ -314,7 +314,7 @@ Responses:
 
 Query parameters:
 
-* `city` Integer. If specified, returned ratingCity is for the given city.
+* `cityId` Integer. If specified, returned ratingCity is for the given city.
 * `team` Integer. If specified, returned ratingTeam is for the given team.
 
 Body is a list of [mood objects](#mood-objects).
@@ -338,7 +338,7 @@ Responses:
 
 Query parameters:
 
-* `city` String. If specified, returns only stations active in the given city.
+* `cityId` String. If specified, returns only stations active in the given city.
 
 Responses:
 

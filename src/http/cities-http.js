@@ -7,11 +7,7 @@ const getCities = createJsonRoute(function(req, res) {
     city: req.query.id,
   }, 'citiesParams');
 
-  return citiesCore.getCities(citiesParams)
-    .then(result => result)
-    .catch(err => {
-      throw err
-    });
+  return citiesCore.getCities(citiesParams);
 });
 
 

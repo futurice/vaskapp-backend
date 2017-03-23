@@ -17,6 +17,8 @@ function createRouter() {
   const router = express.Router();
 
   router.get('/events', eventHttp.getEvents);
+  router.get('/events/:id', eventHttp.getEvents);
+
   router.post('/actions', actionHttp.postAction);
   router.get('/teams', teamHttp.getTeams);
 
