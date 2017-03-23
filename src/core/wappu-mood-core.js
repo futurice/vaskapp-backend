@@ -190,6 +190,7 @@ function _feedTemplate(row, opts) {
     user:  opts.client.uuid,
     type: 'TEXT',
     text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ _.trim(row.description) }`,
+    client: opts.client,
   }
 }
 
