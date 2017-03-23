@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
   .then(() => util.insertOrUpdate(knex, 'radios', {
     id: 2,
     name: 'Radiodiodi',
-    city_id: cities['Helsinki'],
+    city_id: cities['Otaniemi'],
     stream: null,   // TODO
     website: 'https://radiodiodi.fi/',
   }));
