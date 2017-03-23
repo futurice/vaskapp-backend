@@ -491,7 +491,7 @@ Responses:
 
 #### Basic action object
 
-`type` is one of `SIMA`, `CHECK_IN_EVENT` or `LECTURE`.
+`type` is one of `SIMA`, `CHECK_IN_EVENT`.
 
 ```js
 {
