@@ -3,7 +3,6 @@ import {createJsonRoute} from '../util/express';
 import {assert} from '../validation';
 
 const getStations = createJsonRoute(function(req, res) {
-  console.log(req.query.id);
   const params = assert({
     id: req.params.id,
     city: req.query.city,
