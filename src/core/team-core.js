@@ -8,8 +8,7 @@ function getTeams(opts) {
   let sqlString = `
     SELECT teams.id, teams.name, teams.image_path,
       SUM(COALESCE(action_types.value, 0)) AS score,
-      cities.id AS city_id,
-      cities.name AS city_name
+      cities.id AS city
     FROM teams
     LEFT JOIN actions ON teams.id = actions.team_id ${isBanned ? '' : 'AND NOT actions.is_banned'}
     LEFT JOIN action_types ON actions.action_type_id = action_types.id
@@ -19,14 +18,9 @@ function getTeams(opts) {
   let params = [];
   let whereClauses = [];
 
-  if (opts.cityId) {
+  if (opts.city) {
     whereClauses.push('cities.id = ?');
-    params.push(opts.cityId);
-  }
-
-  if (opts.cityName) {
-    whereClauses.push('cities.name = ?')
-    params.push(opts.cityName);
+    params.push(opts.city);
   }
 
   if (whereClauses.length > 0) {

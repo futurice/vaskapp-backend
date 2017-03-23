@@ -173,7 +173,7 @@ UPDATE users SET is_banned = true WHERE uuid='D47DA01C-51BB-4F96-90B6-D64B77225E
 
 Responses:
 
-* `200 OK` List of [event objects](event-object)
+* `200 OK` List of [event objects](#event-object).
 
 
 ### `GET /api/teams`
@@ -182,24 +182,27 @@ Responses:
 
 Query parameters:
 
-* `cityId` Integer. If specified, returns only teams based in the city with given id.
-* `cityName` String. If specified, returns only teams based in the city with given name.
+* `city` Integer. If specified, returns only teams based in the city with given id.
 
 Responses:
 
-* `200 OK` List of [team objects](#team-object)
+* `200 OK` List of [team objects](#team-object).
 
 
 ### `POST /api/actions`
 
 > Create a new action
 
+Query parameters:
+
+* `cityId` Integer. If specified, generated feed item show in this city's feed. Does nothing when checking into event.
+
 Body is one of [action objects](#action-objects).
 
 Responses:
 
 * `200 OK`
-* `404` On CHECK_IN_EVENT; no such event id
+* `404` No such city id or on CHECK_IN_EVENT; no such event id.
 * `403` On CHECK_IN_EVENT; off time, off site or duplicate check in attempt.
 
 
@@ -207,7 +210,7 @@ Responses:
 
 > Vote on an feed item
 
-Body is one of [vote object](#vote-object)
+Body is one of [vote object](#vote-object).
 
 Responses:
 * `200 OK`
@@ -284,7 +287,6 @@ Query parameters:
 * `beforeId` Return items before this id, can be used for "infinite scroll" in client.
 * `limit` Integer. Default: 20. 1-100. If specified, at max this many items are returned.
 * `sort` String. Default: 'new'. In which order the result should be returned. One of: 'new', 'hot'.
-* `cityName` String. If specified, returns only posts by users belonging to guilds based in the city with given name.
 * `cityId` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
 
 Examples:
@@ -312,8 +314,8 @@ Responses:
 
 Query parameters:
 
-* `city` Integer. If specified, returned ratingCity is for the given city.
-* `team` Integer. If specified, returned ratingTeam is for the given team.
+* `cityId` Integer. If specified, returned ratingCity is for the given city.
+* `teamId` Integer. If specified, returned ratingTeam is for the given team.
 
 Body is a list of [mood objects](#mood-objects).
 
@@ -336,13 +338,20 @@ Responses:
 
 Query parameters:
 
-* `cityName` String. If specified, returns only stations active in the given city.
-* `cityId` Integer. If specified, returns only stations active in the given city.
+* `cityId` String. If specified, returns only stations active in the given city.
 
 Responses:
 
 * `200 OK` Body is list of [radio objects](#radio-object).
 
+
+### `GET /api/radio/:id`
+
+> Get one of radio stations.
+
+Responses:
+
+* `200 OK` Body is one of [radio objects](#radio-object).
 
 ## Response objects
 
@@ -350,19 +359,24 @@ Responses:
 
 ```js
 {
-  "name": "Akateeminen Herwannan vahvin mies 2016",
-  "locationName": "Tietotalon edusta",
-  "startTime": "2016-04-20T09:00:00.000Z",
-  "endTime": "2016-04-20T14:00:00.000Z",
-  "description": "Strong man competition",
-  "organizer": "Herwannan hauiskääntö",
-  "contactDetails": "Herwannan hauiskääntö / hkaanto@tut.fi",
+  "id": 121,
+  "name": "Spinnin iltapäiväkertho",
+  "locationName": "Spinnin kerhohuone SA014",
+  "startTime": "2017-02-21T10:00:00.000Z",
+  "endTime": "2017-04-21T15:00:00.000Z",
+  "description": "Raining and freezing outside? Studying terrifies and starting to miss kindergarden times? Spinni solves your problems!\r\r\r\rClimb stairs down to the basement of Sähkötalo and arrive to the club room of Spinni, SA014 on <päivämäärä> starting at 1 PM. Spinni offers some snacks, coloring books (for adults), games, lot of friends to play with - not to mention awesome music and lights. Additionally you may have a look at the regular life of electronic music club that is celebrating its 20th anniversary this year.\r\r\r\rSpinni <3 you",
+  "organizer": "Spinni",
+  "contactDetails": "spinni-hallitus@listmail.tut.fi; Valtteri Taimela, valtteri.taimela@student.tut.fi",
   "teemu": false,
   "location": {
-    "latitude": 61.449605,
-    "longitude": 23.857158
+    "latitude": 61.450364,
+    "longitude": 23.858384
   },
-  "coverImage": "https://storage.googleapis.com/wappuapp/assets/herwannan-vahvin-mies.jpg"
+  "coverImage": "https://storage.googleapis.com/wappuapp/assets/spinni.jpg",
+  "city": 3,
+  "fbEventId": null,
+  "attendingCount": 0,
+  "radius": 400
 }
 ```
 
@@ -374,8 +388,7 @@ Responses:
   "name": "Tietoteekkarikilta",
   "image_path": "foo.com/path_to_image.jpg",
   "score": "10",
-  "cityId": 3,
-  "cityName": "tampere"
+  "city": 3
 }
 ```
 
@@ -478,7 +491,7 @@ Responses:
 
 #### Basic action object
 
-`type` is one of `SIMA`, `CHECK_IN_EVENT` or `LECTURE`.
+`type` is one of `SIMA`, `CHECK_IN_EVENT`.
 
 ```js
 {
@@ -491,7 +504,7 @@ Responses:
   team: 1,
   user: 'UUID',
   // required when event type 'CHECK_IN_EVENT'
-  eventId: 'Tampere_0'
+  eventId: 1
 }
 ```
 
@@ -530,8 +543,6 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    city: "tampere",
-    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },
@@ -558,8 +569,6 @@ Responses:
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
-    city: "tampere",
-    cityId: 3,
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
   },

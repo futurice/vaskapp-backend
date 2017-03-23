@@ -20,14 +20,11 @@ function getStickySqlString() {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      cities.id as city_id,
-      cities.name as city_name,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     WHERE feed_items.is_sticky
     GROUP BY
@@ -35,8 +32,6 @@ function getStickySqlString() {
       users.name,
       users.uuid,
       teams.name,
-      cities.id,
-      cities.name,
       votes.value
     ORDER BY feed_items.id DESC
     LIMIT 2)`;
@@ -60,14 +55,11 @@ function getFeed(opts) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      cities.id as city_id,
-      cities.name as city_name,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
-    LEFT JOIN cities ON cities.id = teams.city_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     `;
 
@@ -86,20 +78,15 @@ function getFeed(opts) {
     whereClauses.push('NOT feed_items.is_banned');
   }
 
-  if (opts.cityId) {
-    whereClauses.push(`cities.id = ?`);
-    params.push(opts.cityId);
-  }
-
-  if (opts.cityName) {
-    whereClauses.push(`cities.name = ?`);
-    params.push(opts.cityName);
+  if (opts.city) {
+    whereClauses.push(`feed_items.city_id = ?`);
+    params.push(opts.city);
   }
 
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += ` GROUP BY cities.id, feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
+  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -124,7 +111,8 @@ function createFeedItem(feedItem, trx) {
   const dbRow = {
     'image_path': feedItem.imagePath,
     'text':       feedItem.text,
-    'type':       feedItem.type
+    'type':       feedItem.type,
+    'city_id':    feedItem.city || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
   };
 
   const location = feedItem.location;
@@ -154,6 +142,14 @@ function createFeedItem(feedItem, trx) {
       }
 
       return rows.length;
+    })
+    .catch(err => {
+      if (err.constraint === 'feed_items_city_id_foreign') {
+        err.status = 404;
+        err.message = `No such city id: ${ dbRow.city_id }`;
+      }
+
+      throw err;
     });
 }
 
@@ -188,8 +184,6 @@ function _actionToFeedObject(row, client) {
     author: {
       name: row['user_name'],
       team: row['team_name'],
-      city: row['city_name'],
-      cityId: row['city_id'],
       type: _resolveAuthorType(row, client)
     },
     createdAt: row['created_at']

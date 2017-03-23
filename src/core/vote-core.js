@@ -2,7 +2,6 @@ const {knex} = require('../util/database').connect();
 import {hotScore} from './hot-score';
 
 function createOrUpdateVote(opts) {
-
   const updateVoteSql = `
     WITH upsert AS
       (UPDATE votes SET value = ? WHERE user_id = ? AND feed_item_id = ? RETURNING *)
@@ -26,25 +25,24 @@ function createOrUpdateVote(opts) {
     WHERE id = ?
   `;
 
-  let vote = opts.vote;
-  const updateVoteParams = [vote.value, vote.user_id, vote.feed_item_id,
-    vote.value, vote.user_id, vote.feed_item_id];
+  const updateVoteParams = [opts.value, opts.client.id, opts.feedItemId,
+    opts.value, opts.client.id, opts.feedItemId];
 
   return knex.transaction(function(trx) {
     return trx.raw(updateVoteSql, updateVoteParams)
-      .then(result => trx.raw(selectVotesSql, [vote.feed_item_id]))
+      .then(result => trx.raw(selectVotesSql, [opts.feedItemId]))
       .then(result =>
         trx.raw(updateFeedItemSql, [
             hotScore(
               result.rows[0]['votes'],
               result.rows[0]['age']
             ),
-            vote.feed_item_id,
+            opts.feedItemId,
           ])
       )
       .then(result => undefined)
       .catch(err => {
-        let error = new Error('No such feed item id: ' + vote.feed_item_id);
+        let error = new Error('No such feed item id: ' + opts.feedItemId);
         error.status = 404;
         throw error;
       });

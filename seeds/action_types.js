@@ -1,7 +1,7 @@
 var util = require('../src/util/seeds');
 
 exports.seed = function(knex, Promise) {
-  return util.insertOrUpdate(knex, 'action_types', {
+  return util.removeIfExists(knex, 'action_types', {
     id: 1,
     code: 'BUTTON_PUSH',
     name: 'Don\'t Press',
@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
+    return util.removeIfExists(knex, 'action_types', {
       id: 4,
       code: 'LECTURE',
       name: 'At a lecture',
@@ -69,7 +69,7 @@ exports.seed = function(knex, Promise) {
       id: 9,
       code: 'CHECK_IN_EVENT',
       name: 'Check in',
-      value: 50,
+      value: 200,
       cooldown: 1, // 0 evals unintentionally to false in throttle-core
     });
   });

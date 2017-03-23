@@ -1,6 +1,6 @@
 const requireEnvs = require('../src/util/require-envs');
 
-requireEnvs(['EVENT_RADIUS']);
+requireEnvs(['DEFAULT_EVENT_RADIUS']);
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('events', table => {
@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
     table.integer('city_id').unsigned().index();
     table.string('fb_event_id', 50).index();
     table.integer('attending_count').defaultTo(0);
-    table.float('radius').defaultTo(process.env.EVENT_RADIUS);
+    table.float('radius').defaultTo(process.env.DEFAULT_EVENT_RADIUS);
     table.foreign('city_id')
       .references('id')
       .inTable('cities')

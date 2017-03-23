@@ -1,20 +1,31 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
-import {deepChangeKeyCase} from '../util';
-import {equirectangularDistance} from '../util/geometry';
+import {getDistance} from '../util/geometry';
 import moment from 'moment-timezone';
 
 
 function getEvents(opts) {
   return knex('events')
-    .select('*')
+    .select([
+      'id',
+      'name',
+      'location_name',
+      'start_time',
+      'end_time',
+      'description',
+      'organizer',
+      'contact_details',
+      'teemu',
+      'location',
+      'cover_image',
+      'city_id AS city',
+      'fb_event_id',
+      'attending_count',
+      'radius',
+    ])
     .where(_getWhereClause(opts))
     .orderBy('start_time', 'asc')
-    .then(results =>
-      _.map(results, row =>
-        deepChangeKeyCase(row, 'camelCase')
-      )
-    );
+    .then(rows => _rowsToEvents(rows));
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
@@ -26,17 +37,40 @@ function setAttendingCount(facebookEventId, attendingCount) {
 function _getWhereClause(filters) {
   let whereClauses = {};
 
-  if (filters.cityId) {
-    whereClauses.city_id = filters.cityId;
+  if (filters.city) {
+    whereClauses.city_id = filters.city;
   }
 
-  if (filters.cityName) {
-    whereClauses.city_id = knex('cities')
-      .select('id')
-      .where('name', '=', filters.cityName);
+  if (filters.id) {
+    whereClauses.id = filters.id;
   }
 
   return whereClauses;
+}
+
+function _rowsToEvents(rows) {
+  return _.map(rows, row => {
+    return {
+        id: row['id'],
+        name: row['name'],
+        locationName: row['location_name'],
+        startTime: row['start_time'],
+        endTime: row['end_time'],
+        description: row['description'],
+        organizer: row['organizer'],
+        contactDetails: row['contact_details'],
+        teemu: row['teemu'],
+        location: {
+          latitude: row['location']['y'],
+          longitude: row['location']['x'],
+        },
+        coverImage: row['cover_image'],
+        city: row['city'],
+        fbEventId: row['fb_event_id'],
+        attendingCount: row['attending_count'],
+        radius: row['radius'],
+    }
+  });
 }
 
 // Checks if checking in with the given parameters would be feasable.
@@ -86,11 +120,9 @@ function _eventOnGoing(event) {
 }
 
 function _userInVicinity(actionLocation, eventLocation, eventRadius) {
-  const earthRadius = 6372.8;
-  const distanceToEvent = equirectangularDistance(
+  const distanceToEvent = getDistance(
       actionLocation,
       eventLocation,
-      earthRadius
     );
   return distanceToEvent <= eventRadius;
 }

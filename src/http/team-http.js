@@ -5,8 +5,7 @@ import {assert} from '../validation';
 
 let getTeams = createJsonRoute(function(req, res) {
   const teamParams = assert({
-    cityId: req.query.cityId,
-    cityName: req.query.cityName,
+    city: req.query.cityId,
   }, 'feedParams');
 
   const coreParams = _.merge(teamParams, {

@@ -31,14 +31,14 @@ function createAction(action) {
         }
 
         action.id = rows[0].id;
+
         if (action.type === 'IMAGE' || action.type === 'TEXT') {
-          createFeedItem(action, trx);
+          return createFeedItem(action, trx);
         }
 
         return Promise.resolve();
     })
   })
-  .then(() => undefined)
   .catch(err => {
     if (err.constraint === 'only_one_check_in_per_event') {
       err.status = 403;

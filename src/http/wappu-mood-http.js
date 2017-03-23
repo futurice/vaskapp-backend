@@ -9,17 +9,23 @@ const putMood = createJsonRoute(function(req, res) {
     throwStatus(403, `Only registered user may save moods`);
   }
 
-  let moodParams = assert(req.body, 'upsertMoodParams');
+  let moodParams = assert({
+    rating: req.body.rating,
+    description: req.body.description,
+  }, 'upsertMoodParams');
+
   let coreParams = _.merge(moodParams, {
     client: req.client,
   });
 
-  return wappuMood.createOrUpdateMood(coreParams)
-    .then(() => undefined);
+  return wappuMood.createOrUpdateMood(coreParams);
 });
 
 const getMood = createJsonRoute(function(req, res) {
-  let moodParams = assert(req.query, 'getMoodParams');
+  let moodParams = assert({
+    city: req.query.cityId,
+    team: req.query.teamId,
+  }, 'getMoodParams');
   let coreParams = _.merge(moodParams, {
     client: req.client,
   });
