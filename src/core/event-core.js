@@ -26,11 +26,7 @@ function getEvents(opts) {
     ])
     .where(_getWhereClause(opts))
     .orderBy('start_time', 'asc')
-    .then(results =>
-      _.map(results, row =>
-        deepChangeKeyCase(row, 'camelCase')
-      )
-    );
+    .then(rows => _rowsToEvents(rows));
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
@@ -47,6 +43,31 @@ function _getWhereClause(filters) {
   }
 
   return whereClauses;
+}
+
+function _rowsToEvents(rows) {
+  return _.map(rows, row => {
+    return {
+        id: row['id'],
+        name: row['name'],
+        locationName: row['location_name'],
+        startTime: row['start_time'],
+        endTime: row['end_time'],
+        description: row['description'],
+        organizer: row['organizer'],
+        contactDetails: row['contact_details'],
+        teemu: row['teemu'],
+        location: {
+          latitude: row['location']['y'],
+          longitude: row['location']['x'],
+        },
+        coverImage: row['cover_image'],
+        city: row['city'],
+        fbEventId: row['fb_event_id'],
+        attendingCount: row['attending_count'],
+        radius: row['radius'],
+    }
+  });
 }
 
 // Checks if checking in with the given parameters would be feasable.

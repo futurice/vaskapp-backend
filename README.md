@@ -355,24 +355,24 @@ Responses:
 
 ```js
 {
-  "id": 19,
-  "name": "Akateemisen Beerpongin MM-kisat 2017",
-  "locationName": "Bommari",
-  "startTime": "2017-04-24T12:00:00.000Z",
-  "endTime": "2017-04-24T18:00:00.000Z",
-  "description": "The massive championship of academic beerpong is held for the 4th time in bommari. Join the tournament and come battle for ultimate glory. Price for the tournament is 15 euros for one team, which includes overallbadges and drinks.",
-  "organizer": "Rankat Ankat",
-  "contactDetails": "hallitus@rankat.net",
+  "id": 121,
+  "name": "Spinnin iltapäiväkertho",
+  "locationName": "Spinnin kerhohuone SA014",
+  "startTime": "2017-02-21T10:00:00.000Z",
+  "endTime": "2017-04-21T15:00:00.000Z",
+  "description": "Raining and freezing outside? Studying terrifies and starting to miss kindergarden times? Spinni solves your problems!\r\r\r\rClimb stairs down to the basement of Sähkötalo and arrive to the club room of Spinni, SA014 on <päivämäärä> starting at 1 PM. Spinni offers some snacks, coloring books (for adults), games, lot of friends to play with - not to mention awesome music and lights. Additionally you may have a look at the regular life of electronic music club that is celebrating its 20th anniversary this year.\r\r\r\rSpinni <3 you",
+  "organizer": "Spinni",
+  "contactDetails": "spinni-hallitus@listmail.tut.fi; Valtteri Taimela, valtteri.taimela@student.tut.fi",
   "teemu": false,
   "location": {
-    "x": 23.861831,
-    "y": 61.450657
+    "latitude": 61.450364,
+    "longitude": 23.858384
   },
-  "coverImage": "https://storage.googleapis.com/wappuapp/assets/beerpong-mm-kisa.jpg",
+  "coverImage": "https://storage.googleapis.com/wappuapp/assets/spinni.jpg",
   "city": 3,
   "fbEventId": null,
   "attendingCount": 0,
-  "radius": 0.4
+  "radius": 400
 }
 ```
 
