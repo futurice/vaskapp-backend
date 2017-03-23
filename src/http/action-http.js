@@ -10,6 +10,7 @@ let postAction = createJsonRoute(function(req, res) {
   const action = assert(_.merge(req.body, {
     city: req.query.city,
   }), 'action');
+
   if (_.isString(action.text) && action.text.trim().length === 0) {
     throwStatus(400, 'Text cannot be empty.');
   }

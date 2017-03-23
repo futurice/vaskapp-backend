@@ -193,12 +193,16 @@ Responses:
 
 > Create a new action
 
+Query parameters:
+
+* `city` Integer. If specified, generated feed item show in this city's feed. Does nothing when checking into event.
+
 Body is one of [action objects](#action-objects).
 
 Responses:
 
 * `200 OK`
-* `404` On CHECK_IN_EVENT; no such event id
+* `404` No such city id or on CHECK_IN_EVENT; no such event id.
 * `403` On CHECK_IN_EVENT; off time, off site or duplicate check in attempt.
 
 
