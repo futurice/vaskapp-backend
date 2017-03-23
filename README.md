@@ -315,7 +315,7 @@ Responses:
 Query parameters:
 
 * `cityId` Integer. If specified, returned ratingCity is for the given city.
-* `team` Integer. If specified, returned ratingTeam is for the given team.
+* `teamId` Integer. If specified, returned ratingTeam is for the given team.
 
 Body is a list of [mood objects](#mood-objects).
 
