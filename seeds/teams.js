@@ -133,7 +133,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 16,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'AK',
       image_path: null, // TODO
     });
@@ -141,7 +141,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 17,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'Athene',
       image_path: null, // TODO
     });
@@ -149,7 +149,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 18,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'AS',
       image_path: null, // TODO
     });
@@ -157,7 +157,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 19,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'FK',
       image_path: null, // TODO
     });
@@ -165,7 +165,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 20,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'Inkubio',
       image_path: null, // TODO
     });
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 21,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'KK',
       image_path: null, // TODO
     });
@@ -181,7 +181,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 22,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'KIK',
       image_path: null, // TODO
     });
@@ -189,7 +189,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 23,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'KY',
       image_path: null, // TODO
     });
@@ -197,7 +197,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 24,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'MK',
       image_path: null, // TODO
     });
@@ -205,7 +205,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 25,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'PJK',
       image_path: null, // TODO
     });
@@ -213,7 +213,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 26,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'Prodeko',
       image_path: null, // TODO
     });
@@ -221,7 +221,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 27,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'PT',
       image_path: null, // TODO
     });
@@ -229,7 +229,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 28,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'IK',
       image_path: null, // TODO
     });
@@ -237,7 +237,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 29,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'SIK',
       image_path: null, // TODO
     });
@@ -245,7 +245,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 30,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'TF',
       image_path: null, // TODO
     });
@@ -253,7 +253,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 31,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'TiK',
       image_path: null, // TODO
     });
@@ -261,7 +261,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 32,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'VK',
       image_path: null, // TODO
     });
@@ -269,7 +269,7 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return util.insertOrUpdate(knex, 'teams', {
       id: 33,
-      city_id: cities['Helsinki'],
+      city_id: cities['Otaniemi'],
       name: 'TOKYO',
       image_path: null, // TODO
     });
