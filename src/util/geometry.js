@@ -6,7 +6,7 @@ function getDistance(pointA, pointB) {
     { latitude: pointA.latitude, longitude: pointB.longitude },
     { latitude: pointB.latitude, longitude: pointB.longitude },
   );
-  console.log("distance: ", distance);
+
   return distance;
 }
 
