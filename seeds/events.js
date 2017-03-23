@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
             location: event.location.longitude + ',' + event.location.latitude,
             cover_image: event.coverImage,
             fb_event_id: event.facebookId,
-            radius: event.radius || process.env.DEFAULT_DEFAULT_EVENT_RADIUS,
+            radius: event.radius || process.env.DEFAULT_EVENT_RADIUS,
           }, 'code');
         });
       });
