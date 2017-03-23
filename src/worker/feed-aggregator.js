@@ -104,7 +104,8 @@ function queryNewActions(stats) {
       users.id as user_id,
       users.name as user_name,
       teams.id as team_id,
-      teams.name as team_name
+      teams.name as team_name,
+      teams.city_id as city
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
     LEFT JOIN users ON users.id = actions.user_id
@@ -124,7 +125,8 @@ function queryNewActions(stats) {
         userId:   row.user_id === null ? null : toInt(row.user_id),
         userName: row.user_name,
         teamId:   toInt(row.team_id),
-        teamName: row.team_name
+        teamName: row.team_name,
+        city: row.city,
       }));
 
       return readNewActions(stats, rows);
@@ -155,7 +157,8 @@ function queryStats() {
       users.id          AS user_id,
       users.name        AS user_name,
       teams.id          AS team_id,
-      teams.name        AS team_name
+      teams.name        AS team_name,
+      teams.city_id     AS city
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
     LEFT JOIN users ON users.id = actions.user_id
@@ -177,7 +180,8 @@ function queryStats() {
         userId:   row.user_id === null ? null : toInt(row.user_id),
         userName: row.user_name,
         teamId:   toInt(row.team_id),
-        teamName: row.team_name
+        teamName: row.team_name,
+        city: row.city,
       }));
 
       const stats = buildStats(rows);
@@ -221,9 +225,11 @@ function buildStats(rows) {
 }
 
 function feedItemParam(action, text) {
+
   const item = {
     text: text,
-    type: 'TEXT'
+    type: 'TEXT',
+    city: action.city,
   };
 
   if (action.location) {
