@@ -104,7 +104,8 @@ function postImage(req, res) {
         type:      action.type,
         user:      action.user,
         location:  action.location,
-        imagePath: uploadedImage.imageName
+        imagePath: uploadedImage.imageName,
+        city:      action.city, // TODO Quick fix. Should be more robust.
       }).then(rowsInserted => undefined);
     });
 };
