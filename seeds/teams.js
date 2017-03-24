@@ -135,7 +135,7 @@ exports.seed = function(knex, Promise) {
       id: 16,
       city_id: cities['Otaniemi'],
       name: 'AK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/ak.png', 
     });
   })
   .then(() => {
@@ -143,7 +143,7 @@ exports.seed = function(knex, Promise) {
       id: 17,
       city_id: cities['Otaniemi'],
       name: 'Athene',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/athene.png',
     });
   })
   .then(() => {
@@ -151,7 +151,7 @@ exports.seed = function(knex, Promise) {
       id: 18,
       city_id: cities['Otaniemi'],
       name: 'AS',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/as.png',
     });
   })
   .then(() => {
@@ -159,7 +159,7 @@ exports.seed = function(knex, Promise) {
       id: 19,
       city_id: cities['Otaniemi'],
       name: 'FK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/fk.png',
     });
   })
   .then(() => {
@@ -167,7 +167,7 @@ exports.seed = function(knex, Promise) {
       id: 20,
       city_id: cities['Otaniemi'],
       name: 'Inkubio',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/inkubio.png',
     });
   })
   .then(() => {
@@ -175,7 +175,7 @@ exports.seed = function(knex, Promise) {
       id: 21,
       city_id: cities['Otaniemi'],
       name: 'KK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/kk.png',
     });
   })
   .then(() => {
@@ -183,7 +183,7 @@ exports.seed = function(knex, Promise) {
       id: 22,
       city_id: cities['Otaniemi'],
       name: 'KIK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/kik.png',
     });
   })
   .then(() => {
@@ -191,7 +191,7 @@ exports.seed = function(knex, Promise) {
       id: 23,
       city_id: cities['Otaniemi'],
       name: 'KY',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/ky.png',
     });
   })
   .then(() => {
@@ -199,7 +199,7 @@ exports.seed = function(knex, Promise) {
       id: 24,
       city_id: cities['Otaniemi'],
       name: 'MK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/mk.png',
     });
   })
   .then(() => {
@@ -207,7 +207,7 @@ exports.seed = function(knex, Promise) {
       id: 25,
       city_id: cities['Otaniemi'],
       name: 'PJK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/pjk.png',
     });
   })
   .then(() => {
@@ -215,7 +215,7 @@ exports.seed = function(knex, Promise) {
       id: 26,
       city_id: cities['Otaniemi'],
       name: 'Prodeko',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/prodeko.png',
     });
   })
   .then(() => {
@@ -223,7 +223,7 @@ exports.seed = function(knex, Promise) {
       id: 27,
       city_id: cities['Otaniemi'],
       name: 'PT',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/pt.png',
     });
   })
   .then(() => {
@@ -231,7 +231,7 @@ exports.seed = function(knex, Promise) {
       id: 28,
       city_id: cities['Otaniemi'],
       name: 'IK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/ik.png',
     });
   })
   .then(() => {
@@ -239,7 +239,7 @@ exports.seed = function(knex, Promise) {
       id: 29,
       city_id: cities['Otaniemi'],
       name: 'SIK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/sik.png',
     });
   })
   .then(() => {
@@ -247,7 +247,7 @@ exports.seed = function(knex, Promise) {
       id: 30,
       city_id: cities['Otaniemi'],
       name: 'TF',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/tf.png',
     });
   })
   .then(() => {
@@ -255,7 +255,7 @@ exports.seed = function(knex, Promise) {
       id: 31,
       city_id: cities['Otaniemi'],
       name: 'TiK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/tik.png',
     });
   })
   .then(() => {
@@ -263,7 +263,7 @@ exports.seed = function(knex, Promise) {
       id: 32,
       city_id: cities['Otaniemi'],
       name: 'VK',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/vk.png',
     });
   })
   .then(() => {
@@ -271,7 +271,7 @@ exports.seed = function(knex, Promise) {
       id: 33,
       city_id: cities['Otaniemi'],
       name: 'TOKYO',
-      image_path: null, // TODO
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/tokyo.png',
     });
   });
 };
