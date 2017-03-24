@@ -33,12 +33,9 @@ function getStationById(id) {
 function getStations(opts) {
   return knex('radios').select('*').where(_getWhereClause(opts))
     .then(rows =>
-      _.map(rows, row =>
-        Object.assign(
+      _.map(rows, row => Object.assign(
           deepChangeKeyCase(row, 'camelCase'),
-          {
-            nowPlaying: _getStationNowPlaying(row.id)
-          }
+          { nowPlaying: _getStationNowPlaying(row.id) }
         )
       )
     );
@@ -67,17 +64,20 @@ function _getStationNowPlaying(stationId) {
 function _getNowPlaying(stationPrograms) {
   if (!stationPrograms) {
     return {
-      program: null,
+      programTitle: null,
+      programHost: null,
       song: null,
       left: null
     };
   }
 
   const now = moment().utc();
-  const program = stationPrograms.find(p => _isProgramPlaying(now, p));
+  const isProgramPlaying = _createIsProgramPlayingCheck(now);
+  const program = stationPrograms.find(isProgramPlaying);
   if (!program) {
     return {
-      program: null,
+      programTitle: null,
+      programHost: null,
       song: null,
       left: null
     };
@@ -91,8 +91,10 @@ function _getNowPlaying(stationPrograms) {
   };
 }
 
-function _isProgramPlaying(now, program) {
-  return now.isBetween(program.start, program.end);
+function _createIsProgramPlayingCheck(now) {
+  return function(program) {
+    return now.isBetween(program.start, program.end);
+  }
 }
 
 export {
