@@ -19,14 +19,14 @@ function createRequireApiToken(opts) {
       err.status = 503;
       err.userMessage = oldVersionError;
       err.userHeader = 'Unsupported version detected';
-      next(err);
+      return next(err);
     } else if (!_.includes(validTokens, userToken)) {
       var err = new Error('Invalid API token in x-token header.');
       err.status = 401;
       return next(err);
-    } else {
-      next();
     }
+
+    next();
   };
 }
 
