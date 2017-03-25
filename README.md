@@ -458,7 +458,13 @@ Responses:
   "name": "Radiodiodi",
   "stream": null,
   "website": null,
-  "cityId": 2
+  "cityId": 2,
+  "nowPlaying": {
+    "programTitle": "Mustia kukkia ja kielimoukareita",
+    "programHost": "Santtu, Jaati, Lari",
+    "song": null,
+    "left": 1132504   // How much longer the program is gonna be playing, in ms
+  }
 }
 ```
 

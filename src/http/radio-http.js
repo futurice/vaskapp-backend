@@ -2,6 +2,17 @@ import * as radioCore from '../core/radio-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
 
+const getStation = createJsonRoute(function(req, res) {
+  return radioCore.getStationById(req.params.id)
+    .then(station => {
+      if (!station) {
+        throwStatus(404, 'No such radio id');
+      } else {
+        return station;
+      }
+    });
+});
+
 const getStations = createJsonRoute(function(req, res) {
   const params = assert({
     id: req.params.id,
@@ -25,5 +36,6 @@ const getStations = createJsonRoute(function(req, res) {
 });
 
 export {
+  getStation,
   getStations,
 };
