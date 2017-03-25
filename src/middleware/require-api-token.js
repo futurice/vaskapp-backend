@@ -3,7 +3,9 @@ const requireEnvs = require('../util/require-envs');
 requireEnvs(['API_TOKEN']);
 
 const validTokens = process.env.API_TOKEN.split(',');
-const oldTokens = new Set((process.env.OLD_API_TOKENS || '').split(','));
+const oldTokens = new Set(
+  process.env.OLD_API_TOKENS ? process.env.OLD_API_TOKENS.split(',') : []
+);
 
 const oldVersionError =
   `You're using an old version of the app. Please upgrade to latest.`;
