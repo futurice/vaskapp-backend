@@ -74,6 +74,10 @@ function canDoAction(uuid, actionType) {
  * Marks given user's given action as executed as this moment.
  */
 function executeAction(uuid, actionType) {
+  if (process.env.DISABLE_THROTTLE === 'true') {
+    return BPromise.resolve();
+  }
+
   const timeNow = Date.now().toString();
 
   return redisClient.hmsetAsync(getKey(uuid), actionType, timeNow);
