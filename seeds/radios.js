@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
     id: 1,
     name: 'Rakkauden Wappuradio',
     city_id: cities['Tampere'],
-    stream: null,   // TODO
+    stream: 'http://stream.wappuradio.fi/wappuradio.mp3',
     website: 'https://wappuradio.fi/',
   }))
   .then(() => util.insertOrUpdate(knex, 'radios', {
