@@ -24,8 +24,7 @@ let postAction = createJsonRoute(function(req, res) {
       if (!canDoAction) {
         throwStatus(429, `Too many actions of type ${ action.type }`);
       }
-    })
-    .then(() => {
+
       let handleAction;
       if (action.type === 'IMAGE') {
         handleAction = imageHttp.postImage(req, res, action);
