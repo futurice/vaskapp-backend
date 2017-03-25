@@ -4,9 +4,6 @@ import * as actionTypeCore from './action-type-core';
 var BPromise = require('bluebird');
 
 let redisClient;
-if (process.env.DISABLE_THROTTLE !== 'true') {
-  redisClient = require('../util/redis').connect().client;
-}
 
 function getKey(uuid) {
   return `throttle--${ uuid }`;
