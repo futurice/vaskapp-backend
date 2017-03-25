@@ -46,7 +46,8 @@ let postAction = createJsonRoute(function(req, res) {
       }
 
       return handleAction
-        .then(() => throttleCore.executeAction(action.user, action.type));
+        .then(() => throttleCore.executeAction(action.user, action.type))
+        .then(() => undefined);
     });
 });
 
