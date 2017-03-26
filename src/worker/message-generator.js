@@ -4,6 +4,26 @@ function arrayRandom(array) {
   return array[randomizedIndex];
 }
 
+function generateFirstCheckInMessage(eventName, userName) {
+  const praises = [
+    '<eventName> is on! <userName> just appeared on scene!'
+  ];
+
+  const praise = arrayRandom(praises);
+  return praise.replace('<eventName>', eventName)
+    .replace('<userName>', userName);
+}
+
+function generateEventCheckInMessage(eventName, checkIns) {
+  const praises = [
+    '<eventName> is buzzing! <checkIns> people have checked in!'
+  ];
+
+  const praise = arrayRandom(praises);
+  return praise.replace('<eventName>', eventName)
+    .replace('<checkIns>', checkIns);
+}
+
 function generateFirstSimaMessage(name) {
   const praises = [
     '<name> is on it. First sima down!',
@@ -71,5 +91,7 @@ export {
   generateTeamSimaMessage,
   generateUserSimaMessage,
   generateTeamScoreMessage,
-  generateUserScoreMessage
+  generateUserScoreMessage,
+  generateFirstCheckInMessage,
+  generateEventCheckInMessage
 };
