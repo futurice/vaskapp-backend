@@ -149,9 +149,26 @@ function createFeedItem(feedItem, trx) {
     dbRow.is_sticky = feedItem.isSticky;
   }
 
-  // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-  if (feedItem.user) {
-    dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
+  if (feedItem.type === 'IMAGE' && feedItem.client) {
+    // Get event_id from user's last check in and check
+    // that the event is still ongoing
+    dbRow.event_id = knex.raw(`
+      (SELECT id
+      FROM events
+      WHERE
+        id = (
+          SELECT MAX(event_id)
+          FROM actions
+          JOIN action_types ON action_types.id = actions.action_type_id
+          WHERE
+            code = 'CHECK_IN_EVENT' AND
+            user_id = ?
+        ) AND now() BETWEEN start_time AND end_time)
+    `, [feedItem.client.id]);
+  }
+
+  if (feedItem.client) {
+    dbRow.user_id = feedItem.client.id;
   }
 
   trx = trx || knex;
