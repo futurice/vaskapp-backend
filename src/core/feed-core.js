@@ -37,6 +37,17 @@ function getStickySqlString() {
     LIMIT 2)`;
 }
 
+/**
+ *
+ * @param {object} opts
+ * @param {number} opts.client.id  Client's database ID
+ * @param {number} [opts.limit=20] How many results to return
+ * @param {number} [opts.beforeId] Return only items before this feed item
+ * @param {number} [opts.city]     Return feed items only from given city
+ * @param {string} [opts.sort=new] Either 'hot' or 'new'
+ * @param {number} [opts.eventId]  Event whose feed items to return
+ * @param {string} [opts.type]     Return only certain type items
+ */
 function getFeed(opts) {
   opts = _.merge({
     limit: 20
@@ -81,6 +92,16 @@ function getFeed(opts) {
   if (opts.city) {
     whereClauses.push(`feed_items.city_id = ?`);
     params.push(opts.city);
+  }
+
+  if (opts.eventId) {
+    whereClauses.push(`feed_items.event_id = ?`);
+    params.push(opts.eventId);
+  }
+
+  if (opts.type) {
+    whereClauses.push(`feed_items.type = ?`);
+    params.push(opts.type);
   }
 
   if (whereClauses.length > 0) {
