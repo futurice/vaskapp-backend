@@ -21,7 +21,8 @@ function createRequireClientHeaders(opts) {
           req.client = {
             id: null,
             isBanned: false,
-            uuid: 'anonymous'
+            uuid: 'anonymous',
+            team: null
           };
         }
 

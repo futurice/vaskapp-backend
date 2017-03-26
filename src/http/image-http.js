@@ -100,12 +100,12 @@ function postImage(req, res) {
       return actionCore.createAction({
         ip:        req.ip,
         isBanned:  req.client.isBanned,
-        team:      action.team,
         type:      action.type,
         user:      action.user,
         location:  action.location,
         imagePath: uploadedImage.imageName,
-        city:      action.city, // TODO Quick fix. Should be more robust.
+        city:      action.city,
+        client:    req.client
       }).then(rowsInserted => undefined);
     });
 };
