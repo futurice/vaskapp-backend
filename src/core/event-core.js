@@ -1,8 +1,39 @@
 import _ from 'lodash';
+const BPromise = require('bluebird');
 const {knex} = require('../util/database').connect();
 import {getDistance} from '../util/geometry';
 import moment from 'moment-timezone';
+import { getFeed } from "./feed-core";
 
+/**
+ *
+ * @param {number} opts.eventId
+ * @param {number} opts.client.id
+ */
+function getEventById(opts = {}) {
+  return getEvents(opts)
+    .then(events => {
+      if (_.isEmpty(events)) {
+        return undefined;
+      }
+
+      const getImagesPromise = getFeed({
+        eventId: opts.eventId,
+        client:  opts.client,
+        type:    'IMAGE',
+        limit:   50
+      });
+
+      return BPromise.all([
+        _rowToEvent(events[0]),
+        getImagesPromise
+      ]).spread((event, images) => {
+        event.images = images;
+
+        return event;
+      });
+    });
+}
 
 function getEvents(opts) {
   return knex('events')
@@ -25,7 +56,7 @@ function getEvents(opts) {
     ])
     .where(_getWhereClause(opts))
     .orderBy('start_time', 'asc')
-    .then(rows => _rowsToEvents(rows));
+    .then(rows => _.map(rows, _rowToEvent));
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
@@ -48,29 +79,27 @@ function _getWhereClause(filters) {
   return whereClauses;
 }
 
-function _rowsToEvents(rows) {
-  return _.map(rows, row => {
-    return {
-        id: row['id'],
-        name: row['name'],
-        locationName: row['location_name'],
-        startTime: row['start_time'],
-        endTime: row['end_time'],
-        description: row['description'],
-        organizer: row['organizer'],
-        contactDetails: row['contact_details'],
-        teemu: row['teemu'],
-        location: {
-          latitude: row['location']['y'],
-          longitude: row['location']['x'],
-        },
-        coverImage: row['cover_image'],
-        city: row['city'],
-        fbEventId: row['fb_event_id'],
-        attendingCount: row['attending_count'],
-        radius: row['radius'],
-    }
-  });
+function _rowToEvent(row) {
+  return {
+    id:             row['id'],
+    name:           row['name'],
+    locationName:   row['location_name'],
+    startTime:      row['start_time'],
+    endTime:        row['end_time'],
+    description:    row['description'],
+    organizer:      row['organizer'],
+    contactDetails: row['contact_details'],
+    teemu:          row['teemu'],
+    coverImage:     row['cover_image'],
+    city:           row['city'],
+    fbEventId:      row['fb_event_id'],
+    attendingCount: row['attending_count'],
+    radius:         row['radius'],
+    location: {
+      latitude:  row['location']['y'],
+      longitude: row['location']['x'],
+    },
+  };
 }
 
 // Checks if checking in with the given parameters would be feasable.
@@ -128,6 +157,7 @@ function _userInVicinity(actionLocation, eventLocation, eventRadius) {
 }
 
 export {
+  getEventById,
   getEvents,
   setAttendingCount,
   isValidCheckIn
