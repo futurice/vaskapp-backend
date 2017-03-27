@@ -10,11 +10,14 @@ import {
   generateTeamSimaMessage,
   generateUserSimaMessage,
   generateTeamScoreMessage,
-  generateUserScoreMessage
+  generateUserScoreMessage,
+  generateFirstCheckInMessage,
+  generateEventCheckInMessage
 } from './message-generator';
 
 const SIMA_REPORT_INTERVAL = 50;
 const SCORE_REPORT_INTERVAL = 5000;
+const CHECKIN_REPORT_INTERVALS = 50;
 const POLL_INTERVAL = 60 * 1000; // 1 min
 
 function toInt(n) {
@@ -34,15 +37,19 @@ function integerDivide(num, denominator) {
 }
 
 function Stats(name) {
-  const newActions = [];
-  let scoreBefore  = 0;
-  let drinksBefore = 0;
-  let newDrinks    = 0;
-  let newScore     = 0;
+  const newActions   = [];
+  let scoreBefore    = 0;
+  let drinksBefore   = 0;
+  let newDrinks      = 0;
+  let newScore       = 0;
+  let checkInsBefore = 0;
+  let newCheckIns    = 0;
 
   function addOldActionStats(type, count, score) {
     if (type === 'SIMA') {
       drinksBefore += count;
+    } else if (type === 'CHECK_IN_EVENT') {
+      checkInsBefore += count;
     }
 
     scoreBefore += toInt(score);
@@ -51,6 +58,8 @@ function Stats(name) {
   function addNewAction(action) {
     if (action.type === 'SIMA') {
       newDrinks++;
+    } else if (action.type === 'CHECK_IN_EVENT') {
+      newCheckIns++;
     }
 
     newScore += action.score;
@@ -87,11 +96,13 @@ function Stats(name) {
       }
     },
     {
-      name:         { get: () => name },
-      drinksBefore: { get: () => drinksBefore },
-      drinksAfter:  { get: () => drinksBefore + newDrinks },
-      scoreBefore:  { get: () => scoreBefore },
-      scoreAfter:   { get: () => scoreBefore + newScore }
+      name:           { get: () => name },
+      drinksBefore:   { get: () => drinksBefore },
+      drinksAfter:    { get: () => drinksBefore + newDrinks },
+      checkInsBefore: { get: () => checkInsBefore },
+      checkInsAfter:  { get: () => checkInsBefore + newCheckIns },
+      scoreBefore:    { get: () => scoreBefore },
+      scoreAfter:     { get: () => scoreBefore + newScore }
     });
 }
 
@@ -101,6 +112,8 @@ function queryNewActions(stats) {
       actions.location as location,
       action_types.code as type,
       action_types.value as score,
+      events.id as event_id,
+      events.name as event_name,
       users.id as user_id,
       users.name as user_name,
       teams.id as team_id,
@@ -109,6 +122,7 @@ function queryNewActions(stats) {
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
     LEFT JOIN users ON users.id = actions.user_id
+    LEFT JOIN events ON events.id = actions.event_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
       NOT actions.aggregated AND NOT actions.is_banned
@@ -118,15 +132,17 @@ function queryNewActions(stats) {
   return knex.raw(sqlString)
     .then(result => {
       const rows = result.rows.map(row => ({
-        id:       toInt(row.id),
-        location: row.location,
-        type:     row.type,
-        score:    toInt(row.score),
-        userId:   row.user_id === null ? null : toInt(row.user_id),
-        userName: row.user_name,
-        teamId:   toInt(row.team_id),
-        teamName: row.team_name,
-        city: row.city,
+        id:        toInt(row.id),
+        location:  row.location,
+        type:      row.type,
+        score:     toInt(row.score),
+        userId:    row.user_id === null ? null : toInt(row.user_id),
+        userName:  row.user_name,
+        teamId:    toInt(row.team_id),
+        teamName:  row.team_name,
+        eventId:   row.event_id,
+        eventName: row.event_name,
+        city:      row.city,
       }));
 
       return readNewActions(stats, rows);
@@ -134,15 +150,18 @@ function queryNewActions(stats) {
 }
 
 function readNewActions(stats, rows) {
-  const teamStats = stats.teamStats;
-  const userStats = stats.userStats;
+  const teamStats  = stats.teamStats;
+  const userStats  = stats.userStats;
+  const eventStats = stats.eventStats;
 
   rows.forEach(row => {
     const team = getStats(teamStats, row.teamId, row.teamName);
     const user = getStats(userStats, row.userId, row.userName);
+    const event = getStats(eventStats, row.eventId, row.eventName);
 
     if (team) team.addNewAction(row);
     if (user) user.addNewAction(row);
+    if (event) event.addNewAction(row);
   });
 
   return stats
@@ -154,6 +173,8 @@ function queryStats() {
       SUM(action_types.value) AS score,
       COUNT(*)          AS count,
       action_types.code AS type,
+      events.id         AS event_id,
+      events.name       AS event_name,
       users.id          AS user_id,
       users.name        AS user_name,
       teams.id          AS team_id,
@@ -162,26 +183,30 @@ function queryStats() {
     FROM actions
     JOIN action_types ON action_types.id = actions.action_type_id
     LEFT JOIN users ON users.id = actions.user_id
+    LEFT JOIN events ON events.id = actions.event_id
     JOIN teams ON teams.id = actions.team_id
     WHERE
       actions.aggregated AND NOT actions.is_banned
     GROUP BY
       action_types.code,
       users.id, users.name,
-      teams.id, teams.name
+      teams.id, teams.name,
+      events.id, events.name
   `;
 
   return knex.raw(sqlString)
     .then(result => {
       const rows = result.rows.map(row => ({
-        score:    toInt(row.score),
-        count:    toInt(row.count),
-        type:     row.type,
-        userId:   row.user_id === null ? null : toInt(row.user_id),
-        userName: row.user_name,
-        teamId:   toInt(row.team_id),
-        teamName: row.team_name,
-        city: row.city,
+        score:     toInt(row.score),
+        count:     toInt(row.count),
+        type:      row.type,
+        userId:    row.user_id === null ? null : toInt(row.user_id),
+        userName:  row.user_name,
+        teamId:    toInt(row.team_id),
+        teamName:  row.team_name,
+        eventId:   row.event_id,
+        eventName: row.event_name,
+        city:      row.city,
       }));
 
       const stats = buildStats(rows);
@@ -209,18 +234,22 @@ function buildStats(rows) {
 
   const teamStats = {};
   const userStats = {};
+  const eventStats = {};
 
   rows.forEach(row => {
-    const team = getStats(teamStats, row.teamId, row.teamName);
-    const user = getStats(userStats, row.userId, row.userName);
+    const team  = getStats(teamStats, row.teamId, row.teamName);
+    const user  = getStats(userStats, row.userId, row.userName);
+    const event = getStats(eventStats, row.eventId, row.eventName);
 
     if (team) team.addOldActionStats(row.type, row.count, row.score);
     if (user) user.addOldActionStats(row.type, row.count, row.score);
+    if (event) event.addOldActionStats(row.type, row.count, row.score);
   });
 
   return {
     teamStats,
-    userStats
+    userStats,
+    eventStats
   };
 }
 
@@ -324,6 +353,50 @@ function createScoreAggregates(allStats) {
   };
 }
 
+function createCheckInAggregates(allStats) {
+  const feedItems = [];
+  const actionIds = [];
+
+  const createCheckInFeedItems = function(stats, msgGenerator, includeFirst = false) {
+    _.forEach(stats, itemStats => {
+      const checkInsBefore = itemStats.checkInsBefore;
+      const checkInsAfter  = itemStats.checkInsAfter;
+      const eventName      = itemStats.name;
+
+      if (checkInsBefore === checkInsAfter) {
+        return;
+      }
+
+      let feedItem;
+
+      if (checkInsBefore === 0) {
+        const firstCheckInAction = itemStats.getFirstAction();
+        const checkedInUser = firstCheckInAction.userName;
+        const text = generateFirstCheckInMessage(eventName, checkedInUser);
+        feedItem = feedItemParam(firstCheckInAction, text);
+      }
+      else if (passesPoint(checkInsBefore, checkInsAfter, CHECKIN_REPORT_INTERVALS)) {
+        const checkIns = roundTo(checkInsAfter, CHECKIN_REPORT_INTERVALS);
+        const text = msgGenerator(eventName, checkIns);
+        // Let's cheat a little and assume last check in was the one
+        feedItem = feedItemParam(itemStats.getLastAction(), text);
+      }
+
+      if (feedItem) {
+        feedItems.push(feedItem);
+        actionIds.push(itemStats.getActionIds());
+      }
+    });
+  };
+
+  createCheckInFeedItems(allStats.eventStats, generateEventCheckInMessage);
+
+  return {
+    feedItems,
+    actionIds: _.flatten(actionIds)
+  };
+}
+
 function insertFeedItems(feedItems, actionIds) {
   // Update in database id order
   const uniqueIds = _(actionIds).uniq().sortBy().value();
@@ -342,12 +415,17 @@ function aggregate() {
     .then(stats => {
       const items = {
         drinkItems: createDrinkAggregates(stats),
-        scoreItems: createScoreAggregates(stats)
+        scoreItems: createScoreAggregates(stats),
+        checkInItems: createCheckInAggregates(stats)
       };
 
       return insertFeedItems(
-        items.drinkItems.feedItems.concat(items.scoreItems.feedItems),
-        items.drinkItems.actionIds.concat(items.scoreItems.actionIds)
+        items.drinkItems.feedItems
+          .concat(items.scoreItems.feedItems)
+          .concat(items.checkInItems.feedItems),
+        items.drinkItems.actionIds
+          .concat(items.scoreItems.actionIds)
+          .concat(items.checkInItems.actionIds)
       );
     });
 }
