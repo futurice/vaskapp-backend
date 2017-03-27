@@ -185,6 +185,10 @@ function _rowsToMoodObjects(rows) {
 }
 
 function _feedTemplate(row, opts) {
+  const name = opts.client.name;
+  const rating = _formatRating(row.rating);
+  const desc = _.trim(row.description);
+
   return {
     location: opts.location,
     user:  opts.client.uuid,
@@ -192,6 +196,9 @@ function _feedTemplate(row, opts) {
     text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ _.trim(row.description) }`,
     client: opts.client,
   }
+
+function _formatRating(rating) {
+  return `${ Math.round(rating * 10) }%`;
 }
 
 function _hasDescription(row) {
