@@ -6,7 +6,11 @@ function arrayRandom(array) {
 
 function generateFirstCheckInMessage(eventName, userName) {
   const praises = [
-    '<eventName> is on! <userName> just appeared on scene!'
+    `<eventName> is on! <userName> just appeared on scene!`,
+    `Clear the decks, <userName> just hit <eventName>!`,
+    `Wild <userName> appeared at <eventName>!`,
+    `<userName> spotted, <eventName> confirmed!`,
+    `Stop the press! <userName> just arrived to <eventName>!`,
   ];
 
   const praise = arrayRandom(praises);
@@ -17,6 +21,8 @@ function generateFirstCheckInMessage(eventName, userName) {
 function generateEventCheckInMessage(eventName, checkIns) {
   const praises = [
     '<eventName> is buzzing! <checkIns> people have checked in!'
+    `It's getting crowded in <eventName>. <checkIns> people already there!`,
+    `<checkIns> people are attending <eventName>. Don't miss out!`,
   ];
 
   const praise = arrayRandom(praises);
