@@ -1,15 +1,13 @@
-// WARNING: This throttle core is creating an local instance state which
-// is not shared between servers. In practice this is acceptable for this use
-// case.
-
 'use strict';
 
 import * as actionTypeCore from './action-type-core';
+var BPromise = require('bluebird');
 
-// Cache of throttles
-// Key: user uuid
-// Value: object where key is action type and value is when executed last
-const cache = {};
+let redisClient;
+
+function getKey(uuid) {
+  return `throttle--${ uuid }`;
+}
 
 // Cache of action types
 // Key: action type code
@@ -20,6 +18,12 @@ let actionTypeCache;
  * Initializes throttle core, by loading cache
  */
 function initialize() {
+  if (process.env.DISABLE_THROTTLE === 'true') {
+    return;
+  }
+
+  redisClient = require('../util/redis').connect().client;
+
   return actionTypeCore.getActionTypes()
     .then(types => {
       actionTypeCache = {};
@@ -43,39 +47,40 @@ function _hasCooldownPassed(cooldownTime, lastExecuted) {
  */
 function canDoAction(uuid, actionType) {
   if (process.env.DISABLE_THROTTLE === 'true') {
-    return true;
-  }
-
-  const cacheItem = cache[uuid];
-  if (!cacheItem) {
-    return true;
-  }
-
-  const lastExecuted = cacheItem[actionType];
-  if (!lastExecuted) {
-    return true;
+    return BPromise.resolve(true);
   }
 
   const cooldownTime = actionTypeCache[actionType];
-  if (!cooldownTime) {
-    return false;
+  if (cooldownTime === undefined || cooldownTime === null) {
+    return BPromise.resolve(false);
   }
 
-  return _hasCooldownPassed(cooldownTime, lastExecuted);
+  return redisClient.hgetallAsync(getKey(uuid))
+    .then(lastThrottlesByActionType => {
+      if (!lastThrottlesByActionType) {
+        return true;
+      }
+      const lastExecutedTime = lastThrottlesByActionType[actionType];
+      if (!lastExecutedTime) {
+        return true;
+      }
+
+      const lastExecuted = Number(lastExecutedTime);
+      return _hasCooldownPassed(cooldownTime, lastExecuted);
+    });
 }
 
 /**
  * Marks given user's given action as executed as this moment.
  */
-function executeAction(uuid, actiontype) {
-  let cacheItem = cache[uuid];
-  if (!cacheItem) {
-    cacheItem = {};
-    cache[uuid] = cacheItem;
+function executeAction(uuid, actionType) {
+  if (process.env.DISABLE_THROTTLE === 'true') {
+    return BPromise.resolve();
   }
 
-  const timeNow = Date.now();
-  cacheItem[actiontype] = timeNow;
+  const timeNow = Date.now().toString();
+
+  return redisClient.hmsetAsync(getKey(uuid), actionType, timeNow);
 }
 
 export {
