@@ -77,10 +77,14 @@ function getFeed(opts) {
   let params = [opts.client.id];
   let whereClauses = ['NOT feed_items.is_sticky'];
 
-  if (!opts.beforeId) {
+  // TODO: Sticky messages should have their own endpoint
+  const includeSticky = !opts.beforeId && !opts.eventId;
+  if (includeSticky) {
     sqlString = getStickySqlString() + " UNION ALL " + sqlString;
     params.push(opts.client.id);
-  } else {
+  }
+
+  if (opts.beforeId) {
     whereClauses.push('feed_items.id < ?');
     params.push(opts.beforeId);
   }
