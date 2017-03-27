@@ -4,9 +4,9 @@ import {createFeedItem} from './feed-core';
 
 function createAction(action) {
   const actionRow = {
-    'team_id':        knex.raw('(SELECT team_id from users WHERE uuid = ?)', [action.user]),
+    'team_id':        action.client.team,
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
-    'user_id':        knex.raw('(SELECT id from users WHERE uuid = ?)', [action.user]),
+    'user_id':        action.client.id,
     'image_path':     action.imagePath,
     'text':           action.text,
     'ip':             action.ip,
@@ -31,6 +31,7 @@ function createAction(action) {
         }
 
         action.id = rows[0].id;
+        action.client.team = rows[0].team_id;
 
         if (action.type === 'IMAGE' || action.type === 'TEXT') {
           return createFeedItem(action, trx);

@@ -37,6 +37,17 @@ function getStickySqlString() {
     LIMIT 2)`;
 }
 
+/**
+ *
+ * @param {object} opts
+ * @param {number} opts.client.id  Client's database ID
+ * @param {number} [opts.limit=20] How many results to return
+ * @param {number} [opts.beforeId] Return only items before this feed item
+ * @param {number} [opts.city]     Return feed items only from given city
+ * @param {string} [opts.sort=new] Either 'hot' or 'new'
+ * @param {number} [opts.eventId]  Event whose feed items to return
+ * @param {string} [opts.type]     Return only certain type items
+ */
 function getFeed(opts) {
   opts = _.merge({
     limit: 20
@@ -81,6 +92,16 @@ function getFeed(opts) {
   if (opts.city) {
     whereClauses.push(`feed_items.city_id = ?`);
     params.push(opts.city);
+  }
+
+  if (opts.eventId) {
+    whereClauses.push(`feed_items.event_id = ?`);
+    params.push(opts.eventId);
+  }
+
+  if (opts.type) {
+    whereClauses.push(`feed_items.type = ?`);
+    params.push(opts.type);
   }
 
   if (whereClauses.length > 0) {
@@ -128,9 +149,26 @@ function createFeedItem(feedItem, trx) {
     dbRow.is_sticky = feedItem.isSticky;
   }
 
-  // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-  if (feedItem.user) {
-    dbRow.user_id = knex.raw('(SELECT id from users WHERE uuid = ?)', [feedItem.user]);
+  if (feedItem.type === 'IMAGE' && feedItem.client) {
+    // Get event_id from user's last check in and check
+    // that the event is still ongoing
+    dbRow.event_id = knex.raw(`
+      (SELECT id
+      FROM events
+      WHERE
+        id = (
+          SELECT MAX(event_id)
+          FROM actions
+          JOIN action_types ON action_types.id = actions.action_type_id
+          WHERE
+            code = 'CHECK_IN_EVENT' AND
+            user_id = ?
+        ) AND now() BETWEEN start_time AND end_time)
+    `, [feedItem.client.id]);
+  }
+
+  if (feedItem.client) {
+    dbRow.user_id = feedItem.client.id;
   }
 
   trx = trx || knex;

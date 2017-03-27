@@ -176,6 +176,16 @@ Responses:
 * `200 OK` List of [event objects](#event-object).
 
 
+### `GET /api/events/:id`
+
+> Get event details
+
+Responses:
+
+* `200 OK` Body is one of [event object](#event-object) with an array of images that are [image feed objects](#feed-objects).
+* `404 Not Found` Event not found
+
+
 ### `GET /api/teams`
 
 > List all teams
@@ -376,7 +386,8 @@ Responses:
   "city": 3,
   "fbEventId": null,
   "attendingCount": 0,
-  "radius": 400
+  "radius": 400,
+  "images": []
 }
 ```
 

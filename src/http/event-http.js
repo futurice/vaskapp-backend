@@ -3,6 +3,20 @@ import * as eventCore from '../core/event-core';
 import {createJsonRoute, throwStatus} from '../util/express';
 import {assert} from '../validation';
 
+const getEvent = createJsonRoute(function(req, res) {
+  return eventCore.getEventById({
+    eventId: req.params.id,
+    client:  req.client
+  })
+  .then(event => {
+    if (!event) {
+      throwStatus(404, 'No such event id');
+    } else {
+      return event;
+    }
+  });
+});
+
 const getEvents = createJsonRoute(function(req, res) {
   const eventParams = assert({
     id: req.params.id,
@@ -34,6 +48,7 @@ function isValidCheckIn(action) {
 };
 
 export {
+  getEvent,
   getEvents,
   isValidCheckIn,
 };
