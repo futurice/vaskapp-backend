@@ -58,7 +58,7 @@ function getMood(opts) {
   let sqlFragments = [];
   let select = [];
 
-  if (!opts.city && !opts.team) {
+  if (!opts.city && !opts.team && !opts.user) {
     params = [
       _getCityMoodParams(opts),
       _getTeamMoodParams(opts),
@@ -88,6 +88,12 @@ function getMood(opts) {
       params.push(_getTeamMoodParams(opts));
       sqlFragments.push(_getTeamMoodSql());
       select.push('rating_team');
+    }
+
+    if (opts.user) {
+      params.push(_getPersonalMoodParams(opts));
+      sqlFragments.push(_getPersonalMoodSql());
+      select.push('rating_personal');
     }
   }
 
@@ -177,7 +183,7 @@ function _getPersonalMoodSql() {
 }
 
 function _getPersonalMoodParams(opts) {
-  return opts.client.id;
+  return opts.user || opts.client.id;
 }
 
 function _rowsToMoodObjects(rows) {
@@ -193,9 +199,10 @@ function _feedTemplate(row, opts) {
     location: opts.location,
     user:  opts.client.uuid,
     type: 'TEXT',
-    text: `${ opts.client.name }'s wappu vibe is ${ row.rating } - ${ _.trim(row.description) }`,
+    text: `${ name }'s wappu vibe is ${ rating } - ${ desc }`,
     client: opts.client,
   }
+}
 
 function _formatRating(rating) {
   return `${ Math.round(rating * 10) }%`;

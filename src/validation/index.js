@@ -55,6 +55,7 @@ const schemas = {
   },
 
   getMoodParams: {
+    user: common.primaryKeyId,
     team: common.primaryKeyId,
     city: common.primaryKeyId,
   },

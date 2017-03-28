@@ -324,6 +324,7 @@ Responses:
 
 Query parameters:
 
+* `userId` Integer. If specified, returned ratingCity is for the given user.
 * `cityId` Integer. If specified, returned ratingCity is for the given city.
 * `teamId` Integer. If specified, returned ratingTeam is for the given team.
 

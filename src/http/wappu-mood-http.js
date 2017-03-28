@@ -23,9 +23,11 @@ const putMood = createJsonRoute(function(req, res) {
 
 const getMood = createJsonRoute(function(req, res) {
   let moodParams = assert({
+    user: req.query.userId,
     city: req.query.cityId,
     team: req.query.teamId,
   }, 'getMoodParams');
+
   let coreParams = _.merge(moodParams, {
     client: req.client,
   });
