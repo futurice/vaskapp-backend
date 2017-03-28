@@ -15,7 +15,7 @@ function hotScore(votes, createdAt) {
   let order = Math.log(Math.max(Math.abs(votes), 1)) / BASE_LOG;
   let sign = Math.sign(votes);
   let age = createdAt - process.env.FEED_ZERO_TIME;
-  return order + sign * age / process.env.FEED_INFLATION_INTERVAL;
+  return order * sign + age / process.env.FEED_INFLATION_INTERVAL;
 }
 
 export {

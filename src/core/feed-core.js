@@ -3,6 +3,8 @@ const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
 import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
+import * as score from './hot-score';
+import moment from 'moment-timezone';
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
@@ -138,6 +140,8 @@ function createFeedItem(feedItem, trx) {
     'text':       feedItem.text,
     'type':       feedItem.type,
     'city_id':    feedItem.city || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
+    // Division to bring time stamp's accuracy inline with postgres values.
+    'hot_score':  _.round(score.hotScore(0, moment.utc().valueOf() / 1000), 4),
   };
 
   const location = feedItem.location;
