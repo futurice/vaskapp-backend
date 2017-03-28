@@ -11,6 +11,7 @@ import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 import * as feedAggregator from './worker/feed-aggregator';
+import * as eventFetcher from './worker/event-fetcher';
 
 function createApp() {
   const app = express();
@@ -77,6 +78,7 @@ function createApp() {
   throttleCore.initialize();
   fb.initialize();
   feedAggregator.start();
+  eventFetcher.init();
 
   return app;
 }
