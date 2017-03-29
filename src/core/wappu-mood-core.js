@@ -191,7 +191,6 @@ function _rowsToMoodObjects(rows) {
 }
 
 function _feedTemplate(row, opts) {
-  const name = opts.client.name;
   const rating = _formatRating(row.rating);
   const desc = _.trim(row.description);
 
@@ -199,7 +198,7 @@ function _feedTemplate(row, opts) {
     location: opts.location,
     user:  opts.client.uuid,
     type: 'TEXT',
-    text: `${ name }'s wappu vibe is ${ rating } - ${ desc }`,
+    text: `My wappu vibe is ${ rating } - ${ desc }`,
     client: opts.client,
   }
 }

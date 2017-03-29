@@ -47,7 +47,7 @@ const schemas = {
 
   upsertMoodParams: {
     rating: Joi.number().precision(4).min(0).max(10).required(),
-    description: Joi.string().min(1, 'utf8').max(131, 'utf8').optional().allow([null]).default(null),
+    description: Joi.string().min(1, 'utf8').max(128, 'utf8').optional().allow([null]).default(null),
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()
