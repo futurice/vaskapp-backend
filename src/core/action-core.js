@@ -2,13 +2,21 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {createFeedItem} from './feed-core';
 
+function _sanitizeText(text) {
+  if (!text) {
+    return text;
+  }
+
+  return text.replace(/(\n|\r)+/g, " ");
+}
+
 function createAction(action) {
   const actionRow = {
     'team_id':        action.client.team,
     'action_type_id': knex.raw('(SELECT id from action_types WHERE code = ?)', [action.type]),
     'user_id':        action.client.id,
     'image_path':     action.imagePath,
-    'text':           action.text,
+    'text':           _sanitizeText(action.text),
     'ip':             action.ip,
     'event_id':       action.eventId,
   };

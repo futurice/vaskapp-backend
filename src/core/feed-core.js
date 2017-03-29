@@ -130,6 +130,14 @@ function getFeed(opts) {
   });
 }
 
+function _sanitizeText(text) {
+  if (!text) {
+    return text;
+  }
+
+  return text.replace(/(\n|\r)+/g, " ");
+}
+
 function createFeedItem(feedItem, trx) {
   if (!FEED_ITEM_TYPES.has(feedItem.type)) {
     throw new Error('Invalid feed item type ' + feedItem.type);
@@ -137,7 +145,7 @@ function createFeedItem(feedItem, trx) {
 
   const dbRow = {
     'image_path': feedItem.imagePath,
-    'text':       feedItem.text,
+    'text':       _sanitizeText(feedItem.text),
     'type':       feedItem.type,
     'city_id':    feedItem.city || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
     // Division to bring time stamp's accuracy inline with postgres values.
