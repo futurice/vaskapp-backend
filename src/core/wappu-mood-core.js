@@ -105,8 +105,8 @@ function getMood(opts) {
     FROM (
       SELECT date::DATE
       FROM   generate_series(
-        '${process.env.MOOD_START_DATE}'::DATE,
-        '${process.env.MOOD_END_DATE}'::DATE,
+        '${process.env.MOOD_START_DATE}',
+        '${process.env.MOOD_END_DATE}',
         interval '1 day'
       ) date
     ) dates
@@ -116,7 +116,35 @@ function getMood(opts) {
 
   return knex.transaction(trx =>
     trx.raw(sql, params)
-      .then(result => _rowsToMoodObjects(result.rows)));
+      .then(result => {
+        // // Hack to include 0 mood for a day before start date
+        const oneDayBefore = moment(process.env.MOOD_START_DATE)
+          .utc().subtract(1, 'd');
+        const zeroRating = {
+          date: oneDayBefore.format()
+        };
+
+        if (!opts.city && !opts.team && !opts.user) {
+          zeroRating.rating_city = 0;
+          zeroRating.rating_team = 0;
+          zeroRating.rating_personal = 0;
+        } else {
+          if (opts.city) {
+            zeroRating.rating_city = 0;
+          }
+
+          if (opts.team) {
+            zeroRating.rating_team = 0;
+          }
+
+          if (opts.user) {
+            zeroRating.rating_personal = 0;
+          }
+        }
+
+        result.rows = [zeroRating].concat(result.rows);
+        return _rowsToMoodObjects(result.rows)
+      }));
 }
 
 function _getCityId(opts) {
@@ -199,7 +227,7 @@ function _feedTemplate(row, opts) {
     location: opts.location,
     user:  opts.client.uuid,
     type: 'TEXT',
-    text: `My wappu vibe is ${ rating } - ${ desc }`,
+    text: `My Whappu Vibe is ${ rating } - ${ desc }`,
     client: opts.client,
   }
 }
