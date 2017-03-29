@@ -11,7 +11,6 @@ import * as markerHttp from './http/marker-http';
 import * as citiesHttp from './http/cities-http';
 import * as radioHttp from './http/radio-http';
 import * as wappuMood from './http/wappu-mood-http';
-import * as googleHttp from './http/google-http';
 
 
 function createRouter() {
@@ -44,8 +43,6 @@ function createRouter() {
 
   router.put('/mood', wappuMood.putMood);
   router.get('/mood', wappuMood.getMood);
-
-  router.get('/oauthcallback', googleHttp.setGoogleToken);
 
   return router;
 }

@@ -1,18 +1,13 @@
 import _ from 'lodash';
 import google from 'googleapis';
-const {knex} = require('../util/database').connect();
 const requireEnvs = require('../util/require-envs');
 const sheets = google.sheets('v4');
-import * as googleUtil from '../util/google';
-
 requireEnvs([
   // TODO
 ]);
 
 function init() {
-  googleUtil.init().then(() => {
-    getEvents()
-  });
+  getEvents();
 }
 
 function getEvents() {
@@ -20,11 +15,11 @@ function getEvents() {
     spreadsheetId: '1YkRmTDsSvePLZApAzqVqhoLik0hCrpTmeMEDaBzwwr0',
     ranges: ['A1:M60'],
     valueRenderOption: 'UNFORMATTED_VALUE',
+    key: 'AIzaSyA9-DrTDkqGxndogAMQQ8fazfvMPv7085o',
   };
 
   sheets.spreadsheets.values.batchGet(request, (err, response) => {
-    console.log('response', _.get(response, 'valueRanges[0].values'));
-    // TODO save to DB
+    console.log(response.valueRanges[0].values);
   });
 }
 
