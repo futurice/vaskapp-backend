@@ -33,7 +33,7 @@ function getEvents() {
       key: process.env.GSHEETS_API_KEY,
     };
 
-    batchGetAsync(request).then(response => {
+    return batchGetAsync(request).then(response => {
       let payload = _.get(response, 'valueRanges[0].values', null);
 
       if (!payload || payload.length === 0) {
@@ -43,25 +43,24 @@ function getEvents() {
       const headers = _getHeaders(_.flatMap(_.pullAt(payload, [0])));
       const events = _getEvents(payload, headers);
 
-      return BPromise.map(events, event => {
-        return util.insertOrUpdate(knex, 'events', {
-          code: `${ eventSheet.city }_${ event[headers["eventId"]] }`,
-          city_id: cities[eventSheet.city],
-          name: event[headers["name"]],
-          location_name: event[headers["locationName"]],
-          start_time: event[headers["startTime"]],
-          end_time: event[headers["endTime"]],
-          description: event[headers["description"]],
-          organizer: event[headers["organizer"]],
-          contact_details: event[headers["contactDetails"]],
-          teemu: event[headers["teemu"]] || false,
-          location: event[headers["locationLon"]] + ',' + event[headers["locationLat"]],
-          cover_image: event[headers["coverImage"]],
-          fb_event_id: event[headers["facebookId"]],
-          radius: event[headers["radius"]] || process.env.DEFAULT_EVENT_RADIUS,
-        }, 'code');
-      });
-    }).catch(err => console.log(err));
+      return BPromise.map(events, event => util.insertOrUpdate(knex, 'events', {
+        code: `${ eventSheet.city }_${ event[headers["eventId"]] }`,
+        city_id: cities[eventSheet.city],
+        name: event[headers["name"]],
+        location_name: event[headers["locationName"]],
+        start_time: event[headers["startTime"]],
+        end_time: event[headers["endTime"]],
+        description: event[headers["description"]],
+        organizer: event[headers["organizer"]],
+        contact_details: event[headers["contactDetails"]],
+        teemu: event[headers["teemu"]] || false,
+        location: event[headers["locationLon"]] + ',' + event[headers["locationLat"]],
+        cover_image: event[headers["coverImage"]],
+        fb_event_id: event[headers["facebookId"]],
+        show: event[headers["show"]],
+        radius: event[headers["radius"]] || process.env.DEFAULT_EVENT_RADIUS,
+      }, 'code'));
+    });
   }));
 }
 
