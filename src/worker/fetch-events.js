@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import _ from 'lodash';
 import google from 'googleapis';
 import * as util from '../util/seeds';
