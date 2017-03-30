@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const _ = require('lodash');
 const google = require('googleapis');
 const util = require('../util/seeds');
@@ -23,7 +24,7 @@ getEvents()
 })
 .catch(err => {
   logger.error("Could not successfully complete event update", err);
-  process.exit();
+  process.exit(1);
 });
 
 function getEvents() {
