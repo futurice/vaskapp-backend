@@ -1,7 +1,6 @@
-#!/usr/bin/env node
-import _ from 'lodash';
-import google from 'googleapis';
-import * as util from '../util/seeds';
+const _ = require('lodash');
+const google = require('googleapis');
+const util = require('../util/seeds');
 const logger = require('../util/logger')(__filename);
 const {knex} = require('../util/database').connect();
 const BPromise = require('bluebird');
@@ -95,8 +94,4 @@ function _groupEventsById(events, headers) {
 
 function _getLatest(eventsById, headers) {
   return _.map(eventsById, events => _.maxBy(events, event => event[headers["Aikaleima"]]));
-}
-
-export {
-  getEvents,
 }
