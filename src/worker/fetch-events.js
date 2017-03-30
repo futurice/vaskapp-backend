@@ -23,7 +23,7 @@ getEvents()
   process.exit();
 })
 .catch(err => {
-  logger.error("Could not successfully complete event update", err);
+  logger.error("Updating events errored", err);
   process.exit(1);
 });
 
