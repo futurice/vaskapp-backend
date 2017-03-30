@@ -29,7 +29,7 @@ function getEvents() {
     const request = {
       spreadsheetId: eventSheet.id,
       ranges: ['A:M'],
-      valueRenderOption: 'FORMATTED_VALUE',
+      valueRenderOption: 'UNFORMATTED_VALUE',
       key: process.env.GSHEETS_API_KEY,
     };
 
@@ -71,11 +71,19 @@ function _getHeaders(headers) {
 }
 
 function _getEvents(payload, headers) {
-  // Filters out empty rows. Filters out duplicate event IDs. Does in this
-  // in reversed order since Otaniemi's sheet appends updated events
-  // rather  actually update the cell values.
-  const events = _.filter(payload, row => !_.isEmpty(row))
-  return _.uniqBy(_.reverse(events), event => event[headers["eventId"]]);
+  return _getLatest(_groupEventsById(_filterEmpties(payload), headers), headers);
+}
+
+function _filterEmpties(events) {
+  return _.filter(events, event => !_.isEmpty(event));
+}
+
+function _groupEventsById(events, headers) {
+  return _.groupBy(events, event => event[headers["eventId"]]);
+}
+
+function _getLatest(eventsById, headers) {
+  return _.map(eventsById, events => _.maxBy(events, event => event[headers["Aikaleima"]]));
 }
 
 export {
