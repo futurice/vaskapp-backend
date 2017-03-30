@@ -28,7 +28,7 @@ function getEvents() {
   }).then(() => BPromise.map(eventSheets, eventSheet => {
     const request = {
       spreadsheetId: eventSheet.id,
-      ranges: ['A1:M60'],
+      ranges: ['A:M'],
       valueRenderOption: 'FORMATTED_VALUE',
       key: process.env.GSHEETS_API_KEY,
     };
