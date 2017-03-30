@@ -16,7 +16,15 @@ const eventSheets = JSON.parse(process.env.GSHEETS_EVENTS);
 const batchGetAsync = BPromise.promisify(sheets.spreadsheets.values.batchGet);
 const cities = {};
 
-getEvents();
+getEvents()
+.then(() =>{
+  logger.info("Event data updated");
+  process.exit();
+})
+.catch(err => {
+  logger.error("Could not successfully complete event update", err);
+  process.exit();
+});
 
 function getEvents() {
   logger.info("Updating events data");
@@ -43,12 +51,6 @@ function getEvents() {
       return _extractAndSaveData(payload, eventSheet);
     });
   }))
-  .then(() =>{
-    logger.info("Event data updated");
-  })
-  .catch(err => {
-    logger.error("Could not successfully complete event update", err);
-  });
 }
 
 function _extractAndSaveData(payload, eventSheet) {
