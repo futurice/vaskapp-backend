@@ -42,7 +42,7 @@ function getTeams(opts) {
       actions_score.team_id AS id,
       actions_score.team_name AS name,
       actions_score.image_path,
-      SUM(COALESCE(actions_score.value, 0)) + SUM(COALESCE(vote_score.value, 0)) as score,
+      ROUND(SUM(COALESCE(actions_score.value, 0)) + SUM(COALESCE(vote_score.value, 0))) as score,
       actions_score.city_id AS city
     FROM ${ actionScoreSql } AS actions_score
     LEFT JOIN ${ voteScoreSql } vote_score ON vote_score.team_id = actions_score.team_id
