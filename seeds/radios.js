@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
     id: 2,
     name: 'Radiodiodi',
     city_id: cities['Otaniemi'],
-    stream: 'http://stream.basso.fi:8000/stream',   // TODO: Change to real
+    stream: 'http://stream.wappuradio.fi/wappuradio.mp3',   // TODO: Change to real
     website: 'https://radiodiodi.fi/',
   }));
 }
