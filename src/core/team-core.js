@@ -52,7 +52,7 @@ function getTeams(opts) {
   let whereClauses = [];
 
   if (opts.city) {
-    whereClauses.push('cities.id = ?');
+    whereClauses.push('actions_score.city_id = ?');
     params.push(opts.city);
   }
 
