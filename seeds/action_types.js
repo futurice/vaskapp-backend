@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
       id: 5,
       code: 'IMAGE',
       name: 'Pics or didn\'t happen',
-      value: 100,
+      value: 0,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
       id: 6,
       code: 'TEXT',
       name: 'Comment',
-      value: 10,
+      value: 0,
       cooldown: 10 * 1000
     });
   })
