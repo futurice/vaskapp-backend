@@ -134,8 +134,8 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 16,
       city_id: cities['Otaniemi'],
-      name: 'AK',
-      image_path: 'https://storage.googleapis.com/wappuapp/assets/ak.png', 
+      name: 'Arkkitehtikilta',
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/ak.png',
     });
   })
   .then(() => {
@@ -150,7 +150,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 18,
       city_id: cities['Otaniemi'],
-      name: 'AS',
+      name: 'Automaatio- ja systeemitekniikan kilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/as.png',
     });
   })
@@ -158,7 +158,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 19,
       city_id: cities['Otaniemi'],
-      name: 'FK',
+      name: 'Fyysikkokilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/fk.png',
     });
   })
@@ -174,7 +174,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 21,
       city_id: cities['Otaniemi'],
-      name: 'KK',
+      name: 'Kemistikilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/kk.png',
     });
   })
@@ -182,7 +182,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 22,
       city_id: cities['Otaniemi'],
-      name: 'KIK',
+      name: 'Koneinsinöörikilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/kik.png',
     });
   })
@@ -190,7 +190,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 23,
       city_id: cities['Otaniemi'],
-      name: 'KY',
+      name: 'Kauppatieteiden ylioppilaat',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/ky.png',
     });
   })
@@ -198,7 +198,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 24,
       city_id: cities['Otaniemi'],
-      name: 'MK',
+      name: 'Maanmittarikilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/mk.png',
     });
   })
@@ -206,7 +206,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 25,
       city_id: cities['Otaniemi'],
-      name: 'PJK',
+      name: 'Puunjalostajakilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/pjk.png',
     });
   })
@@ -222,7 +222,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 27,
       city_id: cities['Otaniemi'],
-      name: 'PT',
+      name: 'Prosessiteekkarit',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/pt.png',
     });
   })
@@ -230,7 +230,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 28,
       city_id: cities['Otaniemi'],
-      name: 'IK',
+      name: 'Rakennusinsinöörikilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/ik.png',
     });
   })
@@ -238,7 +238,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 29,
       city_id: cities['Otaniemi'],
-      name: 'SIK',
+      name: 'Sähköinsinöörikilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/sik.png',
     });
   })
@@ -246,7 +246,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 30,
       city_id: cities['Otaniemi'],
-      name: 'TF',
+      name: 'Teknologföreningen',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/tf.png',
     });
   })
@@ -254,7 +254,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 31,
       city_id: cities['Otaniemi'],
-      name: 'TiK',
+      name: 'Tietokilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/tik.png',
     });
   })
@@ -262,7 +262,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 32,
       city_id: cities['Otaniemi'],
-      name: 'VK',
+      name: 'Vuorimieskilta',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/vk.png',
     });
   })
