@@ -4,6 +4,7 @@ import google from 'googleapis';
 import util from '../util/seeds'
 import BPromise  from 'bluebird';
 import requireEnvs from '../util/require-envs';
+import * as citiesCore from '../core/cities-core';
 const {knex} = require('../util/database').connect();
 const logger = require('../util/logger')(__filename);
 const sheets = google.sheets('v4');
@@ -29,7 +30,7 @@ _fetchEvents()
 
 function _fetchEvents() {
   logger.info("Updating events data");
-  return knex('cities').select('*').then(rows => {
+  return citiesCore.getCities({ city: null }).then(rows => {
     rows.forEach(city => {
       cities[city.name] = city.id;
     });
