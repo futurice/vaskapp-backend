@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
       id: 2,
       code: 'SIMA',
       name: 'Grab a sima',
-      value: 5,
+      value: 1,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
       id: 5,
       code: 'IMAGE',
       name: 'Pics or didn\'t happen',
-      value: 100,
+      value: 0,
       cooldown: 5 * 60 * 1000
     });
   })
@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
       id: 6,
       code: 'TEXT',
       name: 'Comment',
-      value: 10,
+      value: 0,
       cooldown: 10 * 1000
     });
   })
@@ -69,8 +69,8 @@ exports.seed = function(knex, Promise) {
       id: 9,
       code: 'CHECK_IN_EVENT',
       name: 'Check in',
-      value: 200,
-      cooldown: 1, // 0 evals unintentionally to false in throttle-core
+      value: 15,
+      cooldown: 0,
     });
   });
 };
