@@ -41,7 +41,7 @@ function getTeams(opts) {
     SELECT
       actions_score.team_id AS id,
       actions_score.team_name AS name,
-      actions_score.image_path,
+      actions_score.image_path AS image_path,
       ROUND(SUM(COALESCE(actions_score.value, 0)) + SUM(COALESCE(vote_score.value, 0))) as score,
       actions_score.city_id AS city
     FROM ${ actionScoreSql } AS actions_score
@@ -61,7 +61,7 @@ function getTeams(opts) {
   }
 
   sqlString += `
-    GROUP BY id, name, actions_score.image_path, city
+    GROUP BY id, name, image_path, city
     ORDER BY score DESC, id
   `;
 
