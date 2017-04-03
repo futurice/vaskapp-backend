@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const _ = require('lodash');
-const google = require('googleapis');
-const util = require('../util/seeds');
-const logger = require('../util/logger')(__filename);
+import _ from 'lodash';
+import google from 'googleapis';
+import util from '../util/seeds'
+import BPromise  from 'bluebird';
+import requireEnvs from '../util/require-envs';
 const {knex} = require('../util/database').connect();
-const BPromise = require('bluebird');
-const requireEnvs = require('../util/require-envs');
+const logger = require('../util/logger')(__filename);
 const sheets = google.sheets('v4');
 
 requireEnvs([
@@ -18,7 +18,7 @@ const batchGetAsync = BPromise.promisify(sheets.spreadsheets.values.batchGet);
 const cities = {};
 
 getEvents()
-.then(() =>{
+.then(() => {
   logger.info("Event data updated");
   process.exit();
 })
