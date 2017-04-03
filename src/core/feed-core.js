@@ -65,7 +65,7 @@ function getFeed(opts) {
       feed_items.type as action_type_code,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.uuid as user_uuid,
-      teams.name as team_name,
+      ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
       feed_items.is_sticky,
@@ -74,6 +74,7 @@ function getFeed(opts) {
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
+    LEFT JOIN cities ON cities.id = teams.city_id
     `;
 
   let params = [opts.client.id];
@@ -113,7 +114,8 @@ function getFeed(opts) {
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
-  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name, votes.value ) `;
+
+  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name, votes.value, teams.city_id, cities.id ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -276,6 +278,15 @@ function _getSortingSql(sort) {
     // Defaults to 'NEW'
     return 'ORDER BY is_sticky DESC, id DESC';
   }
+}
+
+function _getTeamNameSql(cityId) {
+  return !cityId
+    ? `teams.name`
+    : `CASE
+        WHEN teams.city_id=${cityId} THEN teams.name
+        ELSE cities.name
+      END`;
 }
 
 function _resolveAuthorType(row, client) {
