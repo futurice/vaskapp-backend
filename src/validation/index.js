@@ -68,6 +68,7 @@ const schemas = {
   eventsParams: {
     city: common.primaryKeyId,
     id: common.primaryKeyId,
+    showPast: Joi.boolean().default(false),
   },
 
   citiesParams: {

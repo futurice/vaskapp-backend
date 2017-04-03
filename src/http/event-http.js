@@ -21,6 +21,7 @@ const getEvents = createJsonRoute(function(req, res) {
   const eventParams = assert({
     id: req.params.id,
     city: req.query.cityId,
+    showPast: req.query.showPast,
   }, 'eventsParams');
 
   const coreParams = _.merge(eventParams, {
