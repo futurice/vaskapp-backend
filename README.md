@@ -171,6 +171,11 @@ UPDATE users SET is_banned = true WHERE uuid='D47DA01C-51BB-4F96-90B6-D64B77225E
 
 > List events
 
+Query parameters:
+
+* `cityId` Integer. If specified, returns only events in the city with given id.
+* `showPast` Boolean. Should events that have ended also be returned. Defaults to false.
+
 Responses:
 
 * `200 OK` List of [event objects](#event-object).
