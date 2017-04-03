@@ -36,6 +36,8 @@ function getEventById(opts = {}) {
 }
 
 function getEvents(opts) {
+  const where = _getWhereClause(opts);
+
   return knex('events')
     .select([
       'id',
@@ -54,7 +56,7 @@ function getEvents(opts) {
       'attending_count',
       'radius',
     ])
-    .where(_getWhereClause(opts))
+    .whereRaw(where.sql, where.params)
     .orderBy('start_time', 'asc')
     .then(rows => _.map(rows, _rowToEvent));
 };
@@ -66,17 +68,27 @@ function setAttendingCount(facebookEventId, attendingCount) {
 }
 
 function _getWhereClause(filters) {
-  let whereClauses = {};
+  let whereClauses = [];
+  let params = [];
 
   if (filters.city) {
-    whereClauses.city_id = filters.city;
+    whereClauses.push('city_id = ?');
+    params.push(filters.city);
   }
 
   if (filters.id) {
-    whereClauses.id = filters.id;
+    whereClauses.push('id = ?');
+    params.push(filters.id);
   }
 
-  return whereClauses;
+  if (!filters.showPast) {
+    whereClauses.push('end_time > CURRENT_TIMESTAMP')
+  }
+
+  return {
+    sql: whereClauses.join(' AND '),
+    params,
+  };
 }
 
 function _rowToEvent(row) {

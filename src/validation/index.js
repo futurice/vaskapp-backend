@@ -68,6 +68,7 @@ const schemas = {
   eventsParams: {
     city: common.primaryKeyId,
     id: common.primaryKeyId,
+    showPast: Joi.boolean().default(false),
   },
 
   citiesParams: {
@@ -90,18 +91,18 @@ function assert(obj, schemaName) {
   var expected = {};
   expected[schemaName] = joiObj;
 
-  try {
-    Joi.assert(content, expected);
-  } catch (err) {
-    if (!err.isJoi) {
-      throw err;
+  var result = Joi.validate(content, expected);
+
+  if (result.error) {
+    if (!result.error.isJoi) {
+      throw result.error;
     }
 
-    _throwJoiError(err);
-  };
+    _throwJoiError(result.error);
+  }
 
   // Return for convenience
-  return obj;
+  return result.value[schemaName];
 }
 
 // Converts string `value` to a correct js object.
