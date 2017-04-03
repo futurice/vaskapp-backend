@@ -17,7 +17,7 @@ const eventSheets = JSON.parse(process.env.GSHEETS_EVENTS);
 const batchGetAsync = BPromise.promisify(sheets.spreadsheets.values.batchGet);
 const cities = {};
 
-getEvents()
+_fetchEvents()
 .then(() => {
   logger.info("Event data updated");
   process.exit();
@@ -27,7 +27,7 @@ getEvents()
   process.exit(1);
 });
 
-function getEvents() {
+function _fetchEvents() {
   logger.info("Updating events data");
   return knex('cities').select('*').then(rows => {
     rows.forEach(city => {
