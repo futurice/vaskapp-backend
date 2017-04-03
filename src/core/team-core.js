@@ -16,9 +16,9 @@ function getTeams(opts) {
           ) * COUNT(votes)::numeric AS value,
         users.team_id AS team_id
       FROM feed_items
-      LEFT JOIN users ON users.id = feed_items.user_id
+      JOIN users ON users.id = feed_items.user_id
       LEFT JOIN votes ON votes.feed_item_id = feed_items.id
-      WHERE feed_items.user_id IS NOT NULL AND NOT users.is_banned
+      WHERE NOT users.is_banned
       GROUP BY feed_items.id, users.team_id
     ) AS sub_query
     GROUP BY team_id)
