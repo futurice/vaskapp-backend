@@ -190,7 +190,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 23,
       city_id: cities['Otaniemi'],
-      name: 'Kauppatieteiden ylioppilaat',
+      name: 'KY',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/ky.png',
     });
   })
