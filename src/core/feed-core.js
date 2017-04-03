@@ -283,10 +283,7 @@ function _getSortingSql(sort) {
 function _getTeamNameSql(cityId) {
   return !cityId
     ? `teams.name`
-    : `CASE
-        WHEN teams.city_id=${cityId} THEN teams.name
-        ELSE cities.name
-      END`;
+    : knex.raw(`CASE WHEN teams.city_id=? THEN teams.name ELSE cities.name END`, [cityId]).toString();
 }
 
 function _resolveAuthorType(row, client) {
