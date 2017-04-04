@@ -108,8 +108,11 @@ function _getCode(city, index, event, headers) {
   switch (city) {
     case "Otaniemi":
       return `${ city }_${ event[headers["eventId"]] }`;
-    default:
+    case "Tampere":
       return `${ city }_${ index }`;
+    default:
+      throw new Error("Attempted to get code for unsupported city");
+      break;
   }
 }
 
