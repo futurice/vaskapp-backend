@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
       cities[city.name] = city.id;
     });
   })
-  .then(() => util.insertOrUpdate(knex, 'radios', {
+  .then(() => util.removeIfExists(knex, 'radios', { // TODO Readd when review process is done
     id: 1,
     name: 'Rakkauden Wappuradio',
     city_id: cities['Tampere'],
