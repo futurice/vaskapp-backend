@@ -68,7 +68,11 @@ function setAttendingCount(facebookEventId, attendingCount) {
 }
 
 function _getWhereClause(filters) {
-  let whereClauses = [];
+  let whereClauses = [
+    'show = TRUE',
+    'end_time IS NOT NULL',
+    'start_time IS NOT NULL',
+  ];
   let params = [];
 
   if (filters.city) {
