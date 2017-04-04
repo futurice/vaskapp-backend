@@ -117,9 +117,9 @@ function _getLocation(event, headers) {
   const lat = event[headers["locationLat"]];
   const lng = event[headers["locationLon"]];
 
-  return !_.isFinite(lat) || !_.isFinite(lng)
-      ? null
-      : `${lng},${lat}`;
+  return _.isFinite(lat) && _.isFinite(lng)
+      ? `${lng},${lat}`
+      : null;
 }
 
 function _getTimeStamp(event, headers, column) {
