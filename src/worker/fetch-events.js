@@ -70,11 +70,11 @@ function _extractAndSaveData(payload, eventSheet) {
     description: event[headers["description"]],
     organizer: event[headers["organizer"]],
     contact_details: event[headers["contactDetails"]],
-    teemu: event[headers["isTeemu"]] || false,
+    teemu: _getBoolean(event, headers, 'isTeemu', false),
     location: _getLocation(event, headers),
     cover_image: event[headers["coverImage"]],
     fb_event_id: event[headers["facebookId"]],
-    show: _getShow(event, headers),
+    show: _getBoolean(event, headers, 'show', true),
     radius: event[headers["radius"]] || process.env.DEFAULT_EVENT_RADIUS,
   }, 'code'));
 }
@@ -131,9 +131,9 @@ function _getTimeStamp(event, headers, column) {
 
 }
 
-function _getShow(event, headers) {
-  const show = event[headers["show"]];
-  return _.isBoolean(show)
-    ? show
-    : true;
+function _getBoolean(event, headers, column, defaultValue = false) {
+  const cellData = event[headers[column]];
+  return _.isBoolean(cellData)
+    ? cellData
+    : defaultValue;
 }
