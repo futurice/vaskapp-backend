@@ -68,7 +68,11 @@ function setAttendingCount(facebookEventId, attendingCount) {
 }
 
 function _getWhereClause(filters) {
-  let whereClauses = [];
+  let whereClauses = [
+    'show = TRUE',
+    'end_time IS NOT NULL',
+    'start_time IS NOT NULL',
+  ];
   let params = [];
 
   if (filters.city) {
@@ -108,8 +112,8 @@ function _rowToEvent(row) {
     attendingCount: row['attending_count'],
     radius:         row['radius'],
     location: {
-      latitude:  row['location']['y'],
-      longitude: row['location']['x'],
+      latitude:  _.get(row, 'location.y', null),
+      longitude: _.get(row, 'location.x', null),
     },
   };
 }
