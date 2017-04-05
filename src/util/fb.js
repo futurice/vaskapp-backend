@@ -170,7 +170,7 @@ function _extendTokenDuration() {
 }
 
 function _parseAccessTokenFromBody(body) {
-  return body.split('=')[1];
+  return JSON.parse(body).access_token;
 }
 
 export {
