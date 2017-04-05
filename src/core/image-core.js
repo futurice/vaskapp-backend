@@ -2,8 +2,12 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
 
+const targetFolder = 'user_content';
+
 /**
+ * Get image by it's id.
  *
+ * NOTE: id can't contain possible path
  */
 function getImageById(id) {
   const sqlString = `
@@ -28,7 +32,7 @@ function getImageById(id) {
       NOT feed_items.is_banned
     `;
 
-  return knex.raw(sqlString, [`user_content/${ id }`])
+  return knex.raw(sqlString, [`${ targetFolder }/${ id }`])
   .then(result => {
     const rows = result.rows;
 
@@ -65,5 +69,6 @@ function _rowToImage(row) {
 }
 
 export {
+  targetFolder,
   getImageById
 };

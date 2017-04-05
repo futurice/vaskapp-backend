@@ -15,7 +15,6 @@ const uuidV1 = require('uuid/v1');
 
 const gm = require('gm').subClass({ imageMagick: true });
 
-const TARGET_FOLDER = 'user_content';
 const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/gif', 'image/png']);
 
 function getAndValidateActionType(typeName) {
@@ -109,7 +108,7 @@ function postImage(req, res) {
     .then(user => {
       inputData.user = user;
 
-      const fileName = `${ TARGET_FOLDER }/${ uuidV1() }`;
+      const fileName = `${ imageCore.targetFolder }/${ uuidV1() }`;
       return uploadImage(fileName, image);
     })
     .then(uploadedImage => {
