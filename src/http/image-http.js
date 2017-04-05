@@ -80,7 +80,11 @@ function autoOrient(imageBuffer) {
 }
 
 const getImage = createJsonRoute(function(req, res) {
-  return imageCore.getImageById(req.params.id)
+  const params = assert({
+    imageId: req.params.id
+  }, 'imageParams');
+
+  return imageCore.getImageById(params.imageId)
     .then(image => {
       if (!image) {
         throwStatus(404, 'No such image id');
