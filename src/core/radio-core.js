@@ -11,7 +11,14 @@ const wappuRadioPrograms =
 
       return program;
     });
-const RadiodiodiPrograms = [];
+const RadiodiodiPrograms =
+  require("../../data/radio-diodi-program.json")
+    .map(program => {
+      program.start = moment(program.start).utc();
+      program.end   = moment(program.end).utc();
+
+      return program;
+    });
 
 // Hard coded ids for convenience
 const programsByRadioId = {

@@ -10,18 +10,19 @@ exports.seed = function(knex, Promise) {
       cities[city.name] = city.id;
     });
   })
-  .then(() => util.removeIfExists(knex, 'radios', { // TODO Readd when review process is done
+  .then(() => util.insertOrUpdate(knex, 'radios', {
     id: 1,
     name: 'Rakkauden Wappuradio',
     city_id: cities['Tampere'],
-    stream: 'http://stream.wappuradio.fi/wappuradio.mp3',
+    // stream: 'http://stream.wappuradio.fi/wappuradio.mp3',
+    stream: null,
     website: 'https://wappuradio.fi/',
   }))
   .then(() => util.insertOrUpdate(knex, 'radios', {
     id: 2,
     name: 'Radiodiodi',
     city_id: cities['Otaniemi'],
-    stream: 'http://stream.basso.fi:8000/stream',   // TODO: Change to real
+    stream: null,   // TODO: Change to real
     website: 'https://radiodiodi.fi/',
   }));
 }
