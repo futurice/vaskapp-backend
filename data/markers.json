@@ -17,27 +17,27 @@
       "longitude": "23.854839"
     },
     "subtitle": "Grocery store",
-    "url": "https://www.s-kanava.fi/sv/toimipaikka/sale-hervanta-tampere/697951341"
+    "url": "https://www.s-kanava.fi/web/pirkanmaa/toimipaikka/sale-hervanta-tampere/697951341"
   },
   {
     "type": "STORE",
     "title": "K-Market Teekkarinkatu",
     "location": {
-      "latitude": "61.445711",
-      "longitude": "23.843403"
+      "latitude": "61.4455398",
+      "longitude": "23.8439937"
     },
     "subtitle": "Grocery store",
     "url": "http://www.k-market.fi/kaupat/teekkarinkatu/"
   },
   {
     "type": "STORE",
-    "title": "Siwa Hervanta",
+    "title": "K-Market",
     "location": {
-      "latitude": "61.451205",
-      "longitude": "23.847563"
+      "latitude": "61.45099",
+      "longitude": "23.848904"
     },
     "subtitle": "Grocery store",
-    "url": "http://www.siwa.fi/fi/kaupat-ja-aukioloajat/?id=1506"
+    "url": "http://www.k-market.fi/kaupat/lindforsinkatu/"
   },
   {
     "type": "STORE",
@@ -51,13 +51,13 @@
   },
   {
     "type": "STORE",
-    "title": "Siwa Ylioppilaankatu",
+    "title": "K-Market",
     "location": {
       "latitude": "61.446720",
       "longitude": "23.832153"
     },
     "subtitle": "Grocery store",
-    "url": "http://www.siwa.fi/fi/kaupat-ja-aukioloajat/?id=1295"
+    "url": "http://www.k-market.fi/kaupat/ylioppilaankatu/"
   },
   {
     "type": "RESTAURANT",
@@ -138,16 +138,6 @@
     },
     "subtitle": "Kiosk",
     "url": "https://www.r-kioski.fi/kioskit/tampere-keskusta-keskustori-1/"
-  },
-  {
-    "type": "STORE",
-    "title": "Lidl",
-    "location": {
-      "latitude": "61.500209",
-      "longitude": "23.771529"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
   },
   {
     "type": "STORE",
@@ -251,7 +241,7 @@
   },
   {
     "type": "ALKO",
-    "title": "Tampere Stocmann",
+    "title": "Tampere Stockmann",
     "location": {
       "latitude": "61.498575",
       "longitude": "23.770349"
