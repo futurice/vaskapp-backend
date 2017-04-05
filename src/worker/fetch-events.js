@@ -21,16 +21,16 @@ const cities = {};
 
 _fetchEvents()
 .then(() => {
-  logger.info("Event data updated");
+  logger.info('Event data updated');
   process.exit();
 })
 .catch(err => {
-  logger.error("Updating events errored", err);
+  logger.error('Updating events errored', err);
   process.exit(1);
 });
 
 function _fetchEvents() {
-  logger.info("Updating events data");
+  logger.info('Updating events data');
   return citiesCore.getCities({ city: null }).then(rows => {
     rows.forEach(city => {
       cities[city.name] = city.id;
@@ -63,19 +63,19 @@ function _extractAndSaveData(payload, eventSheet) {
   return BPromise.map(events, (event, index) => util.insertOrUpdate(knex, 'events', {
     code: _getCode(eventSheet.city, index, event, headers),
     city_id: cities[eventSheet.city],
-    name: event[headers["name"]],
-    location_name: event[headers["locationName"]],
+    name: _getString(event, headers, 'name'),
+    location_name: _getString(event, headers, 'locationName'),
     start_time: _getTimeStamp(event, headers, 'startTime'),
     end_time: _getTimeStamp(event, headers, 'endTime'),
-    description: event[headers["description"]],
-    organizer: event[headers["organizer"]],
-    contact_details: event[headers["contactDetails"]],
+    description: _getString(event, headers, 'description'),
+    organizer: _getString(event, headers, 'organizer'),
+    contact_details: _getString(event, headers, 'contactDetails'),
     teemu: _getBoolean(event, headers, 'isTeemu', false),
     location: _getLocation(event, headers),
-    cover_image: event[headers["coverImage"]],
-    fb_event_id: event[headers["facebookId"]],
+    cover_image: _getString(event, headers, 'coverImage'),
+    fb_event_id: _getString(event, headers, 'facebookId', null),
     show: _getBoolean(event, headers, 'show', true),
-    radius: event[headers["radius"]] || process.env.DEFAULT_EVENT_RADIUS,
+    radius: event[headers['radius']] || process.env.DEFAULT_EVENT_RADIUS,
   }, 'code'));
 }
 
@@ -97,28 +97,28 @@ function _filterEmpties(events) {
 }
 
 function _groupEventsById(events, headers) {
-  return _.groupBy(events, event => event[headers["eventId"]]);
+  return _.groupBy(events, event => event[headers['eventId']]);
 }
 
 function _getLatest(eventsById, headers) {
-  return _.map(eventsById, events => _.maxBy(events, event => event[headers["Aikaleima"]]));
+  return _.map(eventsById, events => _.maxBy(events, event => event[headers['Aikaleima']]));
 }
 
 function _getCode(city, index, event, headers) {
   switch (city) {
-    case "Otaniemi":
-      return `${ city }_${ event[headers["eventId"]] }`;
-    case "Tampere":
+    case 'Otaniemi':
+      return `${ city }_${ event[headers['eventId']] }`;
+    case 'Tampere':
       return `${ city }_${ index }`;
     default:
-      throw new Error("Attempted to get code for unsupported city");
+      throw new Error('Attempted to get code for unsupported city');
       break;
   }
 }
 
 function _getLocation(event, headers) {
-  const lat = event[headers["locationLat"]];
-  const lng = event[headers["locationLon"]];
+  const lat = event[headers['locationLat']];
+  const lng = event[headers['locationLon']];
 
   return _.isFinite(lat) && _.isFinite(lng)
       ? `${lng},${lat}`
@@ -139,4 +139,11 @@ function _getBoolean(event, headers, column, defaultValue = false) {
   return _.isBoolean(cellData)
     ? cellData
     : defaultValue;
+}
+
+function _getString(event, headers, column, defaultValue = '') {
+  const parsedString = event[headers[column]];
+  return !_.isEmpty(parsedString)
+      ? parsedString
+      : defaultValue;
 }
