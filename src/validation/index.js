@@ -40,6 +40,10 @@ const schemas = {
       .optional(),
   },
 
+  imageParams: {
+    imageId: Joi.string().required()
+  },
+
   vote: {
     value: Joi.number().integer().valid(-1, 1),
     feedItemId: Joi.number().integer().required(),
