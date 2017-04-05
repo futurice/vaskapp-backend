@@ -316,6 +316,18 @@ Responses:
 * `200 OK`
 
 
+### `GET /api/image/:id`
+
+> Get specific image
+
+Body is one of [image objects](#image-objects).
+
+Responses:
+
+* `200 OK`
+* `404 Not found`
+
+
 ### `DELETE /api/feed/:id`
 
 > Delete item from feed
@@ -568,6 +580,22 @@ Responses:
     team: "Sähkökilta",
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
     type: "ME"
+  },
+  url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
+}
+```
+
+
+### Image objects
+
+```js
+{
+  createdAt: "2016-04-20T09:00:00.000Z",
+  votes: 10,
+  hotScore: 178.0032,
+  author: {
+    name: "Nahkasimo",
+    team: "Sähkökilta",
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }

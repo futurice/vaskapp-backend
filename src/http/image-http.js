@@ -5,8 +5,9 @@
 
 import * as gcs from '../util/gcs';
 import * as actionCore from '../core/action-core';
-import {throwStatus} from '../util/express';
+import {createJsonRoute, throwStatus} from '../util/express';
 import * as userCore from '../core/user-core';
+import * as imageCore from '../core/image-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
 const logger = require('../util/logger')(__filename);
@@ -78,6 +79,17 @@ function autoOrient(imageBuffer) {
   });
 }
 
+const getImage = createJsonRoute(function(req, res) {
+  return imageCore.getImageById(req.params.id)
+    .then(image => {
+      if (!image) {
+        throwStatus(404, 'No such image id');
+      } else {
+        return image;
+      }
+    });
+});
+
 function postImage(req, res) {
   const action = assert(req.body, 'action');
 
@@ -111,5 +123,6 @@ function postImage(req, res) {
 };
 
 export {
+  getImage,
   postImage
 };
