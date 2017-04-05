@@ -150,7 +150,7 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'teams', {
       id: 18,
       city_id: cities['Otaniemi'],
-      name: 'Automaatio- ja systeemitekniikan kilta',
+      name: 'AS',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/as.png',
     });
   })
