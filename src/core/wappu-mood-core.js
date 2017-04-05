@@ -103,10 +103,10 @@ function getMood(opts) {
       date,
       ${ select.join(', ') }
     FROM (
-      SELECT date::DATE
+      SELECT date
       FROM   generate_series(
-        '${process.env.MOOD_START_DATE}'::DATE,
-        '${process.env.MOOD_END_DATE}'::DATE,
+        '${process.env.MOOD_START_DATE}'::DATE + interval '3 hour',
+        '${process.env.MOOD_END_DATE}'::DATE + interval '3 hour',
         interval '1 day'
       ) date
     ) dates
@@ -172,7 +172,7 @@ function _getCityMoodSql() {
         wappu_mood
       JOIN users ON users.id = wappu_mood.user_id
       JOIN teams ON teams.id = users.team_id
-      WHERE teams.city_id = ? AND wappu_mood.created_at_coarse = date
+      WHERE teams.city_id = ? AND wappu_mood.created_at_coarse + interval '3 hour' = date
     ) city_score ON true
   `;
 }
@@ -189,7 +189,7 @@ function _getTeamMoodSql() {
       FROM
         wappu_mood
       JOIN users ON users.id = wappu_mood.user_id
-      WHERE users.team_id = ? AND date = wappu_mood.created_at_coarse
+      WHERE users.team_id = ? AND date = wappu_mood.created_at_coarse + interval '3 hour'
     ) team_score ON true
   `;
 }
@@ -206,7 +206,7 @@ function _getPersonalMoodSql() {
       FROM
         wappu_mood
       WHERE
-        wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse
+        wappu_mood.user_id = ? AND date = wappu_mood.created_at_coarse + interval '3 hour'
     ) personal_score ON true
   `;
 }
