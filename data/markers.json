@@ -296,5 +296,155 @@
       "longitude": "1.0"
     },
     "subtitle": "Taxi pole"
+  },
+  {
+    "type": "STORE",
+    "title": "Alepa",
+    "location": {
+      "latitude": "60.1840094",
+      "longitude": "24.8287504"
+    },
+    "subtitle": "Shopping mall",
+    "url": "https://www.alepa.fi/web/alepa/toimipaikka/539863662"
+  },
+  {
+    "type": "STORE",
+    "title": "Deli Pohjois-Tapiola",
+    "location": {
+      "latitude": "60.1846611",
+      "longitude": "24.8090692"
+    },
+    "subtitle": "Shopping mall 24/7",
+    "url": "https://www.abcasemat.fi/fi/asemat/deli-espoo-pohjois-tapiola"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Alvari",
+    "location": {
+      "latitude": "60.1856196",
+      "longitude": "24.8248261"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.amica.fi/alvari"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Täffä",
+    "location": {
+      "latitude": "60.1860783",
+      "longitude": "24.8304802"
+    },
+    "subtitle": "Student restaurant",
+    "url": "https://www.taffa.fi/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Kvarkki",
+    "location": {
+      "latitude": "60.1882086",
+      "longitude": "24.8276215"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.amica.fi/kvarkki"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Sodexo Konetekniikantalo",
+    "location": {
+      "latitude": "60.1871369",
+      "longitude": "24.8241776"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.sodexo.fi/konetekniikka"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "CS Building Sodexo",
+    "location": {
+      "latitude": "60.1869985",
+      "longitude": "24.8195365"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.sodexo.fi/tietotekniikantalo"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Subway",
+    "location": {
+      "latitude": "60.1870101",
+      "longitude": "24.8193567"
+    },
+    "subtitle": "Subway",
+    "url": "http://www.subway.fi/fi/ravintolat/espoo/espoo-otaniemi"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "TUAS Sodexo",
+    "location": {
+      "latitude": "60.1870101",
+      "longitude": "24.8193567"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.amica.fi/ravintolat/ravintolat-kaupungeittain/espoo/tuas/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Amica VM5",
+    "location": {
+      "latitude": "60.1828465",
+      "longitude": "24.8258909"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.amica.fi/ravintolat/ravintolat-kaupungeittain/espoo/vm5/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "X-Burger",
+    "location": {
+      "latitude": "60.1828465",
+      "longitude": "24.8258909"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://soppi.dy.fi/etno.jpg"
+  },
+  {
+    "type": "ALKO",
+    "title": "Alko Tapiola Ainoa",
+    "location": {
+      "latitude": "60.1765212",
+      "longitude": "24.7996597"
+    },
+    "subtitle": "For all things sima",
+    "url": "https://www.alko.fi/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Sodexo Kasper",
+    "location": {
+      "latitude": "60.1825472",
+      "longitude": "24.8252468"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.sodexo.fi/kasper"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "MAU-KAS",
+    "location": {
+      "latitude": "60.1847072",
+      "longitude": "24.8237363"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.mau-kas.fi/"
+  },
+  {
+    "type": "RESTAURANT",
+    "title": "Sodexo Valimo",
+    "location": {
+      "latitude": "60.1836452",
+      "longitude": "24.8275567"
+    },
+    "subtitle": "Student restaurant",
+    "url": "http://www.sodexo.fi/aalto-valimo"
   }
 ]
