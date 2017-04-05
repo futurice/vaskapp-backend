@@ -141,6 +141,11 @@ function isValidCheckIn(action) {
       return event;
     })
     .then(event => {
+
+      if (!event.location) {
+        throw new Error('Event has no location coordinates');
+      }
+
       let eventLocation = {
         latitude: event.location.y,
         longitude: event.location.x,
