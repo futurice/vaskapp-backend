@@ -9,8 +9,8 @@ import {throwStatus} from '../util/express';
 import * as userCore from '../core/user-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
-import {padLeft} from '../util/string';
 const logger = require('../util/logger')(__filename);
+const uuidV1 = require('uuid/v1');
 
 const gm = require('gm').subClass({ imageMagick: true });
 
@@ -93,7 +93,7 @@ function postImage(req, res) {
     .then(user => {
       inputData.user = user;
 
-      const fileName = `${ TARGET_FOLDER }/${ padLeft(user.id, 5) }-${ Date.now() }`;
+      const fileName = `${ TARGET_FOLDER }/${ uuidV1() }`;
       return uploadImage(fileName, image);
     })
     .then(uploadedImage => {
