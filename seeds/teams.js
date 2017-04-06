@@ -273,5 +273,13 @@ exports.seed = function(knex, Promise) {
       name: 'TOKYO',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/tokyo.png',
     });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 34,
+      city_id: cities['Otaniemi'],
+      name: 'AYY',
+      image_path: 'https://storage.googleapis.com/wappuapp/assets/ayylogo.png',
+    });
   });
 };
