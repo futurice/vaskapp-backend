@@ -270,6 +270,16 @@
     "url": "http://www.alko.fi/en/shops-services/2472"
   },
   {
+    "type": "ALKO",
+    "title": "Tampere Hervanta Duo",
+    "location": {
+      "latitude": "61.451145",
+      "longitude": "23.852381"
+    },
+    "subtitle": "Alko",
+    "url": "https://www.alko.fi/myymalat-palvelut/2470"
+  },
+  {
     "type": "TOILET",
     "title": "Public toilet Africa",
     "location": {
