@@ -117,8 +117,8 @@ function _getCode(city, index, event, headers) {
 }
 
 function _getLocation(event, headers) {
-  const lat = event[headers['locationLat']];
-  const lng = event[headers['locationLon']];
+  const lat = parseFloat(event[headers['locationLat']]);
+  const lng = parseFloat(event[headers['locationLon']]);
 
   return _.isFinite(lat) && _.isFinite(lng)
       ? `${lng},${lat}`
