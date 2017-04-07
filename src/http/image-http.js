@@ -94,18 +94,28 @@ function processImageText(imageBuffer, imageText) {
   return new Promise((resolve, reject) => {
     try {
       gm(imageBuffer)
+        .autoOrient()
+        .resize(DEFAULT_WIDTH, DEFAULT_HEIGHT)
         .size((err, value) => {
           if (!value || err) {
             imageSize = { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
           } else {
             imageSize = value;
           }
+        .toBuffer('JPG', (error, resizedBuffer) => {
+          if (error) {
+            reject(error);
+            return;
+          }
 
-          gm(imageBuffer)
-            .autoOrient()
-            .resize(DEFAULT_WIDTH, DEFAULT_HEIGHT)
+          gm(resizedBuffer)
             .fill(BAR_COLOR)
-            .drawRectangle(0, imageSize.height / 2 - BAR_HEIGHT / 2, imageSize.width, imageSize.height / 2 + BAR_HEIGHT / 2)
+            .drawRectangle(
+                0,
+                imageSize.height / 2 - BAR_HEIGHT / 2,
+                imageSize.width,
+                imageSize.height / 2 + BAR_HEIGHT / 2
+            )
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
             .font(FONT_FAMILY)
@@ -113,7 +123,8 @@ function processImageText(imageBuffer, imageText) {
             .toBuffer('JPG', (error, resultBuffer) => {
               error ? reject(error) : resolve(resultBuffer);
             });
-        });
+        })
+      });
     } catch (err) {
       logger.error('Error in auto-orient:', err);
       logger.error(err.stack);
