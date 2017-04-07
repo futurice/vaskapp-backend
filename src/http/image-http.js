@@ -83,7 +83,7 @@ function autoOrient(imageBuffer) {
 function processImageText(imageBuffer, imageText) {
 
   const BAR_HEIGHT = 60;
-  const BAR_COLOR = 'rgba(221, 73, 151, .5)';
+  const BAR_COLOR = 'rgba(221, 73, 151, .6)';
   const FONT_SIZE = 38;
   const DEFAULT_WIDTH = 1024;
   const DEFAULT_HEIGHT = 1024;
@@ -96,26 +96,27 @@ function processImageText(imageBuffer, imageText) {
       gm(imageBuffer)
         .autoOrient()
         .resize(DEFAULT_WIDTH, DEFAULT_HEIGHT)
-        .size((err, value) => {
-          if (!value || err) {
-            imageSize = { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
-          } else {
-            imageSize = value;
-          }
-        .toBuffer('JPG', (error, resizedBuffer) => {
-          if (error) {
-            reject(error);
+        .toBuffer('JPG', (resizeError, resizedBuffer) => {
+          if (resizeError) {
+            reject(resizeError);
             return;
           }
 
           gm(resizedBuffer)
+          .size((err, value) => {
+            if (!value || err) {
+              imageSize = { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+            } else {
+              imageSize = value;
+            }
+            gm(resizedBuffer)
             .fill(BAR_COLOR)
             .drawRectangle(
-                0,
-                imageSize.height / 2 - BAR_HEIGHT / 2,
-                imageSize.width,
-                imageSize.height / 2 + BAR_HEIGHT / 2
-            )
+              0,
+              imageSize.height / 2 - BAR_HEIGHT / 2,
+              imageSize.width,
+              imageSize.height / 2 + BAR_HEIGHT / 2
+              )
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
             .font(FONT_FAMILY)
@@ -123,8 +124,8 @@ function processImageText(imageBuffer, imageText) {
             .toBuffer('JPG', (error, resultBuffer) => {
               error ? reject(error) : resolve(resultBuffer);
             });
-        })
-      });
+          })
+      })
     } catch (err) {
       logger.error('Error in auto-orient:', err);
       logger.error(err.stack);
