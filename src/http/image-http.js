@@ -103,6 +103,7 @@ function processImageText(imageBuffer, imageText) {
 
           gm(imageBuffer)
             .autoOrient()
+            .resize(DEFAULT_WIDTH, DEFAULT_HEIGHT)
             .fill(BAR_COLOR)
             .drawRectangle(0, imageSize.height / 2 - BAR_HEIGHT / 2, imageSize.width, imageSize.height / 2 + BAR_HEIGHT / 2)
             .fill(TEXT_COLOR)
