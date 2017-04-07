@@ -39,7 +39,7 @@ function getAndValidateUser(uuid) {
     });
 }
 
-function uploadImage(imageName, imageFile) {
+function uploadImage(imageName, imageFile, imageText) {
   logger.info('Uploading', imageName);
 
   return Promise.resolve()
@@ -47,6 +47,8 @@ function uploadImage(imageName, imageFile) {
     .then(() => {
       if (imageFile.mimetype === 'image/gif') {
         return imageFile.buffer;
+      } else if (imageText) {
+        return processImageText(imageFile.buffer, imageText);
       } else {
         return autoOrient(imageFile.buffer);
       }
@@ -78,6 +80,47 @@ function autoOrient(imageBuffer) {
   });
 }
 
+function processImageText(imageBuffer, imageText) {
+
+  const BAR_HEIGHT = 60;
+  const BAR_COLOR = 'rgba(221, 73, 151, .5)';
+  const FONT_SIZE = 38:
+  const DEFAULT_WIDTH = 1024;
+  const DEFAULT_HEIGHT= 1024;
+  const TEXT_COLOR = '#FEFF77';
+  const FONT_FAMILY = 'CabinCondensed.ttf';
+
+  let imageSize;
+  return new Promise((resolve, reject) => {
+    try {
+      gm(imageBuffer)
+        .size((err, value) => {
+          if (!value || err) {
+            imageSize = { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+          } else {
+            imageSize = value;
+          }
+
+          gm(imageBuffer)
+            .autoOrient()
+            .fill(BAR_COLOR)
+            .drawRectangle(0, imageSize.height / 2 - BAR_HEIGHT / 2, imageSize.width, imageSize.height / 2 + BAR_HEIGHT / 2)
+            .fill(TEXT_COLOR)
+            .fontSize(FONT_SIZE)
+            .font(FONT_FAMILY)
+            .drawText(0, 0, imageText, 'Center')
+            .toBuffer('JPG', (error, resultBuffer) => {
+              error ? reject(error) : resolve(resultBuffer);
+            });
+        });
+    } catch (err) {
+      logger.error('Error in auto-orient:', err);
+      logger.error(err.stack);
+      reject(err);
+    }
+  });
+}
+
 const getImage = createJsonRoute(function(req, res) {
   const params = assert({
     imageId: req.params.id
@@ -97,6 +140,7 @@ function postImage(req, res) {
   const action = assert(req.body, 'action');
 
   const image = decodeBase64Image(req.body.imageData);
+  const { imageText } = req.body;
   const inputData = {};
 
   return getAndValidateActionType(action.type)
@@ -109,7 +153,7 @@ function postImage(req, res) {
       inputData.user = user;
 
       const fileName = `${ imageCore.targetFolder }/${ uuidV1() }`;
-      return uploadImage(fileName, image);
+      return uploadImage(fileName, image, imageText);
     })
     .then(uploadedImage => {
       return actionCore.createAction({
