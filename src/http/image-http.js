@@ -120,7 +120,7 @@ function processImageText(imageBuffer, imageText) {
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
             .font(FONT_FAMILY)
-            .drawText(0, -5, imageText, 'Center')
+            .drawText(0, -1, imageText, 'Center')
             .toBuffer('JPG', (error, resultBuffer) => {
               error ? reject(error) : resolve(resultBuffer);
             });
