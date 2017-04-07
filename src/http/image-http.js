@@ -84,9 +84,9 @@ function processImageText(imageBuffer, imageText) {
 
   const BAR_HEIGHT = 60;
   const BAR_COLOR = 'rgba(221, 73, 151, .5)';
-  const FONT_SIZE = 38:
+  const FONT_SIZE = 38;
   const DEFAULT_WIDTH = 1024;
-  const DEFAULT_HEIGHT= 1024;
+  const DEFAULT_HEIGHT = 1024;
   const TEXT_COLOR = '#FEFF77';
   const FONT_FAMILY = 'CabinCondensed.ttf';
 
