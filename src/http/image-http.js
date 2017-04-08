@@ -88,6 +88,7 @@ function processImageText(imageBuffer, imageText) {
   const DEFAULT_WIDTH = 1024;
   const DEFAULT_HEIGHT = 1024;
   const TEXT_COLOR = '#FEFF77';
+  const VERTICAL_TEXT_OFFSET = 2;
   const FONT_FAMILY = 'CabinCondensed.ttf';
 
   let imageSize;
@@ -120,7 +121,7 @@ function processImageText(imageBuffer, imageText) {
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
             .font(FONT_FAMILY)
-            .drawText(0, -1, imageText, 'Center')
+            .drawText(0, VERTICAL_TEXT_OFFSET, imageText, 'Center')
             .toBuffer('JPG', (error, resultBuffer) => {
               error ? reject(error) : resolve(resultBuffer);
             });
