@@ -89,7 +89,7 @@ function processImageText(imageBuffer, imageText) {
   const DEFAULT_HEIGHT = 1024;
   const TEXT_COLOR = '#FEFF77';
   const VERTICAL_TEXT_OFFSET = 2;
-  const FONT_FAMILY = 'CabinCondensed.ttf';
+  const FONT_FAMILY = './CabinCondensed.ttf';
 
   let imageSize;
   return new Promise((resolve, reject) => {
