@@ -123,7 +123,7 @@ function processImageText(imageBuffer, { imageText, imageTextPosition }) {
             .font(FONT_FAMILY)
             .drawText(
               0,
-              (imageTextPosition - 0.5) * imageSize.height + VERTICAL_TEXT_OFFSET,
+              (imageTextPosition - 0.5) * imageSize.height + (BAR_HEIGHT / 2) + VERTICAL_TEXT_OFFSET,
               imageText,
               'Center'
             )
