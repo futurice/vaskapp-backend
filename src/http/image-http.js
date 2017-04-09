@@ -10,6 +10,12 @@ import * as userCore from '../core/user-core';
 import * as imageCore from '../core/image-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
+import {
+  getRectangleTop,
+  getRectangleBottom,
+  getTextPositionFromCenter
+} from '../util/image-caption';
+
 const logger = require('../util/logger')(__filename);
 const uuidV1 = require('uuid/v1');
 
@@ -80,18 +86,17 @@ function autoOrient(imageBuffer) {
   });
 }
 
-function processImageText(imageBuffer, { imageText, imageTextPosition }) {
-
+function processImageText(imageBuffer, { imageText = '', imageTextPosition = 0.5 }) {
   const BAR_HEIGHT = 60;
   const BAR_COLOR = 'rgba(221, 73, 151, .6)';
   const FONT_SIZE = 38;
   const DEFAULT_WIDTH = 1024;
   const DEFAULT_HEIGHT = 1024;
   const TEXT_COLOR = '#FEFF77';
-  const VERTICAL_TEXT_OFFSET = 2;
-  const FONT_FAMILY = './CabinCondensed';
+  // const FONT_FAMILY = './CabinCondensed';
 
-  let imageSize;
+  const textPosition = parseFloat(imageTextPosition);
+
   return new Promise((resolve, reject) => {
     try {
       gm(imageBuffer)
@@ -103,27 +108,29 @@ function processImageText(imageBuffer, { imageText, imageTextPosition }) {
             return;
           }
 
+          // Get size of resized image
           gm(resizedBuffer)
           .size((err, value) => {
-            if (!value || err) {
-              imageSize = { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
-            } else {
-              imageSize = value;
-            }
+            const imageSize = !value || err
+              ? { width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT }
+              : value;
+
+            // Start drawing on top of resized img
             gm(resizedBuffer)
+            // Draw background for text
             .fill(BAR_COLOR)
             .drawRectangle(
               0,
-              imageSize.height * imageTextPosition,
+              getRectangleTop(imageSize.height, textPosition, BAR_HEIGHT),
               imageSize.width,
-              imageSize.height * imageTextPosition + BAR_HEIGHT
+              getRectangleBottom(imageSize.height, textPosition, BAR_HEIGHT)
             )
+            // Draw text
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
-            .font(FONT_FAMILY)
             .drawText(
               0,
-              (imageTextPosition - 0.5) * imageSize.height + (BAR_HEIGHT / 2) + VERTICAL_TEXT_OFFSET,
+              getTextPositionFromCenter(imageSize.height, textPosition, BAR_HEIGHT),
               imageText,
               'Center'
             )
@@ -133,7 +140,7 @@ function processImageText(imageBuffer, { imageText, imageTextPosition }) {
           })
       })
     } catch (err) {
-      logger.error('Error in auto-orient:', err);
+      logger.error('Error in drawing image caption:', err);
       logger.error(err.stack);
       reject(err);
     }
