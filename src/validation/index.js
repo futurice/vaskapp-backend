@@ -16,6 +16,7 @@ const schemas = {
     type: Joi.string().uppercase().required(),
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
     imageText: Joi.string(),
+    imageTextPosition: Joi.number().min(0).max(1).optional(),
     text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
     eventId: common.primaryKeyId.when('type', { is: 'CHECK_IN_EVENT', then: Joi.required()}),
     city: common.primaryKeyId,

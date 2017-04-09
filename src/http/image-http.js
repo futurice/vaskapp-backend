@@ -39,7 +39,7 @@ function getAndValidateUser(uuid) {
     });
 }
 
-function uploadImage(imageName, imageFile, imageText) {
+function uploadImage(imageName, imageFile, imageOpts) {
   logger.info('Uploading', imageName);
 
   return Promise.resolve()
@@ -47,8 +47,8 @@ function uploadImage(imageName, imageFile, imageText) {
     .then(() => {
       if (imageFile.mimetype === 'image/gif') {
         return imageFile.buffer;
-      } else if (imageText) {
-        return processImageText(imageFile.buffer, imageText);
+      } else if (imageOpts.imageText) {
+        return processImageText(imageFile.buffer, imageOpts);
       } else {
         return autoOrient(imageFile.buffer);
       }
@@ -80,7 +80,7 @@ function autoOrient(imageBuffer) {
   });
 }
 
-function processImageText(imageBuffer, imageText) {
+function processImageText(imageBuffer, { imageText, imageTextPosition }) {
 
   const BAR_HEIGHT = 60;
   const BAR_COLOR = 'rgba(221, 73, 151, .6)';
@@ -89,7 +89,7 @@ function processImageText(imageBuffer, imageText) {
   const DEFAULT_HEIGHT = 1024;
   const TEXT_COLOR = '#FEFF77';
   const VERTICAL_TEXT_OFFSET = 2;
-  const FONT_FAMILY = './CabinCondensed.ttf';
+  const FONT_FAMILY = './CabinCondensed';
 
   let imageSize;
   return new Promise((resolve, reject) => {
@@ -114,14 +114,19 @@ function processImageText(imageBuffer, imageText) {
             .fill(BAR_COLOR)
             .drawRectangle(
               0,
-              imageSize.height / 2 - BAR_HEIGHT / 2,
+              imageSize.height * imageTextPosition,
               imageSize.width,
-              imageSize.height / 2 + BAR_HEIGHT / 2
-              )
+              imageSize.height * imageTextPosition + BAR_HEIGHT
+            )
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
             .font(FONT_FAMILY)
-            .drawText(0, VERTICAL_TEXT_OFFSET, imageText, 'Center')
+            .drawText(
+              0,
+              (imageTextPosition - 0.5) * imageSize.height + VERTICAL_TEXT_OFFSET,
+              imageText,
+              'Center'
+            )
             .toBuffer('JPG', (error, resultBuffer) => {
               error ? reject(error) : resolve(resultBuffer);
             });
@@ -154,7 +159,8 @@ function postImage(req, res) {
   const action = assert(req.body, 'action');
 
   const image = decodeBase64Image(req.body.imageData);
-  const { imageText } = req.body;
+  const { imageText, imageTextPosition } = req.body;
+  const imageOpts = { imageText, imageTextPosition };
   const inputData = {};
 
   return getAndValidateActionType(action.type)
@@ -167,7 +173,7 @@ function postImage(req, res) {
       inputData.user = user;
 
       const fileName = `${ imageCore.targetFolder }/${ uuidV1() }`;
-      return uploadImage(fileName, image, imageText);
+      return uploadImage(fileName, image, imageOpts);
     })
     .then(uploadedImage => {
       return actionCore.createAction({
