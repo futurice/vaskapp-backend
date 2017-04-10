@@ -33,7 +33,7 @@ function getRectangleBottom(imageHeight, rectPosition, rectHeight) {
 // Text position
 // Calculate vertical offset from center
 // rectPosition [0, 1]
-const textBaselineAdjust = 1;
+const textBaselineAdjust = 2;
 function getTextPositionFromCenter (imageHeight, rectPosition, rectHeight) {
   return Math.min(
     (rectPosition - 0.5) * imageHeight + rectHeight / 2,
