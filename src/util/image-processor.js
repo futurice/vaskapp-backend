@@ -41,9 +41,9 @@ function getTextPositionFromCenter (imageHeight, rectPosition, rectHeight) {
   ) + textBaselineAdjust;
 }
 
-
-// # Drawing image
-function processImageText(imageBuffer, { imageText = '', imageTextPosition = 0.5 }) {
+// # Drawing image with Caption
+// Images with caption are resized to default max dimensions
+function processImageWithCaption(imageBuffer, { imageText = '', imageTextPosition = 0.5 }) {
   const textPosition = parseFloat(imageTextPosition);
 
   return new Promise((resolve, reject) => {
@@ -89,13 +89,40 @@ function processImageText(imageBuffer, { imageText = '', imageTextPosition = 0.5
           })
       })
     } catch (err) {
-      logger.error('Error withs drawing image caption:', err);
+      logger.error('Error with drawing image caption:', err);
       logger.error(err.stack);
       reject(err);
     }
   });
 }
 
+// Images without caption are just being autoOriented
+// These images are not resized to default dimensions
+function processImageWithoutCaption(imageBuffer) {
+  return new Promise((resolve, reject) => {
+    try {
+      gm(imageBuffer)
+        .autoOrient()
+        .toBuffer('JPG', (error, resultBuffer) => {
+          error ? reject(error) : resolve(resultBuffer);
+        });
+    } catch (err) {
+      logger.error('Error in auto-orient:', err);
+      logger.error(err.stack);
+      reject(err);
+    }
+  });
+}
+
+function processImage(imageBuffer, imageOpts = {}) {
+  if (imageOpts.imageText) {
+    return processImageWithCaption(imageBuffer, imageOpts);
+  } else {
+    return processImageWithoutCaption(imageBuffer);
+  }
+}
+
+
 export {
-  processImageText
+  processImage
 };

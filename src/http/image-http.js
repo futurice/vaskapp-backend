@@ -10,12 +10,10 @@ import * as userCore from '../core/user-core';
 import * as imageCore from '../core/image-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
-import { processImageText } from '../util/image-caption';
+import { processImage } from '../util/image-processor';
 
 const logger = require('../util/logger')(__filename);
 const uuidV1 = require('uuid/v1');
-
-const gm = require('gm').subClass({ imageMagick: true });
 
 const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/gif', 'image/png']);
 
@@ -49,10 +47,8 @@ function uploadImage(imageName, imageFile, imageOpts) {
     .then(() => {
       if (imageFile.mimetype === 'image/gif') {
         return imageFile.buffer;
-      } else if (imageOpts.imageText) {
-        return processImageText(imageFile.buffer, imageOpts);
       } else {
-        return autoOrient(imageFile.buffer);
+        return processImage(imageFile.buffer, imageOpts);
       }
     })
     .then(buffer => gcs.uploadImageBuffer(imageName, buffer));
@@ -66,21 +62,7 @@ function validateMimeType(mimetype) {
   }
 }
 
-function autoOrient(imageBuffer) {
-  return new Promise((resolve, reject) => {
-    try {
-      gm(imageBuffer)
-        .autoOrient()
-        .toBuffer('JPG', (error, resultBuffer) => {
-          error ? reject(error) : resolve(resultBuffer);
-        });
-    } catch (err) {
-      logger.error('Error in auto-orient:', err);
-      logger.error(err.stack);
-      reject(err);
-    }
-  });
-}
+
 
 const getImage = createJsonRoute(function(req, res) {
   const params = assert({
