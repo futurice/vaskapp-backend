@@ -10,10 +10,10 @@ import * as userCore from '../core/user-core';
 import * as imageCore from '../core/image-core';
 import {assert} from '../validation';
 import {decodeBase64Image} from '../util/base64';
+import { processImage } from '../util/image-processor';
+
 const logger = require('../util/logger')(__filename);
 const uuidV1 = require('uuid/v1');
-
-const gm = require('gm').subClass({ imageMagick: true });
 
 const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/gif', 'image/png']);
 
@@ -39,7 +39,7 @@ function getAndValidateUser(uuid) {
     });
 }
 
-function uploadImage(imageName, imageFile) {
+function uploadImage(imageName, imageFile, imageOpts) {
   logger.info('Uploading', imageName);
 
   return Promise.resolve()
@@ -48,7 +48,7 @@ function uploadImage(imageName, imageFile) {
       if (imageFile.mimetype === 'image/gif') {
         return imageFile.buffer;
       } else {
-        return autoOrient(imageFile.buffer);
+        return processImage(imageFile.buffer, imageOpts);
       }
     })
     .then(buffer => gcs.uploadImageBuffer(imageName, buffer));
@@ -62,21 +62,7 @@ function validateMimeType(mimetype) {
   }
 }
 
-function autoOrient(imageBuffer) {
-  return new Promise((resolve, reject) => {
-    try {
-      gm(imageBuffer)
-        .autoOrient()
-        .toBuffer('JPG', (error, resultBuffer) => {
-          error ? reject(error) : resolve(resultBuffer);
-        });
-    } catch (err) {
-      logger.error('Error in auto-orient:', err);
-      logger.error(err.stack);
-      reject(err);
-    }
-  });
-}
+
 
 const getImage = createJsonRoute(function(req, res) {
   const params = assert({
@@ -97,6 +83,8 @@ function postImage(req, res) {
   const action = assert(req.body, 'action');
 
   const image = decodeBase64Image(req.body.imageData);
+  const { imageText, imageTextPosition } = req.body;
+  const imageOpts = { imageText, imageTextPosition };
   const inputData = {};
 
   return getAndValidateActionType(action.type)
@@ -109,7 +97,7 @@ function postImage(req, res) {
       inputData.user = user;
 
       const fileName = `${ imageCore.targetFolder }/${ uuidV1() }`;
-      return uploadImage(fileName, image);
+      return uploadImage(fileName, image, imageOpts);
     })
     .then(uploadedImage => {
       return actionCore.createAction({
