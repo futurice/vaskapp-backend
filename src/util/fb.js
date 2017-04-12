@@ -58,13 +58,9 @@ function _updateFromFacebook() {
     .map(_fetchAttending)
     .concat(_fetchAnnouncements());
 
-  Promise.all(promises)
-    .then(function(eventData) {
-      logger.info('Facebook update performed');
-      _.assign(state, eventData);
-    }, function(error) {
-      logger.error('Facebook info could not be updated', error);
-    });
+  return Promise.all(promises)
+    .then(() => logger.info('Facebook update performed'))
+    .catch(error => logger.error('Facebook info could not be updated', error));
 }
 
 function _fetchAttending(eventId) {
@@ -73,15 +69,17 @@ function _fetchAttending(eventId) {
     FB.api(`/${ eventId }/?fields=attending_count`,
       function(response) {
         if (response && !response.error) {
-          logger.info('Event attending fetched');
+          logger.info(`Attending count fetched for ${ eventId }`);
 
           const attendingCount = response.attending_count;
-          eventCore.setAttendingCount(eventId, attendingCount);
-
-          resolve(attendingCount);
+          eventCore.setAttendingCount(eventId, attendingCount)
+            .catch(error => {
+              logger.error('Failed to update attending count:', error);
+            })
+            .then(resolve);
         } else {
           logger.error('Failed to fetch event attending:', response);
-          reject(response && response.error);
+          resolve();
         }
       }
     );
@@ -105,10 +103,10 @@ function _fetchAnnouncements() {
               };
             });
 
-          resolve(response);
+          resolve();
         } else {
           logger.error('Failed to fetch announcements:', response);
-          reject(response && response.error);
+          resolve();
         }
       }
     );

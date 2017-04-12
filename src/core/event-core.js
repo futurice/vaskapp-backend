@@ -62,9 +62,11 @@ function getEvents(opts) {
 };
 
 function setAttendingCount(facebookEventId, attendingCount) {
-  knex('events')
-    .update('attending_count', attendingCount)
-    .where('fb_event_id', '=', facebookEventId);
+  return knex.transaction(trx =>
+    trx('events')
+      .update('attending_count', attendingCount)
+      .where('fb_event_id', '=', facebookEventId)
+  );
 }
 
 function _getWhereClause(filters) {
