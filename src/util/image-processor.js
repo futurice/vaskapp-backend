@@ -41,6 +41,9 @@ function getTextPositionFromCenter (imageHeight, rectPosition, rectHeight) {
   ) + textBaselineAdjust;
 }
 
+// ImageMagick does not support emojis atm.
+// By default it replaces emojis with ?-mark.
+// emojis are replaced with characters
 const emojiReplacer = (text = '') =>
   text
   .replace(/😀/g, ':)')
@@ -71,7 +74,43 @@ const emojiReplacer = (text = '') =>
   .replace(/😩/g, ':(')
   .replace(/😬/g, ':()')
   .replace(/😰/g, ':()')
-  .replace(/😵/g, 'x()');
+  .replace(/😲/g, ':O')
+  .replace(/😬/g, ':O')
+  .replace(/😟/g, ':(')
+  .replace(/😦/g, ':(')
+  .replace(/😧/g, ':(')
+  .replace(/😨/g, ':(')
+  .replace(/😰/g, ':(')
+  .replace(/👎/g, ':(')
+  .replace(/😳/g, '8|')
+  .replace(/😳/g, ':|')
+  .replace(/😩/g, 'D:')
+  .replace(/😭/g, ':`O')
+  .replace(/😵/g, 'x()')
+  .replace(/😇/g, ':)')
+  .replace(/😺/g, ':)')
+  .replace(/💩/g, ':)')
+  .replace(/💀/g, ':)')
+  .replace(/😵/g, '')
+  .replace(/😡/g, '')
+  .replace(/😠/g, '')
+  .replace(/😷/g, '')
+  .replace(/🤒/g, '')
+  .replace(/🤕/g, '')
+  .replace(/🤢/g, '')
+  .replace(/🤧/g, '')
+  .replace(/🤧/g, '')
+  .replace(/🙈/g, '')
+  .replace(/🙉/g, '')
+  .replace(/🙊/g, '')
+  .replace(/👍/g, 'ok')
+  .replace(/👌/g, 'ok')
+  .replace(/❤/g, '<3')
+  .replace(/💙/g, '<3')
+  .replace(/💚/g, '<3')
+  .replace(/💛/g, '<3')
+  .replace(/💕/g, '<3')
+  .replace(/💋/g, 'XOXO');
 
 // # Drawing image with Caption
 // Images with caption are resized to default max dimensions
