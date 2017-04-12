@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import * as feedCore from './feed-core.js';
+const BPromise = require('bluebird');
 const {knex} = require('../util/database').connect();
 
 function createOrUpdateUser(user) {
@@ -52,6 +54,72 @@ function findByUuid(uuid) {
     });
 }
 
+/**
+ * Get user's details
+ *
+ * @param {object} opts
+ * @param {number} opts.userId
+ * @param {object} opts.client
+ */
+function getUserDetails(opts) {
+  const userDetailsQuery = _queryUserDetails(opts.userId);
+
+  const imagesQuery = feedCore.getFeed({
+    client:        opts.client,
+    userId:        opts.userId,
+    type:          'IMAGE',
+    includeSticky: false,
+  });
+
+  return BPromise.all([
+    userDetailsQuery,
+    imagesQuery
+  ]).spread((userDetails, images) => {
+    if (!userDetails) {
+      return null;
+    }
+
+    userDetails.images = images;
+
+    return userDetails;
+  });
+}
+
+function _queryUserDetails(userId) {
+  const sqlString = `
+  SELECT
+    users.name AS name,
+    teams.name AS team,
+    COALESCE(num_simas, 0) AS num_simas
+  FROM users
+  JOIN teams ON teams.id = users.team_id
+  LEFT JOIN (
+    SELECT
+      actions.user_id AS user_id,
+      COUNT(*) AS num_simas
+    FROM actions
+    JOIN action_types ON action_types.id = actions.action_type_id
+    WHERE action_types.code = 'SIMA'
+    GROUP BY user_id
+  ) AS stats ON users.id = stats.user_id
+  WHERE users.id = ?
+  `;
+
+  return knex.raw(sqlString, [userId])
+    .then(result => {
+      if (result.rows.length === 0) {
+        return null;
+      }
+
+      const rowObj = result.rows[0];
+      return {
+        name: rowObj['name'],
+        team: rowObj['team'],
+        numSimas: rowObj['num_simas']
+      };
+    });
+}
+
 function _makeUserDbRow(user) {
   const dbRow = {
     'uuid': user.uuid,
@@ -75,5 +143,6 @@ function _userRowToObject(row) {
 
 export {
   createOrUpdateUser,
-  findByUuid
+  findByUuid,
+  getUserDetails
 };

@@ -32,6 +32,10 @@ const schemas = {
     team: common.team.required()
   },
 
+  userQueryParams: {
+    userId: common.primaryKeyId.required(),
+  },
+
   feedParams: {
     city: common.primaryKeyId,
     beforeId: Joi.number().integer().min(0).optional(),
