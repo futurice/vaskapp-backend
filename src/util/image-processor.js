@@ -41,10 +41,43 @@ function getTextPositionFromCenter (imageHeight, rectPosition, rectHeight) {
   ) + textBaselineAdjust;
 }
 
+const emojiReplacer = (text = '') =>
+  text
+  .replace(/😀/g, ':)')
+  .replace(/😁/g, ':D')
+  .replace(/😂/g, ':D')
+  .replace(/🤣/g, ':D')
+  .replace(/😃/g, '=D')
+  .replace(/😄/g, '=)')
+  .replace(/😅/g, ':)')
+  .replace(/😆/g, 'x)')
+  .replace(/😉/g, ';)')
+  .replace(/😎/g, 'B)')
+  .replace(/😍/g, ':)')
+  .replace(/😘/g, ':)')
+  .replace(/😗/g, ':)')
+  .replace(/😙/g, ':)')
+  .replace(/🙂/g, ':)')
+  .replace(/🤗/g, ':)')
+  .replace(/🤔/g, '')
+  .replace(/😐/g, ':|')
+  .replace(/😝/g, 'xP')
+  .replace(/😜/g, ';P')
+  .replace(/😓/g, ';(')
+  .replace(/☹/g, ':(')
+  .replace(/🙁/g, ':(')
+  .replace(/😢/g, ':`(')
+  .replace(/😦/g, ':(')
+  .replace(/😩/g, ':(')
+  .replace(/😬/g, ':()')
+  .replace(/😰/g, ':()')
+  .replace(/😵/g, 'x()');
+
 // # Drawing image with Caption
 // Images with caption are resized to default max dimensions
 function processImageWithCaption(imageBuffer, { imageText = '', imageTextPosition = 0.5 }) {
   const textPosition = parseFloat(imageTextPosition);
+  const formattedImageText = emojiReplacer(imageText);
 
   return new Promise((resolve, reject) => {
     try {
@@ -77,10 +110,11 @@ function processImageWithCaption(imageBuffer, { imageText = '', imageTextPositio
             // Draw text
             .fill(TEXT_COLOR)
             .fontSize(FONT_SIZE)
+            .encoding('Unicode')
             .drawText(
               0,
               getTextPositionFromCenter(imageSize.height, textPosition, BAR_HEIGHT),
-              imageText,
+              formattedImageText,
               'Center'
             )
             .toBuffer('JPG', (error, resultBuffer) => {
