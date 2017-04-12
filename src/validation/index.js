@@ -46,6 +46,10 @@ const schemas = {
     imageId: Joi.string().required()
   },
 
+  imageQueryParams: {
+    userId: common.primaryKeyId.required(),
+  },
+
   vote: {
     value: Joi.number().integer().valid(-1, 1),
     feedItemId: Joi.number().integer().required(),

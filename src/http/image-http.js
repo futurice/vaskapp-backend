@@ -65,11 +65,15 @@ function validateMimeType(mimetype) {
 
 
 const getImage = createJsonRoute(function(req, res) {
-  const params = assert({
+  const imageParams = assert({
     imageId: req.params.id
   }, 'imageParams');
 
-  return imageCore.getImageById(params.imageId)
+  const coreParams = Object.assign(imageParams, {
+    client: req.client,
+  });
+
+  return imageCore.getImageById(coreParams)
     .then(image => {
       if (!image) {
         throwStatus(404, 'No such image id');
@@ -78,6 +82,17 @@ const getImage = createJsonRoute(function(req, res) {
       }
     });
 });
+
+const getImages = createJsonRoute(function(req, res) {
+  const imageParams = assert(req.query, 'imageQueryParams');
+
+  const coreParams = Object.assign(imageParams, {
+    client: req.client,
+  });
+
+  return imageCore.getImages(coreParams);
+});
+
 
 function postImage(req, res) {
   const action = assert(req.body, 'action');
@@ -115,5 +130,6 @@ function postImage(req, res) {
 
 export {
   getImage,
+  getImages,
   postImage
 };
