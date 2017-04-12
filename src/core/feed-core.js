@@ -51,7 +51,6 @@ function getStickySqlString() {
  * @param {string} [opts.type]     Return only certain type items
  * @param {string} [opts.userId]   Return only certain user's items
  * @param {boolean} [opts.includeSticky = true]   Should sticky messages be included
- * @param {string} [opts.imagePath] Return only images with path
  */
 function getFeed(opts) {
   opts = _.merge({
@@ -118,11 +117,6 @@ function getFeed(opts) {
   if (_.isNumber(opts.userId)) {
     whereClauses.push(`feed_items.user_id = ?`);
     params.push(opts.userId);
-  }
-
-  if (opts.imagePath) {
-    whereClauses.push(`feed_items.image_path = ?`);
-    params.push(opts.imagePath);
   }
 
   if (whereClauses.length > 0) {
