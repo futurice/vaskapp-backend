@@ -18,7 +18,7 @@ function getStickySqlString() {
       feed_items.text as text,
       feed_items.type as action_type_code,
       COALESCE(users.name, 'SYSTEM') as user_name,
-      users.uuid as user_uuid,
+      users.id as user_id,
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
@@ -32,7 +32,7 @@ function getStickySqlString() {
     GROUP BY
       feed_items.id,
       users.name,
-      users.uuid,
+      users.id,
       teams.name,
       votes.value
     ORDER BY feed_items.id DESC
@@ -49,9 +49,13 @@ function getStickySqlString() {
  * @param {string} [opts.sort=new] Either 'hot' or 'new'
  * @param {number} [opts.eventId]  Event whose feed items to return
  * @param {string} [opts.type]     Return only certain type items
+ * @param {string} [opts.userId]   Return only certain user's items
+ * @param {boolean} [opts.includeSticky = true]   Should sticky messages be included
+ * @param {string} [opts.imagePath] Return only images with path
  */
 function getFeed(opts) {
   opts = _.merge({
+    includeSticky: true,
     limit: 20
   }, opts);
 
@@ -64,7 +68,7 @@ function getFeed(opts) {
       feed_items.text as text,
       feed_items.type as action_type_code,
       COALESCE(users.name, 'SYSTEM') as user_name,
-      users.uuid as user_uuid,
+      users.id as user_id,
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
@@ -81,7 +85,7 @@ function getFeed(opts) {
   let whereClauses = ['NOT feed_items.is_sticky'];
 
   // TODO: Sticky messages should have their own endpoint
-  const includeSticky = !opts.beforeId && !opts.eventId;
+  const includeSticky = opts.includeSticky && !opts.beforeId;
   if (includeSticky) {
     sqlString = getStickySqlString() + " UNION ALL " + sqlString;
     params.push(opts.client.id);
@@ -111,11 +115,29 @@ function getFeed(opts) {
     params.push(opts.type);
   }
 
+  if (_.isNumber(opts.userId)) {
+    whereClauses.push(`feed_items.user_id = ?`);
+    params.push(opts.userId);
+  }
+
+  if (opts.imagePath) {
+    whereClauses.push(`feed_items.image_path = ?`);
+    params.push(opts.imagePath);
+  }
+
   if (whereClauses.length > 0) {
     sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
   }
 
-  sqlString += ` GROUP BY feed_items.id, users.name, users.uuid, teams.name, votes.value, teams.city_id, cities.id ) `;
+  sqlString +=
+    ` GROUP BY
+        feed_items.id,
+        users.name,
+        users.id,
+        teams.name,
+        votes.value,
+        teams.city_id,
+        cities.id ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -238,6 +260,7 @@ function _actionToFeedObject(row, client) {
     userVote: row['user_vote'],
     hotScore: row['hot_score'],
     author: {
+      id: row['user_id'],
       name: row['user_name'],
       team: row['team_name'],
       type: _resolveAuthorType(row, client)
@@ -287,11 +310,11 @@ function _getTeamNameSql(cityId) {
 }
 
 function _resolveAuthorType(row, client) {
-  const rowUserUuid = row['user_uuid'];
+  const rowUserId = row['user_id'];
 
-  if (rowUserUuid === null) {
+  if (rowUserId === null) {
     return CONST.AUTHOR_TYPES.SYSTEM;
-  } else if (rowUserUuid === client.uuid) {
+  } else if (rowUserId === client.id) {
     return CONST.AUTHOR_TYPES.ME;
   }
 
