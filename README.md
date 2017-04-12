@@ -232,6 +232,20 @@ Responses:
 * `404 Not found` Feed item not found
 
 
+### `GET /api/users`
+
+> Get user details
+
+Query parameters:
+
+* `userId` Integer. Required. User to whose details fetched
+
+Responses:
+
+* `200 OK` Body is one of [user details object](#user-details-object).
+* `404 Not Found` User not found
+
+
 ### `PUT /api/users/:uuid`
 
 > Create or update a user
@@ -420,6 +434,38 @@ Responses:
   "city": 3
 }
 ```
+
+### User details object
+
+Images is an array of [feed objects](#feed-objects).
+
+```js
+{
+  "name": "Hessu Kypärä",
+  "team": "TiTe",
+  "numSimas": "1",
+  "images": [
+    {
+      "id": "2",
+      "type": "IMAGE",
+      "votes": "0",
+      "userVote": 0,
+      "hotScore": "195.2537",
+      "author": {
+        "id": "1",
+        "name": "Hessu Kypärä",
+        "team": "TiTe",
+        "type": "ME"
+      },
+      "createdAt": "2017-04-12T16:40:14.308Z",
+      "location": {
+        "latitude": 0.123,
+        "longitude": 0.123
+      },
+      "url": "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
+    }
+  ]
+}```
 
 ### User object
 

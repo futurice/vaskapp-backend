@@ -18,10 +18,11 @@ function getEventById(opts = {}) {
       }
 
       const getImagesPromise = getFeed({
-        eventId: opts.eventId,
-        client:  opts.client,
-        type:    'IMAGE',
-        limit:   50
+        eventId:       opts.eventId,
+        client:        opts.client,
+        type:          'IMAGE',
+        limit:         50,
+        includeSticky: false,
       });
 
       return BPromise.all([

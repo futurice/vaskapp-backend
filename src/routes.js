@@ -23,8 +23,9 @@ function createRouter() {
   router.post('/actions', actionHttp.postAction);
   router.get('/teams', teamHttp.getTeams);
 
+  router.get('/users', userHttp.getUserById);
   router.put('/users/:uuid', userHttp.putUser);
-  router.get('/users/:uuid', userHttp.getUser);
+  router.get('/users/:uuid', userHttp.getUserByUuid);
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
 
