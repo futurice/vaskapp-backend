@@ -136,9 +136,7 @@ function _getTimeStamp(event, headers, column) {
 
 function _getBoolean(event, headers, column, defaultValue = false) {
   const cellData = event[headers[column]];
-  return _.isBoolean(cellData)
-    ? cellData
-    : defaultValue;
+  return Boolean(cellData) ? cellData == "true" : defaultValue;
 }
 
 function _getString(event, headers, column, defaultValue = '') {
