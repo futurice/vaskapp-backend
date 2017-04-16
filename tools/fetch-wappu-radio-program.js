@@ -83,7 +83,7 @@ function format(programs, radioName) {
       case 'wappu-radio':
         return program;
       default:
-        console.error('Attempted to format unrecognized radio\'s progmram');
+        console.error('Attempted to format unrecognized radio\'s program');
         process.exit(2);
         break;
     }
