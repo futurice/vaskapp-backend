@@ -11,12 +11,12 @@ const {knex} = require('./database').connect();
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
-const ACCOUNT_TO_FOLLOW = process.env.FB_PAGE_ID || 'retrowappu2015';
+const ACCOUNTS_TO_FOLLOW = _parseEnvVar() || [{ id: 'retrowappu2015', city: 'Tampere' }];
 const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 min
 const FB_CFG = {
   appId:     process.env.FB_APP_ID,
   appSecret: process.env.FB_APP_SECRET,
-  toFollow:  ACCOUNT_TO_FOLLOW,
+  toFollow:  ACCOUNTS_TO_FOLLOW,
   xfbml:     true,
   version:   'v2.5'
 };
@@ -45,8 +45,8 @@ function initialize() {
   })
 }
 
-function getAnnouncements() {
-  return state.announcements;
+function getAnnouncements(cityName) {
+  return _.get(state, `announcements[${cityName}]`);
 }
 
 function _updateFromFacebook() {
@@ -88,28 +88,30 @@ function _fetchAttending(eventId) {
 
 function _fetchAnnouncements() {
   return new Promise((resolve, reject) => {
-    FB.api(`/${ ACCOUNT_TO_FOLLOW }/feed?fields=message,created_time,full_picture`,
-      function(response) {
-        if (response && !response.error) {
-          logger.info('Announcements fetched');
+    _.forEach(ACCOUNTS_TO_FOLLOW, account => {
+      FB.api(`/${ account.id }/feed?fields=message,created_time,full_picture`,
+        function(response) {
+          if (response && !response.error) {
+            logger.info('Announcements fetched');
+            const announcements = response.data
+              .filter(x => !_.isUndefined(x.message))
+              .map(x => {
+                return {
+                  message: x.message,
+                  created_time: x.created_time,
+                  picture: x.full_picture
+                };
+              });
 
-          state.announcements = response.data
-            .filter(x => !_.isUndefined(x.message))
-            .map(x => {
-              return {
-                message: x.message,
-                created_time: x.created_time,
-                picture: x.full_picture
-              };
-            });
-
-          resolve();
-        } else {
-          logger.error('Failed to fetch announcements:', response);
-          resolve();
+            _.set(state, ['announcements', account.city], announcements);
+          } else {
+            logger.error('Failed to fetch announcements:', response);
+          }
         }
-      }
-    );
+      );
+    });
+
+    resolve();
   });
 }
 
@@ -169,6 +171,20 @@ function _extendTokenDuration() {
 
 function _parseAccessTokenFromBody(body) {
   return JSON.parse(body).access_token;
+}
+
+function _parseEnvVar() {
+  if (!process.env.FB_ACCOUNTS_TO_FOLLOW) {
+    logger.info('Env var FB_ACCOUNTS_TO_FOLLOW not set');
+    return undefined;
+  }
+
+  try {
+    return JSON.parse(process.env.FB_ACCOUNTS_TO_FOLLOW);
+  } catch (err) {
+    logger.error('Error parsing env variable FB_ACCOUNTS_TO_FOLLOW', err);
+    return undefined;
+  }
 }
 
 export {
