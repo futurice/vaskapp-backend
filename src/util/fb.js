@@ -11,13 +11,7 @@ const {knex} = require('./database').connect();
 
 requireEnvs(['FB_APP_ID', 'FB_APP_SECRET']);
 
-const ACCOUNTS_TO_FOLLOW = [
-  {
-    city: 'Tampere',
-    id: 'reissuwappu',
-  },
-]; // TODO
- //JSON.parse(process.env.FB_ACCOUNTS_TO_FOLLOW) || 'retrowappu2015';
+const ACCOUNTS_TO_FOLLOW = _parseEnvVar() || [{ id: 'retrowappu2015', city: 'Tampere' }];
 const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 min
 const FB_CFG = {
   appId:     process.env.FB_APP_ID,
@@ -177,6 +171,20 @@ function _extendTokenDuration() {
 
 function _parseAccessTokenFromBody(body) {
   return JSON.parse(body).access_token;
+}
+
+function _parseEnvVar() {
+  if (!process.env.FB_ACCOUNTS_TO_FOLLOW) {
+    logger.info('Env var FB_ACCOUNTS_TO_FOLLOW not set');
+    return undefined;
+  }
+
+  try {
+    return JSON.parse(process.env.FB_ACCOUNTS_TO_FOLLOW);
+  } catch (err) {
+    logger.error('Error parsing env variable FB_ACCOUNTS_TO_FOLLOW', err);
+    return undefined;
+  }
 }
 
 export {
