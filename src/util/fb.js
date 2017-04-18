@@ -52,7 +52,7 @@ function initialize() {
 }
 
 function getAnnouncements(cityName) {
-  return state.announcements[cityName];
+  return _.get(state, `announcements[${cityName}]`);
 }
 
 function _updateFromFacebook() {
