@@ -23,8 +23,8 @@ function createOrUpdateMood(opts) {
         false AS is_new
     ), inserted AS (
         INSERT INTO
-          wappu_mood(user_id, rating, description)
-        SELECT ?, ?, ? WHERE NOT EXISTS( SELECT * FROM upsert )
+          wappu_mood(user_id, rating, description, created_at_coarse)
+        SELECT ?, ?, ?, CURRENT_TIMESTAMP + interval '3 hour' WHERE NOT EXISTS( SELECT * FROM upsert )
         RETURNING
           *,
           true AS is_new
