@@ -143,7 +143,8 @@ function getMood(opts) {
         }
 
         result.rows = [zeroRating].concat(result.rows);
-        return _rowsToMoodObjects(result.rows)
+        const moods = _rowsToMoodObjects(result.rows);
+        return _interpolateIntermediate(moods);
       }));
 }
 
@@ -238,6 +239,77 @@ function _formatRating(rating) {
 
 function _hasDescription(row) {
   return row.description && _.trim(row.description).length > 0;
+}
+
+function _interpolateIntermediate(moods) {
+  const getIndexOfToday = array => {
+    const today = moment().utcOffset(3); // Hacky
+
+    return _.findIndex(array, element =>
+      moment(element.date).isSame(today, 'day')
+    ) || 0
+  };
+
+  const todayIndex = getIndexOfToday(moods);
+  const datesPast = _fillEmpties(moods.slice(0, todayIndex + 1));
+  const datesFuture = moods.slice(todayIndex + 1);
+
+  return  _.union(datesPast, datesFuture);
+}
+
+function _fillEmpties(dates) {
+
+  if (dates.length <= 1) {
+    // Too small sample size to interpolate missing values
+    return dates;
+  }
+
+  const interpolateCity = !!dates[0].ratingCity;
+  const interpolateTeam = !!dates[0].ratingTeam;
+  const interpolatePersonal = !!dates[0].ratingPersonal;
+
+  let lastKnownCity = 0;
+  let lastKnownTeam = 0;
+  let lastKnownPersonal = 0;
+
+
+  return _.map(dates.reverse(), (element, index) => {
+    const copy = _.cloneDeep(element);
+
+    if (interpolateCity ) {
+      lastKnownCity = copy.ratingCity === null
+         ? _interpolateValue(lastKnownCity, _getNextValue(dates.slice(index), 'ratingCity'))
+         : copy.ratingCity;
+
+      copy.ratingCity = String(lastKnownCity);
+    }
+
+    if (interpolateTeam) {
+      lastKnownTeam = copy.ratingTeam === null
+         ? _interpolateValue(lastKnownTeam, _getNextValue(dates.slice(index), 'ratingTeam'))
+         : copy.ratingTeam;
+
+      copy.ratingTeam = String(lastKnownTeam);
+    }
+
+    if (interpolatePersonal) {
+      lastKnownPersonal = copy.ratingPersonal === null
+         ? _interpolateValue(lastKnownPersonal, _getNextValue(dates.slice(index), 'ratingPersonal'))
+         : copy.ratingPersonal;
+
+      copy.ratingPersonal = String(lastKnownPersonal);
+    }
+
+    return copy;
+  }).reverse();
+}
+
+function _interpolateValue(start, end) {
+  return (Number(start) + Number(end)) / 2;
+}
+
+function _getNextValue(values, col) {
+  return _.find(values, element => element[col] !== null)[col] || 0;
 }
 
 export {
