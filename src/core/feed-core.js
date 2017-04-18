@@ -8,7 +8,11 @@ import moment from 'moment-timezone';
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
-function getStickySqlString() {
+function getStickySqlString(city) {
+  const whereCitySql = !city
+    ? ' AND feed_items.city_id IS NULL'
+    : knex.raw(` AND (feed_items.city_id = ? OR feed_items.city_id IS NULL)`, city).toString();
+
   return `
     (SELECT
       feed_items.id as id,
@@ -28,7 +32,7 @@ function getStickySqlString() {
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
-    WHERE feed_items.is_sticky
+    WHERE feed_items.is_sticky ${ whereCitySql }
     GROUP BY
       feed_items.id,
       users.name,
@@ -86,7 +90,7 @@ function getFeed(opts) {
   // TODO: Sticky messages should have their own endpoint
   const includeSticky = opts.includeSticky && !opts.beforeId;
   if (includeSticky) {
-    sqlString = getStickySqlString() + " UNION ALL " + sqlString;
+    sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;
     params.push(opts.client.id);
   }
 
