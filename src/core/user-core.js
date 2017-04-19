@@ -69,6 +69,7 @@ function getUserDetails(opts) {
     userId:        opts.userId,
     type:          'IMAGE',
     includeSticky: false,
+    limit:         50,
   });
 
   return BPromise.all([
