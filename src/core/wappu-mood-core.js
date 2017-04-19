@@ -247,7 +247,7 @@ function _interpolateIntermediate(moods) {
 
     return _.findIndex(array, element =>
       moment(element.date).isSame(today, 'day')
-    ) || 0
+    ) || 0;
   };
 
   const todayIndex = getIndexOfToday(moods);
