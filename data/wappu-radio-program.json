@@ -35,30 +35,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/hyodyllisetidiootit-fs8.png"
   },
   {
-    "id": "a88b66da-7efe-4bf9-a69a-44a65d3e9a05",
-    "start": "2017-04-29T18:00:00+03:00",
-    "end": "2017-04-29T20:00:00+03:00",
-    "title": "Maailman pisin kalju",
-    "host": "Arttu & teBo",
-    "prod": "Jaketus",
-    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystymään toteamaan, että se oli jautaa.\r\n",
-    "timestamp": "2017-04-05T17:42:07+03:00",
-    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
-  },
-  {
-    "id": "f0d8f8c1-3bd4-41f3-83f3-be6d6d5d1d93",
-    "start": "2017-04-20T00:00:00+03:00",
-    "end": "2017-04-20T07:00:00+03:00",
-    "title": "Tarinoita suloisista synneistä",
-    "host": "Sofia & Niko",
-    "prod": "Alexander",
-    "desc": "Seitsemän tuntia yöradiota, seitsemän kuolemansyntiä. Koska laiskuus, kateus ja ylensyönti ovat jo lähtemätön osa jokapäiväistä elämäämme, ei niiden harjoittaminen tunnu enää miltään. Siksi päätimme pistää listan kokonaan uusiksi ja määrittää seitsemän meitä koskettavaa kuolemansyntiä. Missä menevät lain ja moraalin rajat stalkkauksessa? Onko Linux pyhempi kuin Windows? Voiko toisen ihailu olla suloista vai tuottaako se pelkkää tuskaa? Tiesitpä sitten paikkasi tai nopeutesi, purkaudu häntärekursiostasi Wapun ensimmäisenä yönä ja Fourier-muunna itsesi kanssamme samoille taajuuksille!",
-    "timestamp": "2017-04-05T21:32:05+03:00",
-    "photo": "https://wappuradio.fi/img/host/tarinoitasuloisistasynneista-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/tarinoitasuloisistasynneista-fs8.png"
-  },
-  {
     "id": "1def5670-3977-454c-8f5c-790663d2d612",
     "start": "2017-04-29T16:00:00+03:00",
     "end": "2017-04-29T18:00:00+03:00",
@@ -131,18 +107,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/saattaasisaltaapahkinaa-fs8.png"
   },
   {
-    "id": "571c265a-d789-4070-9fc3-d8a28ed38ccb",
-    "start": "2017-04-21T17:00:00+03:00",
-    "end": "2017-04-21T19:00:00+03:00",
-    "title": "Pelastakaa Aasit!",
-    "host": "Helge \"tenderi\" Jalonen & Antti \"Mutanen\" mutsku",
-    "prod": "Juha Suvanto",
-    "desc": "Tarina menee näin: alussa soitamme satunnaisen kappaleen. Toimittajien tehtävänä on luoda uskottava ja kantava silta sen yli seuraavaan kappaleeseen. Tähän kappaleeseen toinen toimittaja vastaa uudella, paremmalla sillalla soittaen perään seuraavan kappaleen. \r\n\r\nKuinka kauas voi päästä kappaleesta X? Oletteko koskaan miettineet miltä kuulostaisi Hitchball suoritettuna peukalokyytien sisään aasinsiltoina kappaleiden välillä? Kuinka paljon mutsku soittaa musiikkia josta et todennäköisesti oo edes kuullut? Entä löydetäänkö vielä reitti takaisin X:n? ",
-    "timestamp": "2017-04-06T18:35:28+03:00",
-    "photo": "https://wappuradio.fi/img/host/pelastakaaaasit-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/pelastakaaaasit-fs8.png"
-  },
-  {
     "id": "620995e0-58e6-42c5-95a8-c46f19aec664",
     "start": "2017-04-29T14:00:00+03:00",
     "end": "2017-04-29T16:00:00+03:00",
@@ -189,30 +153,6 @@
     "timestamp": "2017-04-06T20:18:23+03:00",
     "photo": "https://wappuradio.fi/img/host/post-iltaradio-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/post-iltaradio-fs8.png"
-  },
-  {
-    "id": "9b104838-5810-4b04-b234-b38e26e81090",
-    "start": "2017-04-25T18:00:00+03:00",
-    "end": "2017-04-25T20:00:00+03:00",
-    "title": "Overdose of Finnish Pop",
-    "host": "Janne Koivisto & Tytti Jaakkola",
-    "prod": "Juha Suvanto",
-    "desc": "What is this strange country, what do people do here, what kind of music do they listen? Does Finnish taste in music differ from music in other parts of the world? Our hosts explore the core of Finnish music and wonder the cultural differences with four exotic guests.\r\n\r\nRakkauden Wappuradio, now also available in English!",
-    "timestamp": "2017-04-06T20:29:10+03:00",
-    "photo": "https://wappuradio.fi/img/host/overdoseoffinnishpop-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/overdoseoffinnishpop-fs8.png"
-  },
-  {
-    "id": "b09c3f55-8ffd-4cca-aa46-dc740c9a7c83",
-    "start": "2017-04-20T18:00:00+03:00",
-    "end": "2017-04-20T20:00:00+03:00",
-    "title": "Overdose of Finnish Pop",
-    "host": "Janne Koivisto & Tytti Jaakkola",
-    "prod": "Juha Suvanto",
-    "desc": "What is this strange country, what do people do here, what kind of music do they listen? Does Finnish taste in music differ from music in other parts of the world? Our hosts explore the core of Finnish music and wonder the cultural differences with four exotic guests.\r\n\r\nRakkauden Wappuradio, now also available in English!",
-    "timestamp": "2017-04-06T20:30:16+03:00",
-    "photo": "https://wappuradio.fi/img/host/overdoseoffinnishpop-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/overdoseoffinnishpop-fs8.png"
   },
   {
     "id": "4dda658a-bbbf-4ea8-b37a-6c15e5932c17",
@@ -345,18 +285,6 @@
     "timestamp": "2017-04-06T22:15:19+03:00",
     "photo": "https://wappuradio.fi/img/host/aamujamit-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/aamujamit-fs8.png"
-  },
-  {
-    "id": "fae67617-128b-4082-85ce-90d024df5650",
-    "start": "2017-04-25T22:00:00+03:00",
-    "end": "2017-04-26T00:00:00+03:00",
-    "title": "Radio Prog",
-    "host": "Lipi & Vergi",
-    "prod": "Fisu",
-    "desc": "Kulkeeko musiikkimakusi käsi kädessä suosituimpien tanssilistojen kanssa? Onko wappuradion kovin biisi Dodo-Sorsa? Eikö mies voi mielestäsi pukeutua nahkahousuihin ja tuntuuko 20 minuutiset proge eepokset tekotaiteelliselta huuhaalta? Tämä ohjelma ei ole sinulle. Progerallien ja muun pitkätukkamusan säestämänä paneudumme mm. tulevan festarikesän parhaaseen antiin. Soitetaan mitä oikeasti halutaan - Radio Proooooog.",
-    "timestamp": "2017-04-06T22:24:51+03:00",
-    "photo": "https://wappuradio.fi/img/host/radioprog-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/radioprog-fs8.png"
   },
   {
     "id": "cb13eaed-1f86-4a80-a543-9c85a6db3bb3",
@@ -587,30 +515,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/vesikauhuistenuimakoulu-fs8.png"
   },
   {
-    "id": "f2bc354a-f5e1-4f22-92e0-6e6ee5276bf1",
-    "start": "2017-04-20T17:00:00+03:00",
-    "end": "2017-04-20T18:00:00+03:00",
-    "title": "Kysy Luojalta",
-    "host": "Janne Eskola, Ville Korpiluoto",
-    "prod": "JSuvanto",
-    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
-    "timestamp": "2017-04-07T11:30:12+03:00",
-    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
-  },
-  {
-    "id": "0407fb17-634e-49da-8da3-bfc8de079fcf",
-    "start": "2017-04-24T17:00:00+03:00",
-    "end": "2017-04-24T18:00:00+03:00",
-    "title": "Kysy Luojalta",
-    "host": "Janne Eskola, Ville Korpiluoto",
-    "prod": "JSuvanto",
-    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
-    "timestamp": "2017-04-07T11:30:39+03:00",
-    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
-  },
-  {
     "id": "141608f6-5ba4-4a30-bfbb-47e8cbdd686e",
     "start": "2017-04-28T20:00:00+03:00",
     "end": "2017-04-28T22:00:00+03:00",
@@ -731,18 +635,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/jussikangasgoesradio-fs8.png"
   },
   {
-    "id": "1e737ed0-fb29-4809-836a-4fa23a12a835",
-    "start": "2017-04-26T09:00:00+03:00",
-    "end": "2017-04-26T11:00:00+03:00",
-    "title": "Rakkauden Wappurappio",
-    "host": "Tutu, Ketku, Veli-V",
-    "prod": "Kukakumma",
-    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää. Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää, mikä on hyvin. Ja miten tilannetta voisi parantaa. Mukana mukavaa musiikkia, viereita, kilpailuita, totuus fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
-    "timestamp": "2017-04-10T22:00:18+03:00",
-    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
-  },
-  {
     "id": "03e56e69-8af2-4353-b645-c993472fa0f9",
     "start": "2017-04-22T19:00:00+03:00",
     "end": "2017-04-22T21:00:00+03:00",
@@ -779,18 +671,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/tilaradio-fs8.png"
   },
   {
-    "id": "b0b7e9e4-6fe3-44da-ad3b-36d2deaa2dea",
-    "start": "2017-04-27T22:00:00+03:00",
-    "end": "2017-04-28T00:00:00+03:00",
-    "title": "Suklaata & Samettia",
-    "host": "keba, Lärvi, Kello, Tebo",
-    "prod": "Kebbish",
-    "desc": "Ihminen ja Intohimo",
-    "timestamp": "2017-04-12T19:32:22+03:00",
-    "photo": "https://wappuradio.fi/img/host/suklaatasamettia-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/suklaatasamettia-fs8.png"
-  },
-  {
     "id": "8a1ef2f0-50d5-4fe9-8c2e-c7975407b31b",
     "start": "2017-04-19T16:00:00+03:00",
     "end": "2017-04-19T18:00:00+03:00",
@@ -813,30 +693,6 @@
     "timestamp": "2017-04-13T17:35:43+03:00",
     "photo": "https://wappuradio.fi/img/host/iltapaivaklassinen-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/iltapaivaklassinen-fs8.png"
-  },
-  {
-    "id": "5684324e-b523-47ee-a5f7-89bbbbfbf173",
-    "start": "2017-04-29T20:00:00+03:00",
-    "end": "2017-04-29T22:00:00+03:00",
-    "title": "TBA",
-    "host": "TBA",
-    "prod": "TBA",
-    "desc": "TBA",
-    "timestamp": "2017-04-14T08:39:56+03:00",
-    "photo": "https://wappuradio.fi/img/host/tba-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/tba-fs8.png"
-  },
-  {
-    "id": "d3b4be8a-22ad-42c5-a5e4-70def67180dc",
-    "start": "2017-04-23T07:00:00+03:00",
-    "end": "2017-04-23T09:00:00+03:00",
-    "title": "TBA",
-    "host": "TBA",
-    "prod": "TBA",
-    "desc": "TBA",
-    "timestamp": "2017-04-14T08:41:26+03:00",
-    "photo": "https://wappuradio.fi/img/host/tba-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/tba-fs8.png"
   },
   {
     "id": "70bf532f-246a-4ecc-a956-bb34fcefe1c5",
@@ -947,18 +803,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/laulunytimessa-fs8.png"
   },
   {
-    "id": "c0f3095a-0b69-4efb-9de7-8d67585531fa",
-    "start": "2017-04-23T18:00:00+03:00",
-    "end": "2017-04-23T20:00:00+03:00",
-    "title": "Maailman pisin kalju",
-    "host": "Arttu & teBo",
-    "prod": "Jaketus",
-    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystymään toteamaan, että se oli jautaa.",
-    "timestamp": "2017-04-14T09:12:31+03:00",
-    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
-  },
-  {
     "id": "695c62e3-9c54-4785-acbe-6ea1c8047bd2",
     "start": "2017-04-23T20:00:00+03:00",
     "end": "2017-04-23T22:00:00+03:00",
@@ -1005,42 +849,6 @@
     "timestamp": "2017-04-14T09:14:53+03:00",
     "photo": "https://wappuradio.fi/img/host/e-sports-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/e-sports-fs8.png"
-  },
-  {
-    "id": "4bfe62d3-e0f4-40fb-9973-996d0981ec47",
-    "start": "2017-04-25T09:00:00+03:00",
-    "end": "2017-04-25T11:00:00+03:00",
-    "title": "Rakkauden Wappurappio",
-    "host": "Tutu, Ketku, Veli-V",
-    "prod": "Kukakumma",
-    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
-    "timestamp": "2017-04-14T09:18:05+03:00",
-    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
-  },
-  {
-    "id": "2193472d-d552-4519-b2b2-4a1a86c18c9d",
-    "start": "2017-04-27T09:00:00+03:00",
-    "end": "2017-04-27T11:00:00+03:00",
-    "title": "Rakkauden Wappurappio",
-    "host": "Tutu, Ketku, Veli-V",
-    "prod": "Kukakumma",
-    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
-    "timestamp": "2017-04-14T09:18:07+03:00",
-    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
-  },
-  {
-    "id": "149bea65-b11b-4a50-895c-a15b909643c3",
-    "start": "2017-04-28T09:00:00+03:00",
-    "end": "2017-04-28T11:00:00+03:00",
-    "title": "Rakkauden Wappurappio",
-    "host": "Tutu, Ketku, Veli-V",
-    "prod": "Kukakumma",
-    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
-    "timestamp": "2017-04-14T09:18:11+03:00",
-    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
   },
   {
     "id": "b6ad59c0-67da-4c30-b755-9f61ca36c398",
@@ -1101,30 +909,6 @@
     "timestamp": "2017-04-14T09:21:31+03:00",
     "photo": "https://wappuradio.fi/img/host/echoshow-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/echoshow-fs8.png"
-  },
-  {
-    "id": "ad0f61c0-f3e7-42dd-8309-e1d092205fd5",
-    "start": "2017-04-28T18:00:00+03:00",
-    "end": "2017-04-28T20:00:00+03:00",
-    "title": "Kivikaudesta keskiviikkoon",
-    "host": "Joona, Tytti ja Ilkka",
-    "prod": "Alexander",
-    "desc": "Miltä betoni kuulostaa ja voiko siitä tehdä frisbeen? Liittyykö pronssiin jotain muutakin kuin Antti Ruuskanen? Mistä purukumi on tehty ja onko se edes kumia ensinkään? Nämä ja paljon muuta selvitetään musiikkimatkalla halki genrerajojen ja historian – aina kivikaudelta keskiviikkoon asti. Lähde siis mukaamme tutkimusmatkalle musiikin ja materian risteykseen, jossa konkretia ja abstraktio lyövät kättä!",
-    "timestamp": "2017-04-14T09:24:01+03:00",
-    "photo": "https://wappuradio.fi/img/host/kivikaudestakeskiviikkoon-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/kivikaudestakeskiviikkoon-fs8.png"
-  },
-  {
-    "id": "b619f667-12c8-4da0-8c09-726390208599",
-    "start": "2017-04-29T07:00:00+03:00",
-    "end": "2017-04-29T09:00:00+03:00",
-    "title": "Suunsoittoa",
-    "host": "Reimann, Lahis",
-    "prod": "Alexander",
-    "desc": "Jääkö oma musiikillinen osaamisesi siihen, että osaat soittaa ovikelloa ja puhelinta? Toisinaan myös suuta? Suunsoittoa ohjelman tutkivat juontajat ovat etsineet kappaleita ja artisteja, joille tärkeimpänä instrumenttina on suu. Anna soittimien levätä hetken aikaa ja anna suun käydä.",
-    "timestamp": "2017-04-14T09:25:02+03:00",
-    "photo": "https://wappuradio.fi/img/host/suunsoittoa-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/suunsoittoa-fs8.png"
   },
   {
     "id": "f45c16bc-994b-4c3c-9230-9d191cb9475a",
@@ -1235,18 +1019,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/herkkahetki-fs8.png"
   },
   {
-    "id": "842e773d-81c7-418d-8e05-db6e323a9019",
-    "start": "2017-04-25T16:00:00+03:00",
-    "end": "2017-04-25T18:00:00+03:00",
-    "title": "Karjapaimenten kannuksilla",
-    "host": "wtw, Pekka Hujanen",
-    "prod": "Vuokko",
-    "desc": "Karjapaimenten kannuksilla soittaa molempia musiikkityylejä: sekä kantria että westerniä. Kappaleiden lomassa pohditaan kantrin syvintä olemusta, syntyjuuria, nykytilaa ja suomalaisia ilmentymiä. ",
-    "timestamp": "2017-04-14T19:56:26+03:00",
-    "photo": "https://wappuradio.fi/img/host/karjapaimentenkannuksilla-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/karjapaimentenkannuksilla-fs8.png"
-  },
-  {
     "id": "04c906ab-43ec-48fe-ac75-e376a84dd35b",
     "start": "2017-04-23T13:00:00+03:00",
     "end": "2017-04-23T18:00:00+03:00",
@@ -1305,5 +1077,233 @@
     "timestamp": "2017-04-18T04:56:05+03:00",
     "photo": "https://wappuradio.fi/img/host/hype-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/hype-fs8.png"
+  },
+  {
+    "id": "c0f3095a-0b69-4efb-9de7-8d67585531fa",
+    "start": "2017-04-23T18:00:00+03:00",
+    "end": "2017-04-23T20:00:00+03:00",
+    "title": "Maailman pisin kalju",
+    "host": "Arttu & teBo",
+    "prod": "Jaketus",
+    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystyä toteamaan, että se oli jautaa.",
+    "timestamp": "2017-04-18T09:05:56+03:00",
+    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
+  },
+  {
+    "id": "a88b66da-7efe-4bf9-a69a-44a65d3e9a05",
+    "start": "2017-04-29T18:00:00+03:00",
+    "end": "2017-04-29T20:00:00+03:00",
+    "title": "Maailman pisin kalju",
+    "host": "Arttu & teBo",
+    "prod": "Jaketus",
+    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystyä toteamaan, että se oli jautaa.\r\n",
+    "timestamp": "2017-04-18T09:06:27+03:00",
+    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
+  },
+  {
+    "id": "b0b7e9e4-6fe3-44da-ad3b-36d2deaa2dea",
+    "start": "2017-04-27T22:00:00+03:00",
+    "end": "2017-04-28T00:00:00+03:00",
+    "title": "Suklaata & Samettia",
+    "host": "keba, Lärvi, Kello, teBo",
+    "prod": "Kebbish",
+    "desc": "Ihminen ja Intohimo",
+    "timestamp": "2017-04-18T09:06:40+03:00",
+    "photo": "https://wappuradio.fi/img/host/suklaatasamettia-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/suklaatasamettia-fs8.png"
+  },
+  {
+    "id": "5684324e-b523-47ee-a5f7-89bbbbfbf173",
+    "start": "2017-04-29T20:00:00+03:00",
+    "end": "2017-04-29T22:00:00+03:00",
+    "title": "Kolmen soinnun tähteet",
+    "host": "kurkku & Teemu",
+    "prod": "Jaketus",
+    "desc": "Kolmen soinnun tähteen täräyttää radioaalloille Wapun parhaat punk- ja skarytmit! Vedä tennarit jalkaan, kiristä henkselit ja lähde musiikkimatkalle kurkun ja Teemun kanssa!",
+    "timestamp": "2017-04-18T10:45:06+03:00",
+    "photo": "https://wappuradio.fi/img/host/kolmensoinnuntahteet-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kolmensoinnuntahteet-fs8.png"
+  },
+  {
+    "id": "f2bc354a-f5e1-4f22-92e0-6e6ee5276bf1",
+    "start": "2017-04-20T17:00:00+03:00",
+    "end": "2017-04-20T18:00:00+03:00",
+    "title": "Kysy Luojalta",
+    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
+    "prod": "JSuvanto",
+    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
+    "timestamp": "2017-04-18T11:02:06+03:00",
+    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
+  },
+  {
+    "id": "0407fb17-634e-49da-8da3-bfc8de079fcf",
+    "start": "2017-04-24T17:00:00+03:00",
+    "end": "2017-04-24T18:00:00+03:00",
+    "title": "Kysy Luojalta",
+    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
+    "prod": "JSuvanto",
+    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
+    "timestamp": "2017-04-18T11:02:26+03:00",
+    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
+  },
+  {
+    "id": "fae67617-128b-4082-85ce-90d024df5650",
+    "start": "2017-04-25T22:00:00+03:00",
+    "end": "2017-04-26T00:00:00+03:00",
+    "title": "Radio Prog",
+    "host": "Lipi & Vergi",
+    "prod": "Fisu",
+    "desc": "Kulkeeko musiikkimakusi käsi kädessä suosituimpien tanssilistojen kanssa? Onko wappuradion kovin biisi Dodo-Sorsa? Eikö mies voi mielestäsi pukeutua nahkahousuihin ja tuntuuko 20 minuutiset proge-eepokset tekotaiteelliselta huuhaalta? Tämä ohjelma ei ole sinulle. Progerallien ja muun pitkätukkamusan säestämänä paneudumme mm. tulevan festarikesän parhaaseen antiin. Soitetaan mitä oikeasti halutaan - Radio Proooooog.",
+    "timestamp": "2017-04-18T11:02:45+03:00",
+    "photo": "https://wappuradio.fi/img/host/radioprog-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/radioprog-fs8.png"
+  },
+  {
+    "id": "d3b4be8a-22ad-42c5-a5e4-70def67180dc",
+    "start": "2017-04-23T07:00:00+03:00",
+    "end": "2017-04-23T09:00:00+03:00",
+    "title": "TBA",
+    "host": "TBA",
+    "prod": "TBA",
+    "desc": "TBA",
+    "timestamp": "2017-04-18T12:54:19+03:00",
+    "photo": "https://wappuradio.fi/img/host/tba-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/tba-fs8.png"
+  },
+  {
+    "id": "b09c3f55-8ffd-4cca-aa46-dc740c9a7c83",
+    "start": "2017-04-20T18:00:00+03:00",
+    "end": "2017-04-20T20:00:00+03:00",
+    "title": "Overdose of Finnish Pop",
+    "host": "Janne Koivisto & Tytti Jaakkola",
+    "prod": "JSuvanto",
+    "desc": "What is this strange country, what do people do here, what kind of music do they listen? Does Finnish taste in music differ from music in other parts of the world? Our hosts explore the core of Finnish music and wonder the cultural differences with four exotic guests.\r\n\r\nRakkauden Wappuradio, now also available in English!",
+    "timestamp": "2017-04-18T15:03:10+03:00",
+    "photo": "https://wappuradio.fi/img/host/overdoseoffinnishpop-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/overdoseoffinnishpop-fs8.png"
+  },
+  {
+    "id": "9b104838-5810-4b04-b234-b38e26e81090",
+    "start": "2017-04-25T18:00:00+03:00",
+    "end": "2017-04-25T20:00:00+03:00",
+    "title": "Overdose of Finnish Pop",
+    "host": "Janne Koivisto & Tytti Jaakkola",
+    "prod": "JSuvanto",
+    "desc": "What is this strange country, what do people do here, what kind of music do they listen? Does Finnish taste in music differ from music in other parts of the world? Our hosts explore the core of Finnish music and wonder the cultural differences with four exotic guests.\r\n\r\nRakkauden Wappuradio, now also available in English!",
+    "timestamp": "2017-04-18T15:03:22+03:00",
+    "photo": "https://wappuradio.fi/img/host/overdoseoffinnishpop-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/overdoseoffinnishpop-fs8.png"
+  },
+  {
+    "id": "571c265a-d789-4070-9fc3-d8a28ed38ccb",
+    "start": "2017-04-21T17:00:00+03:00",
+    "end": "2017-04-21T19:00:00+03:00",
+    "title": "Pelastakaa Aasit!",
+    "host": "Helge \"tenderi\" Jalonen & Antti \"Mutanen\" mutsku",
+    "prod": "JSuvanto",
+    "desc": "Tarina menee näin: alussa soitamme satunnaisen kappaleen. Toimittajien tehtävänä on luoda uskottava ja kantava silta sen yli seuraavaan kappaleeseen. Tähän kappaleeseen toinen toimittaja vastaa uudella, paremmalla sillalla soittaen perään seuraavan kappaleen. \r\n\r\nKuinka kauas voi päästä kappaleesta X? Oletteko koskaan miettineet miltä kuulostaisi Hitchball suoritettuna peukalokyytien sisään aasinsiltoina kappaleiden välillä? Kuinka paljon mutsku soittaa musiikkia josta et todennäköisesti oo edes kuullut? Entä löydetäänkö vielä reitti takaisin X:n? ",
+    "timestamp": "2017-04-18T15:03:40+03:00",
+    "photo": "https://wappuradio.fi/img/host/pelastakaaaasit-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/pelastakaaaasit-fs8.png"
+  },
+  {
+    "id": "4bfe62d3-e0f4-40fb-9973-996d0981ec47",
+    "start": "2017-04-25T09:00:00+03:00",
+    "end": "2017-04-25T11:00:00+03:00",
+    "title": "Rakkauden Wappurappio",
+    "host": "Tutu, Ketku, Veli-V",
+    "prod": "KukaKumma",
+    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
+    "timestamp": "2017-04-18T15:04:41+03:00",
+    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
+  },
+  {
+    "id": "1e737ed0-fb29-4809-836a-4fa23a12a835",
+    "start": "2017-04-26T09:00:00+03:00",
+    "end": "2017-04-26T11:00:00+03:00",
+    "title": "Rakkauden Wappurappio",
+    "host": "Tutu, Ketku, Veli-V",
+    "prod": "KukaKumma",
+    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää. Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää, mikä on hyvin. Ja miten tilannetta voisi parantaa. Mukana mukavaa musiikkia, viereita, kilpailuita, totuus fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
+    "timestamp": "2017-04-18T15:04:49+03:00",
+    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
+  },
+  {
+    "id": "2193472d-d552-4519-b2b2-4a1a86c18c9d",
+    "start": "2017-04-27T09:00:00+03:00",
+    "end": "2017-04-27T11:00:00+03:00",
+    "title": "Rakkauden Wappurappio",
+    "host": "Tutu, Ketku, Veli-V",
+    "prod": "KukaKumma",
+    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
+    "timestamp": "2017-04-18T15:04:53+03:00",
+    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
+  },
+  {
+    "id": "149bea65-b11b-4a50-895c-a15b909643c3",
+    "start": "2017-04-28T09:00:00+03:00",
+    "end": "2017-04-28T11:00:00+03:00",
+    "title": "Rakkauden Wappurappio",
+    "host": "Tutu, Ketku, Veli-V",
+    "prod": "KukaKumma",
+    "desc": "Vaikea aamu? Liian aikainen herätys? Eilinen painaa? Kahvi on pahaa? Miltä aamu teillä näyttää? Tule jakamaan aamusi kanssamme, käydään läpi mikä siinä mättää ja mikä on hyvin – ja miten tilannetta voisi parantaa! Mukana mukavaa musiikkia, vieraita, kilpailuja, totuus Fingerporista ja tottakai, jokaisen aamun ammattilaiset juontajina!",
+    "timestamp": "2017-04-18T15:04:58+03:00",
+    "photo": "https://wappuradio.fi/img/host/rakkaudenwappurappio-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/rakkaudenwappurappio-fs8.png"
+  },
+  {
+    "id": "842e773d-81c7-418d-8e05-db6e323a9019",
+    "start": "2017-04-25T16:00:00+03:00",
+    "end": "2017-04-25T18:00:00+03:00",
+    "title": "Karjapaimenten kannuksilla",
+    "host": "Vesa Ahola, Pekka Hujanen",
+    "prod": "Vuokko",
+    "desc": "Karjapaimenten kannuksilla soittaa molempia musiikkityylejä: sekä kantria että westerniä. Kappaleiden lomassa pohditaan kantrin syvintä olemusta, syntyjuuria, nykytilaa ja suomalaisia ilmentymiä. ",
+    "timestamp": "2017-04-18T15:05:18+03:00",
+    "photo": "https://wappuradio.fi/img/host/karjapaimentenkannuksilla-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/karjapaimentenkannuksilla-fs8.png"
+  },
+  {
+    "id": "f0d8f8c1-3bd4-41f3-83f3-be6d6d5d1d93",
+    "start": "2017-04-20T00:00:00+03:00",
+    "end": "2017-04-20T07:00:00+03:00",
+    "title": "Tarinoita suloisista synneistä",
+    "host": "Sofia & Niko",
+    "prod": "Allu",
+    "desc": "Seitsemän tuntia yöradiota, seitsemän kuolemansyntiä. Koska laiskuus, kateus ja ylensyönti ovat jo lähtemätön osa jokapäiväistä elämäämme, ei niiden harjoittaminen tunnu enää miltään. Siksi päätimme pistää listan kokonaan uusiksi ja määrittää seitsemän meitä koskettavaa kuolemansyntiä. Missä menevät lain ja moraalin rajat stalkkauksessa? Onko Linux pyhempi kuin Windows? Voiko toisen ihailu olla suloista vai tuottaako se pelkkää tuskaa? Tiesitpä sitten paikkasi tai nopeutesi, purkaudu häntärekursiostasi Wapun ensimmäisenä yönä ja Fourier-muunna itsesi kanssamme samoille taajuuksille!",
+    "timestamp": "2017-04-18T20:32:22+03:00",
+    "photo": "https://wappuradio.fi/img/host/tarinoitasuloisistasynneista-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/tarinoitasuloisistasynneista-fs8.png"
+  },
+  {
+    "id": "ad0f61c0-f3e7-42dd-8309-e1d092205fd5",
+    "start": "2017-04-28T18:00:00+03:00",
+    "end": "2017-04-28T20:00:00+03:00",
+    "title": "Kivikaudesta keskiviikkoon",
+    "host": "Joona, Tytti ja Ilkka",
+    "prod": "Allu",
+    "desc": "Miltä betoni kuulostaa ja voiko siitä tehdä frisbeen? Liittyykö pronssiin jotain muutakin kuin Antti Ruuskanen? Mistä purukumi on tehty ja onko se edes kumia ensinkään? Nämä ja paljon muuta selvitetään musiikkimatkalla halki genrerajojen ja historian – aina kivikaudelta keskiviikkoon asti. Lähde siis mukaamme tutkimusmatkalle musiikin ja materian risteykseen, jossa konkretia ja abstraktio lyövät kättä!",
+    "timestamp": "2017-04-18T20:32:52+03:00",
+    "photo": "https://wappuradio.fi/img/host/kivikaudestakeskiviikkoon-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kivikaudestakeskiviikkoon-fs8.png"
+  },
+  {
+    "id": "b619f667-12c8-4da0-8c09-726390208599",
+    "start": "2017-04-29T07:00:00+03:00",
+    "end": "2017-04-29T09:00:00+03:00",
+    "title": "Suunsoittoa",
+    "host": "Reimann, Lahis",
+    "prod": "Allu",
+    "desc": "Jääkö oma musiikillinen osaamisesi siihen, että osaat soittaa ovikelloa ja puhelinta? Toisinaan myös suuta? Suunsoittoa ohjelman tutkivat juontajat ovat etsineet kappaleita ja artisteja, joille tärkeimpänä instrumenttina on suu. Anna soittimien levätä hetken aikaa ja anna suun käydä.",
+    "timestamp": "2017-04-18T20:33:03+03:00",
+    "photo": "https://wappuradio.fi/img/host/suunsoittoa-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/suunsoittoa-fs8.png"
   }
 ]
