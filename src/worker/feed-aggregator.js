@@ -17,7 +17,7 @@ import {
 
 const SIMA_REPORT_INTERVAL = 50;
 const SCORE_REPORT_INTERVAL = 5000;
-const CHECKIN_REPORT_INTERVALS = 50;
+const CHECKIN_REPORT_INTERVALS = 10;
 const POLL_INTERVAL = 60 * 1000; // 1 min
 
 function toInt(n) {
