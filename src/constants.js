@@ -8,10 +8,12 @@ const CONST = {
   FEED_SORT_TYPES: {
     NEW: 'new',
     HOT: 'hot',
+    TOP: 'top',
   },
   FEED_SORT_TYPES_ARRAY: [
     'new',
     'hot',
+    'top',
   ],
 };
 

@@ -13,6 +13,7 @@ function getStickySqlString(city) {
     ? ' AND feed_items.city_id IS NULL'
     : knex.raw(` AND (feed_items.city_id = ? OR feed_items.city_id IS NULL)`, city).toString();
 
+  // TODO top_score optimization
   return `
     (SELECT
       feed_items.id as id,
@@ -26,6 +27,7 @@ function getStickySqlString(city) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      0 as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -62,6 +64,7 @@ function getFeed(opts) {
     limit: 20
   }, opts);
 
+  // TODO top_score optimization
   let sqlString = `
     (SELECT
       feed_items.id as id,
@@ -75,6 +78,7 @@ function getFeed(opts) {
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      feed_items.hot_score - ((extract(epoch from feed_items.created_at)::integer - ${process.env.FEED_ZERO_TIME}) / ${process.env.FEED_INFLATION_INTERVAL}) as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -82,10 +86,19 @@ function getFeed(opts) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     LEFT JOIN cities ON cities.id = teams.city_id
+    ${ _getWhereSql(opts) }
+    GROUP BY
+        feed_items.id,
+        users.name,
+        users.id,
+        teams.name,
+        votes.value,
+        teams.city_id,
+        cities.id)
     `;
+    // (feed_items.hot_score - (extract(epoch from feed_items.created_at) as integer - ${process.env.FEED_ZERO_TIME}) / ${process.env.FEED_INFLATION_INTERVAL})
 
   let params = [opts.client.id];
-  let whereClauses = ['NOT feed_items.is_sticky'];
 
   // TODO: Sticky messages should have their own endpoint
   const includeSticky = opts.includeSticky && !opts.beforeId;
@@ -94,48 +107,6 @@ function getFeed(opts) {
     params.push(opts.client.id);
   }
 
-  if (opts.beforeId) {
-    whereClauses.push('feed_items.id < ?');
-    params.push(opts.beforeId);
-  }
-
-  if (!opts.client.isBanned) {
-    whereClauses.push('NOT feed_items.is_banned');
-  }
-
-  if (opts.city) {
-    whereClauses.push(`feed_items.city_id = ?`);
-    params.push(opts.city);
-  }
-
-  if (opts.eventId) {
-    whereClauses.push(`feed_items.event_id = ?`);
-    params.push(opts.eventId);
-  }
-
-  if (opts.type) {
-    whereClauses.push(`feed_items.type = ?`);
-    params.push(opts.type);
-  }
-
-  if (_.isNumber(opts.userId)) {
-    whereClauses.push(`feed_items.user_id = ?`);
-    params.push(opts.userId);
-  }
-
-  if (whereClauses.length > 0) {
-    sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
-  }
-
-  sqlString +=
-    ` GROUP BY
-        feed_items.id,
-        users.name,
-        users.id,
-        teams.name,
-        votes.value,
-        teams.city_id,
-        cities.id ) `;
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
@@ -290,11 +261,51 @@ function _actionToFeedObject(row, client) {
   return feedObj;
 }
 
+function _getWhereSql(opts) {
+  const whereClauses = ['NOT feed_items.is_sticky'];
+  const params = [];
+
+  if (opts.beforeId) {
+    whereClauses.push('feed_items.id < ?');
+    params.push(opts.beforeId);
+  }
+
+  if (!opts.client.isBanned) {
+    whereClauses.push('NOT feed_items.is_banned');
+  }
+
+  if (opts.city) {
+    whereClauses.push(`feed_items.city_id = ?`);
+    params.push(opts.city);
+  }
+
+  if (opts.eventId) {
+    whereClauses.push(`feed_items.event_id = ?`);
+    params.push(opts.eventId);
+  }
+
+  if (opts.type) {
+    whereClauses.push(`feed_items.type = ?`);
+    params.push(opts.type);
+  }
+
+  if (_.isNumber(opts.userId)) {
+    whereClauses.push(`feed_items.user_id = ?`);
+    params.push(opts.userId);
+  }
+
+  return whereClauses.length > 0
+    ? knex.raw(` WHERE ${ whereClauses.join(' AND ')}`, params).toString()
+    : '';
+}
+
 function _getSortingSql(sort) {
-  const { HOT } = CONST.FEED_SORT_TYPES;
+  const { HOT, TOP } = CONST.FEED_SORT_TYPES;
 
   if (sort === HOT) {
     return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC';
+  } else if (sort === TOP) {
+    return 'ORDER BY is_sticky DESC, top_score DESC, id DESC'; // TODO
   } else {
     // Defaults to 'NEW'
     return 'ORDER BY is_sticky DESC, id DESC';
