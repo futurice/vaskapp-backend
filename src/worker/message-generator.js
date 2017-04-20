@@ -20,7 +20,7 @@ function generateFirstCheckInMessage(eventName, userName) {
 
 function generateEventCheckInMessage(eventName, checkIns) {
   const praises = [
-    '<eventName> is buzzing! <checkIns> people have checked in!'
+    '<eventName> is buzzing! <checkIns> people have checked in!',
     `It's getting crowded in <eventName>. <checkIns> people already there!`,
     `<checkIns> people are attending <eventName>. Don't miss out!`,
   ];
