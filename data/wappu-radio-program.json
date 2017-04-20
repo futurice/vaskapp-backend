@@ -11,18 +11,6 @@
     "thumb": ""
   },
   {
-    "id": "caa18a4e-9475-4055-a692-ecef63acd500",
-    "start": "2017-04-22T00:00:00+03:00",
-    "end": "2017-04-22T07:00:00+03:00",
-    "title": "Ompeluseura",
-    "host": "Ilkka \"wormi\" P, Aleksi V, Arttu L, Henri M, Lauri P, Jaakko S, Antti \"mutsku\" M",
-    "prod": "Arttu ja mutsku",
-    "desc": "Om­pe­luseu­ran kirjava jen­gi viih­dyt­tää radiokansaa yön yli niin genrerajat kuin perinteiset puheenaiheetkin rikkoen ja taas uudelleen kokoon parsien. Hyvinkin satunnaiset ja potentiaalisesti satumaiset puheenaiheet saavat kenet vain näkemään maailman vaaleanpunaisempana kuin koskaan ennen. Tuuttaa mukiisi sopiva annos ydinmehua ja surffaa kanssamme aurinkoon, sillä me tahdomme olla sinulle helliä.",
-    "timestamp": "2017-04-04T18:01:01+03:00",
-    "photo": "https://wappuradio.fi/img/host/ompeluseura-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/ompeluseura-fs8.png"
-  },
-  {
     "id": "c2e2118f-be34-4cb8-9c54-dca9ebda7f87",
     "start": "2017-04-25T00:00:00+03:00",
     "end": "2017-04-25T07:00:00+03:00",
@@ -405,18 +393,6 @@
     "timestamp": "2017-04-07T00:57:53+03:00",
     "photo": "https://wappuradio.fi/img/host/lainasto-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/lainasto-fs8.png"
-  },
-  {
-    "id": "c35dd5b5-9c30-46c4-a04d-c9bd102a437f",
-    "start": "2017-04-30T00:00:00+03:00",
-    "end": "2017-04-30T07:00:00+03:00",
-    "title": "100 maan sammuttavat säkeet",
-    "host": "BTR",
-    "prod": "Jarno Tuokkola (jos ehtii), varalla Dregu",
-    "desc": "Unirytminsä ja suuntavaistonsa kadottaneiden wapunviettäjien nokturnaalinen napanderiretki halki käymälättömien cocktailbaarien. Epäortodoksisten äänimaisemien äimistelyn ohessa luvassa hortoilua horrostilan rajoja uhmaten sadan suvereenin valtion vaikutuspiirissä.",
-    "timestamp": "2017-04-07T01:41:24+03:00",
-    "photo": "https://wappuradio.fi/img/host/100maansammuttavatsakeet-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/100maansammuttavatsakeet-fs8.png"
   },
   {
     "id": "afa4594e-34e3-44a7-84cb-796774b93193",
@@ -1127,30 +1103,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/kolmensoinnuntahteet-fs8.png"
   },
   {
-    "id": "f2bc354a-f5e1-4f22-92e0-6e6ee5276bf1",
-    "start": "2017-04-20T17:00:00+03:00",
-    "end": "2017-04-20T18:00:00+03:00",
-    "title": "Kysy Luojalta",
-    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
-    "prod": "JSuvanto",
-    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
-    "timestamp": "2017-04-18T11:02:06+03:00",
-    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
-  },
-  {
-    "id": "0407fb17-634e-49da-8da3-bfc8de079fcf",
-    "start": "2017-04-24T17:00:00+03:00",
-    "end": "2017-04-24T18:00:00+03:00",
-    "title": "Kysy Luojalta",
-    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
-    "prod": "JSuvanto",
-    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta!",
-    "timestamp": "2017-04-18T11:02:26+03:00",
-    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
-  },
-  {
     "id": "fae67617-128b-4082-85ce-90d024df5650",
     "start": "2017-04-25T22:00:00+03:00",
     "end": "2017-04-26T00:00:00+03:00",
@@ -1305,5 +1257,53 @@
     "timestamp": "2017-04-18T20:33:03+03:00",
     "photo": "https://wappuradio.fi/img/host/suunsoittoa-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/suunsoittoa-fs8.png"
+  },
+  {
+    "id": "f2bc354a-f5e1-4f22-92e0-6e6ee5276bf1",
+    "start": "2017-04-20T17:00:00+03:00",
+    "end": "2017-04-20T18:00:00+03:00",
+    "title": "Kysy Luojalta",
+    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
+    "prod": "JSuvanto",
+    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta! Kysymykset Luojalle osoitteen ville@korpiluoto.fi kautta.",
+    "timestamp": "2017-04-19T11:09:10+03:00",
+    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
+  },
+  {
+    "id": "0407fb17-634e-49da-8da3-bfc8de079fcf",
+    "start": "2017-04-24T17:00:00+03:00",
+    "end": "2017-04-24T18:00:00+03:00",
+    "title": "Kysy Luojalta",
+    "host": "Janne Eskola, Ville Korpiluoto, Luoja",
+    "prod": "JSuvanto",
+    "desc": "Oletko sinäkin toisinaan yrittänyt etsiä vastauksia, jotka Luoja yksin tietää – ja hänkään ei kerro? No nyt kertoo! Kysy Luojalta on Wappuradion asiantuntijaohjelma, jossa Luoja vastaa kuuntelijoiden kysymyksiin. Älä enää jää epätietoisuuteen, vaan kuuntele Wappuradiota ja Kysy Luojalta! Kysymykset Luojalle osoitteen ville@korpiluoto.fi kautta.",
+    "timestamp": "2017-04-19T11:09:17+03:00",
+    "photo": "https://wappuradio.fi/img/host/kysyluojalta-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/kysyluojalta-fs8.png"
+  },
+  {
+    "id": "c35dd5b5-9c30-46c4-a04d-c9bd102a437f",
+    "start": "2017-04-30T00:00:00+03:00",
+    "end": "2017-04-30T07:00:00+03:00",
+    "title": "100 maan sammuttavat säkeet",
+    "host": "BTR",
+    "prod": "Dregu",
+    "desc": "Unirytminsä ja suuntavaistonsa kadottaneiden wapunviettäjien nokturnaalinen napanderiretki halki käymälättömien cocktailbaarien. Epäortodoksisten äänimaisemien äimistelyn ohessa luvassa hortoilua horrostilan rajoja uhmaten sadan suvereenin valtion vaikutuspiirissä.",
+    "timestamp": "2017-04-19T16:22:00+03:00",
+    "photo": "https://wappuradio.fi/img/host/100maansammuttavatsakeet-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/100maansammuttavatsakeet-fs8.png"
+  },
+  {
+    "id": "caa18a4e-9475-4055-a692-ecef63acd500",
+    "start": "2017-04-22T00:00:00+03:00",
+    "end": "2017-04-22T07:00:00+03:00",
+    "title": "Ompeluseura",
+    "host": "Ilkka \"wormi\" P, Aleksi V, Arttu L, Henri M, Lauri P, Jaakko S, Antti \"mutsku\" M",
+    "prod": "Arttu",
+    "desc": "Om­pe­luseu­ran kirjava jen­gi viih­dyt­tää radiokansaa yön yli niin genrerajat kuin perinteiset puheenaiheetkin rikkoen ja taas uudelleen kokoon parsien. Hyvinkin satunnaiset ja potentiaalisesti satumaiset puheenaiheet saavat kenet vain näkemään maailman vaaleanpunaisempana kuin koskaan ennen. Tuuttaa mukiisi sopiva annos ydinmehua ja surffaa kanssamme aurinkoon, sillä me tahdomme olla sinulle helliä.\r\n\r\nOsallistu käsityökisaan tai soita meille ja osallistu keskusteluun!",
+    "timestamp": "2017-04-19T17:24:03+03:00",
+    "photo": "https://wappuradio.fi/img/host/ompeluseura-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/ompeluseura-fs8.png"
   }
 ]
