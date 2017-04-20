@@ -24,6 +24,7 @@ function createOrUpdateMood(opts) {
     ), inserted AS (
         INSERT INTO
           wappu_mood(user_id, rating, description, created_at_coarse)
+          -- +3 hours to fix moods recorder between 0am - 3am seemingly being assigned the wrong date.
         SELECT ?, ?, ?, CURRENT_TIMESTAMP + interval '3 hour' WHERE NOT EXISTS( SELECT * FROM upsert )
         RETURNING
           *,
@@ -264,9 +265,9 @@ function _fillEmpties(dates) {
     return dates;
   }
 
-  const interpolateCity = !!dates[0].ratingCity;
-  const interpolateTeam = !!dates[0].ratingTeam;
-  const interpolatePersonal = !!dates[0].ratingPersonal;
+  const interpolateCity = dates[0].ratingCity !== undefined;
+  const interpolateTeam = dates[0].ratingTeam !== undefined;
+  const interpolatePersonal = dates[0].ratingPersonal !== undefined;
 
   let lastKnownCity = 0;
   let lastKnownTeam = 0;
@@ -276,7 +277,7 @@ function _fillEmpties(dates) {
   return _.map(dates.reverse(), (element, index) => {
     const copy = _.cloneDeep(element);
 
-    if (interpolateCity ) {
+    if (interpolateCity) {
       lastKnownCity = copy.ratingCity === null
          ? _interpolateValue(lastKnownCity, _getNextValue(dates.slice(index), 'ratingCity'))
          : copy.ratingCity;
