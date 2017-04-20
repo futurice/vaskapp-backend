@@ -294,6 +294,12 @@ function _getWhereSql(opts) {
     params.push(opts.userId);
   }
 
+  if (opts.since) {
+    console.log(opts.since);
+    whereClauses.push(`feed_items.created_at >= ?`);
+    params.push(opts.since);
+  }
+
   return whereClauses.length > 0
     ? knex.raw(` WHERE ${ whereClauses.join(' AND ')}`, params).toString()
     : '';

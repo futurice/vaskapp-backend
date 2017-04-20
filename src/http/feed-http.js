@@ -11,6 +11,7 @@ const getFeed = createJsonRoute(function(req, res) {
     city: req.query.cityId,
     sort: req.query.sort,
     type: req.query.type,
+    since: req.query.since,
   }, 'feedParams');
 
   const coreParams = _.merge(feedParams, {
