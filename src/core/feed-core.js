@@ -52,11 +52,13 @@ function getStickySqlString(city) {
  * @param {number} [opts.limit=20] How many results to return
  * @param {number} [opts.beforeId] Return only items before this feed item
  * @param {number} [opts.city]     Return feed items only from given city
- * @param {string} [opts.sort=new] Either 'hot' or 'new'
+ * @param {string} [opts.sort=new] One of ['hot', 'new', 'top']
  * @param {number} [opts.eventId]  Event whose feed items to return
  * @param {string} [opts.type]     Return only certain type items
  * @param {string} [opts.userId]   Return only certain user's items
  * @param {boolean} [opts.includeSticky = true]   Should sticky messages be included
+ * @param {string} [opts.since]    Limit search to feed items created between 'since' and now.
+ * @param {number} [opts.after]    Offset results by given amount.
  */
 function getFeed(opts) {
   opts = _.merge({
@@ -80,7 +82,7 @@ function getFeed(opts) {
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      ${ sortTop ? `COALESCE(top_score.value, 0)` : `0` } as top_score,
+      ${ sortTop ? `COALESCE(top_score.value, 0)` : '0' } as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -88,7 +90,7 @@ function getFeed(opts) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     LEFT JOIN cities ON cities.id = teams.city_id
-    ${ sortTop ? _getSortTopSql() : `` }
+    ${ sortTop ? _getSortTopSql() : '' }
     ${ _getWhereSql(opts) }
     GROUP BY
         feed_items.id,
