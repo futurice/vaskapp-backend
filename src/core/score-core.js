@@ -22,19 +22,19 @@ function hotScore(votes, createdAt) {
 
 function updateTopScores() {
   const updateSql = `
-  UPDATE feed_items
-  SET top_score = top_scores.value
-  FROM
-    (SELECT
-      feed_item_id,
-      wilsons(
-        COUNT(CASE votes.value WHEN 1 THEN 1 ELSE null END)::int,
-        COUNT(CASE votes.value WHEN -1 THEN 1 ELSE null END)::int
-      ) AS value
-    FROM votes
-    GROUP BY votes.feed_item_id
-    ) AS top_scores
-  WHERE feed_items.id = top_scores.feed_item_id
+    UPDATE feed_items
+    SET top_score = top_scores.value
+    FROM
+      (SELECT
+        feed_item_id,
+        wilsons(
+          COUNT(CASE votes.value WHEN 1 THEN 1 ELSE null END)::int,
+          COUNT(CASE votes.value WHEN -1 THEN 1 ELSE null END)::int
+        ) AS value
+      FROM votes
+      GROUP BY votes.feed_item_id
+      ) AS top_scores
+    WHERE feed_items.id = top_scores.feed_item_id
   `;
 
   return knex.raw(updateSql);

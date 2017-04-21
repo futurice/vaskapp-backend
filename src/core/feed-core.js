@@ -13,7 +13,6 @@ function getStickySqlString(city) {
     ? ' AND feed_items.city_id IS NULL'
     : knex.raw(` AND (feed_items.city_id = ? OR feed_items.city_id IS NULL)`, city).toString();
 
-  // TODO top_score optimization
   return `
     (SELECT
       feed_items.id as id,
@@ -68,7 +67,6 @@ function getFeed(opts) {
 
   const sortTop = opts.sort === CONST.FEED_SORT_TYPES.TOP
 
-  // TODO top_score optimization
   let sqlString = `
     (SELECT
       feed_items.id as id,
@@ -330,20 +328,6 @@ function _getTeamNameSql(cityId) {
   return !cityId
     ? `teams.name`
     : knex.raw(`CASE WHEN teams.city_id=? THEN teams.name ELSE cities.name END`, [cityId]).toString();
-}
-
-function _getSortTopSql() {
-  return `
-    LEFT JOIN (SELECT
-      votes.feed_item_id as feed_item_id,
-      wilsons(
-        COUNT(CASE votes.value WHEN 1 THEN 1 ELSE NULL END),
-        COUNT(CASE votes.value WHEN -1 THEN 1 ELSE NULL END)
-      ) as value
-      FROM votes
-      GROUP BY votes.feed_item_id
-    ) as top_score ON top_score.feed_item_id = feed_items.id
-  `;
 }
 
 function _resolveAuthorType(row, client) {
