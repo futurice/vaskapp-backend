@@ -10,6 +10,9 @@ const getFeed = createJsonRoute(function(req, res) {
     limit: req.query.limit,
     city: req.query.cityId,
     sort: req.query.sort,
+    type: req.query.type,
+    since: req.query.since,
+    offset: req.query.offset,
   }, 'feedParams');
 
   const coreParams = _.merge(feedParams, {

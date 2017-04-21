@@ -40,6 +40,11 @@ const schemas = {
     city: common.primaryKeyId,
     beforeId: Joi.number().integer().min(0).optional(),
     limit: Joi.number().integer().min(1).max(100).optional(),
+    since: Joi.date().iso(),
+    offset: Joi.number().integer().min(0),
+    type: Joi.string()
+      .valid(['TEXT', 'IMAGE'])
+      .optional(),
     sort: Joi.string()
       .valid(CONST.FEED_SORT_TYPES_ARRAY)
       .default(CONST.FEED_SORT_TYPES.NEW)

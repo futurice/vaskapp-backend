@@ -3,7 +3,7 @@ const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
 import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
-import * as score from './hot-score';
+import * as score from './score-core';
 import moment from 'moment-timezone';
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
@@ -26,6 +26,7 @@ function getStickySqlString(city) {
       teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      0 as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -50,11 +51,13 @@ function getStickySqlString(city) {
  * @param {number} [opts.limit=20] How many results to return
  * @param {number} [opts.beforeId] Return only items before this feed item
  * @param {number} [opts.city]     Return feed items only from given city
- * @param {string} [opts.sort=new] Either 'hot' or 'new'
+ * @param {string} [opts.sort=new] One of ['hot', 'new', 'top']
  * @param {number} [opts.eventId]  Event whose feed items to return
  * @param {string} [opts.type]     Return only certain type items
  * @param {string} [opts.userId]   Return only certain user's items
  * @param {boolean} [opts.includeSticky = true]   Should sticky messages be included
+ * @param {string} [opts.since]    Limit search to feed items created between 'since' and now.
+ * @param {number} [opts.offset]    Offset results by given amount.
  */
 function getFeed(opts) {
   opts = _.merge({
@@ -75,6 +78,7 @@ function getFeed(opts) {
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
+      COALESCE(feed_items.top_score, 0) as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -82,63 +86,35 @@ function getFeed(opts) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     LEFT JOIN cities ON cities.id = teams.city_id
-    `;
-
-  let params = [opts.client.id];
-  let whereClauses = ['NOT feed_items.is_sticky'];
-
-  // TODO: Sticky messages should have their own endpoint
-  const includeSticky = opts.includeSticky && !opts.beforeId;
-  if (includeSticky) {
-    sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;
-    params.push(opts.client.id);
-  }
-
-  if (opts.beforeId) {
-    whereClauses.push('feed_items.id < ?');
-    params.push(opts.beforeId);
-  }
-
-  if (!opts.client.isBanned) {
-    whereClauses.push('NOT feed_items.is_banned');
-  }
-
-  if (opts.city) {
-    whereClauses.push(`feed_items.city_id = ?`);
-    params.push(opts.city);
-  }
-
-  if (opts.eventId) {
-    whereClauses.push(`feed_items.event_id = ?`);
-    params.push(opts.eventId);
-  }
-
-  if (opts.type) {
-    whereClauses.push(`feed_items.type = ?`);
-    params.push(opts.type);
-  }
-
-  if (_.isNumber(opts.userId)) {
-    whereClauses.push(`feed_items.user_id = ?`);
-    params.push(opts.userId);
-  }
-
-  if (whereClauses.length > 0) {
-    sqlString += ` WHERE ${ whereClauses.join(' AND ')}`;
-  }
-
-  sqlString +=
-    ` GROUP BY
+    ${ _getWhereSql(opts) }
+    GROUP BY
         feed_items.id,
         users.name,
         users.id,
         teams.name,
         votes.value,
         teams.city_id,
-        cities.id ) `;
+        cities.id)
+    `;
+
+  let params = [opts.client.id];
+
+  // TODO: Sticky messages should have their own endpoint
+  const sortTop = opts.sort === CONST.FEED_SORT_TYPES.TOP
+  const includeSticky = opts.includeSticky && !opts.beforeId && !sortTop;
+  if (includeSticky) {
+    sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;
+    params.push(opts.client.id);
+  }
+
   sqlString += _getSortingSql(opts.sort);
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
+
+  if (opts.offset) {
+    sqlString +=  ` OFFSET ?`;
+    params.push(opts.offset);
+  }
 
   return knex.raw(sqlString, params)
   .then(result => {
@@ -290,11 +266,56 @@ function _actionToFeedObject(row, client) {
   return feedObj;
 }
 
+function _getWhereSql(opts) {
+  const whereClauses = ['NOT feed_items.is_sticky'];
+  const params = [];
+
+  if (opts.beforeId) {
+    whereClauses.push('feed_items.id < ?');
+    params.push(opts.beforeId);
+  }
+
+  if (!opts.client.isBanned) {
+    whereClauses.push('NOT feed_items.is_banned');
+  }
+
+  if (opts.city) {
+    whereClauses.push(`feed_items.city_id = ?`);
+    params.push(opts.city);
+  }
+
+  if (opts.eventId) {
+    whereClauses.push(`feed_items.event_id = ?`);
+    params.push(opts.eventId);
+  }
+
+  if (opts.type) {
+    whereClauses.push(`feed_items.type = ?`);
+    params.push(opts.type);
+  }
+
+  if (_.isNumber(opts.userId)) {
+    whereClauses.push(`feed_items.user_id = ?`);
+    params.push(opts.userId);
+  }
+
+  if (opts.since) {
+    whereClauses.push(`feed_items.created_at >= ?`);
+    params.push(opts.since);
+  }
+
+  return whereClauses.length > 0
+    ? knex.raw(` WHERE ${ whereClauses.join(' AND ')}`, params).toString()
+    : '';
+}
+
 function _getSortingSql(sort) {
-  const { HOT } = CONST.FEED_SORT_TYPES;
+  const { HOT, TOP } = CONST.FEED_SORT_TYPES;
 
   if (sort === HOT) {
     return 'ORDER BY is_sticky DESC, hot_score DESC, id DESC';
+  } else if (sort === TOP) {
+    return 'ORDER BY top_score DESC, id DESC';
   } else {
     // Defaults to 'NEW'
     return 'ORDER BY is_sticky DESC, id DESC';
