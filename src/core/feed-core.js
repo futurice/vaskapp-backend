@@ -3,7 +3,7 @@ const {knex} = require('../util/database').connect();
 import {GCS_CONFIG} from '../util/gcs';
 import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
-import * as score from './hot-score';
+import * as score from './score-core';
 import moment from 'moment-timezone';
 
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
@@ -82,7 +82,7 @@ function getFeed(opts) {
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      ${ sortTop ? `COALESCE(top_score.value, 0)` : '0' } as top_score,
+      COALESCE(feed_items.top_score, 0) as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -90,7 +90,6 @@ function getFeed(opts) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     LEFT JOIN cities ON cities.id = teams.city_id
-    ${ sortTop ? _getSortTopSql() : '' }
     ${ _getWhereSql(opts) }
     GROUP BY
         feed_items.id,
@@ -99,14 +98,13 @@ function getFeed(opts) {
         teams.name,
         votes.value,
         teams.city_id,
-        ${ sortTop ? `top_score.value,` : '' }
         cities.id)
     `;
 
   let params = [opts.client.id];
 
   // TODO: Sticky messages should have their own endpoint
-  const includeSticky = opts.includeSticky && !opts.beforeId && sortTop;
+  const includeSticky = opts.includeSticky && !opts.beforeId && !sortTop;
   if (includeSticky) {
     sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;
     params.push(opts.client.id);
@@ -238,7 +236,6 @@ function _actionToFeedObject(row, client) {
     votes: row['votes'],
     userVote: row['user_vote'],
     hotScore: row['hot_score'],
-    topScore: row['top_score'],
     author: {
       id: row['user_id'],
       name: row['user_name'],

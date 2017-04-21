@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       CREATE FUNCTION wilsons(ups int, downs int) RETURNS numeric LANGUAGE plpgsql IMMUTABLE AS $$
       DECLARE
         z numeric;
-        n int;
+        n numeric;
         p numeric;
         l numeric;
         r numeric;

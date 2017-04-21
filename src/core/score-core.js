@@ -1,4 +1,6 @@
+const {knex} = require('../util/database').connect();
 const requireEnvs = require('../util/require-envs');
+
 requireEnvs(['FEED_ZERO_TIME', 'FEED_INFLATION_INTERVAL', 'FEED_BASE_LOG']);
 
 const BASE_LOG = Math.log(process.env.FEED_BASE_LOG);
@@ -18,6 +20,27 @@ function hotScore(votes, createdAt) {
   return order * sign + age / process.env.FEED_INFLATION_INTERVAL;
 }
 
+function updateTopScores() {
+  const updateSql = `
+  UPDATE feed_items
+  SET top_score = top_scores.value
+  FROM
+    (SELECT
+      feed_item_id,
+      wilsons(
+        COUNT(CASE votes.value WHEN 1 THEN 1 ELSE null END)::int,
+        COUNT(CASE votes.value WHEN -1 THEN 1 ELSE null END)::int
+      ) AS value
+    FROM votes
+    GROUP BY votes.feed_item_id
+    ) AS top_scores
+  WHERE feed_items.id = top_scores.feed_item_id
+  `;
+
+  return knex.raw(updateSql);
+}
+
 export {
   hotScore,
+  updateTopScores,
 }
