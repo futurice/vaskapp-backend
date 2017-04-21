@@ -29,6 +29,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.raw(`
-      DROP FUNCTION wilsons(ups int, downs int)
+      DROP FUNCTION wilsons(ups int, downs int);
     `);
 };

@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.table('feed_items', function(table) {
-    table.decimal('top_score').defaultTo(0);
+    table.decimal('top_score', 10, 9).defaultTo(0);
   });
 };
 
