@@ -78,7 +78,7 @@ function getFeed(opts) {
       ${ _getTeamNameSql(opts.city) } as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
-      feed_items.hot_score - ((extract(epoch from feed_items.created_at)::integer - ${process.env.FEED_ZERO_TIME}) / ${process.env.FEED_INFLATION_INTERVAL}) as top_score,
+      COALESCE(top_score.value, 0) as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote
     FROM feed_items
@@ -86,6 +86,15 @@ function getFeed(opts) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     LEFT JOIN cities ON cities.id = teams.city_id
+    LEFT JOIN (SELECT
+      votes.feed_item_id as feed_item_id,
+      wilsons(
+        COUNT(CASE votes.value WHEN 1 THEN 1 ELSE NULL END),
+        COUNT(CASE votes.value WHEN -1 THEN 1 ELSE NULL END)
+      ) as value
+      FROM votes
+      GROUP BY votes.feed_item_id
+    ) as top_score ON top_score.feed_item_id = feed_items.id
     ${ _getWhereSql(opts) }
     GROUP BY
         feed_items.id,
@@ -94,14 +103,14 @@ function getFeed(opts) {
         teams.name,
         votes.value,
         teams.city_id,
+        top_score.value,
         cities.id)
     `;
-    // (feed_items.hot_score - (extract(epoch from feed_items.created_at) as integer - ${process.env.FEED_ZERO_TIME}) / ${process.env.FEED_INFLATION_INTERVAL})
 
   let params = [opts.client.id];
 
   // TODO: Sticky messages should have their own endpoint
-  const includeSticky = opts.includeSticky && !opts.beforeId;
+  const includeSticky = opts.includeSticky && !opts.beforeId && opts.sort !== CONST.FEED_SORT_TYPES.TOP;
   if (includeSticky) {
     sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;
     params.push(opts.client.id);
