@@ -65,8 +65,6 @@ function getFeed(opts) {
     limit: 20
   }, opts);
 
-  const sortTop = opts.sort === CONST.FEED_SORT_TYPES.TOP
-
   let sqlString = `
     (SELECT
       feed_items.id as id,
@@ -102,6 +100,7 @@ function getFeed(opts) {
   let params = [opts.client.id];
 
   // TODO: Sticky messages should have their own endpoint
+  const sortTop = opts.sort === CONST.FEED_SORT_TYPES.TOP
   const includeSticky = opts.includeSticky && !opts.beforeId && !sortTop;
   if (includeSticky) {
     sqlString = getStickySqlString(opts.city) + " UNION ALL " + sqlString;

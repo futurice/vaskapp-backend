@@ -1,6 +1,5 @@
 const {knex} = require('../util/database').connect();
 const requireEnvs = require('../util/require-envs');
-
 requireEnvs(['FEED_ZERO_TIME', 'FEED_INFLATION_INTERVAL', 'FEED_BASE_LOG']);
 
 const BASE_LOG = Math.log(process.env.FEED_BASE_LOG);
