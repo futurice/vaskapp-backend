@@ -301,7 +301,6 @@ function _getWhereSql(opts) {
   }
 
   if (opts.since) {
-    console.log(opts.since);
     whereClauses.push(`feed_items.created_at >= ?`);
     params.push(opts.since);
   }
