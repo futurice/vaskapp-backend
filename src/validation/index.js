@@ -41,7 +41,7 @@ const schemas = {
     beforeId: Joi.number().integer().min(0).optional(),
     limit: Joi.number().integer().min(1).max(100).optional(),
     since: Joi.date().iso(),
-    after: Joi.number().integer().min(0),
+    offset: Joi.number().integer().min(0),
     type: Joi.string()
       .valid(['TEXT', 'IMAGE'])
       .optional(),

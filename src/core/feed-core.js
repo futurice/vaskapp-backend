@@ -57,7 +57,7 @@ function getStickySqlString(city) {
  * @param {string} [opts.userId]   Return only certain user's items
  * @param {boolean} [opts.includeSticky = true]   Should sticky messages be included
  * @param {string} [opts.since]    Limit search to feed items created between 'since' and now.
- * @param {number} [opts.after]    Offset results by given amount.
+ * @param {number} [opts.offset]    Offset results by given amount.
  */
 function getFeed(opts) {
   opts = _.merge({
@@ -111,9 +111,9 @@ function getFeed(opts) {
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
 
-  if (opts.after) {
+  if (opts.offset) {
     sqlString +=  ` OFFSET ?`;
-    params.push(opts.after);
+    params.push(opts.offset);
   }
 
   return knex.raw(sqlString, params)

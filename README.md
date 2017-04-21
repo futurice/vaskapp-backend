@@ -319,12 +319,12 @@ Query parameters:
 * `cityId` Integer. If specified, returns only posts by users belonging to guilds based in the city with given id.
 * `type` String. If specified, only feed items of that type are returned. One of: 'IMAGE', 'TEXT'.
 * `since` String. ISO-8601 format timestamp. If specified, only feed items created after given timestamp are returned. Note: If no time zone is specified, UTC is assumed.
-* `after` Integer. If specified, offsets the returned list by given amount.
+* `offset` Integer. If specified, offsets the returned list by given amount.
 
 Examples:
 
 * Get 30 newest feed items: `GET /api/feed?limit=30`
-* Get top 5-20 images: `GET /api/feed?sort=top&limit=15&after=5&type=IMAGE`
+* Get top 5-20 images: `GET /api/feed?sort=top&limit=15&offset=5&type=IMAGE`
 * Load 20 more feed items: `GET /api/feed?beforeId=123&limit=20`
 
     Assuming the id of oldest/last feed item client currently has is `123`.
