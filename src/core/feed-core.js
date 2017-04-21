@@ -120,6 +120,11 @@ function getFeed(opts) {
   sqlString += ` LIMIT ?`;
   params.push(opts.limit);
 
+  if (opts.after) {
+    sqlString +=  ` OFFSET ?`;
+    params.push(opts.after);
+  }
+
   return knex.raw(sqlString, params)
   .then(result => {
     const rows = result.rows;
