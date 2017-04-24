@@ -191,18 +191,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/hyvanmielenhoitoradio-fs8.png"
   },
   {
-    "id": "eaf0e224-b883-4e16-860d-322d36059ccf",
-    "start": "2017-04-26T22:00:00+03:00",
-    "end": "2017-04-27T00:00:00+03:00",
-    "title": "Jotain kosmista",
-    "host": "AnRai, Quendil, plotko, Veera",
-    "prod": "LaNi",
-    "desc": "Avaruusteemaista musiikkia ja maailmankaikkeuteen liittyviä keskustelunaiheita galaksiasuisten tyttöjen seurassa.   ",
-    "timestamp": "2017-04-06T21:34:13+03:00",
-    "photo": "https://wappuradio.fi/img/host/jotainkosmista-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/jotainkosmista-fs8.png"
-  },
-  {
     "id": "86e9569e-c33b-4759-a703-eec07f71d9ff",
     "start": "2017-04-27T18:00:00+03:00",
     "end": "2017-04-27T20:00:00+03:00",
@@ -719,18 +707,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/nousevanauringonaamutee-fs8.png"
   },
   {
-    "id": "39764df8-ca5a-4467-9bd1-94fa1cb0de82",
-    "start": "2017-04-22T21:00:00+03:00",
-    "end": "2017-04-22T22:00:00+03:00",
-    "title": "Saturday's Trance Flight With J.A.Z.P.",
-    "host": "Jaze Anti-Zucchini Production",
-    "prod": "J.A.Z.P.",
-    "desc": "On aika lentää kauas pois arjen äherryksestä ja stressistä, kun J.A.Z.P. palaa Wappuradioon tarjoilemaan tunnin katsauksen kuluneen vuoden aikana julkaistuihin nostattaviin ja progressiivisiin trance-raitoihin. Ohjelman voi nauttia skumpaten, humpaten tai miten itse kukin haluaa. Varmaa on, että energia ja vauhti eivät tästä showsta lopu.\r\n\r\n\"Joo.. kerran kävin, mutta toisella kertaa mentiin kovempaa\" - J.A.Z.P.",
-    "timestamp": "2017-04-14T09:09:48+03:00",
-    "photo": "https://wappuradio.fi/img/host/saturdaystranceflightwithjazp-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/saturdaystranceflightwithjazp-fs8.png"
-  },
-  {
     "id": "2224463c-3917-4bb6-a5a7-0587512642e7",
     "start": "2017-04-22T22:00:00+03:00",
     "end": "2017-04-23T00:00:00+03:00",
@@ -983,18 +959,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/herkkahetki-fs8.png"
   },
   {
-    "id": "e3c8727b-262d-483b-b9f4-c10327b25e93",
-    "start": "2017-04-22T13:00:00+03:00",
-    "end": "2017-04-22T15:00:00+03:00",
-    "title": "Showroom Dummies",
-    "host": "June",
-    "prod": "Vuokko",
-    "desc": "TBA",
-    "timestamp": "2017-04-15T14:32:51+03:00",
-    "photo": "https://wappuradio.fi/img/host/showroomdummies-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/showroomdummies-fs8.png"
-  },
-  {
     "id": "53a19cc0-b22b-4e65-8f62-725023f42ac2",
     "start": "2017-04-28T22:00:00+03:00",
     "end": "2017-04-29T00:00:00+03:00",
@@ -1029,30 +993,6 @@
     "timestamp": "2017-04-18T04:56:05+03:00",
     "photo": "https://wappuradio.fi/img/host/hype-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/hype-fs8.png"
-  },
-  {
-    "id": "c0f3095a-0b69-4efb-9de7-8d67585531fa",
-    "start": "2017-04-23T18:00:00+03:00",
-    "end": "2017-04-23T20:00:00+03:00",
-    "title": "Maailman pisin kalju",
-    "host": "Arttu & teBo",
-    "prod": "Jaketus",
-    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystyä toteamaan, että se oli jautaa.",
-    "timestamp": "2017-04-18T09:05:56+03:00",
-    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
-  },
-  {
-    "id": "a88b66da-7efe-4bf9-a69a-44a65d3e9a05",
-    "start": "2017-04-29T18:00:00+03:00",
-    "end": "2017-04-29T20:00:00+03:00",
-    "title": "Maailman pisin kalju",
-    "host": "Arttu & teBo",
-    "prod": "Jaketus",
-    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksenä päätyttyä pystyä toteamaan, että se oli jautaa.\r\n",
-    "timestamp": "2017-04-18T09:06:27+03:00",
-    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
   },
   {
     "id": "b0b7e9e4-6fe3-44da-ad3b-36d2deaa2dea",
@@ -1223,18 +1163,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/ompeluseura-fs8.png"
   },
   {
-    "id": "620995e0-58e6-42c5-95a8-c46f19aec664",
-    "start": "2017-04-29T14:00:00+03:00",
-    "end": "2017-04-29T16:00:00+03:00",
-    "title": "Herkkä hetki",
-    "host": "AnRai, zordiack, Puh",
-    "prod": "zar",
-    "desc": "Herkkä Hetki haluaa tietää mikä biisi on juuri Sinulle tärkeä ja miksi!\r\nTuoko Pink Floyd elävästi mieleen suurimman teinirakkautesi tai lohduttaako Popeda surun hetkellä?\r\nKerro meille, mikä kappale on sinulle tavalla tai toisella erityinen sekä biisiin liittyvä tarina lomakkeemme kautta: \r\n<a href=\"https://tinyurl.com/herkkahetki2017\">https://tinyurl.com/herkkahetki2017</a>",
-    "timestamp": "2017-04-20T13:35:22+03:00",
-    "photo": "https://wappuradio.fi/img/host/herkkahetki-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/herkkahetki-fs8.png"
-  },
-  {
     "id": "f2bc354a-f5e1-4f22-92e0-6e6ee5276bf1",
     "start": "2017-04-20T17:00:00+03:00",
     "end": "2017-04-20T18:00:00+03:00",
@@ -1271,18 +1199,6 @@
     "thumb": "https://wappuradio.fi/img/host/thumb/pelastakaaaasit-fs8.png"
   },
   {
-    "id": "04c906ab-43ec-48fe-ac75-e376a84dd35b",
-    "start": "2017-04-23T13:00:00+03:00",
-    "end": "2017-04-23T18:00:00+03:00",
-    "title": "Wappuradio LIVE!",
-    "host": "Bändit & Rakkaus",
-    "prod": "Jaketus",
-    "desc": "Wappuradio soittaa mitä parhainta, oudointa ja kiehtovinta musiikkia kaksi viikkoa levyiltä Wapun aikana. Nyt on kuitenkin taas ekstraherkkua tarjolla! Levyjen sijaan sunnuntaina radion musiikki soitetaan livenä TTY:n etunurtsilla, Riemurinne-areenalla. Virittäydy siis vastaanottimesi ääreen koko päiväksi nauttimaan Suomen parhaiden bändien joukosta kootusta kattauksesta! Tai vielä parempaa, ota kaverit mukaan ja tule Hervantaan viettämään piknik-päivää! Keikat alkavat kello 13 ja jatkuvat aina 18 asti. Paikalla myös liuta huikeita ruokakojuja, wappuradio, aurinko, wappukansa! Bändien välissä kuuntelijoita viihdyttää Suomen parhaan Rakkauden Wappuradion juontajat ja studiotrubaduuriduo Sipilän Serkut.\r\n\r\n13:00 Työelämän uhrit ►<a href=\"https://soundcloud.com/ty-el-m-n-uhrit\">https://soundcloud.com/ty-el-m-n-uhrit</a>\r\n14:15 Jukka Pojan Poika ja The Roopesalmiset ►<a href=\"https://soundcloud.com/jukkapojanpoika\">https://soundcloud.com/jukkapojanpoika</a>\r\n15:45 Elimäki ► <a href=\"https://soundcloud.com/elim-ki\">https://soundcloud.com/elim-ki</a>\r\n17:00 Torvikopla ► <a href=\"http://www.torvikopla.net/kuuntele/\">http://www.torvikopla.net/kuuntele/</a>",
-    "timestamp": "2017-04-20T14:02:40+03:00",
-    "photo": "https://wappuradio.fi/img/host/wappuradiolive-fs8.png",
-    "thumb": "https://wappuradio.fi/img/host/thumb/wappuradiolive-fs8.png"
-  },
-  {
     "id": "d3b4be8a-22ad-42c5-a5e4-70def67180dc",
     "start": "2017-04-23T07:00:00+03:00",
     "end": "2017-04-23T09:00:00+03:00",
@@ -1305,5 +1221,89 @@
     "timestamp": "2017-04-21T10:59:24+03:00",
     "photo": "https://wappuradio.fi/img/host/kolmensoinnuntahteet-fs8.png",
     "thumb": "https://wappuradio.fi/img/host/thumb/kolmensoinnuntahteet-fs8.png"
+  },
+  {
+    "id": "e3c8727b-262d-483b-b9f4-c10327b25e93",
+    "start": "2017-04-22T13:00:00+03:00",
+    "end": "2017-04-22T15:00:00+03:00",
+    "title": "Making of Wappuradio",
+    "host": "Zordiack, Zeppe",
+    "prod": "Vuokko",
+    "desc": "Askarruttaako mieltäsi Wappuradion tekniset yksityiskohdat? Nyt on oikea aika kysyä mitä vaan, toimitus vastaa mitä vaan. Radion tekniikan mörököllit on päästetty studion puolelle soittelemaan sekalaista musiikkia.",
+    "timestamp": "2017-04-21T16:08:01+03:00",
+    "photo": "https://wappuradio.fi/img/host/makingofwappuradio-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/makingofwappuradio-fs8.png"
+  },
+  {
+    "id": "39764df8-ca5a-4467-9bd1-94fa1cb0de82",
+    "start": "2017-04-22T21:00:00+03:00",
+    "end": "2017-04-22T22:00:00+03:00",
+    "title": "Saturday's Trance Flight With J.A.Z.P.",
+    "host": "Jaze Anti-Zucchini Production",
+    "prod": "Fisu",
+    "desc": "On aika lentää kauas pois arjen äherryksestä ja stressistä, kun J.A.Z.P. palaa Wappuradioon tarjoilemaan tunnin katsauksen kuluneen vuoden aikana julkaistuihin nostattaviin ja progressiivisiin trance-raitoihin. Ohjelman voi nauttia skumpaten, humpaten tai miten itse kukin haluaa. Varmaa on, että energia ja vauhti eivät tästä showsta lopu.\r\n\r\n\"Joo.. kerran kävin, mutta toisella kertaa mentiin kovempaa\" - J.A.Z.P.",
+    "timestamp": "2017-04-21T22:27:54+03:00",
+    "photo": "https://wappuradio.fi/img/host/saturdaystranceflightwithjazp-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/saturdaystranceflightwithjazp-fs8.png"
+  },
+  {
+    "id": "eaf0e224-b883-4e16-860d-322d36059ccf",
+    "start": "2017-04-26T22:00:00+03:00",
+    "end": "2017-04-27T00:00:00+03:00",
+    "title": "Jotain kosmista",
+    "host": "Quendil, plotko, Veera, AnRai",
+    "prod": "LaNi",
+    "desc": "Avaruusteemaista musiikkia ja maailmankaikkeuteen liittyviä keskustelunaiheita galaksiasuisten tyttöjen seurassa.   \r\n\r\nHaastattelussa avaruustutkija Riku Järvinen Ilmatieteen laitokselta!",
+    "timestamp": "2017-04-22T12:33:57+03:00",
+    "photo": "https://wappuradio.fi/img/host/jotainkosmista-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/jotainkosmista-fs8.png"
+  },
+  {
+    "id": "04c906ab-43ec-48fe-ac75-e376a84dd35b",
+    "start": "2017-04-23T13:00:00+03:00",
+    "end": "2017-04-23T18:00:00+03:00",
+    "title": "Wappuradio LIVE!",
+    "host": "Bändit & Rakkaus",
+    "prod": "Jaketus",
+    "desc": "Wappuradio soittaa mitä parhainta, oudointa ja kiehtovinta musiikkia kaksi viikkoa levyiltä Wapun aikana. Nyt on kuitenkin taas ekstraherkkua tarjolla! Levyjen sijaan sunnuntaina radion musiikki soitetaan livenä TTY:n etunurtsilla, Riemurinne-areenalla. Virittäydy siis vastaanottimesi ääreen koko päiväksi nauttimaan Suomen parhaiden bändien joukosta kootusta kattauksesta! Tai vielä parempaa, ota kaverit mukaan ja tule Hervantaan viettämään piknik-päivää! Keikat alkavat kello 13 ja jatkuvat aina 18 asti. Paikalla myös liuta huikeita ruokakojuja, wappuradio, aurinko, wappukansa! Bändien välissä kuuntelijoita viihdyttää Suomen parhaan Rakkauden Wappuradion juontajat ja studiotrubaduuriduo Sipilän Serkut.\r\n\r\n13:00 Työelämän uhrit ►<a href=\"https://soundcloud.com/ty-el-m-n-uhrit\">https://soundcloud.com/ty-el-m-n-uhrit</a>\r\n14:15 Jukka Pojan Poika ja The Roopesalmiset ►<a href=\"https://soundcloud.com/jukkapojanpoika\">https://soundcloud.com/jukkapojanpoika</a>\r\n15:45 Elimäki ► <a href=\"https://open.spotify.com/artist/0pQNkZLHlXdX2frvMi6ohK\">https://open.spotify.com/artist/0pQNkZLHlXdX2frvMi6ohK</a>\r\n17:00 Torvikopla ► <a href=\"http://www.torvikopla.net/kuuntele/\">http://www.torvikopla.net/kuuntele/</a>",
+    "timestamp": "2017-04-22T16:49:49+03:00",
+    "photo": "https://wappuradio.fi/img/host/wappuradiolive-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/wappuradiolive-fs8.png"
+  },
+  {
+    "id": "c0f3095a-0b69-4efb-9de7-8d67585531fa",
+    "start": "2017-04-23T18:00:00+03:00",
+    "end": "2017-04-23T20:00:00+03:00",
+    "title": "Maailman pisin kalju",
+    "host": "Arttu & teBo",
+    "prod": "Jaketus",
+    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksen päätyttyä pystyä toteamaan, että se oli jautaa.",
+    "timestamp": "2017-04-23T19:09:30+03:00",
+    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
+  },
+  {
+    "id": "a88b66da-7efe-4bf9-a69a-44a65d3e9a05",
+    "start": "2017-04-29T18:00:00+03:00",
+    "end": "2017-04-29T20:00:00+03:00",
+    "title": "Maailman pisin kalju",
+    "host": "Arttu & teBo",
+    "prod": "Jaketus",
+    "desc": "Aiheet, joista Juicen mukaan oli mielekästä tehdä sanoituksia: ihminen, ihminen ja toinen ihminen, ihminen ja yhteiskunta sekä ihminen ja uskonto.\r\n\r\nSuomenkielisen rap-musiikin erikoisohjelmat Wappuradiossa aloittanut Pikku Huopalahden kirjallisuusseura sukeltaa tällä kerralla ehkä suomirockin legendaarisimman sanoittajan, Juice Leskisen, tuotantoon. Kaksi kertaa kaksituntinen ohjelma raottaa suomirockin syntyhistorian verhoa, sukeltaa syvään päähän ja ilottelee kevyemmän tuotannon kanssa.\r\n\r\nOhjelma ei ole harvinaisimpien b-puolien soittamista, mutta studioon otetaan mukaan myös muutakin kuin vain Kautta aikain. Kaiken kaikkiaan tavoitteena on toisen lähetyksen päätyttyä pystyä toteamaan, että se oli jautaa.",
+    "timestamp": "2017-04-23T19:09:43+03:00",
+    "photo": "https://wappuradio.fi/img/host/maailmanpisinkalju-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/maailmanpisinkalju-fs8.png"
+  },
+  {
+    "id": "620995e0-58e6-42c5-95a8-c46f19aec664",
+    "start": "2017-04-29T14:00:00+03:00",
+    "end": "2017-04-29T16:00:00+03:00",
+    "title": "Herkkä hetki",
+    "host": "AnRai, zordiack, Puh",
+    "prod": "zar",
+    "desc": "Herkkä Hetki haluaa tietää mikä biisi on juuri Sinulle tärkeä ja miksi!\r\nTuoko Pink Floyd elävästi mieleen suurimman teinirakkautesi tai lohduttaako Popeda surun hetkellä?\r\nKerro meille, mikä kappale on sinulle tavalla tai toisella erityinen sekä biisiin liittyvä tarina lomakkeemme kautta: \r\n<a href=\"https://tinyurl.com/herkkahetki2017\" target=\"_blank\">https://tinyurl.com/herkkahetki2017</a>",
+    "timestamp": "2017-04-24T07:05:40+03:00",
+    "photo": "https://wappuradio.fi/img/host/herkkahetki-fs8.png",
+    "thumb": "https://wappuradio.fi/img/host/thumb/herkkahetki-fs8.png"
   }
 ]
