@@ -9,7 +9,7 @@ const newComment = (action) =>  knex('comments').insert({
 .catch((err) => {
   if (err.constraint === 'comments_feed_item_id_foreign') {
     const error = new Error('No such feed item id');
-    error.status = 400;
+    error.status = 404;
     throw error;
   }
 
