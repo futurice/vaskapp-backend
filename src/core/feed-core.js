@@ -128,6 +128,11 @@ function getFeed(opts) {
   });
 }
 
+function getFeedItem(id) {
+  // TODO More extensive query
+  return knex.select('*').from('feed_items').where('id', '=', id);
+}
+
 function _sanitizeText(text) {
   if (!text) {
     return text;
@@ -344,4 +349,5 @@ export {
   getFeed,
   createFeedItem,
   deleteFeedItem,
+  getFeedItem,
 };

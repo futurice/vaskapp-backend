@@ -38,7 +38,21 @@ const deleteFeedItem = createJsonRoute(function(req, res) {
   });
 });
 
+const getFeedItem = createJsonRoute((req, res) => {
+  const id = assert(req.params.id, 'common.primaryKeyId');
+
+  return feedCore.getFeedItem(id).then((feedItem) => {
+    if (!feedItem) {
+      throwStatus(404, 'Not found');
+    }
+
+    return feedItem;
+  });
+});
+
+
 export {
   getFeed,
-  deleteFeedItem
+  deleteFeedItem,
+  getFeedItem,
 };
