@@ -7,9 +7,7 @@ import * as eventHttp from './event-http';
 import * as throttleCore from '../core/throttle-core';
 
 let postAction = createJsonRoute(function(req, res) {
-  const action = assert(_.merge(req.body, {
-    city: req.query.cityId,
-  }), 'action');
+  const action = assert(req.body, 'action');
 
   if (_.isString(action.text) && action.text.trim().length === 0) {
     throwStatus(400, 'Text cannot be empty.');
