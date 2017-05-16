@@ -75,8 +75,8 @@ function createApp() {
 
   // Initialize internal stuff
   throttleCore.initialize();
-  fb.initialize();
-  feedAggregator.start();
+  // fb.initialize();
+  // feedAggregator.start();
 
   return app;
 }

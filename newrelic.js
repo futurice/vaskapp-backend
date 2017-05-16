@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['Wappuapp backend'],
+  app_name : ['Prahapp backend'],
   /**
    * Your New Relic license key.
    */
