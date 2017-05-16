@@ -1,2 +1,2 @@
-DROP DATABASE "wappuapp";
-DROP DATABASE "wappuapp_test";
+DROP DATABASE "praha_app";
+DROP DATABASE "praha_app_test";
