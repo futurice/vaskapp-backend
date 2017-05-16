@@ -28,7 +28,7 @@ let postAction = createJsonRoute(function(req, res) {
       if (action.type === 'IMAGE') {
         handleAction = imageHttp.postImage(req, res, action);
       } else if (action.type === 'COMMENT') {
-        handleAction = commentCore.comment(_.merge(action, {client: req.client}));
+        handleAction = commentCore.newComment(_.merge(action, {client: req.client}));
       } else {
         action.ip = req.ip;
         action.isBanned = req.client.isBanned;
@@ -48,7 +48,14 @@ let postAction = createJsonRoute(function(req, res) {
 
       return handleAction
         .then(() => throttleCore.executeAction(action.user, action.type))
-        .then(() => undefined);
+        .then(() => undefined)
+        .catch(err => {
+          if (err.status && err.message) {
+            throwStatus(err.status, err.message);
+          }
+
+          throw err;
+        });
     });
 });
 
