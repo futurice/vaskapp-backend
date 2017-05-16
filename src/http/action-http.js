@@ -5,6 +5,7 @@ import {assert} from '../validation';
 import * as imageHttp from './image-http';
 import * as eventHttp from './event-http';
 import * as throttleCore from '../core/throttle-core';
+import * as commentCore from '../core/comment-core';
 
 let postAction = createJsonRoute(function(req, res) {
   const action = assert(req.body, 'action');
@@ -26,6 +27,8 @@ let postAction = createJsonRoute(function(req, res) {
       let handleAction;
       if (action.type === 'IMAGE') {
         handleAction = imageHttp.postImage(req, res, action);
+      } else if (action.type === 'COMMENT') {
+        handleAction = commentCore.comment(action);
       } else {
         action.ip = req.ip;
         action.isBanned = req.client.isBanned;
