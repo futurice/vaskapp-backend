@@ -79,7 +79,7 @@ exports.seed = function(knex, Promise) {
       code: 'COMMENT',
       name: 'Comment',
       value: 0,
-      cooldonw: 0,
+      cooldown: 0,
     })
   });
 };
