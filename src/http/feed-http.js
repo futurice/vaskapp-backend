@@ -41,7 +41,7 @@ const deleteFeedItem = createJsonRoute(function(req, res) {
 const getFeedItem = createJsonRoute((req, res) => {
   const id = assert(req.params.id, 'common.primaryKeyId');
 
-  return feedCore.getFeedItem(id).then((feedItem) => {
+  return feedCore.getFeedItem(id, req.client).then((feedItem) => {
     if (!feedItem) {
       throwStatus(404, 'Not found');
     }

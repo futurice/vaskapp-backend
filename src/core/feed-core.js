@@ -128,9 +128,58 @@ function getFeed(opts) {
   });
 }
 
-function getFeedItem(id) {
-  // TODO More extensive query
-  return knex.select('*').from('feed_items').where('id', '=', id);
+function getFeedItem(id, client) {
+  const feedItemSql = `
+    SELECT
+      feed_items.id as id,
+      feed_items.location as location,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      COALESCE(users.name, 'SYSTEM') as user_name,
+      users.id as user_id,
+      teams.name as team_name,
+      vote_score(feed_items) as votes,
+      feed_items.hot_score as hot_score,
+      0 as top_score,
+      feed_items.is_sticky,
+      COALESCE(votes.value, 0) as user_vote
+    FROM feed_items
+    LEFT JOIN users ON users.id = feed_items.user_id
+    LEFT JOIN teams ON teams.id = users.team_id
+    LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
+    WHERE feed_items.id = ?
+    GROUP BY
+      feed_items.id,
+      users.name,
+      users.id,
+      teams.name,
+      votes.value
+  `;
+
+
+  return knex.raw(feedItemSql, [id, id]).then((result) => {
+    const row = _.get(result, 'rows[0]', null);
+
+    if (!row) {
+      return null;
+    }
+
+    return knex.select([
+        'comments.text',
+        'users.name AS userName',
+        'comments.created_at AS createdAt',
+      ])
+      .from('comments')
+      .innerJoin('users', 'users.id', 'comments.user_id')
+      .where('feed_item_id', '=', id)
+      .then((comments) => {
+        const feedItem = _actionToFeedObject(row, client);
+        feedItem.comments = comments || [];
+        return feedItem;
+      });
+  });
 }
 
 function _sanitizeText(text) {
