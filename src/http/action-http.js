@@ -28,7 +28,7 @@ let postAction = createJsonRoute(function(req, res) {
       if (action.type === 'IMAGE') {
         handleAction = imageHttp.postImage(req, res, action);
       } else if (action.type === 'COMMENT') {
-        handleAction = commentCore.comment(action);
+        handleAction = commentCore.comment(_.merge(action, {client: req.client}));
       } else {
         action.ip = req.ip;
         action.isBanned = req.client.isBanned;
