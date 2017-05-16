@@ -18,7 +18,7 @@ const schemas = {
     imageText: Joi.string().max(50, 'utf8').optional(),
     imageTextPosition: Joi.number().min(0).max(1).optional(),
     text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
-    eventId: common.primaryKeyId.when('type', { is: 'CHECK_IN_EVENT', then: Joi.required()}),
+    eventId: common.primaryKeyId.when('type', { is: Joi.valid('CHECK_IN_EVENT', 'COMMENT'), then: Joi.required()}),
     city: common.primaryKeyId,
     location: Joi.object({
       latitude: Joi.number(),
