@@ -174,6 +174,7 @@ function getFeedItem(id, client) {
       .from('comments')
       .innerJoin('users', 'users.id', 'comments.user_id')
       .where('feed_item_id', '=', id)
+      .orderBy('comments.created_at', 'ASC')
       .then((comments) => {
         const feedItem = _actionToFeedObject(row, client);
         feedItem.comments = comments || [];
