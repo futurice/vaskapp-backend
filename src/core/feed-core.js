@@ -9,10 +9,6 @@ import moment from 'moment-timezone';
 const FEED_ITEM_TYPES = new Set(['IMAGE', 'TEXT', 'CHECK_IN']);
 
 function getStickySqlString(city) {
-  const whereCitySql = !city
-    ? ' AND feed_items.city_id IS NULL'
-    : knex.raw(` AND (feed_items.city_id = ? OR feed_items.city_id IS NULL)`, city).toString();
-
   return `
     (SELECT
       feed_items.id as id,
@@ -33,7 +29,6 @@ function getStickySqlString(city) {
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
-    WHERE feed_items.is_sticky ${ whereCitySql }
     GROUP BY
       feed_items.id,
       users.name,
@@ -75,7 +70,7 @@ function getFeed(opts) {
       feed_items.type as action_type_code,
       COALESCE(users.name, 'SYSTEM') as user_name,
       users.id as user_id,
-      ${ _getTeamNameSql(opts.city) } as team_name,
+      teams.name as team_name,
       vote_score(feed_items) as votes,
       feed_items.hot_score as hot_score,
       COALESCE(feed_items.top_score, 0) as top_score,
@@ -85,16 +80,13 @@ function getFeed(opts) {
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
-    LEFT JOIN cities ON cities.id = teams.city_id
     ${ _getWhereSql(opts) }
     GROUP BY
         feed_items.id,
         users.name,
         users.id,
         teams.name,
-        votes.value,
-        teams.city_id,
-        cities.id)
+        votes.value)
     `;
 
   let params = [opts.client.id];
@@ -200,7 +192,6 @@ function createFeedItem(feedItem, trx) {
     'image_path': feedItem.imagePath,
     'text':       _sanitizeText(feedItem.text),
     'type':       feedItem.type,
-    'city_id':    feedItem.city || knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
     // Division to bring time stamp's accuracy inline with postgres values.
     'hot_score':  _.round(score.hotScore(0, moment.utc().valueOf() / 1000), 4),
   };
@@ -334,11 +325,6 @@ function _getWhereSql(opts) {
     whereClauses.push('NOT feed_items.is_banned');
   }
 
-  if (opts.city) {
-    whereClauses.push(`feed_items.city_id = ?`);
-    params.push(opts.city);
-  }
-
   if (opts.eventId) {
     whereClauses.push(`feed_items.event_id = ?`);
     params.push(opts.eventId);
@@ -375,12 +361,6 @@ function _getSortingSql(sort) {
     // Defaults to 'NEW'
     return 'ORDER BY is_sticky DESC, id DESC';
   }
-}
-
-function _getTeamNameSql(cityId) {
-  return !cityId
-    ? `teams.name`
-    : knex.raw(`CASE WHEN teams.city_id=? THEN teams.name ELSE cities.name END`, [cityId]).toString();
 }
 
 function _resolveAuthorType(row, client) {
