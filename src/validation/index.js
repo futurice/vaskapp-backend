@@ -17,9 +17,10 @@ const schemas = {
     imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
     imageText: Joi.string().max(50, 'utf8').optional(),
     imageTextPosition: Joi.number().min(0).max(1).optional(),
-    text: Joi.string().when('type', { is: 'TEXT', then: Joi.required() }),
+    text: Joi.string().when('type', { is: Joi.valid('TEXT', 'COMMENT'), then: Joi.required() }),
     eventId: common.primaryKeyId.when('type', { is: 'CHECK_IN_EVENT', then: Joi.required()}),
     city: common.primaryKeyId,
+    feedItemId: common.primaryKeyId.when('type', { is: 'COMMENT', then: Joi.required() }),
     location: Joi.object({
       latitude: Joi.number(),
       longitude: Joi.number()

@@ -5,11 +5,10 @@ import {assert} from '../validation';
 import * as imageHttp from './image-http';
 import * as eventHttp from './event-http';
 import * as throttleCore from '../core/throttle-core';
+import * as commentCore from '../core/comment-core';
 
 let postAction = createJsonRoute(function(req, res) {
-  const action = assert(_.merge(req.body, {
-    city: req.query.cityId,
-  }), 'action');
+  const action = assert(req.body, 'action');
 
   if (_.isString(action.text) && action.text.trim().length === 0) {
     throwStatus(400, 'Text cannot be empty.');
@@ -28,6 +27,8 @@ let postAction = createJsonRoute(function(req, res) {
       let handleAction;
       if (action.type === 'IMAGE') {
         handleAction = imageHttp.postImage(req, res, action);
+      } else if (action.type === 'COMMENT') {
+        handleAction = commentCore.newComment(_.merge(action, {client: req.client}));
       } else {
         action.ip = req.ip;
         action.isBanned = req.client.isBanned;
@@ -47,7 +48,14 @@ let postAction = createJsonRoute(function(req, res) {
 
       return handleAction
         .then(() => throttleCore.executeAction(action.user, action.type))
-        .then(() => undefined);
+        .then(() => undefined)
+        .catch(err => {
+          if (err.status && err.message) {
+            throwStatus(err.status, err.message);
+          }
+
+          throw err;
+        });
     });
 });
 

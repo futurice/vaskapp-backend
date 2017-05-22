@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
     cooldown: 30 * 1000
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
+    return util.removeIfExists(knex, 'action_types', {
       id: 2,
       code: 'SIMA',
       name: 'Grab a sima',
@@ -45,7 +45,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
+    return util.removeIfExists(knex, 'action_types', {
       id: 7,
       code: 'IMAGE_REWARD',
       name: 'Reward',
@@ -55,7 +55,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'action_types', {
+    return util.removeIfExists(knex, 'action_types', {
       id: 8,
       code: 'IMAGE_REWARD2',
       name: 'Reward 2',
@@ -72,5 +72,14 @@ exports.seed = function(knex, Promise) {
       value: 5,
       cooldown: 0,
     });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'action_types', {
+      id: 10,
+      code: 'COMMENT',
+      name: 'Comment',
+      value: 0,
+      cooldown: 0,
+    })
   });
 };

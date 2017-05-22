@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 1,
       city_id: cities['Tampere'],
       name: 'TiTe',
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 2,
       city_id: cities['Tampere'],
       name: 'Skilta',
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 3,
       city_id: cities['Tampere'],
       name: 'Autek',
@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 4,
       city_id: cities['Tampere'],
       name: 'Bioner',
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 5,
       city_id: cities['Tampere'],
       name: 'Hiukkanen',
@@ -51,7 +51,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 6,
       city_id: cities['Tampere'],
       name: 'Indecs',
@@ -59,7 +59,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 7,
       city_id: cities['Tampere'],
       name: 'KoRK',
@@ -67,7 +67,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 8,
       city_id: cities['Tampere'],
       name: 'Man@ger',
@@ -75,7 +75,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 9,
       city_id: cities['Tampere'],
       name: 'MIK',
@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 10,
       city_id: cities['Tampere'],
       name: 'TamArk',
@@ -91,7 +91,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 11,
       city_id: cities['Tampere'],
       name: 'TARAKI',
@@ -99,7 +99,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 12,
       city_id: cities['Tampere'],
       name: 'YKI',
@@ -107,7 +107,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 13,
       city_id: cities['Tampere'],
       name: 'TeLE',
@@ -115,7 +115,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 14,
       city_id: cities['Tampere'],
       name: 'ESN INTO',
@@ -123,7 +123,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 15,
       city_id: cities['Tampere'],
       name: 'Wapputiimi',
@@ -131,7 +131,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 16,
       city_id: cities['Otaniemi'],
       name: 'Arkkitehtikilta',
@@ -139,7 +139,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 17,
       city_id: cities['Otaniemi'],
       name: 'Athene',
@@ -147,7 +147,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 18,
       city_id: cities['Otaniemi'],
       name: 'AS',
@@ -155,7 +155,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 19,
       city_id: cities['Otaniemi'],
       name: 'Fyysikkokilta',
@@ -163,7 +163,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 20,
       city_id: cities['Otaniemi'],
       name: 'Inkubio',
@@ -171,7 +171,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 21,
       city_id: cities['Otaniemi'],
       name: 'Kemistikilta',
@@ -179,7 +179,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 22,
       city_id: cities['Otaniemi'],
       name: 'Koneinsinöörikilta',
@@ -187,7 +187,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 23,
       city_id: cities['Otaniemi'],
       name: 'KY',
@@ -195,7 +195,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 24,
       city_id: cities['Otaniemi'],
       name: 'Maanmittarikilta',
@@ -203,7 +203,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 25,
       city_id: cities['Otaniemi'],
       name: 'Puunjalostajakilta',
@@ -211,7 +211,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 26,
       city_id: cities['Otaniemi'],
       name: 'Prodeko',
@@ -219,7 +219,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 27,
       city_id: cities['Otaniemi'],
       name: 'Prosessiteekkarit',
@@ -227,7 +227,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 28,
       city_id: cities['Otaniemi'],
       name: 'Rakennusinsinöörikilta',
@@ -235,7 +235,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 29,
       city_id: cities['Otaniemi'],
       name: 'Sähköinsinöörikilta',
@@ -243,7 +243,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 30,
       city_id: cities['Otaniemi'],
       name: 'Teknologföreningen',
@@ -251,7 +251,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 31,
       city_id: cities['Otaniemi'],
       name: 'Tietokilta',
@@ -259,7 +259,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 32,
       city_id: cities['Otaniemi'],
       name: 'Vuorimieskilta',
@@ -267,7 +267,7 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 33,
       city_id: cities['Otaniemi'],
       name: 'TOKYO',
@@ -275,11 +275,19 @@ exports.seed = function(knex, Promise) {
     });
   })
   .then(() => {
-    return util.insertOrUpdate(knex, 'teams', {
+    return util.removeIfExists(knex, 'teams', {
       id: 34,
       city_id: cities['Otaniemi'],
       name: 'AYY',
       image_path: 'https://storage.googleapis.com/wappuapp/assets/ayylogo.png',
+    });
+  })
+  .then(() => {
+    return util.insertOrUpdate(knex, 'teams', {
+      id: 35,
+      city_id: cities['Other'],
+      name: 'Tammerforce',
+      image_path: null,
     });
   });
 };
