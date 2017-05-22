@@ -165,6 +165,7 @@ function getFeedItem(id, client) {
         'comments.text',
         'users.name AS userName',
         'comments.created_at AS createdAt',
+        'users.profile_picture_url AS profilePicture',
       ])
       .from('comments')
       .innerJoin('users', 'users.id', 'comments.user_id')
