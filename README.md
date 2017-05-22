@@ -334,6 +334,17 @@ Responses:
 * `200 OK`
 
 
+### `GET /api/feed/id`
+
+> Get list of feed
+
+Body is one of [feed objects](#feed-objects).
+
+Responses:
+
+* `200 OK`
+
+
 ### `GET /api/image/:id`
 
 > Get specific image
@@ -476,7 +487,8 @@ Images is an array of [feed objects](#feed-objects).
 ```js
 {
   "uuid": "de305d54-75b4-431b-adb2-eb6b9e546014",
-  "name": "Hessu Kypärä"
+  "name": "Hessu Kypärä",
+  "profilePicture": "http://foo.com/image/bar.png" // May be null
 }
 ```
 
@@ -629,7 +641,8 @@ Images is an array of [feed objects](#feed-objects).
     name: "Nahkasimo",
     team: "Sähkökilta",
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
-    type: "ME"
+    type: "ME",
+    profilePicture: "http://foo.com/image/bar.png" // May be null
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }
@@ -646,6 +659,7 @@ Images is an array of [feed objects](#feed-objects).
   author: {
     name: "Nahkasimo",
     team: "Sähkökilta",
+    profilePicture: "http://foo.com/image/bar.png" // May be null
   },
   url: "https://storage.googleapis.com/wappuapp/user_content/123.jpg"
 }
@@ -671,7 +685,8 @@ Images is an array of [feed objects](#feed-objects).
     name: "Nahkasimo",
     team: "Sähkökilta",
     // Can be 'ME', 'OTHER_USER', 'SYSTEM'
-    type: "ME"
+    type: "ME",
+    profilePicture: "http://foo.com/image/bar.png" // May be null
   },
   text: "Joujou"
 }
