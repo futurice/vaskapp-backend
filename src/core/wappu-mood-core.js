@@ -2,10 +2,10 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
 import * as feedCore from './feed-core';
-const requireEnvs = require('../util/require-envs');
+//const requireEnvs = require('../util/require-envs');
 const moment = require('moment-timezone');
 
-requireEnvs(['MOOD_START_DATE', 'MOOD_END_DATE']);
+//requireEnvs(['MOOD_START_DATE', 'MOOD_END_DATE']);
 
 function createOrUpdateMood(opts) {
   const upsertMoodSql = `
