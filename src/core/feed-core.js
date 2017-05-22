@@ -36,7 +36,7 @@ function getStickySqlString(city) {
       teams.name,
       votes.value
     ORDER BY feed_items.id DESC
-    LIMIT 2)`;
+    LIMIT 0)`;
 }
 
 /**
