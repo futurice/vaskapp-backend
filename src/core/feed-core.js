@@ -24,7 +24,8 @@ function getStickySqlString(city) {
       feed_items.hot_score as hot_score,
       0 as top_score,
       feed_items.is_sticky,
-      COALESCE(votes.value, 0) as user_vote
+      COALESCE(votes.value, 0) as user_vote,
+      users.profile_picture_url AS profile_picture_url
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
@@ -75,7 +76,8 @@ function getFeed(opts) {
       feed_items.hot_score as hot_score,
       COALESCE(feed_items.top_score, 0) as top_score,
       feed_items.is_sticky,
-      COALESCE(votes.value, 0) as user_vote
+      COALESCE(votes.value, 0) as user_vote,
+      users.profile_picture_url AS profile_picture_url
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
@@ -136,7 +138,8 @@ function getFeedItem(id, client) {
       feed_items.hot_score as hot_score,
       0 as top_score,
       feed_items.is_sticky,
-      COALESCE(votes.value, 0) as user_vote
+      COALESCE(votes.value, 0) as user_vote,
+      users.profile_picture_url AS profile_picture_url
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
@@ -283,7 +286,8 @@ function _actionToFeedObject(row, client) {
       id: row['user_id'],
       name: row['user_name'],
       team: row['team_name'],
-      type: _resolveAuthorType(row, client)
+      type: _resolveAuthorType(row, client),
+      profilePicture: row['profile_picture_url'],
     },
     createdAt: row['created_at']
   };
@@ -362,6 +366,7 @@ function _getSortingSql(sort) {
     return 'ORDER BY is_sticky DESC, id DESC';
   }
 }
+
 
 function _resolveAuthorType(row, client) {
   const rowUserId = row['user_id'];
