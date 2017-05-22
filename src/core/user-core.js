@@ -125,7 +125,8 @@ function _makeUserDbRow(user) {
   const dbRow = {
     'uuid': user.uuid,
     'name': user.name,
-    'team_id': user.team
+    'team_id': user.team,
+    'profile_picture_url': user.profilePicture,
   };
 
   return dbRow;
@@ -138,7 +139,8 @@ function _userRowToObject(row) {
     name: row.name,
     uuid: row.uuid,
     team: row.team_id,
-    isBanned: row.is_banned
+    isBanned: row.is_banned,
+    profilePicture: row.profile_picture_url,
   };
 }
 
