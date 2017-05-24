@@ -25,11 +25,13 @@ function getStickySqlString(city) {
       0 as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote,
-      users.profile_picture_url AS profile_picture_url
+      users.profile_picture_url AS profile_picture_url,
+      COUNT(comments) AS comment_count
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
+    LEFT JOIN comments ON comments.feed_item_id = feed_items.id
     GROUP BY
       feed_items.id,
       users.name,
@@ -77,11 +79,13 @@ function getFeed(opts) {
       COALESCE(feed_items.top_score, 0) as top_score,
       feed_items.is_sticky,
       COALESCE(votes.value, 0) as user_vote,
-      users.profile_picture_url AS profile_picture_url
+      users.profile_picture_url AS profile_picture_url,
+      COUNT(comments) AS comment_count
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
+    LEFT JOIN comments ON comments.feed_item_id = feed_items.id
     ${ _getWhereSql(opts) }
     GROUP BY
         feed_items.id,
@@ -290,7 +294,8 @@ function _actionToFeedObject(row, client) {
       type: _resolveAuthorType(row, client),
       profilePicture: row['profile_picture_url'],
     },
-    createdAt: row['created_at']
+    createdAt: row['created_at'],
+    commentCount: row['comment_count'],
   };
 
   if (row.location) {
