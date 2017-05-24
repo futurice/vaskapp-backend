@@ -58,7 +58,7 @@ const schemas = {
   },
 
   vote: {
-    value: Joi.number().integer().valid(-1, 1),
+    value: Joi.number().integer().valid(-1, 0, 1),
     feedItemId: Joi.number().integer().required(),
   },
 
