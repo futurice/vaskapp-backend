@@ -5,6 +5,7 @@ function getActionTypes() {
   return knex('action_types')
     .select('*')
     .where('is_user_action', true)
+    .andWhere('code', '<>', 'COMMENT')
     .then(rows => {
       return _.map(rows, _actionTypeRowToObject);
     });
