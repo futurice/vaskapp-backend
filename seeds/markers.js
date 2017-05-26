@@ -9,7 +9,8 @@ exports.seed = function(knex, Promise) {
       type: marker.type,
       location: marker.location.longitude + ',' + marker.location.latitude,
       title: marker.title,
-      subtitle: marker.subtitle
+      subtitle: marker.subtitle,
+      image_url: marker.image_url,
     };
 
     if (marker.url) {
