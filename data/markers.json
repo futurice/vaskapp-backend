@@ -1,451 +1,65 @@
 [
-  {
-    "type": "STORE",
-    "title": "DUO",
-    "location": {
-      "latitude": "61.450978",
-      "longitude": "23.851275"
-    },
-    "subtitle": "Shopping mall",
-    "url": "http://www.k-supermarket.fi/kaupat/herkkuduo/",
-    "image_url": "http://www.foo.bar"
-  },
-  {
-    "type": "STORE",
-    "title": "Sale",
-    "location": {
-      "latitude": "61.446742",
-      "longitude": "23.854839"
-    },
-    "subtitle": "Grocery store",
-    "url": "https://www.s-kanava.fi/web/pirkanmaa/toimipaikka/sale-hervanta-tampere/697951341"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market Teekkarinkatu",
-    "location": {
-      "latitude": "61.4455398",
-      "longitude": "23.8439937"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/teekkarinkatu/"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market",
-    "location": {
-      "latitude": "61.45099",
-      "longitude": "23.848904"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/lindforsinkatu/"
-  },
-  {
-    "type": "STORE",
-    "title": "K-market Herkkupuoti",
-    "location": {
-      "latitude": "61.453708",
-      "longitude": "23.842060"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/herkkupuoti/"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market",
-    "location": {
-      "latitude": "61.446720",
-      "longitude": "23.832153"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/ylioppilaankatu/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Haitari",
-    "location": {
-      "latitude": "61.451578",
-      "longitude": "23.847831"
-    },
-    "subtitle": "Pizza & Kebab",
-    "url": "http://www.ravintolahaitari.fi/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Castello",
-    "location": {
-      "latitude": "61.452045",
-      "longitude": "23.848451"
-    },
-    "subtitle": "Pizza & Kebab",
-    "url": "https://pizza-online.fi/ravintolat/tampere/castello"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Pizza Kebab Heval",
-    "location": {
-      "latitude": "61.441518",
-      "longitude": "23.851935"
-    },
-    "subtitle": "Pizza & Kebab",
-    "url": "http://www.heval.fi/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Pizza Service",
-    "location": {
-      "latitude": "61.451999",
-      "longitude": "23.848159"
-    },
-    "subtitle": "Pizza & Kebab",
-    "url": "https://pizza-online.fi/ravintolat/tampere/pizzaservice-hervanta"
-  },
-  {
-    "type": "STORE",
-    "title": "Lidl",
-    "location": {
-      "latitude": "61.496458",
-      "longitude": "23.757350"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.lidl.fi/fi/myymalahaku.htm"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Supermarket Kuninkaankulma",
-    "location": {
-      "latitude": "61.500302",
-      "longitude": "23.756013"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-supermarket.fi/kaupat/kuninkaankulma/"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market Tuomiokirkonkatu",
-    "location": {
-      "latitude": "61.497223",
-      "longitude": "23.770644"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/tuomiokirkonkatu/"
-  },
-  {
-    "type": "STORE",
-    "title": "R-kioski",
-    "location": {
-      "latitude": "61.497774",
-      "longitude": "23.762518"
-    },
-    "subtitle": "Kiosk",
-    "url": "https://www.r-kioski.fi/kioskit/tampere-keskusta-keskustori-1/"
-  },
-  {
-    "type": "STORE",
-    "title": "S-market Pendoliino",
-    "location": {
-      "latitude": "61.498145",
-      "longitude": "23.775858"
-    },
-    "subtitle": "Grocery store",
-    "url": "https://www.foodie.fi/store/5dd559183e837faf7f07cac1b98d5433"
-  },
-  {
-    "type": "STORE",
-    "title": "Sale Puutarhakatu",
-    "location": {
-      "latitude": "61.498958",
-      "longitude": "23.752621"
-    },
-    "subtitle": "Grocery store",
-    "url": "https://www.foodie.fi/store/75fda8a5e960f0f0161bd83ba573e194"
-  },
-  {
-    "type": "STORE",
-    "title": "ABC Kaleva 24/7",
-    "location": {
-      "latitude": "61.502108",
-      "longitude": "23.801321"
-    },
-    "subtitle": "Convenience store",
-    "url": "https://www.abcasemat.fi/asemat/abc-tampere-kaleva"
-  },
-  {
-    "type": "STORE",
-    "title": "ABC Viinikka 24/7",
-    "location": {
-      "latitude": "61.485743",
-      "longitude": "23.777439"
-    },
-    "subtitle": "Convenience store",
-    "url": "https://www.abcasemat.fi/asemat/abc-tampere-viinikka"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market Hatanpää 24/7",
-    "location": {
-      "latitude": "61.492046",
-      "longitude": "23.771427"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://liikenneasema.k-market.fi/kaupat/tampere-hatanpaa/"
-  },
-  {
-    "type": "STORE",
-    "title": "K-Market Satamakatu",
-    "location": {
-      "latitude": "61.494972",
-      "longitude": "23.755091"
-    },
-    "subtitle": "Grocery store",
-    "url": "http://www.k-market.fi/kaupat/satamakatu/"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Anttila",
-    "location": {
-      "latitude": "61.499208",
-      "longitude": "23.756050"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2461/"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Kaleva Prisma",
-    "location": {
-      "latitude": "61.492125",
-      "longitude": "23.819630"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2463"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Koivistonkylä Prisma",
-    "location": {
-      "latitude": "61.467579",
-      "longitude": "23.775010"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2466"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Sokos",
-    "location": {
-      "latitude": "61.497417",
-      "longitude": "23.757768"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2464"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Stockmann",
-    "location": {
-      "latitude": "61.498575",
-      "longitude": "23.770349"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2462"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Tammela",
-    "location": {
-      "latitude": "61.503209",
-      "longitude": "23.778363"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2465"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Turtola Citymarket",
-    "location": {
-      "latitude": "61.475938",
-      "longitude": "23.837854"
-    },
-    "subtitle": "Alko",
-    "url": "http://www.alko.fi/en/shops-services/2472"
-  },
-  {
-    "type": "ALKO",
-    "title": "Tampere Hervanta Duo",
-    "location": {
-      "latitude": "61.451145",
-      "longitude": "23.852381"
-    },
-    "subtitle": "Alko",
-    "url": "https://www.alko.fi/myymalat-palvelut/2470"
-  },
-  {
-    "type": "TOILET",
-    "title": "Public toilet Africa",
-    "location": {
-      "latitude": "0.0",
-      "longitude": "0.0"
-    },
-    "subtitle": "Toilet"
-  },
-  {
-    "type": "TAXI",
-    "title": "Taxi Africa",
-    "location": {
-      "latitude": "1.0",
-      "longitude": "1.0"
-    },
-    "subtitle": "Taxi pole"
-  },
-  {
-    "type": "STORE",
-    "title": "Alepa",
-    "location": {
-      "latitude": "60.1840094",
-      "longitude": "24.8287504"
-    },
-    "subtitle": "Shopping mall",
-    "url": "https://www.alepa.fi/web/alepa/toimipaikka/539863662"
-  },
-  {
-    "type": "STORE",
-    "title": "Deli Pohjois-Tapiola",
-    "location": {
-      "latitude": "60.1846611",
-      "longitude": "24.8090692"
-    },
-    "subtitle": "Shopping mall 24/7",
-    "url": "https://www.abcasemat.fi/fi/asemat/deli-espoo-pohjois-tapiola"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Alvari",
-    "location": {
-      "latitude": "60.1856196",
-      "longitude": "24.8248261"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.amica.fi/alvari"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Täffä",
-    "location": {
-      "latitude": "60.1860783",
-      "longitude": "24.8304802"
-    },
-    "subtitle": "Student restaurant",
-    "url": "https://www.taffa.fi/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Kvarkki",
-    "location": {
-      "latitude": "60.1882086",
-      "longitude": "24.8276215"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.amica.fi/kvarkki"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Sodexo Konetekniikantalo",
-    "location": {
-      "latitude": "60.1871369",
-      "longitude": "24.8241776"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.sodexo.fi/konetekniikka"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "CS Building Sodexo",
-    "location": {
-      "latitude": "60.1869985",
-      "longitude": "24.8195365"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.sodexo.fi/tietotekniikantalo"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Subway",
-    "location": {
-      "latitude": "60.1870101",
-      "longitude": "24.8193567"
-    },
-    "subtitle": "Subway",
-    "url": "http://www.subway.fi/fi/ravintolat/espoo/espoo-otaniemi"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "TUAS Sodexo",
-    "location": {
-      "latitude": "60.1870101",
-      "longitude": "24.8193567"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.amica.fi/ravintolat/ravintolat-kaupungeittain/espoo/tuas/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Amica VM5",
-    "location": {
-      "latitude": "60.1828465",
-      "longitude": "24.8258909"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.amica.fi/ravintolat/ravintolat-kaupungeittain/espoo/vm5/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "X-Burger",
-    "location": {
-      "latitude": "60.1828465",
-      "longitude": "24.8258909"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://soppi.dy.fi/etno.jpg"
-  },
-  {
-    "type": "ALKO",
-    "title": "Alko Tapiola Ainoa",
-    "location": {
-      "latitude": "60.1765212",
-      "longitude": "24.7996597"
-    },
-    "subtitle": "For all things sima",
-    "url": "https://www.alko.fi/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Sodexo Kasper",
-    "location": {
-      "latitude": "60.1825472",
-      "longitude": "24.8252468"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.sodexo.fi/kasper"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "MAU-KAS",
-    "location": {
-      "latitude": "60.1847072",
-      "longitude": "24.8237363"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.mau-kas.fi/"
-  },
-  {
-    "type": "RESTAURANT",
-    "title": "Sodexo Valimo",
-    "location": {
-      "latitude": "60.1836452",
-      "longitude": "24.8275567"
-    },
-    "subtitle": "Student restaurant",
-    "url": "http://www.sodexo.fi/aalto-valimo"
-  }
+{"title":"Lokál Hamburk","location": { "latitude" :"50.093192","longitude":"14.446804"},"type":"RESTAURANT","image_url":"https://lokal-dlouha.ambi.cz/data/title/title-1-3.jpg","subtitle":"Enjoy carefully treated beer and freshly prepared homemade food. We draught the beer straight from the tanks via the shortest route into your pint glass, where it remains fresh until the last sip. We make real homemade meals, therefore our "},
+{"title":"Cafe Louvre - Národní třída","location": { "latitude" :"50.081994","longitude":"14.418612"},"type":"RESTAURANT","image_url":null,"subtitle":"r of Café Louvre. This Café, bearing the name of the world’s famous gallery, has been standing here for over a century, since 1902. Among its guests were Karel Capek, Franz Kafka as well as Albert Einstein during his professorship in Prague. The Café’s life was interrupted by force in 1948 by the communist coup when all café fixtures were thrown out of the windows into Narodni Avenue. The cultural melting pot was revived in the place after 1992 when the devastated premises underwent a complete reconstruction."},
+{"title":"Vinohradský Parlament - Korunní st.","location": { "latitude" :"50.075466","longitude":"14.438337"},"type":"RESTAURANT","image_url":"http://www.prague-stay.com/images/full_image/1920x1200/prague%20kofein%20interior%20tapas%20bar-resize~kofein-restaurant-welcoming-interior.png","subtitle":"It´s hidden gem, modern pub restaurant with connection to Czech tradition. Their menu of traditional Czech meals but in modern, fresh, very tasty way will fits you. Offer of small meals, classic or just some tapas for beer is worth to try. "},
+{"title":"Kofein","location": { "latitude" :"50.075935","longitude":"14.450275"},"type":"RESTAURANT","image_url":null,"subtitle":"The Kofein Restaurant is a unique family restaurant in Vinohrady in downtown Prague. We came up with this concept several years ago when we first encountered tapas, small portions of various tasty appetizers served in Spanish bars with wine or beer or on their own. For us, tapas mean more than just food; they are an expression of our life style. They provide an opportunity to meet friends over a glass of wine or beer and enjoy a few small snacks. Tapas are a way to prolong and vary the enjoyment of eating without regard to the size of the portion on your plate."},
+{"title":"Sushi Maru","location": { "latitude" :"50.084135","longitude":"14.424269"},"type":"RESTAURANT","image_url":"https://media-cdn.tripadvisor.com/media/photo-s/0d/08/49/f9/caviar-roll.jpg","subtitle":"Sushi Maru is a newly-opened sushi restaurant with clearly defined mission. We want to prepare delicious and remarkable food and leave every customer impressed and excited to come again. Our philosophy is based on choosing only the very best and very fresh ingredients from trusted providers and turning them into culinary masterpieces with our knowledge and experience."},
+{"title":"Brasiliero","location": { "latitude" :"50.087422","longitude":"14.419327"},"type":"RESTAURANT","image_url":null,"subtitle":"This place has a great atmosphere and a brilliant concept. First off the salad bar was packed with a great array of choices. The meat on offer is hard to describe. The waiters come to each of the tables and offer you a variety of meat all served off large skewers. Its all you can eat and they keep coming around until you tell them you've had enough basically. They do also offer a selection of fish if you prefer and again this was cooked really well. Some of the steak was superb, probably some of the best I've tasted in all honesty. "},
+{"title":"Jam & Co","location": { "latitude" :"50.071717","longitude":"14.447074"},"type":"RESTAURANT","image_url":null,"subtitle":"Asian cuisine combined with the best out of Europe. We cook the tastiest dishes from the asian cuisine while combining it with the european one. Cooking with fresh and quality ingredients is our priority. During lunch we serve lunch menu at a discounted price. Kids and dogs are welcome and we will gladly prepare you a company or family event. Come for a new dining experience."},
+{"title":"Brixton Balls","location": { "latitude" :"50.0754614","longitude":"14.4394533"},"type":"BISTRO","image_url":null,"subtitle":"Brixton Balls is a unique street food bistro in Prague’s happening Vinohrady neighbourhood. We serve a variety of meat and veggie balls paired with tasty side dishes. You’re welcome to sit down and enjoy your food with us. Or, if you’re pushed for time we’ll happily prepare your food to go."},
+{"title":"Bistro 8","location": { "latitude" :"50.098376","longitude":"14.432183"},"type":"BISTRO","image_url":null,"subtitle":"8 Bistro offers a daily selection is altered honest home-cooked meals, desserts and drinks in the cozy sitting area in the heart of Prague 7th"},
+{"title":"Mr. Hot Dog","location": { "latitude" :"50.099493","longitude":"14.427781"},"type":"BISTRO","image_url":null,"subtitle":"If you are in the neighbourhood and want a fast snack - this is the place to go! Great hotdogs, with many sides to chose from, fun and helpful staff and good prices. Recommended!"},
+{"title":"Delmart","location": { "latitude" :"50.071364","longitude":"14.403918"},"type":"BISTRO","image_url":null,"subtitle":""},
+{"title":"Banh Mi Ba","location": { "latitude" :"50.090445","longitude":"14.426047"},"type":"BISTRO","image_url":null,"subtitle":""},
+{"title":"general area around Dlouhá st.","location": { "latitude" :"50.0901796","longitude":"14.4224055"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Retro Music Club","location": { "latitude" :"50.074487","longitude":"14.437792"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Krymská st. - Basement, Sběrné suroviny","location": { "latitude" :"50.071549","longitude":"14.44717"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Cafe Baribal","location": { "latitude" :"50.068527","longitude":"14.41507"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Na břeho Rhony - wine bar","location": { "latitude" :"50.068281","longitude":"14.415211"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Groove bar","location": { "latitude" :"50.080499","longitude":"14.416979"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Cobra","location": { "latitude" :"49.999189","longitude":"14.41359"},"type":"BAR","image_url":null,"subtitle":""},
+{"title":"Cafe Letka","location": { "latitude" :"50.098235","longitude":"14.425365"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"The Kavárna","location": { "latitude" :"50.073346","longitude":"14.4422"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"La Bohéme Cafe","location": { "latitude" :"50.076761","longitude":"14.440858"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Monolok Cafe","location": { "latitude" :"50.074254","longitude":"14.443006"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Coffee Room","location": { "latitude" :"50.075215","longitude":"14.451214"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Bistro 8","location": { "latitude" :"50.098376","longitude":"14.432183"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Cukr Káva Limonáda","location": { "latitude" :"50.086571","longitude":"14.405497"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Kofárna Cafe","location": { "latitude" :"50.080229","longitude":"14.40722"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Monolok","location": { "latitude" :"50.074254","longitude":"14.443006"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Kavárna, co hledá jméno","location": { "latitude" :"50.069659","longitude":"14.403759"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Vnitroblock","location": { "latitude" :"50.101946","longitude":"14.449329"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Bio Oko - movie theatre with a coffee place","location": { "latitude" :"50.099996","longitude":"14.430005"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Divadlo Komedie - theatre with a coffee place &amp; bar","location": { "latitude" :"50.079317","longitude":"14.421622"},"type":"COFFEE","image_url":null,"subtitle":""},
+{"title":"Riegrovy sady Beer Garden","location": { "latitude" :"50.080691","longitude":"14.443076"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"Letná Beer Garden","location": { "latitude" :"50.095971","longitude":"14.425777"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"Lokál","location": { "latitude" :"50.090682","longitude":"14.425756"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"Vinohradský parlament","location": { "latitude" :"50.075466","longitude":"14.438337"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"Kolkovna","location": { "latitude" :"50.087903","longitude":"14.430137"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"U Medvídků","location": { "latitude" :"50.082864","longitude":"14.418797"},"type":"BEER PUB","image_url":null,"subtitle":""},
+{"title":"Vnitroblock","location": { "latitude" :"50.101946","longitude":"14.449329"},"type":"SHOPPING","image_url":null,"subtitle":""},
+{"title":"Ujetá číča","location": { "latitude" :"50.075612","longitude":"14.446361"},"type":"SHOPPING","image_url":null,"subtitle":""},
+{"title":"Weekend Market (Pražská tržnice)","location": { "latitude" :"50.0983074","longitude":"14.4420003"},"type":"SHOPPING","image_url":null,"subtitle":"10.6. Mint Weekend Market in Pražská tržnice"},
+{"title":"Jiřího z Poděbrad square","location": { "latitude" :"50.078497","longitude":"14.450243"},"type":"STREET MARKET","image_url":null,"subtitle":""},
+{"title":"Náplavka / Prague riverside","location": { "latitude" :"50.074445","longitude":"14.408987"},"type":"STREET MARKET","image_url":null,"subtitle":""},
+{"title":"Stalin Memorial – Metronome","location": { "latitude" :"50.094679","longitude":"14.415935"},"type":"HIPSTER","image_url":null,"subtitle":""},
+{"title":"Prague Castle &amp; St. Vitus Cathedral","location": { "latitude" :"50.090892","longitude":"14.400511"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Golden Lane","location": { "latitude" :"50.091823","longitude":"14.403833"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Wallestein Palace","location": { "latitude" :"50.090051","longitude":"14.405657"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Lesser Town Square","location": { "latitude" :"50.087669","longitude":"14.402537"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Petřín Funicular + lookout tower","location": { "latitude" :"50.083527","longitude":"14.395084"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Charles bridge","location": { "latitude" :"50.086477","longitude":"14.411437"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Kampa","location": { "latitude" :"50.084848","longitude":"14.408351"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Klementinum with it’s library","location": { "latitude" :"50.086598","longitude":"14.416019"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Old town square","location": { "latitude" :"50.087569","longitude":"14.421187"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Ungelt","location": { "latitude" :"50.087897","longitude":"14.42345"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Church of Our Lady before Týn","location": { "latitude" :"50.087736","longitude":"14.422685"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Estates Theare","location": { "latitude" :"50.085978","longitude":"14.423665"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Powder Tower","location": { "latitude" :"50.087273","longitude":"14.427789"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Wenceslas square","location": { "latitude" :"50.081747","longitude":"14.427189"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Národní třída","location": { "latitude" :"50.082003","longitude":"14.417607"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Ss. Cyril and Methodius Cathedral","location": { "latitude" :"50.075957","longitude":"14.417041"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Dancing house","location": { "latitude" :"50.075403","longitude":"14.414179"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Vyšehrad","location": { "latitude" :"50.064416","longitude":"14.420024"},"type":"SIGHTS","image_url":null,"subtitle":""},
+{"title":"Hilton Prague","location": { "latitude" :"50.093277","longitude":"14.4376183"},"type":"HOTEL","image_url": "https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/12/68/hilton-prague-exterior.jpg","subtitle":"Hotel for the Fututrip\n\nAddress:\nPobřežní 1, 186 00 Praha 8-Florenc, Prague"}
 ]
