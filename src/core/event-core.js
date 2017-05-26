@@ -56,7 +56,6 @@ function getEvents(opts) {
       'fb_event_id',
       'attending_count',
       'radius',
-      'image_url',
     ])
     .whereRaw(where.sql, where.params)
     .orderBy('start_time', 'asc')
