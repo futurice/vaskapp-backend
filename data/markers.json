@@ -7,7 +7,8 @@
       "longitude": "23.851275"
     },
     "subtitle": "Shopping mall",
-    "url": "http://www.k-supermarket.fi/kaupat/herkkuduo/"
+    "url": "http://www.k-supermarket.fi/kaupat/herkkuduo/",
+    "image_url": "http://www.foo.bar"
   },
   {
     "type": "STORE",
