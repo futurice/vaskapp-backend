@@ -5,11 +5,11 @@ const logger = require('../util/logger')(__filename);
 
 // # Image Caption settings
 const BAR_HEIGHT = 60;
-const BAR_COLOR = 'rgba(221, 73, 151, .6)';
+const BAR_COLOR = 'rgba(253, 240, 196, .5)';
 const FONT_SIZE = 38;
 const DEFAULT_WIDTH = 1024;
 const DEFAULT_HEIGHT = 1024;
-const TEXT_COLOR = '#FEFF77';
+const TEXT_COLOR = '#003A6F';
 
 // # Helper functions to calculate position of Image Caption Elements
 
