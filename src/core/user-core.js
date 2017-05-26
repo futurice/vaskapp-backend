@@ -91,7 +91,8 @@ function _queryUserDetails(userId) {
   SELECT
     users.name AS name,
     teams.name AS team,
-    COALESCE(num_simas, 0) AS num_simas
+    COALESCE(num_simas, 0) AS num_simas,
+    users.profile_picture_url
   FROM users
   JOIN teams ON teams.id = users.team_id
   LEFT JOIN (
@@ -116,7 +117,8 @@ function _queryUserDetails(userId) {
       return {
         name: rowObj['name'],
         team: rowObj['team'],
-        numSimas: rowObj['num_simas']
+        numSimas: rowObj['num_simas'],
+        profilePicture: rowObj['profile_picture_url'],
       };
     });
 }
