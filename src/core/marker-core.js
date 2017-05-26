@@ -24,11 +24,12 @@ function _markerRowToObject(row) {
     },
     type: row.type,
     title: row.title,
-    subtitle: row.subtitle
+    subtitle: row.subtitle,
+    imageUrl: _.get(row, 'image_url', null),
   };
 
   if (row.url) {
-    obj.url = row.url
+    obj.url = row.url;
   }
 
   return obj;
