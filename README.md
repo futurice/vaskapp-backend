@@ -516,6 +516,7 @@ Images is an array of [feed objects](#feed-objects).
   // One of STORE, ALKO, TOILET, TAXI, BAR, RESTAURANT
   type: "STORE",
   title: "K-Supermarket Herkkuduo",
+  imageUrl: "http://www.foo.bar", // Nullable
 
   // Optional url
   url: "http://www.k-supermarket.fi/"
