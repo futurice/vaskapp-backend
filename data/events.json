@@ -1,155 +1,155 @@
 [
 {
   "name": "Lunch",
-  "locationName": "Restaurant",
+  "locationName": "La Fabrika - Restaurant",
   "startTime": "2017-06-09T10:00:00.000Z",
   "endTime": "2017-06-09T11:00:00.000Z",
   "description": "Bon Appétit",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://static1.squarespace.com/static/53162615e4b08f2413caa7c2/t/571da617d51cd4f1ca29ec3d/1470308449044/traditional-czech-food?format=1500w"
 },
 {
   "name": "Welcome Words",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T12:00:00.000Z",
   "endTime": "2017-06-09T12:15:00.000Z",
   "description": "Fututrip 2017",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://raw.githubusercontent.com/futurice/prahapp-client/master/assets/prague/futubohemia/chilicorn.png"
 },
 {
   "name": "Keynote by Mark Gallagher",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T12:15:00.000Z",
   "endTime": "2017-06-09T13:15:00.000Z",
   "description": "Keynote by Mark Gallagher",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://i.ytimg.com/vi/FCQ_sPodSwA/maxresdefault.jpg"
 },
 {
   "name": "Change to workshops",
-  "locationName": "Workshops",
+  "locationName": "La Fabrika - Workshops",
   "startTime": "2017-06-09T13:15:00.000Z",
   "endTime": "2017-06-09T13:30:00.000Z",
   "description": "We are starting workshops",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://flockler.com/thumbs/1992/20130607-dsc_03641_s830x0_q80_noupscale.jpg"
 },
 {
   "name": "Case Studies 1",
-  "locationName": "Workshops",
+  "locationName": "La Fabrika - Workshops",
   "startTime": "2017-06-09T13:30:00.000Z",
   "endTime": "2017-06-09T14:15:00.000Z",
   "description": "Workshopping",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://images.unsplash.com/1/bag-and-hands.jpg?dpr=1&auto=format&fit=crop&w=1199&h=803&q=80&cs=tinysrgb&crop=&bg="
 },
 {
   "name": "Break",
-  "locationName": "",
+  "locationName": "La Fabrika - ",
   "startTime": "2017-06-09T14:15:00.000Z",
   "endTime": "2017-06-09T14:30:00.000Z",
   "description": "Small break",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://images.unsplash.com/photo-1494398138790-6f0b412da3e6?dpr=1&auto=format&fit=crop&w=1199&h=879&q=80&cs=tinysrgb&crop=&bg="
 },
 {
   "name": "Case Studies 2",
-  "locationName": "Workshops",
+  "locationName": "La Fabrika - Workshops",
   "startTime": "2017-06-09T14:30:00.000Z",
   "endTime": "2017-06-09T15:15:00.000Z",
   "description": "Workshopping continues",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://images.unsplash.com/1/bag-and-hands.jpg?dpr=1&auto=format&fit=crop&w=1199&h=803&q=80&cs=tinysrgb&crop=&bg="
 },
 {
   "name": "Change to Main Stage",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T15:15:00.000Z",
   "endTime": "2017-06-09T15:30:00.000Z",
   "description": "Let's move it to main stage",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://flockler.com/thumbs/1992/20130607-dsc_03641_s830x0_q80_noupscale.jpg"
 },
 {
   "name": "Reservation",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T15:30:00.000Z",
   "endTime": "2017-06-09T16:00:00.000Z",
   "description": "TBA",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/fb/prague.jpg"
 },
 {
   "name": "Keynote: LSC next steps",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T15:45:00.000Z",
   "endTime": "2017-06-09T17:00:00.000Z",
   "description": "Keynote: LSC next steps",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://flockler.com/thumbs/2660/lsc_s1200x630_noupscale.jpg"
 },
 {
   "name": "Instructions",
-  "locationName": "Main Stage",
+  "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T17:00:00.000Z",
   "endTime": "2017-06-09T17:15:00.000Z",
   "description": "Instructions for next steps",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
-    "latitude": "50.093277",
-    "longitude": "14.4376183"
+    "latitude": "50.1038408",
+    "longitude": "14.4503703"
   },
   "coverImage": "https://images.unsplash.com/photo-1452690700222-8a2a1a109f4c?dpr=1&auto=compress,format&fit=crop&w=376&h=249&q=80&cs=tinysrgb&crop=&bg="
 },
