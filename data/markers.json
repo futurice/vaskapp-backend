@@ -61,5 +61,6 @@
 {"title":"Ss. Cyril and Methodius Cathedral","location": { "latitude" :"50.075957","longitude":"14.417041"},"type":"SIGHTS","image_url":null,"subtitle":""},
 {"title":"Dancing house","location": { "latitude" :"50.075403","longitude":"14.414179"},"type":"SIGHTS","image_url":null,"subtitle":""},
 {"title":"Vyšehrad","location": { "latitude" :"50.064416","longitude":"14.420024"},"type":"SIGHTS","image_url":null,"subtitle":""},
-{"title":"Hilton Prague","location": { "latitude" :"50.093277","longitude":"14.4376183"},"type":"HOTEL","image_url": "https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/12/68/hilton-prague-exterior.jpg","subtitle":"Hotel for the Fututrip\n\nAddress:\nPobřežní 1, 186 00 Praha 8-Florenc, Prague"}
+{"title":"Hilton Prague","location": { "latitude" :"50.093277","longitude":"14.4376183"},"type":"HOTEL","image_url": "https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/12/68/hilton-prague-exterior.jpg","subtitle":"Hotel for the Fututrip\n\nAddress:\nPobřežní 1, 186 00 Praha 8-Florenc, Prague"},
+{"title":"Mánes","location": { "latitude" :"50.0775136","longitude":"14.4119284"},"type":"SUMMER PARTY","image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Praha_Manes.jpg/1200px-Praha_Manes.jpg","subtitle":"Location for Epic Summery Party\n\nAddress:\nMasarykovo nábř. 250/1, 110 00 Praha 1-Nové Město"}
 ]
