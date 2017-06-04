@@ -1,5 +1,18 @@
 [
 {
+  "name": "Coming To Prague",
+  "locationName": "Hilton Prague",
+  "startTime": "2017-06-08T15:35:00.000Z",
+  "endTime": "2017-06-09T07:35:00.000Z",
+  "description": "You arrive to summery Prague in Thursday or Friday. We are staying in Hilton Prague. \n\nHilton Prague\n• 25-minute drive from Airport\n• Central location, within walking distance of main attractions\n• Breakfast\n• Health Club & Spa\n• Three restaurants and two bars\n• Sky Bar & Lounge\n• WiFi in public areas\n\n\nBreakfast in Hotel\n6:00 – 10:30 on FRI\n06:00 – 11:00 on SAT and SUN\n\nGym & Spa\nWe have free access to Hilton Prague Gym and Spa. Amenities include an indoor pool, whirlpool, sauna, steam room, and fitness center.",
+  "organizer": "Futurice",
+  "contactDetails": "Kristiina",
+  "location": {
+    "latitude": "50.093277",
+    "longitude": "14.4376183"
+  },
+  "coverImage": "https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/12/68/hilton-prague-exterior.jpg"
+},
   "name": "Lunch",
   "locationName": "La Fabrika - Restaurant",
   "startTime": "2017-06-09T10:00:00.000Z",
