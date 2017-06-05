@@ -14,6 +14,20 @@
   "coverImage": "https://media-cdn.tripadvisor.com/media/photo-s/0a/f8/12/68/hilton-prague-exterior.jpg"
 },
 {
+  "name": "Breakfast",
+  "locationName": "Hilton Prague",
+  "startTime": "2017-06-09T04:00:00.000Z",
+  "endTime": "2017-06-09T08:30:00.000Z",
+  "description": "Free breakfast for all Futuriceans",
+  "organizer": "Futurice",
+  "contactDetails": "Kristiina",
+  "location": {
+    "latitude": "50.093277",
+    "longitude": "14.4376183"
+  },
+  "coverImage": "https://images.unsplash.com/photo-1450862479751-84eeaf2fcca4?dpr=1&auto=compress,format&fit=crop&w=600&h=400&q=80&cs=tinysrgb&crop=&bg="
+},
+{
   "name": "Lunch",
   "locationName": "La Fabrika - Restaurant",
   "startTime": "2017-06-09T09:00:00.000Z",
@@ -85,7 +99,7 @@
 },
 {
   "name": "Break",
-  "locationName": "La Fabrika - ",
+  "locationName": "La Fabrika",
   "startTime": "2017-06-09T13:15:00.000Z",
   "endTime": "2017-06-09T13:30:00.000Z",
   "description": "Small break",
@@ -154,6 +168,20 @@
   "coverImage": "https://images.unsplash.com/photo-1452690700222-8a2a1a109f4c?dpr=1&auto=compress,format&fit=crop&w=376&h=249&q=80&cs=tinysrgb&crop=&bg="
 },
 {
+  "name": "Breakfast",
+  "locationName": "Hilton Prague",
+  "startTime": "2017-06-10T04:00:00.000Z",
+  "endTime": "2017-06-10T09:00:00.000Z",
+  "description": "Free breakfast for all Futuriceans",
+  "organizer": "Futurice",
+  "contactDetails": "Kristiina",
+  "location": {
+    "latitude": "50.093277",
+    "longitude": "14.4376183"
+  },
+  "coverImage": "https://images.unsplash.com/photo-1450862479751-84eeaf2fcca4?dpr=1&auto=compress,format&fit=crop&w=600&h=400&q=80&cs=tinysrgb&crop=&bg="
+},
+{
   "name": "Activities",
   "locationName": "Prague",
   "startTime": "2017-06-10T10:00:00.000Z",
@@ -186,7 +214,7 @@
   "locationName": "Mánes Building",
   "startTime": "2017-06-10T16:00:00.000Z",
   "endTime": "2017-06-10T21:00:00.000Z",
-  "description": "Epic Summer Party in Mánes Building. We are having a dinner before the Party. \n\nAddress: \nMasarykovo nábřeží 250/1\n110 00 Praha 1\n\n\nhttp://www.manesrestaurant.cz/en",
+  "description": "The party starts at 18.00 in Mánes and ends at 2 am.\n\nAs you have seen this year's theme is #Futubohemia. If you wish to dress up by the theme, you are more than welcome to do so. We have ordered some props to the venue. We will have dinner, drinks and since we don't want you to feel any hunger, also a midnight snack will be provided :)\n\nInspiration for the Futubohemia was a Czech Art Nouveau painter and artist Alphonse Mucha. Join us for the era of the Belle Époque (1987-1914) period of Western European history characterized by optimism, regional peace, economic prosperity, strength of colonial empires and technological, scientific and cultural innovations. Enjoy the party like Futuriceans normally do!",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
@@ -208,5 +236,19 @@
     "longitude": "14.4119284"
   },
   "coverImage": "https://images.unsplash.com/photo-1438001394654-f4837ea93ea2?dpr=1&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=&bg="
+},
+{
+  "name": "Breakfast",
+  "locationName": "Hilton Prague",
+  "startTime": "2017-06-11T04:00:00.000Z",
+  "endTime": "2017-06-11T09:00:00.000Z",
+  "description": "Free breakfast for all Futuriceans",
+  "organizer": "Futurice",
+  "contactDetails": "Kristiina",
+  "location": {
+    "latitude": "50.093277",
+    "longitude": "14.4376183"
+  },
+  "coverImage": "https://images.unsplash.com/photo-1450862479751-84eeaf2fcca4?dpr=1&auto=compress,format&fit=crop&w=600&h=400&q=80&cs=tinysrgb&crop=&bg="
 }
 ]
