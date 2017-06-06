@@ -127,7 +127,7 @@ function _makeUserDbRow(user) {
   const dbRow = {
     'uuid': user.uuid,
     'name': user.name,
-    'team_id': user.team,
+    'team_id': 35,
     'profile_picture_url': user.profilePicture,
   };
 
