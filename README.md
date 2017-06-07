@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.com/futurice/wappuapp-backend.svg?token=yjocXfDrdDpDqbwnbBG7&branch=master)](https://travis-ci.com/futurice/wappuapp-backend)
+# Prahapp backend
 
-# Wappuapp backend
+**Disclaimer!!**
+
+**This document has vastly outdated API descriptions and contains references to `wappuapp` which the implementation is based on.**
 
 Dependencies:
 
