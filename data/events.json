@@ -226,7 +226,7 @@
 {
   "name": "Summer Party",
   "locationName": "Mánes Building",
-  "startTime": "2017-06-10T16:00:00.000Z",
+  "startTime": "2017-06-10T16:00:01.000Z",
   "endTime": "2017-06-10T22:00:00.000Z",
   "description": "The party starts at 18.00 in Mánes and ends at 2 am.\n\nAs you have seen this year's theme is #Futubohemia. If you wish to dress up by the theme, you are more than welcome to do so. We have ordered some props to the venue. We will have dinner, drinks and since we don't want you to feel any hunger, also a midnight snack will be provided :)\n\nInspiration for the Futubohemia was a Czech Art Nouveau painter and artist Alphonse Mucha. Join us for the era of the Belle Époque (1987-1914) period of Western European history characterized by optimism, regional peace, economic prosperity, strength of colonial empires and technological, scientific and cultural innovations. Enjoy the party like Futuriceans normally do!",
   "organizer": "Futurice",
@@ -250,6 +250,20 @@
     "longitude": "14.4119284"
   },
   "coverImage": "https://images.unsplash.com/photo-1438001394654-f4837ea93ea2?dpr=1&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop=&bg="
+},
+{
+  "name": "After Party?",
+  "locationName": "Nebe Cocktail & Music Bar Celnice",
+  "startTime": "2017-06-10T22:00:00.000Z",
+  "endTime": "2017-06-11T03:00:00.000Z",
+  "description": "Cocktail bar which is open until 05:00! It takes only 5 minutes by walk from Summer Party.\n\nAddress: Křemencova 10, 110 00 Praha 1-Nové Město, Czechia",
+  "organizer": "Futurice",
+  "contactDetails": "Kristiina",
+  "location": {
+    "latitude": "50.0786620",
+    "longitude": "14.4174420"
+  },
+  "coverImage": "https://images.unsplash.com/photo-1495229159533-c7fcb0f1f014?dpr=1&auto=compress,format&fit=crop&w=800&h=500&q=80&cs=tinysrgb&crop=1&bg="
 },
 {
   "name": "Breakfast",
