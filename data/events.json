@@ -254,8 +254,8 @@
 {
   "name": "Breakfast",
   "locationName": "Hilton Prague",
-  "startTime": "2017-06-11T06:00:00.000Z",
-  "endTime": "2017-06-11T11:00:00.000Z",
+  "startTime": "2017-06-11T06:00:00.100Z",
+  "endTime": "2017-06-11T11:00:00.100Z",
   "description": "Free breakfast for all Futuriceans",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
