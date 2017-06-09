@@ -98,13 +98,17 @@ function _getWhereClause(filters) {
   };
 }
 
+function _formatDateTime(dateString) {
+  return dateString.slice(0, -1);
+}
+
 function _rowToEvent(row) {
   return {
     id:             row['id'],
     name:           row['name'],
     locationName:   row['location_name'],
-    startTime:      row['start_time'],
-    endTime:        row['end_time'],
+    startTime:      _formatDateTime(row['start_time'].toISOString()),
+    endTime:        _formatDateTime(row['end_time'].toISOString()),
     description:    row['description'],
     organizer:      row['organizer'],
     contactDetails: row['contact_details'],
