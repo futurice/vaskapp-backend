@@ -44,8 +44,8 @@
 {
   "name": "Welcome Words",
   "locationName": "La Fabrika - Main Stage",
-  "startTime": "2017-06-09T11:30:00.000Z",
-  "endTime": "2017-06-09T11:45:00.000Z",
+  "startTime": "2017-06-09T11:45:00.000Z",
+  "endTime": "2017-06-09T12:00:00.000Z",
   "description": "Fututrip 2017",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
@@ -58,7 +58,7 @@
 {
   "name": "Keynote by Mark Gallagher",
   "locationName": "La Fabrika - Main Stage",
-  "startTime": "2017-06-09T11:45:00.000Z",
+  "startTime": "2017-06-09T12:00:00.000Z",
   "endTime": "2017-06-09T12:45:00.000Z",
   "description": "Keynote by Mark Gallagher",
   "organizer": "Futurice",
@@ -70,18 +70,18 @@
   "coverImage": "https://i.ytimg.com/vi/FCQ_sPodSwA/maxresdefault.jpg"
 },
 {
-  "name": "Change to workshops",
-  "locationName": "La Fabrika - Workshops",
+  "name": "Break",
+  "locationName": "La Fabrika",
   "startTime": "2017-06-09T12:45:00.000Z",
   "endTime": "2017-06-09T13:00:00.000Z",
-  "description": "We are starting workshops",
+  "description": "Small break",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
   "location": {
     "latitude": "50.1038408",
     "longitude": "14.4503703"
   },
-  "coverImage": "https://flockler.com/thumbs/1992/20130607-dsc_03641_s830x0_q80_noupscale.jpg"
+  "coverImage": "https://images.unsplash.com/photo-1494398138790-6f0b412da3e6?dpr=1&auto=format&fit=crop&w=1199&h=879&q=80&cs=tinysrgb&crop=&bg="
 },
 {
   "name": "Case Studies 1",
@@ -98,23 +98,9 @@
   "coverImage": "https://images.unsplash.com/1/bag-and-hands.jpg?dpr=1&auto=format&fit=crop&w=1199&h=803&q=80&cs=tinysrgb&crop=&bg="
 },
 {
-  "name": "Break",
-  "locationName": "La Fabrika",
-  "startTime": "2017-06-09T13:45:00.000Z",
-  "endTime": "2017-06-09T14:00:00.000Z",
-  "description": "Small break",
-  "organizer": "Futurice",
-  "contactDetails": "Kristiina",
-  "location": {
-    "latitude": "50.1038408",
-    "longitude": "14.4503703"
-  },
-  "coverImage": "https://images.unsplash.com/photo-1494398138790-6f0b412da3e6?dpr=1&auto=format&fit=crop&w=1199&h=879&q=80&cs=tinysrgb&crop=&bg="
-},
-{
   "name": "Case Studies 2",
   "locationName": "La Fabrika - Workshops",
-  "startTime": "2017-06-09T14:00:00.000Z",
+  "startTime": "2017-06-09T13:45:00.000Z",
   "endTime": "2017-06-09T14:45:00.000Z",
   "description": "Workshopping continues",
   "organizer": "Futurice",
@@ -129,7 +115,7 @@
   "name": "Change to Main Stage",
   "locationName": "La Fabrika - Main Stage",
   "startTime": "2017-06-09T14:45:00.000Z",
-  "endTime": "2017-06-09T14:45:00.100Z",
+  "endTime": "2017-06-09T15:00:00.100Z",
   "description": "Let's move it to main stage",
   "organizer": "Futurice",
   "contactDetails": "Kristiina",
@@ -142,7 +128,7 @@
 {
   "name": "Keynote: LSC next steps",
   "locationName": "La Fabrika - Main Stage",
-  "startTime": "2017-06-09T14:45:00.200Z",
+  "startTime": "2017-06-09T15:00:00.200Z",
   "endTime": "2017-06-09T16:00:00.000Z",
   "description": "Keynote: LSC next steps",
   "organizer": "Futurice",
