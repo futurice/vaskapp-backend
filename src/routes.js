@@ -12,7 +12,7 @@ import * as citiesHttp from './http/cities-http';
 import * as radioHttp from './http/radio-http';
 import * as wappuMood from './http/wappu-mood-http';
 import * as imageHttp from './http/image-http';
-// import * as auth from './auth/auth-service';
+import * as auth from './auth/auth-service';
 
 function createRouter() {
   const router = express.Router();
@@ -29,7 +29,7 @@ function createRouter() {
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
 
-  router.get('/feed', feedHttp.getFeed);
+  router.get('/feed', auth.isAuthenticated(), feedHttp.getFeed);
   router.delete('/feed/:id', feedHttp.deleteFeedItem);
   router.get('/feed/:id', feedHttp.getFeedItem);
 
