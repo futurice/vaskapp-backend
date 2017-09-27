@@ -9,7 +9,7 @@ function isAuthenticated(req, res, next) {
     req.headers.authorization = 'Bearer ' + req.query.access_token;
   }
 
-  return validateJwt(req, res, next);
+  validateJwt(req, res, next);
 }
 
 exports.isAuthenticated = isAuthenticated;

@@ -69,8 +69,8 @@ function createApp() {
 
   // Initialize routes
   const router = createRouter();
-  // app.use(auth.isAuthenticated());
-  app.use('/api', auth.isAuthenticated(), router);
+  app.use(auth.isAuthenticated());
+  app.use('/api', router);
 
   app.use(errorLogger({  }));
   app.use(errorResponder());
