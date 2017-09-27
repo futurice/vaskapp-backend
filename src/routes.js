@@ -20,12 +20,12 @@ function createRouter() {
   router.get('/events', eventHttp.getEvents);
   router.get('/events/:id', eventHttp.getEvent);
 
-  router.post('/actions', auth.isAuthenticated(), actionHttp.postAction);
-  router.get('/teams', auth.isAuthenticated(), teamHttp.getTeams);
+  router.post('/actions', actionHttp.postAction);
+  router.get('/teams', teamHttp.getTeams);
 
-  router.get('/users', auth.isAuthenticated(), userHttp.getUserById);
+  router.get('/users', userHttp.getUserById);
   router.put('/users/:uuid', userHttp.putUser);
-  router.get('/users/:uuid', auth.isAuthenticated(), userHttp.getUserByUuid);
+  router.get('/users/:uuid', userHttp.getUserByUuid);
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
 
