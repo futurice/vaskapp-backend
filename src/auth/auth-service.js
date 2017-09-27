@@ -20,7 +20,6 @@ function isAuthenticated() {
   // });
 }
 
-
 export {
   isAuthenticated
 };
