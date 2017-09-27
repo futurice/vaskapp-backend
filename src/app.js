@@ -11,6 +11,7 @@ import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 import * as feedAggregator from './worker/feed-aggregator';
+import * as auth from './auth/auth-service';
 
 function createApp() {
   const app = express();
@@ -52,6 +53,7 @@ function createApp() {
 
   if (process.env.DISABLE_AUTH !== 'true') {
     // Do not require tokens in development or test env
+    app.use(auth.isAuthenticated());
     app.use(requireApiToken());
   }
 
