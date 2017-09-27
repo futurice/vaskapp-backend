@@ -3,7 +3,10 @@ const compose = require('composable-middleware');
 const validateJwt = expressJwt({ secret: process.env.AUTH0_SECRET_KEY });
 
 // # Validates JWT
-function isAuthenticated() {
+
+const isAuthenticated = validateJwt;
+
+function _isAuthenticated() {
   return compose()
   .use(function(req, res, next) {
     // Allow access_token to be passed through query parameter as well
@@ -21,4 +24,6 @@ function isAuthenticated() {
 }
 
 
-exports.isAuthenticated = isAuthenticated;
+export {
+  isAuthenticated
+};
