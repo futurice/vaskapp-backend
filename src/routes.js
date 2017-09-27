@@ -9,44 +9,41 @@ import * as announcementHttp from './http/announcement-http';
 import * as voteHttp from './http/vote-http';
 import * as markerHttp from './http/marker-http';
 import * as citiesHttp from './http/cities-http';
-import * as radioHttp from './http/radio-http';
 import * as wappuMood from './http/wappu-mood-http';
 import * as imageHttp from './http/image-http';
+import * as auth from './auth/auth-service';
 
 function createRouter() {
   const router = express.Router();
 
-  router.get('/events', eventHttp.getEvents);
-  router.get('/events/:id', eventHttp.getEvent);
+  router.get('/events', auth.isAuthenticated(), eventHttp.getEvents);
+  router.get('/events/:id', auth.isAuthenticated(), eventHttp.getEvent);
 
-  router.post('/actions', actionHttp.postAction);
-  router.get('/teams', teamHttp.getTeams);
+  router.post('/actions', auth.isAuthenticated(), actionHttp.postAction);
+  router.get('/teams', auth.isAuthenticated(), teamHttp.getTeams);
 
-  router.get('/users', userHttp.getUserById);
-  router.put('/users/:uuid', userHttp.putUser);
-  router.get('/users/:uuid', userHttp.getUserByUuid);
+  router.get('/users', auth.isAuthenticated(), userHttp.getUserById);
+  router.put('/users/:uuid', auth.isAuthenticated(), userHttp.putUser);
+  router.get('/users/:uuid', auth.isAuthenticated(), userHttp.getUserByUuid);
 
-  router.get('/action_types', actionTypeHttp.getActionTypes);
+  router.get('/action_types', auth.isAuthenticated(), actionTypeHttp.getActionTypes);
 
-  router.get('/feed', feedHttp.getFeed);
-  router.delete('/feed/:id', feedHttp.deleteFeedItem);
-  router.get('/feed/:id', feedHttp.getFeedItem);
+  router.get('/feed', auth.isAuthenticated(), feedHttp.getFeed);
+  router.delete('/feed/:id', auth.isAuthenticated(), feedHttp.deleteFeedItem);
+  router.get('/feed/:id', auth.isAuthenticated(), feedHttp.getFeedItem);
 
-  router.get('/image/:id', imageHttp.getImage);
+  router.get('/image/:id', auth.isAuthenticated(), imageHttp.getImage);
 
-  router.get('/announcements', announcementHttp.getAnnouncements);
+  router.get('/announcements', auth.isAuthenticated(), announcementHttp.getAnnouncements);
 
-  router.get('/markers', markerHttp.getMarkers);
+  router.get('/markers', auth.isAuthenticated(), markerHttp.getMarkers);
 
-  router.get('/cities', citiesHttp.getCities)
+  router.get('/cities', auth.isAuthenticated(), citiesHttp.getCities)
 
-  router.put('/vote', voteHttp.putVote);
+  router.put('/vote', auth.isAuthenticated(), voteHttp.putVote);
 
-  router.get('/radio', radioHttp.getStations);
-  router.get('/radio/:id', radioHttp.getStation);
-
-  router.put('/mood', wappuMood.putMood);
-  router.get('/mood', wappuMood.getMood);
+  router.put('/mood', auth.isAuthenticated(), wappuMood.putMood);
+  router.get('/mood', auth.isAuthenticated(), wappuMood.getMood);
 
   return router;
 }
