@@ -11,7 +11,7 @@ function isAuthenticated() {
       req.headers.authorization = 'Bearer ' + req.query.access_token;
     }
     validateJwt(req, res, next);
-  })
+  });
   // .use(function(err, req, res, next) {
   //   if (err.name === 'UnauthorizedError') {
   //     return res.status(401).send('invalid token...');
