@@ -11,7 +11,6 @@ import requireApiToken from './middleware/require-api-token';
 import * as throttleCore from './core/throttle-core';
 import * as fb from './util/fb';
 import * as feedAggregator from './worker/feed-aggregator';
-import * as auth from './auth/auth-service';
 
 function createApp() {
   const app = express();
@@ -69,7 +68,7 @@ function createApp() {
 
   // Initialize routes
   const router = createRouter();
-  app.use('/api', auth.isAuthenticated(), router);
+  app.use('/api', router);
 
   app.use(errorLogger({  }));
   app.use(errorResponder());

@@ -20,16 +20,16 @@ function createRouter() {
   router.get('/events', eventHttp.getEvents);
   router.get('/events/:id', eventHttp.getEvent);
 
-  router.post('/actions', actionHttp.postAction);
-  router.get('/teams', teamHttp.getTeams);
+  router.post('/actions', auth.isAuthenticated(), actionHttp.postAction);
+  router.get('/teams', auth.isAuthenticated(), teamHttp.getTeams);
 
-  router.get('/users', userHttp.getUserById);
+  router.get('/users', auth.isAuthenticated(), userHttp.getUserById);
   router.put('/users/:uuid', userHttp.putUser);
-  router.get('/users/:uuid', userHttp.getUserByUuid);
+  router.get('/users/:uuid', auth.isAuthenticated(), userHttp.getUserByUuid);
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
 
-  router.get('/feed', feedHttp.getFeed);
+  router.get('/feed', auth.isAuthenticated(), feedHttp.getFeed);
   router.delete('/feed/:id', feedHttp.deleteFeedItem);
   router.get('/feed/:id', feedHttp.getFeedItem);
 
