@@ -53,7 +53,6 @@ function createApp() {
 
   if (process.env.DISABLE_AUTH !== 'true') {
     // Do not require tokens in development or test env
-    app.use(auth.isAuthenticated());
     app.use(requireApiToken());
   }
 
@@ -70,6 +69,7 @@ function createApp() {
 
   // Initialize routes
   const router = createRouter();
+  app.use(auth.isAuthenticated());
   app.use('/api', router);
 
   app.use(errorLogger({  }));
