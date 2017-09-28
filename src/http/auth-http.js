@@ -23,7 +23,7 @@ const refreshAuthToken = createJsonRoute(function(req, res) {
         return reject(error);
       }
 
-      return resolve(response);
+      return resolve(body);
     });
   });
 });
