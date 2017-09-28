@@ -28,7 +28,17 @@ const jwtCheck = jwt({
   algorithms: ['RS256']
 });
 
-const isAuthenticated = jwtCheck;
+function isAuthenticated() {
+  return compose()
+  .use(function(req, res, next) {
+    // Allow access_token to be passed through query parameter as well
+    if (req.query && req.query.hasOwnProperty('access_token')) {
+      req.headers.authorization = 'Bearer ' + req.query.access_token;
+    }
+
+    jwtCheck(req, res, next);
+  });
+}
 
 export {
   isAuthenticated
