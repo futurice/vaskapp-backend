@@ -10,6 +10,7 @@ function isAuthenticated() {
     if (req.query && req.query.hasOwnProperty('access_token')) {
       req.headers.authorization = 'Bearer ' + req.query.access_token;
     }
+
     validateJwt(req, res, next);
   });
   // .use(function(err, req, res, next) {
