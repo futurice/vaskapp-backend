@@ -18,33 +18,33 @@ import * as authService from './auth/auth-service';
 function createRouter() {
   const router = express.Router();
 
-  router.get('/events', authService.isAuthenticated(), eventHttp.getEvents);
-  router.get('/events/:id', authService.isAuthenticated(), eventHttp.getEvent);
+  router.get('/events', eventHttp.getEvents);
+  router.get('/events/:id', eventHttp.getEvent);
 
-  router.post('/actions', authService.isAuthenticated(), actionHttp.postAction);
-  router.get('/teams', authService.isAuthenticated(), teamHttp.getTeams);
+  router.post('/actions', actionHttp.postAction);
+  router.get('/teams', teamHttp.getTeams);
 
-  router.get('/users', authService.isAuthenticated(), userHttp.getUserById);
-  router.put('/users/:uuid', authService.isAuthenticated(), userHttp.putUser);
-  router.get('/users/:uuid', authService.isAuthenticated(), userHttp.getUserByUuid);
+  router.get('/users', userHttp.getUserById);
+  router.put('/users/:uuid', userHttp.putUser);
+  router.get('/users/:uuid', userHttp.getUserByUuid);
 
-  router.post('/auth/:refreshToken', authHttp.refreshAuthToken); // no auth, because token should be expired
+  // router.post('/auth/:refreshToken', authHttp.refreshAuthToken); // no auth, because token should be expired
 
   router.get('/action_types', actionTypeHttp.getActionTypes);
 
-  router.get('/feed', authService.isAuthenticated(), feedHttp.getFeed);
-  router.delete('/feed/:id', authService.isAuthenticated(), feedHttp.deleteFeedItem);
-  router.get('/feed/:id', authService.isAuthenticated(), feedHttp.getFeedItem);
+  router.get('/feed', feedHttp.getFeed);
+  router.delete('/feed/:id', feedHttp.deleteFeedItem);
+  router.get('/feed/:id', feedHttp.getFeedItem);
 
-  router.get('/image/:id', authService.isAuthenticated(), imageHttp.getImage);
+  router.get('/image/:id', imageHttp.getImage);
 
-  router.get('/announcements', authService.isAuthenticated(), announcementHttp.getAnnouncements);
+  router.get('/announcements', announcementHttp.getAnnouncements);
 
-  router.get('/markers', authService.isAuthenticated(), markerHttp.getMarkers);
+  router.get('/markers', markerHttp.getMarkers);
 
-  router.get('/cities', authService.isAuthenticated(), citiesHttp.getCities)
+  router.get('/cities', citiesHttp.getCities)
 
-  router.put('/vote', authService.isAuthenticated(), voteHttp.putVote);
+  router.put('/vote', voteHttp.putVote);
 
   router.get('/radio', radioHttp.getStations);
   router.get('/radio/:id', radioHttp.getStation);
