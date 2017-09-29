@@ -1,5 +1,5 @@
 import request from 'request';
-import {createJsonRoute, throwStatus} from '../util/express';
+import {createJsonRoute} from '../util/express';
 
 const refreshAuthToken = createJsonRoute(function(req, res) {
   const token = req.params.refreshToken;

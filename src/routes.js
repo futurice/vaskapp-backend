@@ -13,7 +13,7 @@ import * as radioHttp from './http/radio-http';
 import * as wappuMood from './http/wappu-mood-http';
 import * as imageHttp from './http/image-http';
 import * as authService from './auth/auth-service';
-// import * as authHttp from './http/auth-http';
+import * as authHttp from './http/auth-http';
 
 function createRouter() {
   const router = express.Router();
@@ -28,7 +28,7 @@ function createRouter() {
   router.put('/users/:uuid', authService.isAuthenticated(), userHttp.putUser);
   router.get('/users/:uuid', authService.isAuthenticated(), userHttp.getUserByUuid);
 
-  // router.post('/auth/:refreshToken', authHttp.refreshAuthToken); // no auth, because token should be expired
+  router.post('/auth/:refreshToken', authHttp.refreshAuthToken); // no auth, because token should be expired
 
   router.get('/action_types', authService.isAuthenticated(), actionTypeHttp.getActionTypes);
 
