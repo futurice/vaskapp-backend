@@ -18,39 +18,39 @@ import * as authService from './auth/auth-service';
 function createRouter() {
   const router = express.Router();
 
-  router.get('/events', authService.isAuthenticated(), eventHttp.getEvents);
-  router.get('/events/:id', authService.isAuthenticated(), eventHttp.getEvent);
+  router.get('/events', authService.isAuthenticated, eventHttp.getEvents);
+  router.get('/events/:id', authService.isAuthenticated, eventHttp.getEvent);
 
-  router.post('/actions', authService.isAuthenticated(), actionHttp.postAction);
-  router.get('/teams', authService.isAuthenticated(), teamHttp.getTeams);
+  router.post('/actions', authService.isAuthenticated, actionHttp.postAction);
+  router.get('/teams', authService.isAuthenticated, teamHttp.getTeams);
 
-  router.get('/users', authService.isAuthenticated(), userHttp.getUserById);
-  router.put('/users/:uuid', authService.isAuthenticated(), userHttp.putUser);
-  router.get('/users/:uuid', authService.isAuthenticated(), userHttp.getUserByUuid);
+  router.get('/users', authService.isAuthenticated, userHttp.getUserById);
+  router.put('/users/:uuid', authService.isAuthenticated, userHttp.putUser);
+  router.get('/users/:uuid', authService.isAuthenticated, userHttp.getUserByUuid);
 
   // router.post('/auth/:refreshToken', authHttp.refreshAuthToken); // no auth, because token should be expired
 
-  router.get('/action_types', authService.isAuthenticated(), actionTypeHttp.getActionTypes);
+  router.get('/action_types', authService.isAuthenticated, actionTypeHttp.getActionTypes);
 
-  router.get('/feed', authService.isAuthenticated(), feedHttp.getFeed);
-  router.delete('/feed/:id', authService.isAuthenticated(), feedHttp.deleteFeedItem);
-  router.get('/feed/:id', authService.isAuthenticated(), feedHttp.getFeedItem);
+  router.get('/feed', authService.isAuthenticated, feedHttp.getFeed);
+  router.delete('/feed/:id', authService.isAuthenticated, feedHttp.deleteFeedItem);
+  router.get('/feed/:id', authService.isAuthenticated, feedHttp.getFeedItem);
 
-  router.get('/image/:id', authService.isAuthenticated(), imageHttp.getImage);
+  router.get('/image/:id', authService.isAuthenticated, imageHttp.getImage);
 
-  router.get('/announcements', authService.isAuthenticated(), announcementHttp.getAnnouncements);
+  router.get('/announcements', authService.isAuthenticated, announcementHttp.getAnnouncements);
 
-  router.get('/markers', authService.isAuthenticated(), markerHttp.getMarkers);
+  router.get('/markers', authService.isAuthenticated, markerHttp.getMarkers);
 
-  router.get('/cities', authService.isAuthenticated(), citiesHttp.getCities)
+  router.get('/cities', authService.isAuthenticated, citiesHttp.getCities)
 
-  router.put('/vote', authService.isAuthenticated(), voteHttp.putVote);
+  router.put('/vote', authService.isAuthenticated, voteHttp.putVote);
 
-  router.get('/radio', authService.isAuthenticated(), radioHttp.getStations);
-  router.get('/radio/:id', authService.isAuthenticated(), radioHttp.getStation);
+  router.get('/radio', authService.isAuthenticated, radioHttp.getStations);
+  router.get('/radio/:id', authService.isAuthenticated, radioHttp.getStation);
 
-  router.put('/mood', authService.isAuthenticated(), wappuMood.putMood);
-  router.get('/mood', authService.isAuthenticated(), wappuMood.getMood);
+  router.put('/mood', authService.isAuthenticated, wappuMood.putMood);
+  router.get('/mood', authService.isAuthenticated, wappuMood.getMood);
 
   return router;
 }
