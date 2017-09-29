@@ -23,7 +23,7 @@ const refreshAuthToken = createJsonRoute(function(req, res) {
     url: `https://${process.env.AUTH0_DOMAIN}/delegation`,
     headers: { 'content-type': 'application/json' },
     body: {
-      id_token: token,
+      refresh_token: token,
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       client_id: process.env.AUTH0_CLIENT_ID,
     },
