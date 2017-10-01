@@ -14,6 +14,7 @@ function getImageById(id) {
     SELECT
       feed_items.created_at as created_at,
       feed_items.image_path as image_path,
+      feed_items.text as text,
       COALESCE(user_name, 'SYSTEM') as user_name,
       team_name,
       vote_score(feed_items) as votes,
