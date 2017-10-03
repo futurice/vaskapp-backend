@@ -90,6 +90,7 @@ function _queryUserDetails(userId) {
   const sqlString = `
   SELECT
     users.name AS name,
+    users.info AS info,
     teams.name AS team,
     COALESCE(num_simas, 0) AS num_simas,
     users.profile_picture_url
@@ -117,6 +118,7 @@ function _queryUserDetails(userId) {
       return {
         name: rowObj['name'],
         team: rowObj['team'],
+        info: rowObj['info'],
         numSimas: rowObj['num_simas'],
         profilePicture: rowObj['profile_picture_url'],
       };
@@ -127,6 +129,7 @@ function _makeUserDbRow(user) {
   const dbRow = {
     'uuid': user.uuid,
     'name': user.name,
+    'info': user.info,
     'team_id': 35,
     'profile_picture_url': user.profilePicture,
   };
@@ -140,6 +143,7 @@ function _userRowToObject(row) {
     id: row.id,
     name: row.name,
     uuid: row.uuid,
+    info: row.info,
     team: row.team_id,
     isBanned: row.is_banned,
     profilePicture: row.profile_picture_url,
