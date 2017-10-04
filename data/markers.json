@@ -1,9 +1,8 @@
 [
 {"type":"TAMPERE","title":"Tampere Office","location": {"latitude":"61.5023026","longitude":"23.7638005"},"image_url":"https://futurice.github.io/tamperefutucafe/placeholder.jpg","subtitle":"Kelloportinkatu 1 D, 33100 Tampere"},
 {"type":"HELSINKI","title":"Helsinki Office","location": {"latitude":"60.1687515","longitude":"24.9319159"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":"Annankatu 34B, 00100 Helsinki"},
-{"type":"BERLIN","title":"Berlin Office","location": {"latitude":"60.1687515","longitude":"24.9319159"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
-{"type":"MUNICH","title":"Munich Office","location": {"latitude":"60.1687515","longitude":"24.9319159"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
-{"type":"LONDON","title":"London Office","location": {"latitude":"60.1687515","longitude":"24.9319159"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
-{"type":"STOCKHOLM","title":"Stockholm Office","location": {"latitude":"60.1687515","longitude":"24.9319159"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""}
+{"type":"BERLIN","title":"Berlin Office","location": {"latitude":"52.5086994","longitude":"13.3919002"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
+{"type":"MUNICH","title":"Munich Office","location": {"latitude":"48.12352","longitude":"11.54892"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
+{"type":"LONDON","title":"London Office","location": {"latitude":"51.5302787","longitude":"-0.0912441"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""},
+{"type":"STOCKHOLM","title":"Stockholm Office","location": {"latitude":"59.3359433","longitude":"18.0706983"},"image_url":"https://flockler.com/thumbs/1992/futucafe--1af58hykdo_s1800x0_q80_noupscale.jpg","subtitle":""}
 ]
-
