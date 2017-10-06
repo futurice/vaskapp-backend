@@ -359,10 +359,10 @@ function _getWhereSql(opts) {
 
   if (opts.longitude && opts.latitude && opts.radius) {
 
-    whereClauses.push(`ST_DWithin(Geometry(location), ST_GeogFromText('POINT(? ?)'), ?)`);
-    params.push(opts.longitude);
-    params.push(opts.latitude);
-    params.push(opts.radius);
+    whereClauses.push(`ST_DWithin(Geometry(feed_items.location), ST_GeogFromText('POINT(${opts.longitude} ${opts.latitude})'), ${opts.radius})`);
+    // params.push(opts.longitude);
+    // params.push(opts.latitude);
+    // params.push(opts.radius);
   }
 
   return whereClauses.length > 0
