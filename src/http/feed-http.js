@@ -13,7 +13,8 @@ const getFeed = createJsonRoute(function(req, res) {
     type: req.query.type,
     since: req.query.since,
     offset: req.query.offset,
-    location: req.query.location,
+    longitude: req.query.longitude,
+    latitude: req.query.latitude,
     radius: req.query.radius,
   }, 'feedParams');
 

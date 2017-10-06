@@ -357,10 +357,10 @@ function _getWhereSql(opts) {
     params.push(opts.since);
   }
 
-  if (opts.location && opts.radius) {
+  if (opts.longitude && opts.latitude && opts.radius) {
     whereClauses.push(`ST_DWithin(location, ST_SetSRID(ST_Point(?, ?), 4326), ?)`);
-    params.push(opts.location.longitude);
-    params.push(opts.location.latitued);
+    params.push(opts.longitude);
+    params.push(opts.latitude);
     params.push(opts.radius);
   }
 
