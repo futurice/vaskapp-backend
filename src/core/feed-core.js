@@ -357,6 +357,13 @@ function _getWhereSql(opts) {
     params.push(opts.since);
   }
 
+  if (opts.location && opts.radius) {
+    whereClauses.push(`ST_DWithin(location, ST_SetSRID(ST_Point(?, ?), 4326), ?)`);
+    params.push(opts.location.longitude);
+    params.push(opts.location.latitued);
+    params.push(opts.radius);
+  }
+
   return whereClauses.length > 0
     ? knex.raw(` WHERE ${ whereClauses.join(' AND ')}`, params).toString()
     : '';
