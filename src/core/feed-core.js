@@ -361,7 +361,8 @@ function _getWhereSql(opts) {
 
     // whereClauses.push(`ST_Distance(ST_GeomFromText('POINT(? ?)',4326), feed_items.location) <= ?`);
     // whereClauses.push(`ST_DWithin(feed_items.location, ST_SetSRID(ST_Point(?, ?), 4326), ?)`);
-    whereClauses.push(`ST_DWithin(feed_items.location, ST_SetSRID(ST_MakePoint(${opts.longitude}, ${opts.latitude}), 4326)::geography, ${opts.radius})`);
+    whereClauses.push(`ST_DWithin(feed_items.location, ST_GeographyFromText('SRID=4326; POINT(${opts.longitude} ${opts.latitude})'), ${opts.radius})`);
+    // whereClauses.push(`ST_DWithin(feed_items.location, ST_SetSRID(ST_MakePoint(${opts.longitude}, ${opts.latitude}), 4326)::geography, ${opts.radius})`);
     // params.push(opts.longitude);
     // params.push(opts.latitude);
     // params.push(opts.radius);
