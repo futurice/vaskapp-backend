@@ -359,8 +359,9 @@ function _getWhereSql(opts) {
 
   if (opts.longitude && opts.latitude && opts.radius) {
 
-    whereClauses.push(`ST_Distance(ST_GeomFromText('POINT(? ?)',4326), feed_items.location) <= ?`);
+    // whereClauses.push(`ST_Distance(ST_GeomFromText('POINT(? ?)',4326), feed_items.location) <= ?`);
     // whereClauses.push(`ST_DWithin(feed_items.location, ST_SetSRID(ST_Point(?, ?), 4326), ?)`);
+    whereClauses.push(`ST_DWithin(feed_items.location, ST_SetSRID(ST_MakePoint(?, ?), 4326)::geography, ?)`);
     params.push(opts.longitude);
     params.push(opts.latitude);
     params.push(opts.radius);
