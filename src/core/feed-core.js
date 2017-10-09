@@ -1,6 +1,6 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
-import {GCS_CONFIG} from '../util/gcs';
+import {GCS_CONFIG, pathToUrl} from '../util/gcs';
 import CONST from '../constants';
 const logger = require('../util/logger')(__filename);
 import * as score from './score-core';
@@ -292,7 +292,7 @@ function _actionToFeedObject(row, client) {
       name: row['user_name'],
       team: row['team_name'],
       type: _resolveAuthorType(row, client),
-      profilePicture: row['profile_picture_url'],
+      profilePicture: pathToUrl(row['profile_picture_url']),
     },
     createdAt: row['created_at'],
     commentCount: row['comment_count'],
