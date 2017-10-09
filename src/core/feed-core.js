@@ -189,7 +189,7 @@ function _rowToCommentObject(row) {
     text: row['text'],
     userName: row['userName'],
     createdAt: row['createdAt'],
-    picture: pathToUrl(row['profilePicture']),
+    profilePicture: pathToUrl(row['profilePicture']),
   };
 }
 
