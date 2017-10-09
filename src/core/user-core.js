@@ -40,7 +40,7 @@ function updateUser(user) {
     : BPromise.resolve(null);
 
   return saveImage.then(imgPath => {
-    const imgUpdate = imgPath ? { profile_picture_url: imgPath.imageName } : {};
+    const imgUpdate = imgPath ? { profilePicture: imgPath.imageName } : {};
     const userUpdate = _.merge({}, user, imgUpdate);
     const dbRow = _makeUserDbRow(userUpdate);
     return knex('users').returning('id').update(dbRow)
