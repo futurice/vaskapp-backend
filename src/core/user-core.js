@@ -38,7 +38,7 @@ function updateUser(user) {
 
 
     return saveImage.then(imgPath => {
-      const imgUpdate = imgPath ? { profile_picture_url: imgPath } : {};
+      const imgUpdate = imgPath ? { profile_picture_url: imgPath.imageName } : {};
       const userUpdate = _.merge({}, user, imgUpdate);
 
       const dbRow = _makeUserDbRow(userUpdate);
