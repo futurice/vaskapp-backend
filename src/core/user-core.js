@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as feedCore from './feed-core.js';
+import * as imageCore from './image-core';
 import * as imageHttp from '../http/image-http';
 import {decodeBase64Image} from '../util/base64';
 import {padLeft} from '../util/string';
@@ -32,8 +33,9 @@ function createUser(user) {
 function updateUser(user) {
   // Save user image if needed
   const fileName = `${ padLeft(user.uuid, 5) }-${ Date.now() }`;
+  const filePath = `${ imageCore.targetFolder }/${ fileName }`;
   const saveImage = user.imageData
-    ? imageHttp.uploadImage(fileName, decodeBase64Image(user.imageData))
+    ? imageHttp.uploadImage(filePath, decodeBase64Image(user.imageData))
     : BPromise.resolve(null);
 
 
