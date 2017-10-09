@@ -136,7 +136,7 @@ function _queryUserDetails(userId) {
         team: rowObj['team'],
         info: rowObj['info'],
         numSimas: rowObj['num_simas'],
-        profilePicture: rowObj['profile_picture_url'],
+        profilePicture: pathToUrl(rowObj['profile_picture_url']),
       };
     });
 }
