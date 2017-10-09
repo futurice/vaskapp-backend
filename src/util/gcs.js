@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'lodash';
 import streamifier from 'streamifier';
 import * as base64 from './base64';
 const logger = require('./logger')(__filename);
@@ -77,7 +78,20 @@ function uploadImageBuffer(imageName, imageBuffer) {
   });
 };
 
+const pathToUrl = (imagePath) => {
+
+  if (_.startsWith(imagePath, 'http')) {
+    return imagePath;
+  }
+
+  return process.env.DISABLE_IMGIX === 'true' || _.endsWith(imagePath, 'gif')
+    ? GCS_CONFIG.baseUrl + '/' + GCS_CONFIG.bucketName + '/' + imagePath
+    : 'https://' + GCS_CONFIG.bucketName + '.imgix.net/' + imagePath + process.env.IMGIX_QUERY;
+}
+
+
 export {
   uploadImageBuffer,
+  pathToUrl,
   GCS_CONFIG
 };

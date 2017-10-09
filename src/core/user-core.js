@@ -4,6 +4,7 @@ import * as imageCore from './image-core';
 import * as imageHttp from '../http/image-http';
 import {decodeBase64Image} from '../util/base64';
 import {padLeft} from '../util/string';
+import {pathToUrl} from '../util/gcs';
 const BPromise = require('bluebird');
 const {knex} = require('../util/database').connect();
 
@@ -154,7 +155,7 @@ function _makeUserDbRow(user) {
 
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 function _userRowToObject(row) {
-  return {
+  const user = {
     id: row.id,
     name: row.name,
     uuid: row.uuid,
@@ -163,6 +164,12 @@ function _userRowToObject(row) {
     isBanned: row.is_banned,
     profilePicture: row.profile_picture_url,
   };
+
+  user.profilePicture = user.profilePicture
+    ? pathToUrl(user.profilePicture)
+    : null;
+
+  return user;
 }
 
 export {
