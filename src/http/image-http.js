@@ -116,5 +116,6 @@ function postImage(req, res) {
 
 export {
   getImage,
-  postImage
+  postImage,
+  uploadImage
 };

@@ -34,26 +34,24 @@ function updateUser(user) {
   // Save user image if needed
   const fileName = `${ padLeft(user.uuid, 5) }-${ Date.now() }`;
   const filePath = `${ imageCore.targetFolder }/${ fileName }`;
+
   const saveImage = user.imageData
     ? imageHttp.uploadImage(filePath, decodeBase64Image(user.imageData))
     : BPromise.resolve(null);
 
-
-    return saveImage.then(imgPath => {
-      const imgUpdate = imgPath ? { profile_picture_url: imgPath.imageName } : {};
-      const userUpdate = _.merge({}, user, imgUpdate);
-
-      const dbRow = _makeUserDbRow(userUpdate);
-      return knex('users').returning('id').update(dbRow)
-        .where('uuid', user.uuid)
-        .then(rows => {
-          if (_.isEmpty(rows)) {
-            throw new Error('User row update failed: ' + dbRow);
-          }
-
-          return rows.length;
-        });
-    })
+  return saveImage.then(imgPath => {
+    const imgUpdate = imgPath ? { profile_picture_url: imgPath.imageName } : {};
+    const userUpdate = _.merge({}, user, imgUpdate);
+    const dbRow = _makeUserDbRow(userUpdate);
+    return knex('users').returning('id').update(dbRow)
+      .where('uuid', user.uuid)
+      .then(rows => {
+        if (_.isEmpty(rows)) {
+          throw new Error('User row update failed: ' + dbRow);
+        }
+        return rows.length;
+      });
+  })
 }
 
 function findByUuid(uuid) {
