@@ -1,5 +1,8 @@
 import _ from 'lodash';
 import * as feedCore from './feed-core.js';
+import * as imageHttp from './image-http';
+import {decodeBase64Image} from '../util/base64';
+import {padLeft} from '../util/string';
 const BPromise = require('bluebird');
 const {knex} = require('../util/database').connect();
 
@@ -27,16 +30,28 @@ function createUser(user) {
 }
 
 function updateUser(user) {
-  const dbRow = _makeUserDbRow(user);
-  return knex('users').returning('id').update(dbRow)
-    .where('uuid', user.uuid)
-    .then(rows => {
-      if (_.isEmpty(rows)) {
-        throw new Error('User row update failed: ' + dbRow);
-      }
+  // Save user image if needed
+  const fileName = `${ padLeft(user.uuid, 5) }-${ Date.now() }`;
+  const saveImage = user.imageData
+    ? imageHttp.uploadImage(fileName, decodeBase64Image(user.imageData))
+    : BPromise.resolve(null);
 
-      return rows.length;
-    });
+
+    return saveImage.then(imgPath => {
+      const imgUpdate = imgPath ? { profile_picture_url: imgPath } : {};
+      const userUpdate = _.merge({}, user, imgUpdate);
+
+      const dbRow = _makeUserDbRow(userUpdate);
+      return knex('users').returning('id').update(dbRow)
+        .where('uuid', user.uuid)
+        .then(rows => {
+          if (_.isEmpty(rows)) {
+            throw new Error('User row update failed: ' + dbRow);
+          }
+
+          return rows.length;
+        });
+    })
 }
 
 function findByUuid(uuid) {

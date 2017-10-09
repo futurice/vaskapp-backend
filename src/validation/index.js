@@ -33,6 +33,7 @@ const schemas = {
     info: Joi.string().max(10000, 'utf8').optional(),
     team: common.team.required(),
     profilePicture: Joi.string(),
+    imageData: Joi.string().optional(),
   },
 
   userQueryParams: {
