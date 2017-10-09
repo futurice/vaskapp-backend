@@ -175,12 +175,22 @@ function getFeedItem(id, client) {
       .innerJoin('users', 'users.id', 'comments.user_id')
       .where('feed_item_id', '=', id)
       .orderBy('comments.created_at', 'ASC')
-      .then((comments) => {
+      .then((rows) => {
         const feedItem = _actionToFeedObject(row, client);
+        const comments = _.map(rows, row => _rowToCommentObject(row));
         feedItem.comments = comments || [];
         return feedItem;
       });
   });
+}
+
+function _rowToCommentObject(row) {
+  return {
+    text: row['text'],
+    userName: row['userName'],
+    createdAt: row['createdAt'],
+    picture: pathToUrl(row['profilePicture']),
+  };
 }
 
 function _sanitizeText(text) {
