@@ -80,7 +80,7 @@ function uploadImageBuffer(imageName, imageBuffer) {
 
 const pathToUrl = (imagePath) => {
 
-  if (_.startsWith(imagePath, 'http')) {
+  if (!imagePath || _.startsWith(imagePath, 'http')) {
     return imagePath;
   }
 

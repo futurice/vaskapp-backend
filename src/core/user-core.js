@@ -162,12 +162,8 @@ function _userRowToObject(row) {
     info: row.info,
     team: row.team_id,
     isBanned: row.is_banned,
-    profilePicture: row.profile_picture_url,
+    profilePicture: pathToUrl(row.profile_picture_url),
   };
-
-  user.profilePicture = user.profilePicture
-    ? pathToUrl(user.profilePicture)
-    : null;
 
   return user;
 }
