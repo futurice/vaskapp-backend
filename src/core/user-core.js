@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import * as feedCore from './feed-core.js';
-import * as imageHttp from './image-http';
+import * as imageHttp from '../http/image-http';
 import {decodeBase64Image} from '../util/base64';
 import {padLeft} from '../util/string';
 const BPromise = require('bluebird');
