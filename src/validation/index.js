@@ -14,7 +14,7 @@ const schemas = {
   action: {
     user: common.userUuid.required(),
     type: Joi.string().uppercase().required(),
-    imageData: Joi.string().when('type', { is: 'IMAGE', then: Joi.required() }),
+    imageData: Joi.string(),
     imageText: Joi.string().max(50, 'utf8').optional(),
     imageTextPosition: Joi.number().min(0).max(1).optional(),
     text: Joi.string().optional(),

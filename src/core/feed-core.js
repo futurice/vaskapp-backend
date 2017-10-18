@@ -167,6 +167,7 @@ function getFeedItem(id, client) {
 
     return knex.select([
         'comments.text',
+        'comments.image_path as imagePath',
         'users.name AS userName',
         'comments.created_at AS createdAt',
         'users.profile_picture_url AS profilePicture',
@@ -189,6 +190,7 @@ function _rowToCommentObject(row) {
     text: row['text'],
     userName: row['userName'],
     createdAt: row['createdAt'],
+    imagePath: pathToUrl(row['imagePath']),
     profilePicture: pathToUrl(row['profilePicture']),
   };
 }
