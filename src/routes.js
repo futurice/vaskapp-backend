@@ -8,6 +8,7 @@ import * as feedHttp from './http/feed-http';
 import * as announcementHttp from './http/announcement-http';
 import * as voteHttp from './http/vote-http';
 import * as markerHttp from './http/marker-http';
+import * as appsHttp from './http/apps-http';
 import * as citiesHttp from './http/cities-http';
 import * as radioHttp from './http/radio-http';
 import * as wappuMood from './http/wappu-mood-http';
@@ -41,6 +42,7 @@ function createRouter() {
   router.get('/announcements', authService.isAuthenticated(), announcementHttp.getAnnouncements);
 
   router.get('/markers', authService.isAuthenticated(), markerHttp.getMarkers);
+  router.get('/apps', authService.isAuthenticated(), appsHttp.getApps);
 
   router.get('/cities', authService.isAuthenticated(), citiesHttp.getCities)
 
