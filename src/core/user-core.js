@@ -146,7 +146,7 @@ function _makeUserDbRow(user) {
     'uuid': user.uuid,
     'name': user.name,
     'info': user.info,
-    'team_id': 35,
+    'team_id': user.team,
     'profile_picture_url': user.profilePicture,
   };
 
