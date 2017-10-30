@@ -1,4 +1,4 @@
-# Prahapp backend
+# Vaskapp backend
 
 **Disclaimer!!**
 
@@ -322,6 +322,9 @@ Query parameters:
 * `type` String. If specified, only feed items of that type are returned. One of: 'IMAGE', 'TEXT'.
 * `since` String. ISO-8601 format timestamp. If specified, only feed items created after given timestamp are returned. Note: If no time zone is specified, UTC is assumed.
 * `offset` Integer. If specified, offsets the returned list by given amount.
+* `latitude` Number. If specified with radius, returns items within radius from this point.
+* `longitude` Number. If specified with radius, returns items within radius from this point.
+* `radius` Number. Returns items within *meters* of radius. Only effective with latitude and longitude parameters.
 
 Examples:
 
