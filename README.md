@@ -1,5 +1,13 @@
 # Vaskapp backend
 
+* Client repository here: https://github.com/futurice/vaskapp
+
+> App to Praise our Culture
+
+## Vask_
+> When the rich and spoiled youth of Stureplan in Stockholm, Sweden were forbidden to spray champagne on each other while they were in a bar or club as a way to show everyone around them how much money they could afford to throw away for no good reason, they invented "vaskning" or "att vaska”
+Basically it means that you order two expensive bottles of champagne (or any other expensive baverage, but champagne has the highest impact factor), but you tell the bartender to pour one of the bottles in the sink (sink= vask in swedish). This sends a clear signal to the people around you that you are the shit and girls will magically be drawn towards you.
+
 **Disclaimer!!**
 
 **This document has vastly outdated API descriptions and contains references to `wappuapp` which the implementation is based on.**
