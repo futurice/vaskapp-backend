@@ -419,9 +419,15 @@ Responses:
 
 > Get one of radio stations.
 
+
+### `GET /api/apps`
+
+> Get list of apps.
+
 Responses:
 
-* `200 OK` Body is one of [radio objects](#radio-object).
+* `200 OK` Body is list of [appa objects](#app-object)
+
 
 ## Response objects
 
@@ -471,6 +477,7 @@ Images is an array of [feed objects](#feed-objects).
 {
   "name": "Hessu Kypärä",
   "team": "TiTe",
+  "info": "I am a great guy",
   "numSimas": "1",
   "images": [
     {
@@ -570,6 +577,19 @@ Images is an array of [feed objects](#feed-objects).
     "song": null,
     "left": 1132504   // How much longer the program is gonna be playing, in ms
   }
+}
+```
+
+### App object
+
+```js
+{
+  "id": 1,
+  "name": "Futurice Blog",
+  "imageUrl": null
+  "type": "RSS", // RSS | LINK
+  "url": "https://futurice.com/blog/rss",
+  "description": "Share what you learn",
 }
 ```
 
