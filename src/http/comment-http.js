@@ -4,13 +4,15 @@ import {createJsonRoute} from '../util/express';
 
 
 let getConversations = createJsonRoute(function(req, res) {
-  const conversationParams = assert({
-    limit: req.query.limit,
-  }, 'conversations');
+  // const conversationParams = assert({
+  //   limit: req.query.limit,
+  // }, 'conversations');
 
-  const coreParams = _.merge(conversationParams, {
-    client: req.client
-  });
+  // const coreParams = _.merge(conversationParams, {
+  //   client: req.client
+  // });
+
+  const coreParams = { client: req.client };
 
   return commentCore.getConversations(coreParams);
 });

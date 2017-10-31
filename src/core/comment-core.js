@@ -43,33 +43,59 @@ function newComment(action) {
   });
 }
 
-
-
 // Get feed items
 // Which have comments
 // with user_id === req.client.id
 function getConversations(opts) {
-  return knex('comments')
-    .select('*')
-    .where('user_id', opts.client.id)
-    .orderBy('created_at', 'desc')
-    .then(rows => {
-      if (_.isEmpty(rows)) {
-        return [];
-      }
+  let sqlString = `SELECT
+      feed_items.id,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      users.id as user_id,
+      users.name as user_name,
+      users.profile_picture_url AS profile_picture_url,
+      COUNT(comments) AS comment_count
+    FROM feed_items
+    LEFT JOIN users ON users.id = feed_items.user_id
+    INNER JOIN comments ON comments.feed_item_id = feed_items.id AND comments.user_id = ?
+    GROUP BY
+        feed_items.id,
+        users.name,
+        users.id`;
 
-      return _.map(rows, _commentRowToObject);
-    });
+  const params = [opts.client.id];
+
+  return knex.raw(sqlString, params)
+  .then(rows => {
+    if (_.isEmpty(rows)) {
+      return [];
+    }
+
+    return _.map(rows, _feedRowToObject);
+  });
 }
 
-function _commentRowToObject(row) {
-  let obj = {
-    text: row['text'],
-    feedItemId: row['feed_item_id'],
-    userId: row['user_id'],
+
+function _feedRowToObject(row) {
+  var obj = {
+    id: row['id'],
+    type: row['action_type_code'],
+    author: {
+      id: row['user_id'],
+      name: row['user_name'],
+      profilePicture: pathToUrl(row['profile_picture_url']),
+    },
     createdAt: row['created_at'],
-    imagePath: pathToUrl(row['image_path']),
+    commentCount: row['comment_count'],
+    text: row.text,
   };
+
+  if (row['image_path']) {
+    obj.imagePath = pathToUrl(row['image_path']);
+  }
+
 
   return obj;
 }
