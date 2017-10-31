@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as imageCore from './image-core';
+import {pathToUrl} from '../util/gcs';
 import * as imageHttp from '../http/image-http';
 import {decodeBase64Image} from '../util/base64';
 const {knex} = require('../util/database').connect();
@@ -53,7 +54,7 @@ function getConversations(opts) {
   return knex('comments')
     .select('*')
     .where('user_id', opts.client.id)
-    .orderBy('id', 'asc')
+    .orderBy('created_at', 'desc')
     .then(rows => {
       if (_.isEmpty(rows)) {
         return [];
@@ -65,11 +66,12 @@ function getConversations(opts) {
 
 function _commentRowToObject(row) {
   let obj = {
-    id: row.id,
-    type: row.type,
-    title: row.title,
-    subtitle: row.subtitle,
-    imageUrl: _.get(row, 'image_url', null),
+    text: row['text'],
+    userName: row['userName'],
+    userId: row['userId'],
+    createdAt: row['createdAt'],
+    imagePath: pathToUrl(row['imagePath']),
+    profilePicture: pathToUrl(row['profilePicture']),
   };
 
   if (row.url) {
@@ -78,9 +80,6 @@ function _commentRowToObject(row) {
 
   return obj;
 }
-
-
-
 
 
 
