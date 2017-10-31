@@ -44,9 +44,47 @@ function newComment(action) {
 
 
 
+// Get feed items
+// Which have comments
+// with user_id === req.client.id
+function getConversations(opts) {
+
+  // req.client
+  return knex('comments')
+    .select('*')
+    .where('user_id', opts.client.id)
+    .orderBy('id', 'asc')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        return [];
+      }
+
+      return _.map(rows, _commentRowToObject);
+    });
+}
+
+function _commentRowToObject(row) {
+  let obj = {
+    id: row.id,
+    type: row.type,
+    title: row.title,
+    subtitle: row.subtitle,
+    imageUrl: _.get(row, 'image_url', null),
+  };
+
+  if (row.url) {
+    obj.url = row.url;
+  }
+
+  return obj;
+}
+
+
+
 
 
 
 export {
   newComment,
+  getConversations,
 };
