@@ -15,6 +15,7 @@ import * as wappuMood from './http/wappu-mood-http';
 import * as imageHttp from './http/image-http';
 import * as authService from './auth/auth-service';
 import * as authHttp from './http/auth-http';
+import * as commentHttp from './http/comment-http';
 
 function createRouter() {
   const router = express.Router();
@@ -43,6 +44,7 @@ function createRouter() {
 
   router.get('/markers', authService.isAuthenticated(), markerHttp.getMarkers);
   router.get('/apps', authService.isAuthenticated(), appsHttp.getApps);
+  router.get('/conversations', authService.isAuthenticated(), commentHttp.getConversations);
 
   router.get('/cities', authService.isAuthenticated(), citiesHttp.getCities)
 
