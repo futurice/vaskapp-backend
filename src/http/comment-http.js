@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as markerCore from '../core/comment-core';
+import * as commentCore from '../core/comment-core';
 import {createJsonRoute} from '../util/express';
 
 
@@ -12,7 +12,7 @@ let getConversations = createJsonRoute(function(req, res) {
     client: req.client
   });
 
-  return markerCore.getConversations(coreParams);
+  return commentCore.getConversations(coreParams);
 });
 
 export {

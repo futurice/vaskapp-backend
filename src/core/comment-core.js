@@ -49,8 +49,6 @@ function newComment(action) {
 // Which have comments
 // with user_id === req.client.id
 function getConversations(opts) {
-
-  // req.client
   return knex('comments')
     .select('*')
     .where('user_id', opts.client.id)
@@ -67,16 +65,11 @@ function getConversations(opts) {
 function _commentRowToObject(row) {
   let obj = {
     text: row['text'],
-    userName: row['userName'],
-    userId: row['userId'],
-    createdAt: row['createdAt'],
-    imagePath: pathToUrl(row['imagePath']),
-    profilePicture: pathToUrl(row['profilePicture']),
+    feedItemId: row['feed_item_id'],
+    userId: row['user_id'],
+    createdAt: row['created_at'],
+    imagePath: pathToUrl(row['image_path']),
   };
-
-  if (row.url) {
-    obj.url = row.url;
-  }
 
   return obj;
 }
