@@ -100,6 +100,10 @@ const schemas = {
   teamsParams: {
     city: common.primaryKeyId,
   },
+
+  conversations: {
+    limit: Joi.number().integer().min(1).max(100).optional(),
+  },
 };
 
 const conversions = {};
