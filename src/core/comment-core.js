@@ -68,7 +68,8 @@ function getConversations(opts) {
   const params = [opts.client.id];
 
   return knex.raw(sqlString, params)
-  .then(rows => {
+  .then(result => {
+    const rows = result.rows;
     if (_.isEmpty(rows)) {
       return [];
     }
@@ -95,7 +96,6 @@ function _feedRowToObject(row) {
   if (row['image_path']) {
     obj.imagePath = pathToUrl(row['image_path']);
   }
-
 
   return obj;
 }
