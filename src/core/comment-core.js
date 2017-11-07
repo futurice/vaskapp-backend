@@ -58,7 +58,8 @@ function getConversations(opts) {
       users.profile_picture_url AS profile_picture_url,
       COUNT(comments) AS comment_count,
       comments.created_at AS comment_created_at,
-      comments.text AS comment_text
+      comments.text AS comment_text,
+      comments.image_path AS comment_image
     FROM feed_items
     LEFT JOIN users ON users.id = feed_items.user_id
     INNER JOIN comments ON comments.feed_item_id = feed_items.id AND comments.user_id = ?
@@ -67,7 +68,8 @@ function getConversations(opts) {
         users.name,
         users.id,
         comments.created_at,
-        comments.text`;
+        comments.text,
+        comments.image_path`;
 
   const params = [opts.client.id];
 
@@ -97,6 +99,7 @@ function _feedRowToObject(row) {
     commentCount: row['comment_count'],
     commentCreatedAt: row['comment_created_at'],
     commentText: row['comment_text'],
+    commentImage: pathToUrl(row['comment_image'])
   };
 
   if (row['image_path']) {
