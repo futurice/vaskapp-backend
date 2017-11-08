@@ -12,16 +12,16 @@ exports.seed = function(knex, Promise) {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 5,
       code: 'IMAGE',
-      name: 'Pics or didn\'t happen',
+      name: 'Camera',
       value: 0,
-      cooldown: 5 * 60 * 1000
+      cooldown: 1 * 60 * 1000
     });
   })
   .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 6,
       code: 'TEXT',
-      name: 'Comment',
+      name: 'Text',
       value: 0,
       cooldown: 10 * 1000
     });
