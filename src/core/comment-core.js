@@ -8,12 +8,20 @@ const BPromise = require('bluebird');
 const uuidV1 = require('uuid/v1');
 
 function _makeCommentDbRow(action) {
-  return {
+  const row = {
     user_id: action.client.id,
-    feed_item_id: action.feedItemId,
-    text: action.text,
-    image_path: action.imagePath
+    feed_item_id: action.feedItemId
   };
+
+  if (action.text) {
+    row.text = action.text;
+  }
+
+  if (action.imagePath) {
+    row.image_path = action.imagePath;
+  }
+
+  return row;
 }
 
 function newComment(action) {
