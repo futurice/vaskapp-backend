@@ -10,7 +10,7 @@ Basically it means that you order two expensive bottles of champagne (or any oth
 
 **Disclaimer!!**
 
-**This document has vastly outdated API descriptions and contains references to `wappuapp` which the implementation is based on.**
+**This document has vastly outdated API descriptions and contains references to `vaskapp` which the implementation is based on.**
 
 Dependencies:
 
@@ -22,13 +22,18 @@ Dependencies:
 
   [Postgres.app](http://postgresapp.com/) has a built-in support.
 
-  **Note: The command below has been done already for wappuapp-backend app. It is
+  **Note: The command below has been done already for vaskapp-backend app. It is
   only useful if you create a new Heroku app.**
 
   You can add Postgis support to Heroku Postgres with:
   ```
-  heroku pg:psql -a wappuapp-backend
+  heroku pg:psql -a vaskapp
   create extension postgis;
+  ```
+
+  Or raw SQL:
+  ```
+  CREATE EXTENSION postgis;
   ```
 
 * Heroku toolbelt
@@ -60,8 +65,8 @@ Start using [API endpoints](#api-endpoints).
 
 Environments:
 
-* `qa` https://wappuapp-backend-qa.herokuapp.com
-* `prod` https://wappuapp-backend.herokuapp.com
+* `qa` https://vaskapp-qa.herokuapp.com
+* `prod` https://vaskapp.herokuapp.com
 
 ## Techstack
 
