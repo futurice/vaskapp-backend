@@ -18,6 +18,6 @@ exports.seed = function(knex, Promise) {
       cover_image: event.coverImage,
     };
 
-    return util.removeIfExists(knex, 'events', row);
+    return util.insertOrUpdate(knex, 'events', row);
   }, {concurrency: 1})
 };
