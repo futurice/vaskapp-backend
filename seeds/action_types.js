@@ -9,24 +9,6 @@ exports.seed = function(knex, Promise) {
     cooldown: 30 * 1000
   })
   .then(() => {
-    return util.removeIfExists(knex, 'action_types', {
-      id: 2,
-      code: 'SIMA',
-      name: 'Grab a sima',
-      value: 1,
-      cooldown: 5 * 60 * 1000
-    });
-  })
-  .then(() => {
-    return util.removeIfExists(knex, 'action_types', {
-      id: 4,
-      code: 'LECTURE',
-      name: 'At a lecture',
-      value: 200,
-      cooldown: 45 * 60 * 1000
-    });
-  })
-  .then(() => {
     return util.insertOrUpdate(knex, 'action_types', {
       id: 5,
       code: 'IMAGE',

@@ -20,6 +20,12 @@ exports.seed = function(knex, Promise) {
       image_path: team.image_path
     };
 
-    return util.insertOrUpdate(knex, 'teams', row);
+    return util.insertOrUpdate(knex, 'teams', row).then(() => {
+      return util.removeIfExists(knex, 'teams', {
+        id: 35,
+        city_id: 1,
+        name: 'Tammerforce',
+      })
+    })
   }, {concurrency: 1}));
 };
