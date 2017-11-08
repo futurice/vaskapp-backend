@@ -1,5 +1,6 @@
 [
 {"name": "Futurice Blog", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-web/master/apps/blog-app.png", "type": "RSS","url": "https://futurice.com/blog/rss", "description": "Share what you learn"},
+{"name": "Events", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-web/master/apps/events-app.png", "type": "RSS", "url": "https://futurice.com/events/rss", "description":"Upcoming Futurice events"},
 {"name": "Hours", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-web/master/apps/hours-app.png", "type": "WEBAPP", "url": "https://hours.app.futurice.com", "description":"Hours in, invoices out"},
 {"name": "Learning", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-web/master/apps/learning-app.png", "type":"WEBAPP", "url": "https://learning.app.futurice.com", "description":"Explore, evolve, stay curious"},
 {"name": "Futunauts", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-web/master/apps/futunaut-app.png", "type": "WEBAPP", "url": "https://futunauts.futurice.com/", "description":"Futunauts on the map"},
