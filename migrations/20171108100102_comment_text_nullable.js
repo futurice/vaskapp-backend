@@ -1,11 +1,13 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.alterTable('comments', function(table) {
-    table.string('text').nullable().alter();
-  });
+  return knex.raw(`
+    ALTER TABLE comments
+    ALTER COLUMN text DROP NOT NULL
+  `);
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.alterTable('comments', function(table) {
-    table.string('text').notNullable().alter();
-  });
+  return knex.raw(`
+    ALTER TABLE comments
+    ALTER COLUMN text SET NOT NULL
+  `);
 };
