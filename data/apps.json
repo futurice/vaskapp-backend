@@ -3,6 +3,7 @@
 {"name": "Events", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/events-app.png", "type": "RSS", "url": "https://futurice.com/events/rss", "description":"Upcoming Futurice events"},
 {"name": "Hours", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/hours-app.png", "type": "WEBAPP", "url": "https://hours.app.futurice.com", "description":"Hours in, invoices out"},
 {"name": "Learning", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/learning-app.png", "type":"WEBAPP", "url": "https://learning.app.futurice.com", "description":"Explore, evolve, stay curious"},
+{"name": "WoW", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/wow-app.png", "type":"WEBAPP", "url": "https://wow.futurice.com", "description":"Futurice Ways of Working Kit"},
 {"name": "Futunauts", "image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/futunaut-app.png", "type": "WEBAPP", "url": "https://futunauts.futurice.com/", "description":"Futunauts on the map"},
 {"name": "Smileys","image_url": "https://raw.githubusercontent.com/futurice/vaskapp-futu/master/apps/smileys-app.png", "type": "WEBAPP","url": "https://smileys.top", "description": "Tammerforce weekly smileys"}
 ]
