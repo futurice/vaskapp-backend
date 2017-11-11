@@ -1,9 +1,13 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
-function getApps() {
+function getApps(opts) {
+  const whereClause = `apps.city_id = (SELECT city_id FROM teams WHERE id = ?)`;
+  const whereParams = [opts.client.team];
+
   return knex('apps')
     .select('*')
+    .whereRaw(whereClause, whereParams)
     .orderBy('id', 'asc')
     .then(rows => {
       if (_.isEmpty(rows)) {
