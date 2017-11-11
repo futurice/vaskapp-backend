@@ -38,7 +38,9 @@ function createRouter() {
   router.delete('/feed/:id', authService.isAuthenticated(), feedHttp.deleteFeedItem);
   router.get('/feed/:id', authService.isAuthenticated(), feedHttp.getFeedItem);
 
-  router.get('/image/:id', authService.isAuthenticated(), imageHttp.getImage);
+  // Image API is not necessary
+  // TODO restrict by users.city/team id
+  // router.get('/image/:id', authService.isAuthenticated(), imageHttp.getImage);
 
   router.get('/announcements', authService.isAuthenticated(), announcementHttp.getAnnouncements);
 
