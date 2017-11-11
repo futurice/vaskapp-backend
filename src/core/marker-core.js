@@ -1,9 +1,14 @@
 import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
-function getMarkers() {
+function getMarkers(opts) {
+
+  const cityQuery = `markers.city_id = (SELECT city_id FROM teams WHERE id = ?)`;
+  const cityParams = [opts.client.team];
+
   return knex('markers')
     .select('*')
+    .whereRaw(cityQuery, cityParams)
     .orderBy('id', 'asc')
     .then(rows => {
       if (_.isEmpty(rows)) {
