@@ -214,6 +214,7 @@ function createFeedItem(feedItem, trx) {
     'image_path': feedItem.imagePath,
     'text':       _sanitizeText(feedItem.text),
     'type':       feedItem.type,
+    'city_id':    knex.raw('(SELECT city_id FROM teams WHERE id = ?)', [feedItem.client.team]),
     // Division to bring time stamp's accuracy inline with postgres values.
     'hot_score':  _.round(score.hotScore(0, moment.utc().valueOf() / 1000), 4),
   };
