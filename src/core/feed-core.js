@@ -149,6 +149,7 @@ function getFeedItem(id, client) {
     LEFT JOIN teams ON teams.id = users.team_id
     LEFT JOIN votes ON votes.user_id = ? AND votes.feed_item_id = feed_items.id
     WHERE feed_items.id = ?
+    AND feed_items.city_id = (SELECT city_id FROM teams WHERE id = ?)
     GROUP BY
       feed_items.id,
       users.name,
@@ -157,8 +158,7 @@ function getFeedItem(id, client) {
       votes.value
   `;
 
-
-  return knex.raw(feedItemSql, [id, id]).then((result) => {
+  return knex.raw(feedItemSql, [id, id, client.team]).then((result) => {
     const row = _.get(result, 'rows[0]', null);
 
     if (!row) {
@@ -350,6 +350,12 @@ function _getWhereSql(opts) {
 
   if (!opts.client.isBanned) {
     whereClauses.push('NOT feed_items.is_banned');
+  }
+
+  // This should always exist
+  if (opts.client.team) {
+    whereClauses.push(`feed_items.city_id = (SELECT city_id FROM teams WHERE id = ?)`);
+    params.push(opts.client.team);
   }
 
   if (opts.eventId) {
