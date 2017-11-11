@@ -2,7 +2,36 @@ const {knex} = require('../util/database').connect();
 import _ from 'lodash';
 import {deepChangeKeyCase} from '../util';
 
+
 function getTeams(opts) {
+  const whereClause = `teams.city_id = (SELECT city_id FROM teams WHERE id = ?)`;
+  const whereParams = [opts.client.team];
+
+  return knex('teams')
+    .select('*')
+    .whereRaw(whereClause, whereParams)
+    .orderBy('id', 'asc')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        return [];
+      }
+
+      return _.map(rows, _teamRowToObject);
+    });
+}
+
+function _teamRowToObject(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    city: row.city_id,
+    imagePath: _.get(row, 'image_path', null),
+  };
+}
+
+
+
+function getTeamsWithScore(opts) {
   const isBanned = opts.client && !!opts.client.isBanned;
   const voteScoreSql = `
     (SELECT
@@ -72,5 +101,6 @@ function getTeams(opts) {
 }
 
 export {
-  getTeams
+  getTeams,
+  getTeamsWithScore
 };
