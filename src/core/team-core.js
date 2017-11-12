@@ -100,7 +100,24 @@ function getTeamsWithScore(opts) {
   });
 }
 
+function createTeam(team, trx) {
+  trx = trx || knex;
+  return trx.returning('id').insert(team).into('teams')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Feed item row creation failed: ' + team);
+      }
+
+      return rows.length;
+    })
+    .catch(err => {
+      // TODO
+      throw err;
+    });
+}
+
 export {
+  createTeam,
   getTeams,
   getTeamsWithScore
 };
