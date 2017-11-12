@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import * as commentCore from '../core/comment-core';
 import {createJsonRoute} from '../util/express';
 
