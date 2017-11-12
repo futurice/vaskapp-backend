@@ -33,6 +33,16 @@ const getCities = (opts) => {
     });
 };
 
+function _cityRowToObject(row) {
+  const city = {
+    id: row.id,
+    name: row.name,
+    domain: row.domain
+  };
+
+  return city;
+}
+
 // Find city by domain
 function findByDomain(domain) {
   return knex('cities')
