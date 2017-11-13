@@ -1,6 +1,6 @@
 const {knex} = require('../util/database').connect();
 import {deepChangeKeyCase} from '../util';
-import {createTeam} from './team-core';
+import {createTeam, findDefaultTeam} from './team-core';
 import _ from 'lodash';
 
 const getCities = (opts) => {
@@ -43,23 +43,29 @@ function _cityRowToObject(row) {
   return city;
 }
 
-// Find city by domain
-function findByDomain(domain) {
+// Find city and default team by domain
+function findCityAndTeamByDomain(domain) {
   return knex('cities')
-    .select(
-      'cities.*'
-    )
-    .where({ domain: domain })
-    .then(rows => {
-      if (_.isEmpty(rows)) {
-        return null;
-      }
+  .select(
+    'cities.*'
+  )
+  .where({ domain: domain })
+  .then(rows => {
+    if (_.isEmpty(rows)) {
+      return null;
+    }
 
-      return _cityRowToObject(rows[0]);
-    });
+    const city = rows[0];
+    return findDefaultTeam(city.id)
+    .then(team => _.merge(
+      _cityRowToObject(city),
+      { team: (team || {}).id }
+    ));
+  });
 }
 
-function createCity(domain) {
+function createCityAndTeam(domain) {
+  // company.co -> Company
   const name = _.capitalize(domain.substring(0, domain.lastIndexOf('.')));
 
   const cityRow = {
@@ -69,17 +75,21 @@ function createCity(domain) {
 
   return knex.transaction(function(trx) {
     return trx('cities').returning('*').insert(cityRow)
-      .then(rows => {
-        if (_.isEmpty(rows)) {
-          throw new Error('Action row creation failed: ' + cityRow);
-        }
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Action row creation failed: ' + cityRow);
+      }
 
-        const team = {
-          city_id: rows[0].id,
-          name: name
-        };
-
-        return createTeam(team, trx);
+      const city = rows[0].id;
+      const team = {
+        'city_id': city,
+        'name': name
+      };
+      return createTeam(team, trx)
+      .then(newTeam => ({
+        'team': newTeam,
+        'city': city
+      }));
     })
   })
   .catch(err => {
@@ -90,7 +100,7 @@ function createCity(domain) {
 
 
 export {
-  createCity,
-  findByDomain,
+  createCityAndTeam,
+  findCityAndTeamByDomain,
   getCities,
 };

@@ -9,12 +9,6 @@ const validateJwt = jwt({ secret: process.env.AUTH0_SECRET_KEY });
 function isAuthenticated() {
   return compose()
   .use(function(req, res, next) {
-
-    // Do not require token in development or test env
-    if (process.env.DISABLE_AUTH === 'true') {
-      return next();
-    }
-
     // Allow access_token to be passed through query parameter as well
     if (req.query && req.query.hasOwnProperty('access_token')) {
       req.headers.authorization = 'Bearer ' + req.query.access_token;
@@ -23,7 +17,6 @@ function isAuthenticated() {
     validateJwt(req, res, next);
   })
   .use(function(req, res, next) {
-
     // Parse domain from email address
     const email = _.get(req, ['user', 'email'], '');
     const domain = email.substring(email.lastIndexOf('@') + 1);
@@ -32,21 +25,29 @@ function isAuthenticated() {
       next();
     }
 
-    citiesCore.findByDomain(domain)
-      .then(city => {
+    citiesCore.findCityAndTeamByDomain(domain)
+    .then(city => {
+      // Fetch or Create city & team for domain
+      // Add it to req.client
+      if (!req.client) {
+        req.client = {};
+      }
 
-        // Create city & team for domain
-        if (!city) {
-          citiesCore.createCity(domain)
-          .then(newCity => {
-            req.city = newCity;
-            return next();
-          })
-        }
-
-        req.city = city;
+      // Should citiesCore be responsible of creating new ones??
+      // Or require-client-headers?
+      if (!city) {
+        citiesCore.createCityAndTeam(domain)
+        .then(newCity => {
+          req.client.city = newCity.city;
+          req.client.team = newCity.team;
+          next();
+        });
+      } else {
+        req.client.city = city.id;
+        req.client.team = city.team;
         next();
-      });
+      }
+    });
   });
 }
 

@@ -4,8 +4,8 @@ import {deepChangeKeyCase} from '../util';
 
 
 function getTeams(opts) {
-  const whereClause = `teams.city_id = (SELECT city_id FROM teams WHERE id = ?)`;
-  const whereParams = [opts.client.team];
+  const whereClause = `teams.city_id = ?`;
+  const whereParams = [opts.client.city];
 
   return knex('teams')
     .select('*')
@@ -100,15 +100,48 @@ function getTeamsWithScore(opts) {
   });
 }
 
-function createTeam(team, trx) {
-  trx = trx || knex;
-  return trx.returning('id').insert(team).into('teams')
+// Find city by Id
+function findById(id) {
+  return knex('teams')
+    .select(
+      'teams.*'
+    )
+    .where({ id: id })
     .then(rows => {
       if (_.isEmpty(rows)) {
-        throw new Error('Feed item row creation failed: ' + team);
+        return null;
       }
 
-      return rows.length;
+      return _teamRowToObject(rows[0]);
+    });
+}
+
+// Find first team for city_id
+function findDefaultTeam(cityId) {
+  return knex('teams')
+  .select(
+    'teams.*'
+  )
+  .where({ city_id: cityId })
+  .then(rows => {
+    if (_.isEmpty(rows)) {
+      return null;
+    }
+    return _teamRowToObject(rows[0]);
+  });
+}
+
+
+function createTeam(team, trx) {
+  trx = trx || knex;
+  return trx.returning('*').insert(team).into('teams')
+    .then(rows => {
+      if (_.isEmpty(rows)) {
+        throw new Error('Team row creation failed: ' + team);
+      }
+
+      // Return team id
+      return rows[0].id;
     })
     .catch(err => {
       // TODO
@@ -118,6 +151,8 @@ function createTeam(team, trx) {
 
 export {
   createTeam,
+  findById,
+  findDefaultTeam,
   getTeams,
   getTeamsWithScore
 };
