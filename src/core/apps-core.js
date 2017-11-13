@@ -2,8 +2,8 @@ import _ from 'lodash';
 const {knex} = require('../util/database').connect();
 
 function getApps(opts) {
-  const whereClause = `apps.city_id = (SELECT city_id FROM teams WHERE id = ?)`;
-  const whereParams = [opts.client.team];
+  const whereClause = `apps.city_id = ?`;
+  const whereParams = [opts.client.city];
 
   return knex('apps')
     .select('*')
