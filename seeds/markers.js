@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
       title: marker.title,
       subtitle: marker.subtitle,
       image_url: marker.image_url,
+      city_id: marker.city_id,
     };
 
     if (marker.url) {

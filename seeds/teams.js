@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
   .then(() => BPromise.map(teams, (team, index) => {
     const row = {
       id: index + 1,
-      city_id: cities['Futurice'],
+      city_id: team.city_id || cities['Futurice'],
       name: team.name,
       image_path: team.image_path
     };

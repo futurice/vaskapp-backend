@@ -1,5 +1,6 @@
 [
   { "name": "Tammerforce" },
   { "name": "Avalon" },
-  { "name": "Berlin" }
+  { "name": "Berlin" },
+  { "name": "A Team", "city_id": 2 }
 ]

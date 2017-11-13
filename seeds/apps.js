@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
       url: app.url,
       description: app.description,
       image_url: app.image_url,
+      city_id: app.city_id,
     };
 
     return util.insertOrUpdate(knex, 'apps', row);
