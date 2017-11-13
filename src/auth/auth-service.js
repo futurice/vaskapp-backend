@@ -19,7 +19,7 @@ function isAuthenticated() {
   .use(function(req, res, next) {
     // Parse domain from email address
     const email = _.get(req, ['user', 'email'], '');
-    const domain = email.substring(email.lastIndexOf('@') + 1);
+    const domain = email.substring(email.lastIndexOf('@') + 1).toLowerCase();
 
     if (_.isEmpty(domain)) {
       next();
