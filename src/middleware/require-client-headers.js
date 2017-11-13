@@ -13,17 +13,18 @@ function createRequireClientHeaders(opts) {
 
     userCore.findByUuid(uuid)
       .then(user => {
+
         if (user) {
-          req.client = user;
+          req.client = Object.assign({}, req.client, user);
         } else {
           // If header is not set, set it to "anonymous". It is better then null
           // because NULL value of uuid in database means system user.
-          req.client = {
+          req.client = Object.assign({}, {
             id: null,
             isBanned: false,
             uuid: 'anonymous',
             team: null
-          };
+          }, req.client);
         }
 
         next();
