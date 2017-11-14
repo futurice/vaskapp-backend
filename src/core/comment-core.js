@@ -105,11 +105,13 @@ function getConversations(opts) {
   });
 }
 
+// Find unique feed items
+// with latest comment
 function _processConversations(data) {
   return _
     .chain(data)
     .groupBy(item => item.id)
-    .map(itemsById => _.maxBy(itemsById, item => item.created_at))
+    .map(itemsById => _.maxBy(itemsById, item => item.comment_created_at))
     .value();
 }
 
@@ -126,7 +128,7 @@ function _conversationRowToObject(row) {
     createdAt: row['created_at'],
     commentCount: row['comment_count'],
     comment : {
-      createdA: row['comment_created_at'],
+      createdAt: row['comment_created_at'],
       text: row['comment_text'],
       image: pathToUrl(row['comment_image']),
       name: row['comment_name']
