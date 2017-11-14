@@ -51,9 +51,10 @@ function newComment(action) {
   });
 }
 
-// Get feed items
-// Which have comments
-// with user_id === req.client.id
+// Get relevant feed items for user aka 'conversations'
+// TODO
+// - SQL get only one row per feed-item
+// - require item to have comments from someone else than user
 function getConversations(opts) {
   let sqlString = `SELECT
       feed_items.id,
@@ -61,25 +62,35 @@ function getConversations(opts) {
       feed_items.image_path as image_path,
       feed_items.text as text,
       feed_items.type as action_type_code,
-      users.id as user_id,
-      users.name as user_name,
-      users.profile_picture_url AS profile_picture_url,
+      u1.id as user_id,
+      u1.name as user_name,
+      u1.profile_picture_url AS profile_picture_url,
       COUNT(comments) AS comment_count,
       comments.created_at AS comment_created_at,
       comments.text AS comment_text,
-      comments.image_path AS comment_image
+      comments.image_path AS comment_image,
+      u2.name as comment_name
     FROM feed_items
-    LEFT JOIN users ON users.id = feed_items.user_id
-    INNER JOIN comments ON comments.feed_item_id = feed_items.id AND comments.user_id = ?
+    LEFT JOIN users as u1 ON u1.id = feed_items.user_id
+    LEFT JOIN comments ON comments.feed_item_id = feed_items.id
+    LEFT JOIN users as u2 ON u2.id = comments.user_id
+    WHERE feed_items.id in (
+      SELECT feed_items.id FROM feed_items WHERE feed_items.user_id = ?
+      union all
+      SELECT DISTINCT comments.feed_item_id FROM comments WHERE comments.user_id = ?
+    )
     GROUP BY
         feed_items.id,
-        users.name,
-        users.id,
+        u1.name,
+        u1.id,
         comments.created_at,
         comments.text,
-        comments.image_path`;
+        comments.image_path,
+        u2.id,
+        u2.name
+   HAVING COUNT(comments) >= 1`;
 
-  const params = [opts.client.id];
+  const params = [opts.client.id, opts.client.id];
 
   return knex.raw(sqlString, params)
   .then(result => {
@@ -88,12 +99,21 @@ function getConversations(opts) {
       return [];
     }
 
-    return _.map(rows, _feedRowToObject);
+    const conversations = _processConversations(rows);
+
+    return _.map(conversations, _conversationRowToObject);
   });
 }
 
+function _processConversations(data) {
+  return _
+    .chain(data)
+    .groupBy(item => item.id)
+    .map(itemsById => _.maxBy(itemsById, item => item.created_at))
+    .value();
+}
 
-function _feedRowToObject(row) {
+function _conversationRowToObject(row) {
   var obj = {
     id: row['id'],
     type: row['action_type_code'],
@@ -105,9 +125,12 @@ function _feedRowToObject(row) {
     text: row.text,
     createdAt: row['created_at'],
     commentCount: row['comment_count'],
-    commentCreatedAt: row['comment_created_at'],
-    commentText: row['comment_text'],
-    commentImage: pathToUrl(row['comment_image'])
+    comment : {
+      createdA: row['comment_created_at'],
+      text: row['comment_text'],
+      image: pathToUrl(row['comment_image']),
+      name: row['comment_name']
+    }
   };
 
   if (row['image_path']) {
