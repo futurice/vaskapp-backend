@@ -2,5 +2,12 @@
   { "name": "Tammerforce" },
   { "name": "Avalon" },
   { "name": "Berlin" },
-  { "name": "A Team", "city_id": 2 }
+  { "name": "A Team", "city_id": 2 },
+  { "name": "Inna" },
+  { "name": "José" },
+  { "name": "4th" },
+  { "name": "South Side" },
+  { "name": "Stockholm" },
+  { "name": "Munich" },
+  { "name": "London" }
 ]
