@@ -103,6 +103,7 @@ const schemas = {
 
   conversations: {
     limit: Joi.number().integer().min(1).max(100).optional(),
+    since: Joi.date().iso().optional(),
   },
 };
 

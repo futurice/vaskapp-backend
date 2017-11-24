@@ -46,6 +46,7 @@ function createRouter() {
   router.get('/markers', markerHttp.getMarkers);
   router.get('/apps', appsHttp.getApps);
   router.get('/conversations', commentHttp.getConversations);
+  router.get('/conversations_count', commentHttp.getConversationsCount);
 
   router.get('/cities', citiesHttp.getCities)
 

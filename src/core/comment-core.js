@@ -3,6 +3,7 @@ import * as imageCore from './image-core';
 import {pathToUrl} from '../util/gcs';
 import * as imageHttp from '../http/image-http';
 import {decodeBase64Image} from '../util/base64';
+import moment from 'moment-timezone';
 const {knex} = require('../util/database').connect();
 const BPromise = require('bluebird');
 const uuidV1 = require('uuid/v1');
@@ -143,8 +144,84 @@ function _conversationRowToObject(row) {
 }
 
 
+// Get relevant feed items for user aka 'conversations'
+// TODO
+// - SQL get only one row per feed-item
+// - require item to have comments from someone else than user
+function getConversationCountSince(opts) {
+  let sqlString = `SELECT
+      feed_items.id,
+      feed_items.created_at as created_at,
+      feed_items.image_path as image_path,
+      feed_items.text as text,
+      feed_items.type as action_type_code,
+      u1.id as user_id,
+      u1.name as user_name,
+      u1.profile_picture_url AS profile_picture_url,
+      COUNT(comments) AS comment_count,
+      comments.created_at AS comment_created_at,
+      comments.text AS comment_text,
+      comments.image_path AS comment_image,
+      u2.name as comment_name
+    FROM feed_items
+    LEFT JOIN users as u1 ON u1.id = feed_items.user_id
+    LEFT JOIN comments ON comments.feed_item_id = feed_items.id
+    LEFT JOIN users as u2 ON u2.id = comments.user_id
+    WHERE feed_items.id in (
+      ${_getWhereSql(opts)}
+    )
+    GROUP BY
+        feed_items.id,
+        u1.name,
+        u1.id,
+        comments.created_at,
+        comments.text,
+        comments.image_path,
+        u2.id,
+        u2.name
+   HAVING COUNT(comments) >= 1`;
+
+
+  return knex.raw(sqlString)
+  .then(result => {
+    const rows = result.rows;
+    if (_.isEmpty(rows)) {
+      return [];
+    }
+
+    let conversationsSince = rows;
+
+    // make sure we dont return anything before 'opts.since' date
+    if (opts.since) {
+      conversationsSince = _.filter(rows, function(row) {
+        return row.comment_created_at >= opts.since;
+      });
+    }
+
+    const conversations = _processConversations(conversationsSince);
+    return conversations.length;
+  });
+}
+
+function _getWhereSql(opts) {
+  let whereSql = `
+      SELECT feed_items.id FROM feed_items WHERE feed_items.user_id = ?
+      union all
+      SELECT DISTINCT comments.feed_item_id FROM comments WHERE comments.user_id = ?`;
+  const params = [opts.client.id, opts.client.id];
+
+  if (opts.since) {
+    whereSql += ' AND comments.created_at >= ?';
+    params.push(opts.since);
+  }
+
+  return knex.raw(whereSql, params).toString();
+}
+
+
 
 export {
   newComment,
   getConversations,
+  getConversationCountSince,
 };
