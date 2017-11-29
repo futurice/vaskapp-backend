@@ -19,6 +19,6 @@ exports.seed = function(knex, Promise) {
       image_path: team.image_path
     };
 
-    return util.insertOrUpdate(knex, 'teams', row)
+    return util.insertOrUpdate(knex, 'teams', row, 'name')
   }, {concurrency: 1}));
 };
