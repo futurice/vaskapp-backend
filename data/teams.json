@@ -1,14 +1,14 @@
 [
-  { "name": "Tammerforce" },
-  { "name": "Avalon" },
-  { "name": "Berlin" },
-  { "name": "A Team", "city_id": 2 },
-  { "name": "Inna" },
-  { "name": "José" },
-  { "name": "4th" },
-  { "name": "South Side" },
-  { "name": "Stockholm" },
-  { "name": "Munich" },
-  { "name": "London" },
-  { "name": "Vesa" }
+  { "id": 1, "name": "Tammerforce" },
+  { "id": 2, "name": "Avalon" },
+  { "id": 3, "name": "Berlin" },
+  { "id": 4, "name": "A Team", "city_id": 2 },
+  { "id": 5, "name": "Inna" },
+  { "id": 6, "name": "José" },
+  { "id": 7, "name": "4th" },
+  { "id": 8, "name": "South Side" },
+  { "id": 9, "name": "Stockholm" },
+  { "id": 10, "name": "Munich" },
+  { "id": 11, "name": "London" },
+  { "id": 12, "name": "Vesa" }
 ]

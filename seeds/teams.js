@@ -14,11 +14,12 @@ exports.seed = function(knex, Promise) {
   })
   .then(() => BPromise.map(teams, (team, index) => {
     const row = {
+      id: team.id,
       city_id: team.city_id || cities['Futurice'],
       name: team.name,
       image_path: team.image_path
     };
 
-    return util.insertOrUpdate(knex, 'teams', row, 'name')
+    return util.insertOrUpdate(knex, 'teams', row)
   }, {concurrency: 1}));
 };
